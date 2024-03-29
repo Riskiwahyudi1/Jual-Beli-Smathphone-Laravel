@@ -4,10 +4,20 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        red: '#FF0000', 
+        blue: '#0693B7', 
+        blue2: '#0EABD3', 
+        
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 
