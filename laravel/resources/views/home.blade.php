@@ -137,6 +137,9 @@
               </figure>
         </div>
     </div>
+    <div class="flex justify-center mt-20 mb-10">
+        <h1 class="text-2xl font-bold border-b-4 border-blue2">Penawaran Spesial</h1>
+    </div>
     <div class="swiper w-5/6 ">
         <div class="slide-content">
             <div class=" swiper-wrapper">
