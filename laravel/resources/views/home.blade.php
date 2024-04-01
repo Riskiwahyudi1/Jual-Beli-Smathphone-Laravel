@@ -137,7 +137,141 @@
               </figure>
         </div>
     </div>
-    
+    <div class="swiper w-5/6 ">
+        <div class="slide-content">
+            <div class=" swiper-wrapper">
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                    <a href="#">
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                        </a>
+                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                        <div class="flex justify-star my-3">
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        </div>
+                        <div class="flex justify-between my-2">
+                            <p class="text-orange font-medium">Rp.1.999.000</p>
+                            <small class="font-semibold">Tersedia : 22</small>
+                        </div>
+                        <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Lihat Detail
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                    <a href="#">
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/rog.jpg') }}" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                        </a>
+                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                        <div class="flex justify-star my-3">
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        </div>
+                        <div class="flex justify-between my-2">
+                            <p class="text-orange font-medium">Rp.1.999.000</p>
+                            <small class="font-semibold">Tersedia : 22</small>
+                        </div>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Lihat Detail
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                    <a href="#">
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 2.jpeg') }}" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                        </a>
+                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                        <div class="flex justify-star my-3">
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        </div>
+                        <div class="flex justify-between my-2">
+                            <p class="text-orange font-medium">Rp.1.999.000</p>
+                            <small class="font-semibold">Tersedia : 22</small>
+                        </div>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Lihat Detail
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                    <a href="#">
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                        </a>
+                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                        <div class="flex justify-star my-3">
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        </div>
+                        <div class="flex justify-between my-2">
+                            <p class="text-orange font-medium">Rp.1.999.000</p>
+                            <small class="font-semibold">Tersedia : 22</small>
+                        </div>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Lihat Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        
+      
+        <!-- If we need navigation buttons -->
+        <div class="prev-swipe">
+            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+        </div>
+        <div class="next-swipe">
+            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+      
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        </div>
+
+    </div>
     
 </body>
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
