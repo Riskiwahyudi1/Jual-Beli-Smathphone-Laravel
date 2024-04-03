@@ -1,28 +1,84 @@
 import './bootstrap';
 import 'flowbite';
 
-const swiper = new Swiper('.slide-content', {
-    // Optional parameters
+const swiper4Card = new Swiper('.slide-content-4-card', {
+    
     direction: 'horizontal',
     loop: true,
     autoplay: {
-      delay: 5000, // Waktu dalam milidetik (ms)
-      disableOnInteraction: false, // Menonaktifkan autoplay ketika pengguna berinteraksi dengan swiper
+      delay: 5000, 
+      disableOnInteraction: false, 
     },
-    slidesPerView: 4, // Menampilkan satu card per view
-    spaceBetween: 16,
-    // If we need pagination
+    breakpoints: {
+      
+      640: {
+          slidesPerView: 1, 
+          spaceBetween: 10 
+      },
+      
+      768: {
+          slidesPerView: 3, 
+          spaceBetween: 15 
+      },
+     
+      1024: {
+          slidesPerView: 4, 
+          spaceBetween: 20 
+      }
+  },
+    
     pagination: {
       el: '.swiper-pagination',
     },
   
-    // Navigation arrows
+    
     navigation: {
       nextEl: '.next-swipe',
       prevEl: '.prev-swipe',
     },
   
-    // And if we need scrollbar
+   
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+const swiper2Card = new Swiper('.slide-content-2-card', {
+    
+    direction: 'horizontal',
+    loop: true,
+    autoplay: {
+      delay: 5000, 
+      disableOnInteraction: false, 
+    },
+    breakpoints: {
+      
+      640: {
+          slidesPerView: 1, 
+          spaceBetween: 10 
+      },
+      
+      768: {
+          slidesPerView: 2, 
+          spaceBetween: 15 
+      },
+     
+      1024: {
+          slidesPerView: 3, 
+          spaceBetween: 10 
+      }
+  },
+    
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    
+    navigation: {
+      nextEl: '.next-swipe',
+      prevEl: '.prev-swipe',
+    },
+  
+   
     scrollbar: {
       el: '.swiper-scrollbar',
     },
