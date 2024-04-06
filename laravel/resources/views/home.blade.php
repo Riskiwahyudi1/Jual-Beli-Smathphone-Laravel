@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TeraPhone | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('styles/swiper-bundle.min.css') }}" rel="stylesheet">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
 
-    <nav class="bg-blue border-gray-200 dark:bg-gray-900">
+    <nav class="bg-blue1 border-gray-200 dark:bg-gray-900 top-0 left-0 w-full z-30 fixed">
         <div class="flex justify-between items-center mx-auto max-w-screen-2xl p-4 ms-5">
             <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
@@ -20,8 +21,8 @@
                 <form class="max-w-md mx-auto">   
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
-                        <input type="text" id="default-search" class="block w-full max-w-none a z-20  p-4 ps-10 text-sm text-white border border-gray-300 rounded-lg bg-blue2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " style="height: 40px;" placeholder="Cari Produk ..." required />
-                        <button type="submit" style="height: 25px;" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg class="w-4 h-4 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <input type="text" id="default-search" class="block w-full max-w-none a z-20  p-4 ps-10 text-sm text-white border border-gray-300 rounded-lg bg-blue2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 placeholder-white dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " style="height: 40px;" placeholder="Cari Produk ..." required autocomplete="off"/>
+                        <button type="submit" style="height: 25px;" class="text-gray-700 absolute end-2.5 bottom-2.5  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg class="w-4 h-4 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                         </svg></button>
                     </div>
@@ -49,7 +50,7 @@
             </div>
         </div>
     </nav> 
-    <nav class="bg-gray-50 dark:bg-gray-700 shadow-lg">
+    <nav class="bg-gray-50 dark:bg-gray-700 shadow-lg top-16 left-0 w-full z-30 fixed">
         <div class="max-w-screen-2xl px-4 py-3 mx-auto">
             <div class="flex items-center">
                 <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
@@ -78,8 +79,8 @@
             </div>
         </div>
     </nav>
-    <div class="mt-5 flex justify-center ">
-        <div id="default-carousel" class="relative w-1/2 mx-2" data-carousel="slide">
+    <div class="mt-5 flex justify-center pt-28 space-x-4 relative">
+        <div id="default-carousel" class="z-10 w-1/2" data-carousel="slide">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                 <!-- Item 1 -->
@@ -97,37 +98,35 @@
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
+                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                </div>
+                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
             </div>
-            <!-- Slider indicators -->
-            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-            </div>
-            <!-- Slider controls -->
-            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
         </div>
-        <div class="mx-3">
-            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer h-3/4">
+        <div class="mx-auto">
+            <figure class="relative max-w-md cursor-pointer h-3/4">
                 <a href="#">
-                    <img class="md:h-96 max-w-md transition-all duration-300 rounded-lg cursor-pointer " src="{{ asset('images/imgRiski/rog.jpg') }}" alt="image description">
+                    <img class="md:h-96  transition-all duration-300 rounded-lg cursor-pointer " src="{{ asset('images/imgRiski/rog.jpg') }}" alt="image description">
                 </a>
                 <figcaption class="absolute px-4 text-sm text-white bottom-6">
                     <h3 class="text-blue2 font-black">ASUS ROG PHONE</h3>
@@ -140,8 +139,10 @@
     <div class="flex justify-center mt-20 mb-10">
         <h1 class="text-2xl font-bold border-b-4 border-blue2">Penawaran Spesial</h1>
     </div>
+
+    {{-- wraper penawaran spesial --}}
     <div class="swiper w-5/6 ">
-        <div class="slide-content">
+        <div class="slide-content-4-card">
             <div class=" swiper-wrapper">
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                     <a href="#">
@@ -161,7 +162,7 @@
                         </div>
                         <div class="flex justify-between my-2">
                             <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Tersedia : 22</small>
+                            <small class="font-semibold">Terjual : 50</small>
                         </div>
                         <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
@@ -186,7 +187,7 @@
                         </div>
                         <div class="flex justify-between my-2">
                             <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Tersedia : 22</small>
+                            <small class="font-semibold">Terjual : 50</small>
                         </div>
                         <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
@@ -211,7 +212,7 @@
                         </div>
                         <div class="flex justify-between my-2">
                             <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Tersedia : 22</small>
+                            <small class="font-semibold">Terjual : 50</small>
                         </div>
                         <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
@@ -236,7 +237,7 @@
                         </div>
                         <div class="flex justify-between my-2">
                             <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Tersedia : 22</small>
+                            <small class="font-semibold">Terjual : 50</small>
                         </div>
                         <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
@@ -251,7 +252,7 @@
         <!-- If we need navigation buttons -->
         <div class="prev-swipe">
             <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                     <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
                     </svg>
@@ -261,7 +262,7 @@
         </div>
         <div class="next-swipe">
             <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                     <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                     </svg>
@@ -270,12 +271,347 @@
             </button>
         </div>
       
-        <!-- If we need scrollbar -->
-        <div class="swiper-scrollbar"></div>
-        </div>
+
 
     </div>
+
+    <div class="flex justify-center mx-28 my-10">
+        
+        
+        <div class="w-1/2 h-72 bg-gray-800 mx-2 bg-cover bg-center rounded-lg" style="background-image: url('images/imgRiski/rog.jpg');">
+            <div class="ms-5 mt-20">
+                <h3 class="text-blue2 font-black text-lg">Flagsip Smarthphone</h3>
+                <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
+                <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            </div>
+        </div>
+        <div class="w-1/2 h-72 bg-gray-800 mx-2 bg-cover bg-center rounded-lg" style="background-image: url('images/imgRiski/rog.jpg');">
+            <div class="ms-5 mt-20">
+                <h3 class="text-blue2 font-black text-lg">Gaming SmarthPhone</h3>
+                <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
+                <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            </div>
+        </div>
+    </div>
+    {{-- Camera Quality --}}
+    <div class="flex justify-center mt-10 mb-10">
+        <h1 class="text-2xl font-bold border-b-4 border-blue2">Camera Quality</h1>
+    </div>
+    <div class="flex justify-center mx-28 my-10 ">
+
+        <div class="w-96 bg-gray-800 mx-2 bg-cover bg-center rounded-tl-xl rounded-bl-xl mr-6" style="background-image: url('images/imgRiski/rog.jpg');">
+            <div class="ms-5 my-44">
+                <h3 class="text-blue2 font-black text-lg">Camera Quality</h3>
+                <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
+                <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            </div>
+        </div>
+        <div class="swiper w-5/6 ">
+            <div class="slide-content-2-card">
+                <div class=" swiper-wrapper">
+                    
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                        <a href="#">
+                            <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/rog.jpg') }}" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            </a>
+                            <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                            <div class="flex justify-star my-3">
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            </div>
+                            <div class="flex justify-between my-2">
+                                <p class="text-orange font-medium">Rp.1.999.000</p>
+                                <small class="font-semibold">Terjual : 50</small>
+                            </div>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                        <a href="#">
+                            <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 2.jpeg') }}" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            </a>
+                            <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                            <div class="flex justify-star my-3">
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            </div>
+                            <div class="flex justify-between my-2">
+                                <p class="text-orange font-medium">Rp.1.999.000</p>
+                                <small class="font-semibold">Terjual : 50</small>
+                            </div>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                        <a href="#">
+                            <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            </a>
+                            <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                            <div class="flex justify-star my-3">
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            </div>
+                            <div class="flex justify-between my-2">
+                                <p class="text-orange font-medium">Rp.1.999.000</p>
+                                <small class="font-semibold">Terjual : 50</small>
+                            </div>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            
+          
+            <!-- If we need navigation buttons -->
+            <div class="prev-swipe">
+                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+            </div>
+            <div class="next-swipe">
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+            </div>
+          
     
+        </div>
+    </div>
+    {{-- mid range --}}
+    <div class="flex justify-center mt-10 mb-10">
+        <h1 class="text-2xl font-bold border-b-4 border-blue2"> Mid Range Smarthphone</h1>
+    </div>
+    <div class="flex justify-center mx-28 mt-10 ">
+
+        <div class="w-96 bg-gray-800 mx-2 bg-cover bg-center rounded-tl-xl rounded-bl-xl mr-6" style="background-image: url('images/imgRiski/rog.jpg');">
+            <div class="ms-5 my-44">
+                <h3 class="text-blue2 font-black text-lg">Mid Range Smarthphone</h3>
+                <p class="py-3 text-white ">Pilih dan dapatkan sekarang</p>
+                <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            </div>
+        </div>
+        <div class="swiper w-5/6 ">
+            <div class="slide-content-2-card">
+                <div class=" swiper-wrapper">
+                    
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                        <a href="#">
+                            <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/rog.jpg') }}" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            </a>
+                            <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                            <div class="flex justify-star my-3">
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            </div>
+                            <div class="flex justify-between my-2">
+                                <p class="text-orange font-medium">Rp.1.999.000</p>
+                                <small class="font-semibold">Terjual : 50</small>
+                            </div>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                        <a href="#">
+                            <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 2.jpeg') }}" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            </a>
+                            <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                            <div class="flex justify-star my-3">
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            </div>
+                            <div class="flex justify-between my-2">
+                                <p class="text-orange font-medium">Rp.1.999.000</p>
+                                <small class="font-semibold">Terjual : 50</small>
+                            </div>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                        <a href="#">
+                            <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" alt="" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            </a>
+                            <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                            <div class="flex justify-star my-3">
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                                <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            </div>
+                            <div class="flex justify-between my-2">
+                                <p class="text-orange font-medium">Rp.1.999.000</p>
+                                <small class="font-semibold">Terjual : 50</small>
+                            </div>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            
+          
+            <!-- If we need navigation buttons -->
+            <div class="prev-swipe">
+                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+            </div>
+            <div class="next-swipe">
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+            </div>
+          
+    
+        </div>
+    </div>
+    {{-- low Range --}}
+    <div class="flex justify-center mx-28 my-10">
+        <div class="  w-full  h-96 bg-gray-800  bg-cover bg-center rounded-lg" style="background-image: url('images/imgRiski/rog.jpg');">
+            <div class="ms-5 mt-36">
+                <h3 class="text-blue2 font-black text-lg">Low Range SmarthPhone</h3>
+                <p class="py-3 text-white">Pilih dan dapatkan SmarthPhone harga terjangkau</p>
+                <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black  h-64 text-white py-8">
+        <div class="flex justify-between">
+            <div class="ms-28">
+                <h1 class="text-3xl font-bold">TeraPhone</h1>
+                <div class="flex justify-star gap-3 mt-4">
+                    <p>
+                        <i class="fas fa-envelope text-blue2"></i>
+                    </p>
+                    <p>teraphone@gmail.com</p>
+                </div>
+                <div class="flex justify-star gap-3 mt-1">
+                    <p>
+                        <i class="fas fa-phone text-blue2"></i>
+                    </p>
+                    <p>081234567891</p>
+                </div>
+                <div class="flex justify-star gap-3 mt-1">
+                    <p>
+                        <i class="fas fa-map-pin text-blue2"></i>
+                    </p>
+                    <p>Batam, Kepulauan Riau, Indonesia</p>
+                </div>
+            </div>
+            <div class="mr-28">
+                <h1 class="text-lg font-bold">Tautan</h1>
+                <div class="mt-4">
+                    <a href="#">Tentang Kami</a>
+                </div>
+                <div class="mt-1">
+                    <a href="#">Pembayaran</a>
+                </div>
+                <div class="mt-1">
+                    <a href="#">Pengiriman</a>
+                </div>
+                <div class="mt-1">
+                    <a href="#">Service</a>
+                </div>
+            </div>
+            <div class="mr-28">
+                <h1 class="text-lg font-bold">Sosial Media</h1>
+                <div class="flex justify-star gap-3 mt-4">
+                    <p>
+                        <i class="fab fa-instagram text-pink-700"></i>
+                    </p>
+                    <p>TeraPhone.id</p>
+                </div>
+                <div class="flex justify-star gap-3 mt-1">
+                    <p>
+                        <i class="fab fa-facebook text-blue-500"></i>
+                    </p>
+                    <p>TeraPhone.id</p>
+                </div>
+                <div class="flex justify-star gap-3 mt-1">
+                    <p>
+                        <i class="fab fa-youtube text-red"></i>
+                    </p>
+                    <p>TeraPhone</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center mt-5">
+            <small>&commat;&nbsp;2024 TeraPhone, All Right Reserved</small>
+        </div>
+    </footer>
 </body>
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
 </html>
