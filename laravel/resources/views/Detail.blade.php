@@ -1,31 +1,42 @@
-@extends('layouts.main')
-@section('container')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TeraPhone | Home</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="{{ asset('styles/swiper-bundle.min.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css','resources/js/app.js'])
+</head>
+<body>
+
 <p class="font-semibold mt-4 ms-6 mx-2">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">Detail Produk</span></p>
 <div class="grid grid-cols-1 gap-10 mt-6  p-4 bg-white rounded-lg  xl:grid-cols-2 xl:mx-32">
     <div class="grid gap-4 ">
         <div>
-            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+            <img class="rounded-t-lg h-50 w-full" src="{{ asset('myimg/img1.jpeg') }}" alt="" />
         </div>
         <div class="grid grid-cols-5 gap-4">
             <div>
-                <img class="h-auto max-w-full rounded-lg imgSmall cursor-pointer" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img2.jpeg') }}" alt="" />
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg imgSmall cursor-pointer" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+            <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img3.jpeg') }}" alt="" />
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg imgSmall cursor-pointer" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+            <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img4.jpeg') }}" alt="" />
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg imgSmall cursor-pointer" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+            <img class="rounded-t-h-20 w-20" src="{{ asset('myimg/img1.jpeg') }}" alt="" />
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg imgSmall cursor-pointer" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
+                <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img2.jpeg') }}" alt="" />
             </div>
         </div>
     </div>
     <div class="">
-        <h1 class="font-bold text-lg ">handphone samsung S20</h1>
+        <h1 class="font-bold text-lg ">VIVO Y17 Mediatek MT6765 Helio P35(12nm)</h1>
         <div class="flex justify-star mb-10 mt-2">
             <i class="fas fa-star" style="color: #FFD43B;"></i>
             <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -206,5 +217,7 @@
     });
 </script>
 
+</body>
+<script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
+</html>
 
-@endsection
