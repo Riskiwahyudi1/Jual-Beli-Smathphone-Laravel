@@ -431,7 +431,6 @@
         <div class="swiper w-5/6 ">
             <div class="slide-content-2-card">
                 <div class=" swiper-wrapper">
-                    
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                         <a href="#">
                             <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/rog.jpg') }}" alt="" />
