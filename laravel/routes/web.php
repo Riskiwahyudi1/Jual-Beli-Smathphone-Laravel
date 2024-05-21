@@ -16,3 +16,4 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/home', [Home::class, 'home']);
 Route::get('/invoice', [InvoiceController::class, 'invoice']);
 Route::get('/detail', [Detail::class, 'detail']);
+Route::get('/checkout', [Checkout::class, 'checkout']);
