@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\Detail;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\LayananPenggunaController;
 
 
 
@@ -18,3 +19,4 @@ Route::get('/home', [HomeController::class, 'home']);
 Route::get('/invoice', [InvoiceController::class, 'invoice']);
 Route::get('/detail', [Detail::class, 'detail']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
