@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class CheckoutController extends Controller
 {
     public function checkout(){
-        return view('checkout');
+        return view('checkout',[
+            "title" => "Halaman Checkout"
+        ]);
     }
 }
