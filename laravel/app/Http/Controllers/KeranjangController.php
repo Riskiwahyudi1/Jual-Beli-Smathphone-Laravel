@@ -11,7 +11,7 @@ class keranjangController extends Controller
     public function keranjang(){
 
         return view('keranjang', [
-         'title' => 'Keranjang',
+         'title' => "Keranjang"
         ]);
     }
 }

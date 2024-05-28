@@ -23,7 +23,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                        
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex justify-start">
-                            <img class="h-auto w-10 mr-4 ms-4 " src="https://source.unsplash.com/600x400/?handphone" alt="image description">
+                            <img class="h-auto w-10 mr-4 ms-4 " src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="image description">
                             <div>
                                 <p class="w-96 overflow-hidden text-ellipsis whitespace-nowrap">samsung galaksi s24 ultra</p>
                                 <small class="text-blue2 font-bold">Rp.5.999.000/ pcs</small>
@@ -54,7 +54,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                        
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex justify-start">
-                            <img class="h-auto w-10 mr-4 ms-4 " src="https://source.unsplash.com/600x400/?handphone" alt="image description">
+                            <img class="h-auto w-10 mr-4 ms-4 " src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="image description">
                             <div>
                                 <p class="w-96 overflow-hidden text-ellipsis whitespace-nowrap">samsung galaksi s24 ultra</p>
                                 <small class="text-blue2 font-bold">Rp.5.999.000/ pcs</small>
@@ -85,7 +85,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                        
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex justify-start">
-                            <img class="h-auto w-10 mr-4 ms-4 " src="https://source.unsplash.com/600x400/?handphone" alt="image description">
+                            <img class="h-auto w-10 mr-4 ms-4 " src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="image description">
                             <div>
                                 <p class="w-96 overflow-hidden text-ellipsis whitespace-nowrap">samsung galaksi s24 ultra</p>
                                 <small class="text-blue2 font-bold">Rp.5.999.000/ pcs</small>
@@ -114,7 +114,7 @@
                         
                     </tr>
                     
-                @endforeach
+              
                     
                     
                    
@@ -140,6 +140,6 @@
         </form>
         </div>
     </div>
-    @endif
+    
 </div>
 @endsection
