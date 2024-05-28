@@ -70,7 +70,7 @@
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                 <div class="font-bold text-white bg-blue2 w-4/12 px-4 absolute rounded-tl-lg rounded-br-lg py-2">50% OFF</div>
                 <a href="#">
-                    <img src="https://source.unsplash.com/600x400/?handphone" class="card-img" alt="...">
+                    <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($produk->foto)[0]) }}" alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">
@@ -89,7 +89,7 @@
                         <small class="text-blue2 line-through text-sm">Rp.10.500.000</small>
                     </div>
                     <div class="flex justify-between">
-                        <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <a href="/detail/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
                         </a>
                         <small class="font-semibold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
@@ -134,14 +134,14 @@
         <div class="ms-5 mt-20">
             <h3 class="text-blue2 font-black text-lg">Flagsip Smarthphone</h3>
             <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
-            <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            <a href="/home?kategori=flagship-smarthphone" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
         </div>
     </div>
     <div class="w-1/2 h-72 bg-gray-800 mx-2 bg-cover bg-center rounded-lg" style="background-image: url('images/imgRiski/gaming.jpg');">
         <div class="ms-5 mt-20">
             <h3 class="text-blue2 font-black text-lg">Gaming SmarthPhone</h3>
             <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
-            <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            <a href="/home?kategori=gaming-smarthphone" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
         </div>
     </div>
 </div>
@@ -155,89 +155,43 @@
         <div class="ms-5 my-44">
             <h3 class="text-blue2 font-black text-lg">Camera Quality</h3>
             <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
-            <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            <a href="/home?kategori=camera-quality" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
         </div>
     </div>
     <div class="swiper w-5/6 ">
         <div class="slide-content-2-card">
             <div class=" swiper-wrapper">
                 
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                @foreach ($cameraQuality->produk as $p)
+            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                <a href="#">
+                    <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($p->foto)[0]) }}" alt="" />
+                </a>
+                <div class="p-5">
                     <a href="#">
-                        {{-- <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/rog.jpg') }}" alt="" /> --}}
-                        <img src="https://source.unsplash.com/600x400/?handphone" class="card-img" alt="...">
+                        <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $p->nama_produk }}</p>
                     </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
-                        </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
-                        <div class="flex justify-star my-3">
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                        </div>
-                        <div class="flex justify-between my-2">
-                            <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Terjual : 50</small>
-                        </div>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$p->deskripsi }}</small><br>
+                    <div class="flex justify-star my-3">
+                        <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        <i class="fas fa-star" style="color: #FFD43B;"></i>
+                    </div>
+                    <div class="flex justify-star my-2 gap-3">
+                        <p class="text-orange font-medium text-lg">Rp.{{ number_format($p->harga, 0, ',', '.') }}</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <a href="/detail/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
                         </a>
+                        <small class="font-semibold">Terjual : {{ number_format($p->terjual, 0, ',', '.') }}</small>
+
                     </div>
                 </div>
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
-                    <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 2.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
-                        </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
-                        <div class="flex justify-star my-3">
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                        </div>
-                        <div class="flex justify-between my-2">
-                            <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Terjual : 50</small>
-                        </div>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Lihat Detail
-                        </a>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
-                    <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
-                        </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
-                        <div class="flex justify-star my-3">
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                        </div>
-                        <div class="flex justify-between my-2">
-                            <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Terjual : 50</small>
-                        </div>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Lihat Detail
-                        </a>
-                    </div>
-                </div>
+            </div>
+            @endforeach
             </div>
         </div>
         <!-- If we need pagination -->
@@ -274,26 +228,27 @@
 </div>
 <div class="flex justify-center mx-28 mt-10 ">
 
-    <div class="w-96 bg-gray-800 mx-2 bg-cover bg-center rounded-tl-xl rounded-bl-xl mr-6" style="background-image: url('images/imgRiski/rog.jpg');">
+    <div class="w-96 bg-gray-800 mx-2 bg-cover bg-center rounded-tl-xl rounded-bl-xl mr-6" style="background-image: url('images/imgRiski/mid-range.png');">
         <div class="ms-5 my-44">
             <h3 class="text-blue2 font-black text-lg">Mid Range Smarthphone</h3>
             <p class="py-3 text-white ">Pilih dan dapatkan sekarang</p>
-            <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            <a href="/home?kategori=mid-range" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
         </div>
     </div>
     <div class="swiper w-5/6 ">
         <div class="slide-content-2-card">
             <div class=" swiper-wrapper">
                 
+                @foreach ($midRange->produk as $p)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                     <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/rog.jpg') }}" alt="" />
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($p->foto)[0]) }}" alt="" />
                     </a>
                     <div class="p-5">
                         <a href="#">
-                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
+                            <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $p->nama_produk }}</p>
                         </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
+                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$p->deskripsi }}</small><br>
                         <div class="flex justify-star my-3">
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -301,65 +256,19 @@
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                         </div>
-                        <div class="flex justify-between my-2">
-                            <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Terjual : 50</small>
+                        <div class="flex justify-star my-2 gap-3">
+                            <p class="text-orange font-medium text-lg">Rp.{{ number_format($p->harga, 0, ',', '.') }}</p>
                         </div>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Lihat Detail
-                        </a>
+                        <div class="flex justify-between">
+                            <a href="/detail/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Lihat Detail
+                            </a>
+                            <small class="font-semibold">Terjual : {{ number_format($p->terjual, 0, ',', '.') }}</small>
+    
+                        </div>
                     </div>
                 </div>
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
-                    <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 2.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
-                        </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
-                        <div class="flex justify-star my-3">
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                        </div>
-                        <div class="flex justify-between my-2">
-                            <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Terjual : 50</small>
-                        </div>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Lihat Detail
-                        </a>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
-                    <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/gambar 1.jpeg') }}" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <p class="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">Lenovo IdeaPad Slim 1</p>
-                        </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</small><br>
-                        <div class="flex justify-star my-3">
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                            <i class="fas fa-star" style="color: #FFD43B;"></i>
-                        </div>
-                        <div class="flex justify-between my-2">
-                            <p class="text-orange font-medium">Rp.1.999.000</p>
-                            <small class="font-semibold">Terjual : 50</small>
-                        </div>
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Lihat Detail
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- If we need pagination -->
@@ -392,11 +301,11 @@
 </div>
 {{-- low Range --}}
 <div class="flex justify-center mx-28 my-10">
-    <div class="  w-full  h-96 bg-gray-800  bg-cover bg-center rounded-lg" style="background-image: url('images/imgRiski/rog.jpg');">
+    <div class="  w-full  h-96 bg-gray-800  bg-cover bg-center rounded-lg" style="background-image: url('images/imgRiski/low-range.jpg');">
         <div class="ms-5 mt-36">
             <h3 class="text-blue2 font-black text-lg">Low Range SmarthPhone</h3>
             <p class="py-3 text-white">Pilih dan dapatkan SmarthPhone harga terjangkau</p>
-            <button type="button" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</button>
+            <a href="/home?kategori=low-range" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
         </div>
     </div>
 </div>
@@ -408,16 +317,16 @@
     <!-- Tampilkan hasil pencarian jika ada hasil pencarian -->
     @if ($search->isNotEmpty() && request()->has('kategori') || request()->has('search') || request()->has('brand'))
     <div class="container grid grid-cols-4 mx-auto gap-4 px-36 pt-28">
-        @foreach ($search as $s)
+        @foreach ($search as $produk)
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
             <a href="#">
-                <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($s->foto)[0]) }}" alt="" />
+                <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($produk->foto)[0]) }}" alt="" />
             </a>
             <div class="p-5">
                 <a href="#">
-                    <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $s->nama_produk }}</p>
+                    <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $produk->nama_produk }}</p>
                 </a>
-                <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{ $s->deskripsi }}</small><br>
+                <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{ $produk->deskripsi }}</small><br>
                 <div class="flex justify-star my-3">
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -426,10 +335,10 @@
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                 </div>
                 <div class="flex justify-between my-2">
-                    <p class="text-orange font-medium">Rp.{{ number_format($s->harga, 0, ',', '.') }}</p>
-                    <small class="font-semibold">Terjual : {{ $s->terjual }}</small>
+                    <p class="text-orange font-medium">Rp.{{ number_format($produk->harga, 0, ',', '.') }}</p>
+                    <small class="font-semibold">Terjual : {{ $produk->terjual }}</small>
                 </div>
-                <a href="/detail-produk/{{ $s->id . '-' . Str::slug($s->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="/detail/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Lihat Detail
                 </a>
             </div>

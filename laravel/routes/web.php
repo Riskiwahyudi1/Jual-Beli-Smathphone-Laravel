@@ -15,7 +15,7 @@ Route::get('/landingPage', [LandingPageController::class, 'landingPage']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/home', [HomeController::class, 'home']);
 Route::get('/invoice', [InvoiceController::class, 'invoice']);
-Route::get('/detail', [Detail::class, 'detail']);
+Route::get('/detail/{produk:id}{slug}', [Detail::class, 'detail']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 
 // route penjual 
