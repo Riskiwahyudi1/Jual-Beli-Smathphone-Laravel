@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
-class Detail extends Controller
+class DetailController extends Controller
 {
     public function detail(Produk $produk, $slug){
 
