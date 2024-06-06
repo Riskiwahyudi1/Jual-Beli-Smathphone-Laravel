@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('produk_id');
             $table->string('penjual');
             $table->string('status');
+            $table->integer('total_harga');
             $table->timestamps();
         });
     }
