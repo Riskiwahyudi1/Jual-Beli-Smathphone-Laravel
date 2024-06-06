@@ -21,7 +21,7 @@ Route::get('/invoice', [InvoiceController::class, 'invoice']);
 Route::get('/detail/{produk:id}{slug}', [DetailController::class, 'detail']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/keranjang', [KeranjangController::class, 'keranjang']);
-Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layanan-pengguna']);
+Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
 
 // route penjual 
 Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
