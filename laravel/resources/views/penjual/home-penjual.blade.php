@@ -42,4 +42,11 @@
         
     </div>
 </div>
+<div class="pt-10 ps-40">
+    <p class="ms-6 text-2xl font-bold text-black">Transaksi Terbaru</p>
+    <div class="flex justify-around mt-6 mx-12">
+
+
+    </div>
+</div>
 @endsection
