@@ -77,7 +77,7 @@
                 <div class="flex justify-between">
                     <p class="text-gray-600">Ongkir</p>
                     <p class="text-gray-600">Rp. <span class="ongkir">30.000</span></p>
-                </div>
+                </div> 
                 <hr class="my-10 ">
                 <div class="flex justify-between">
                     <p class="font-bold">Total :</p>
