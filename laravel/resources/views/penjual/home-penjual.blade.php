@@ -46,6 +46,57 @@
     <p class="ms-6 text-2xl font-bold text-black">Transaksi Terbaru</p>
     <div class="flex justify-around mt-6 mx-12">
 
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">
+                Produk
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Status
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Total Harga
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Nama Pembeli
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Alamat Pengiriman
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Detail
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
+                <div class="pl-3">
+                    <div class="text-base font-semibold">Samsung</div>
+                </div>
+            </th>
+            <td class="px-6 py-4">
+                terkirim
+            </td>
+            <td class="px-6 py-4">
+                2.000.000             
+            </td>
+            <td class="px-6 py-4">
+                sesa
+            </td>
+            <td class="px-6 py-4">
+                jambi selatan
+            </td>
+            <td class="px-6 py-4">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 
     </div>
 </div>
