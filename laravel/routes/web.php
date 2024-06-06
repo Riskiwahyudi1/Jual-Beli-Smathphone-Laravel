@@ -9,6 +9,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomePenjualController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LayananPenggunaController;
+use App\Http\Controllers\KelolaStokController;
+
 
 
 
@@ -23,4 +25,6 @@ Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengg
 
 // route penjual 
 Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
+Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
+
 
