@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TeraPhone | Home</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('styles/swiper-bundle.min.css') }}" rel="stylesheet">
-    @vite(['resources/css/app.css','resources/js/app.js'])
-</head>
-<body>
+@extends('layouts.main')
+@section('container')
 
-<p class="font-semibold mt-4 ms-6 mx-2">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">Detail Produk</span></p>
 <div class="grid grid-cols-1 gap-10 mt-6  p-4 bg-white rounded-lg  xl:grid-cols-2 xl:mx-32">
     <div class="grid gap-4 ">
         <div>
@@ -217,7 +206,8 @@
     });
 </script>
 
-</body>
+
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
 </html>
 
+@endsection

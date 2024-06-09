@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Kategori;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Produk extends Model
@@ -12,7 +13,7 @@ class Produk extends Model
 
     protected $guarded = ['id'];
     
-    public function scopeHomeFilter($query, array $filters)
+    public function scopePopulerFilter($query, array $filters)
     {
         $query->orderByDesc('terjual');
 
@@ -38,5 +39,8 @@ class Produk extends Model
     }
     public function Transaksi(){
         return $this->hasMany(Transaksi::class);
+    }
+    public function keranjang(){
+        return $this->hasMany(Keranjang::class);
     }
 }
