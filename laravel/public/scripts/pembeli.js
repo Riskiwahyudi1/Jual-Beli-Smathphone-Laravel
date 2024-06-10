@@ -6,7 +6,7 @@
 
 
 //1. detail barang 
-if (document.title === 'Home'){
+if (document.title === 'TeraPhone | Detail Produk'){
 
     const imgZoom = document.getElementById('imgZoom');
     const imgsmall = document.querySelectorAll('.imgSmall');
