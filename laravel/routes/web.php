@@ -20,6 +20,7 @@ Route::get('/register-pembeli', [RegisterPembeliController::class, 'index']);
 Route::post('/register-pembeli', [RegisterPembeliController::class, 'store']);
 Route::get('/login-pembeli', [LoginPembeliController::class, 'login'])->name('login');
 Route::post('/login-pembeli', [LoginPembeliController::class, 'authenticate']);
+Route::post('/logout', [LoginPembeliController::class, 'logout']);
 Route::get('/home', [HomeController::class, 'home']);
 // Route::get('/invoice', [InvoiceController::class, 'invoice']);
 Route::get('/detail/{produk:id}{slug}', [DetailController::class, 'detail']);

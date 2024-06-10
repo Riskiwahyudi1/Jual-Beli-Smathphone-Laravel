@@ -89,7 +89,7 @@
                         <small class="text-blue2 line-through text-sm">Rp.10.500.000</small>
                     </div>
                     <div class="flex justify-between">
-                        <a href="/detail/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
                         </a>
                         <small class="font-semibold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
@@ -183,7 +183,7 @@
                         <p class="text-orange font-medium text-lg">Rp.{{ number_format($p->harga, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex justify-between">
-                        <a href="/detail/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <a href="/detail-produk/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Lihat Detail
                         </a>
                         <small class="font-semibold">Terjual : {{ number_format($p->terjual, 0, ',', '.') }}</small>
@@ -260,7 +260,7 @@
                             <p class="text-orange font-medium text-lg">Rp.{{ number_format($p->harga, 0, ',', '.') }}</p>
                         </div>
                         <div class="flex justify-between">
-                            <a href="/detail/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <a href="/detail-produk/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Lihat Detail
                             </a>
                             <small class="font-semibold">Terjual : {{ number_format($p->terjual, 0, ',', '.') }}</small>
@@ -338,7 +338,7 @@
                     <p class="text-orange font-medium">Rp.{{ number_format($produk->harga, 0, ',', '.') }}</p>
                     <small class="font-semibold">Terjual : {{ $produk->terjual }}</small>
                 </div>
-                <a href="/detail/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Lihat Detail
                 </a>
             </div>
@@ -348,6 +348,5 @@
     </div>
     @endif
 @endif
-    
- @endsection
+@endsection
 

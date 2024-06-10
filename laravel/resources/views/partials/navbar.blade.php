@@ -1,3 +1,4 @@
+{{-- navbar menu --}}
 <nav class="bg-blue1 border-gray-200 dark:bg-gray-900 top-0 left-0 w-full z-30 fixed">
     <div class="flex justify-between items-center mx-auto max-w-screen-2xl p-4 ms-5">
         <a href="/home" class="flex items-center space-x-1 rtl:space-x-reverse">
@@ -18,28 +19,59 @@
             </form>
         </div>
         <div class="flex justify-center">
-            <button type="button" class="relative inline-flex items-center mx-5 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none">
+            @auth
+            <div type="button" class="relative inline-flex items-center mx-5 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none">
                 <a href="/keranjang" class=" text-white font-extrabold">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>                    
                 </a>
-                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">23</div>
-            </button>
-            <button type="button" class="relative inline-flex items-center mx-5 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
-                <a href="riwayat-transaksi/menunggu-pembayaran" class=" text-white ">
+                {{-- @if ($keranjangInfo->count() > 0)
+                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">{{ $keranjangInfo->count() }}</div>
+                @endif --}}
+            </div>
+            <div type="button" class="relative inline-flex items-center mx-5 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
+                <a href="riwayat-transaksi?status=menunggu-pembayaran" class=" text-white ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>                     
                 </a>
-                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">2</div>
-            </button>
-            <a href="#" class="px-5 flex justify-center mx-2">
+                {{-- @if ($TransaksiInfo->count() > 0)
+                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">{{ $TransaksiInfo->count() }}</div>
+                @endif --}}
+            </div>
+            <div class="relative inline-flex items-center ms-12 mr-1 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
+
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                  </svg>  
-                <p class="text-white">Akun Saya</p>                    
-            </a>
+                </svg>  
+            </div>
+            <div class="mr-6">
+                <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white font-medium rounded-lg text-sm ms-1 text-center inline-flex items-center" type="button">{{ auth()->user()->username }}</button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownHover" class="z-30 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pengaturan akun</a>
+                        </li>
+                        <form action="/logout" method="post">
+                        <li>
+                                @csrf
+                                <button type="submit" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">logout</button>
+                            </li>
+                        </form>
+                        </ul>
+                    </div>  
+            </div>
+            
+            @else
+            <div class="mt-2">
+                <a href="/login-pembeli" class="text-blue-600 bg-white hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-300 font-bold rounded-xl text-sm px-5 py-2 text-center me-2 mb-2">Login</a>                 
+                <a href="/register-pembeli" class="text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-bold rounded-xl text-sm px-5 py-2 text-center me-2 mb-2">Register</a>                 
+            </div>
+            @endauth
         </div>
     </div>
 </nav> 
-<nav class="bg-gray-50 dark:bg-gray-700 shadow-lg top-16 left-0 w-full z-30 fixed">
+
+{{-- navbar kategori produk --}}
+<nav class="bg-gray-50 dark:bg-gray-700 shadow-lg top-16 left-0 w-full z-20 fixed">
     <div class="max-w-screen-2xl px-4 py-3 mx-auto">
         <div class="flex items-center">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
@@ -64,11 +96,11 @@
                     </div>
                 </li>
                 <li>
-                    <a href="/home" class="text-gray-500 {{ $active === $title && $title !== "Brand" && !request('kategori') ? '  border-blue2 border-b-4 px-2' : '' }} dark:text-white hover:text-gray-700" aria-current="page">Home</a>
+                    <a href="/home" class="text-gray-500 {{ $active === $title && $title !== "Brand" && !request('kategori') ? '  border-gray-400 border-b-2 px-1 text-gray-900 font-bold': '' }} dark:text-white hover:text-gray-700" aria-current="page">Home</a>
                 </li>
                 @foreach ($kategoris as $k)  
                 <li>
-                    <a href="/home?kategori={{ $k->slug }}" class="text-gray-500 {{ request('kategori') === $k->slug && $title !== "Brand" ? '  border-blue2 border-b-4 px-1 ' : '' }} dark:text-white hover:text-gray-700 transition" >{{ $k->nama }}</a>
+                    <a href="/home?kategori={{ $k->slug }}" class="text-gray-500 {{ request('kategori') === $k->slug && $title !== "Brand" ? '  border-gray-400 border-b-2 px-1 text-gray-900 font-bold' : '' }} dark:text-white hover:text-gray-700 transition" >{{ $k->nama }}</a>
                 </li>
                 @endforeach
             </ul>
