@@ -1,31 +1,46 @@
-@extends('layouts.main')
-@section('container')
-
-<div class="grid grid-cols-1 gap-10 mt-6  p-4 bg-white rounded-lg  xl:grid-cols-2 xl:mx-32">
-    <div class="grid gap-4 ">
+@if(session()->has('success'))
+<div class="flex justify-center">
+    <div class=" absolute w-1/4 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
         <div>
-            <img class="rounded-t-lg h-50 w-full" src="{{ asset('myimg/img1.jpeg') }}" alt="" />
-        </div>
-        <div class="grid grid-cols-5 gap-4">
-            <div>
-                <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img2.jpeg') }}" alt="" />
-            </div>
-            <div>
-            <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img3.jpeg') }}" alt="" />
-            </div>
-            <div>
-            <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img4.jpeg') }}" alt="" />
-            </div>
-            <div>
-            <img class="rounded-t-h-20 w-20" src="{{ asset('myimg/img1.jpeg') }}" alt="" />
-            </div>
-            <div>
-                <img class="rounded-t-lg h-20 w-20" src="{{ asset('myimg/img2.jpeg') }}" alt="" />
+            <span class="font-medium">{{ session('success') }}
             </div>
         </div>
     </div>
+</div>
+        @elseif(session()->has('info'))
+    <div class="flex justify-center">
+        <div class=" absolute w-1/4 flex items p-4 mb-4 text-sm text-yellow-600 rounded-lg bg-yellow-200 dark:bg-gray-800 dark:text-yellow-400" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <span class="sr-only">Info</span>
+    <div>
+        <span class="font-medium">{{ session('info') }}
+        </div>
+    </div>
+</div>
+@endif
+@extends('layouts.main')
+@section('container')
+<div class="grid grid-cols-1 gap-10 p-4 bg-white rounded-lg  xl:grid-cols-2 xl:mx-32">
+    <div class="grid gap-4 ">
+        <div>
+            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset('images/imgRiski/'. $fotos[0]) }}" alt="">
+        </div>
+        <div class="grid grid-cols-5 gap-4">
+            @foreach ($fotos as $foto)
+            <div>
+                <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset('images/imgRiski/'. $foto) }}" alt="">
+            </div>
+            @endforeach
+        </div>
+    </div>
     <div class="">
-        <h1 class="font-bold text-lg ">VIVO Y17 Mediatek MT6765 Helio P35(12nm)</h1>
+        <h1 class="font-bold text-lg ">{{ $getDetail->nama_produk }}</h1>
         <div class="flex justify-star mb-10 mt-2">
             <i class="fas fa-star" style="color: #FFD43B;"></i>
             <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -33,7 +48,8 @@
             <i class="fas fa-star" style="color: #FFD43B;"></i>
             <i class="fas fa-star" style="color: #FFD43B;"></i>
         </div>
-        <p class="text-lg font-bold text-blue1 mb-6">Rp.20.399.000</p>
+        <p class="text-lg font-bold text-blue1 mb-6">Rp.{{ number_format($getDetail->harga, 0, ',', '.')}}</p>
+        {{-- <p>terjual: {{ number_format($getDetail->terjual, 0, ',', '.')}}</p> --}}
         <div>
             <button type="button" class="w-5 h-5 rounded-full bg-red" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
             <button type="button" class="w-5 h-5 rounded-full bg-blue2" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
@@ -41,28 +57,50 @@
             <button type="button" class="w-5 h-5 rounded-full bg-black" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
             <button type="button" class="w-5 h-5 rounded-full bg-gray-600" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
         </div>
-        <div class="flex-col mt-4 xl:justify-star">
-            <div class="max-w-xs mr-6">
-                <div class="relative flex items-center">
-                    <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                        <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
-                        </svg>
-                    </button>
-                    <input type="text" id="counter-input" data-input-counter class="flex-shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center" placeholder="" value="1" required />
-                    <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                        <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                    </button>
+        <div class="flex-col mt-4 mb-4 xl:justify-star">
+            
+            <form action="/tambah-keranjang" method="post">
+                @csrf
+                <!-- Input hidden untuk menyimpan ID produk -->
+                <input type="hidden" name="produk_id" value="{{ $getDetail->id }}">
+                <div class="flex justify-star">
+                    <button type="submit" class="text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4 ">Tambahkan Ke Keranjang</button>
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">Beli Sekarang</button>
                 </div>
-            </div>
-            <button type="submit" class="text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4 ">Tambahkan Ke Keranjang</button>
-            <button type="submit" class="text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Beli Sekarang</button>
+            </form>
+            <form action="/checkout" method="post">
+            @csrf
+                <input type="hidden" name="check-produk[]" id="" class="check-produk mt-3" value="{{ $getDetail->id }}" checked>
+                <input type="hidden" name="jumlah[]" value="1" class="jml-checkout">
+
+                    <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 md:p-5 text-center">
+                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    <h3 class="mb-5 text-lg  text-gray-900 font-semibold dark:text-gray-400">Beli Produk "<span class="text-blue2 font-bold">{{ $getDetail->nama_produk }}</span>" sekarang??</h3>
+                                    <button data-modal-hide="popup-modal" type="submit" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                        Ya
+                                    </button>
+                                    <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-600 rounded-lg border border-gray-200 hover:bg-red-700 hover:text-gray-700 focus:z-10">Batalkan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+            </form>
             
         </div>
-        <small class="font-bold ">Kategori : <span class="text-gray-400"> Low Range</span></small><br>
-        <small class="font-bold">Brand : <span class="text-gray-400"> Asus</span></small>
+        <small class="font-bold ">Kategori : <span class="text-gray-400">{{ $getDetail->kategori->nama }}</span></small><br>
+        <small class="font-bold">Brand : <span class="text-gray-400"> {{ $getDetail->brand }}</span></small>
         <hr class="h-px mt-3  bg-gray-300 border-0 dark:bg-gray-700 ">
 
         <div class="flex justify-star">
@@ -98,7 +136,7 @@
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">DESKRIPSI </h1>
 </div> 
 <div class="ms-32">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem perferendis modi fugiat corrupti, numquam sit, repellendus dicta eos temporibus similique minima qui iusto maxime. Necessitatibus molestiae nemo vel quis adipisci tempore quia qui facere, quidem illum esse dicta atque excepturi voluptatem iusto sed consequuntur eaque error hic dolorem consequatur?</p>
+    <p>{{!! nl2br($getDetail->deskripsi) !!}}</p>
 </div>
 <hr class="h-px my-6 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
 <div class="flex justify-star mt-6 mb-6 ms-32">
@@ -186,28 +224,7 @@
         <small>&commat;&nbsp;2024 TeraPhone, All Right Reserved</small>
     </div>
 </footer>
-<script>
-    const imgZoom = document.getElementById('imgZoom');
-    const imgsmall = document.querySelectorAll('.imgSmall');
-    
-    imgsmall.forEach((img) => {
-        img.addEventListener('click', function() {
-            imgZoom.src = img.src;
-            imgsmall.forEach((img) => {
-                if (img === this) {
-                    img.style.opacity = 0.5;
-                    img.style.boxShadow = "0 0 10px rgba(0, 0, 0, 1)";
-                } else {
-                    img.style.opacity = 1;
-                    img.style.boxShadow = "none";
-                }
-            });
-        });
-    });
-</script>
 
 
-<script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
-</html>
 
 @endsection

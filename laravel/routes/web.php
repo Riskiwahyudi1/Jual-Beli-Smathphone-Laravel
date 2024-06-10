@@ -23,7 +23,7 @@ Route::post('/login-pembeli', [LoginPembeliController::class, 'authenticate']);
 Route::post('/logout', [LoginPembeliController::class, 'logout']);
 Route::get('/home', [HomeController::class, 'home']);
 // Route::get('/invoice', [InvoiceController::class, 'invoice']);
-Route::get('/detail/{produk:id}{slug}', [DetailController::class, 'detail']);
+Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/keranjang', [KeranjangController::class, 'keranjang']);
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);

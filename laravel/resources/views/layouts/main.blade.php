@@ -26,5 +26,5 @@
     @endif
 </body>
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('js/pembeli.js') }}"></script>
+<script src="{{ asset('scripts/pembeli.js') }}"></script>
 </html>
