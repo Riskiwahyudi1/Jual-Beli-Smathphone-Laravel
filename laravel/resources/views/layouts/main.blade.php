@@ -19,9 +19,10 @@
         <div class="flex justify-star mt-1 mb-6">
             <a href="/home" class="font-semibold mt-4 ms-6 mx-2">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">{{ $title }}</span></a>
         </div> 
+        @yield('container')
+    @elseif($title !== "Login" && $title !== "Register")
+        @include('partials.footer')
     @endif
-    @yield('container')
-    @include('partials.footer')
 </body>
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('js/pembeli.js') }}"></script>
