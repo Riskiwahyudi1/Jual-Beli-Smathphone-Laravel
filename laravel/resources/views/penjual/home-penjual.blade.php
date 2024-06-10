@@ -3,39 +3,39 @@
 <div class="pt-20 ps-40">
     <p class="ms-6 text-2xl font-bold text-black">Dashboard </p>
     <div class="flex justify-around mt-6 mx-12">
-        <div class=" px-12 py-8 bg-gray-300 rounded-3xl flex justify-center items-center">
+        <div class=" px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-shopping-bag fa-3x"></i>
+            <i class="fas fa-shopping-bag fa-3x text-blue2"></i>
                 <div>
                     <p class="text-xl font-bold">Total Order</p>
                     <p class="text-3xl ms-6 font-bold">100</p>
                 </div>
             </div>
         </div>
-        <div class=" px-12 py-8 bg-gray-300 rounded-3xl flex justify-center items-center">
+        <div class=" px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
-                <i class="fas fa-regular fa-clock fa-3x"></i>
+                <i class="fas fa-regular fa-clock fa-3x text-yellow-400"></i>
                 <div>
                     <p class="text-xl font-bold">Menunggu</p>
                     <p class="text-3xl ms-6 font-bold">100</p>
                 </div>
             </div>
         </div>
-        <div class=" px-12 py-8 bg-gray-300 rounded-3xl flex justify-center items-center">
+        <div class=" px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-regular fa-paper-plane fa-3x"></i>
+            <i class="fas fa-regular fa-paper-plane fa-3x text-blue-500"></i>
                 <div>
-                    <p class="text-xl font-bold">Dikirim</p>
-                    <p class="text-3xl ms-6 font-bold">100</p>
+                    <p class="text-xl font-bold ms-4">Dikirim</p>
+                    <p class="text-3xl ms-5 font-bold">100</p>
                 </div>
             </div>
         </div>
-        <div class=" px-12 py-8 bg-gray-300 rounded-3xl flex justify-center items-center">
+        <div class=" px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-solid fa-list fa-3x"></i>
+            <i class="fas fa-solid fa-list fa-3x text-green-400"></i>
                 <div>
-                    <p class="text-xl font-bold">Selesai</p>
-                    <p class="text-3xl ms-6 font-bold">100</p>
+                    <p class="text-xl font-bold ms-4">Selesai</p>
+                    <p class="text-3xl ms-5 font-bold">100</p>
                 </div>
             </div>
         </div>
