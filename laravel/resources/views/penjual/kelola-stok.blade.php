@@ -1,8 +1,11 @@
 @extends('layouts.main-penjual')
 @section('container-penjual')
 <div class="pt-10 ps-40">
-    <p class="ms-6 text-2xl font-bold text-black">Kelola Stok</p>
+    
+    <p class="ms-6 mt-12 text-2xl font-bold text-black">Kelola Stok</p>
+    <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mx-64 w-2/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Produk...." required />
     <div class="flex justify-around mt-6 mx-12">
+        
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
