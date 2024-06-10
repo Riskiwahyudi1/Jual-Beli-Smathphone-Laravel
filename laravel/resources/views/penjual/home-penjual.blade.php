@@ -32,7 +32,7 @@
         </div>
         <div class=" px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-solid fa-list fa-3x text-green-400"></i>
+            <i class="fas fa-check fa-3x text-green-700"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Selesai</p>
                     <p class="text-3xl ms-5 font-bold">100</p>
