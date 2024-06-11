@@ -32,7 +32,7 @@
         </div>
         <div class=" px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-solid fa-list fa-3x text-green-400"></i>
+            <i class="fas fa-check fa-3x text-green-700"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Selesai</p>
                     <p class="text-3xl ms-5 font-bold">100</p>
@@ -90,7 +90,7 @@
                 jambi selatan
             </td>
             <td class="px-6 py-4">
-                <i class="fa-solid fa-circle-exclamation"></i>
+            <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300  rounded-full text-md px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 font-extrabold">!</button>
             </td>
         </tr>
     </tbody>
