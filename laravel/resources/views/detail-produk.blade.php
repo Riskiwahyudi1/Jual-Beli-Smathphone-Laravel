@@ -136,7 +136,7 @@
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">DESKRIPSI </h1>
 </div> 
 <div class="ms-32">
-    <p>{{!! nl2br($getDetail->deskripsi) !!}}</p>
+    <p>{{!! nl2br($getDetail->deskripsi) !}}</p>
 </div>
 <hr class="h-px my-6 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
 <div class="flex justify-star mt-6 mb-6 ms-32">
