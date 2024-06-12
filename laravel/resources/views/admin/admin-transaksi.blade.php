@@ -1,4 +1,4 @@
-@extends('layouts.main-penjual')
+@extends('layouts.main-admin')
 @section('container-penjual')
 <div class="pt-10 ps-40">
     
