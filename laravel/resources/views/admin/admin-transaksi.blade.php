@@ -3,6 +3,7 @@
 <div class="pt-10 ps-40">
     
     <p class="ms-6 mt-12 text-2xl font-bold text-black">Transaksi</p>
+
     <div class="flex justify-center mt-4"> <!-- Flexbox container untuk pusat -->
         <div class="relative w-1/3"> <!-- Kontainer input dan svg -->
             <input type="text" name="name" class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200" placeholder="Cari Produk ...">
@@ -15,6 +16,7 @@
             </svg>
         </div>
     </div>
+
         
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
