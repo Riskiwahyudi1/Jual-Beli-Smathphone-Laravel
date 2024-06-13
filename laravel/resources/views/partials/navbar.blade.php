@@ -24,17 +24,17 @@
                 <a href="/keranjang" class=" text-white font-extrabold">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>                    
                 </a>
-                {{-- @if ($keranjangInfo->count() > 0)
+                @if ($keranjangInfo->count() > 0)
                 <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">{{ $keranjangInfo->count() }}</div>
-                @endif --}}
+                @endif
             </div>
             <div type="button" class="relative inline-flex items-center mx-5 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
                 <a href="riwayat-transaksi?status=menunggu-pembayaran" class=" text-white ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>                     
                 </a>
-                {{-- @if ($TransaksiInfo->count() > 0)
+                @if ($TransaksiInfo->count() > 0)
                 <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">{{ $TransaksiInfo->count() }}</div>
-                @endif --}}
+                @endif
             </div>
             <div class="relative inline-flex items-center ms-12 mr-1 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
 

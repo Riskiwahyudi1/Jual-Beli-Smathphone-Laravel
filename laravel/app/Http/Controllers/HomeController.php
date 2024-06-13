@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\Keranjang;
+use App\Models\Transaksi;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -35,8 +38,8 @@ class HomeController extends Controller
         'active' => 'Home',
         'title' => 'Home',
         'diskons' => $diskons,
-        // 'keranjangInfo' => Keranjang::where('user_id', Auth::id())->get(),
-        // 'TransaksiInfo' => Transaksi::where('user_id', Auth::id())->whereNotIn('status', ['selesai', 'dibatalkan'])->get()
+        'keranjangInfo' => Keranjang::where('user_id', Auth::id())->get(),
+        'TransaksiInfo' => Transaksi::where('user_id', Auth::id())->whereNotIn('status', ['selesai', 'dibatalkan'])->get()
     ]);
 }
 
