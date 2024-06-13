@@ -5,7 +5,7 @@
     <div class="grid grid-cols-4 grid-rows-2 gap-6 mt-6 mx-12">
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-shopping-bag fa-3x text-blue2"></i>
+                <i class="fas fa-regular fa-user fa-3x"></i>
             <div>
                 <p class="text-xl font-bold">User Pembeli</p>
                 <p class="text-3xl ms-6 font-bold">1000</p>
@@ -14,7 +14,7 @@
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-regular fa-clock fa-3x text-yellow-400"></i>
+                <i class="fas fa-regular fa-user fa-3x"></i>
             <div>
                 <p class="text-xl font-bold">User Penjual</p>
                 <p class="text-3xl ms-6 font-bold">1000</p>
@@ -23,34 +23,34 @@
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-regular fa-paper-plane fa-3x text-blue-500"></i>
+        <i class="fas fa-solid fa-box fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Total Produk</p>
-                <p class="text-3xl ms-5 font-bold">1000+</p>
+                <p class="text-3xl ms-7 font-bold">1000+</p>
             </div>
         </div>
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-check fa-3x text-green-700"></i>
+                <i class="fas fa-solid fa-list-ul fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Total Transaksi</p>
-                <p class="text-3xl ms-5 font-bold">1000+</p>
+                <p class="text-3xl ms-10 font-bold">1000+</p>
             </div>
         </div>
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-shopping-bag fa-3x text-blue2"></i>
+                <i class="fas fa-regular fa-mobile fa-3x"></i>
             <div>
-                <p class="text-xl font-bold">Brand</p>
+                <p class="text-xl ms-4 font-bold">Brand</p>
                 <p class="text-3xl ms-6 font-bold">22</p>
             </div>
         </div>
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-regular fa-clock fa-3x text-yellow-400"></i>
+                <i class="fas fa-truck fa-3x"></i>
             <div>
                 <p class="text-xl font-bold">Expedisi</p>
                 <p class="text-3xl ms-6 font-bold">7</p>
@@ -59,19 +59,19 @@
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-regular fa-paper-plane fa-3x text-blue-500"></i>
+                <i class="fas fa-solid fa-tv fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Iklan</p>
-                <p class="text-3xl ms-5 font-bold">30</p>
+                <p class="text-3xl ms-6 font-bold">30</p>
             </div>
         </div>
     </div>
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
-            <i class="fas fa-check fa-3x text-green-700"></i>
+                <i class="fas fa-regular fa-envelope fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Pesan</p>
-                <p class="text-3xl ms-5 font-bold">30</p>
+                <p class="text-3xl ms-6 font-bold">30</p>
             </div>
         </div>
     </div>
