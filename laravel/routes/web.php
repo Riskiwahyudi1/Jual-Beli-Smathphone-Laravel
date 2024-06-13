@@ -14,6 +14,8 @@ use App\Http\Controllers\RegisterPembeliController;
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\StatusOrderanController;
+use App\Http\Controllers\TransaksiController;   
+
 
 
 
@@ -39,5 +41,4 @@ Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan'])
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
 Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin']);
-
 
