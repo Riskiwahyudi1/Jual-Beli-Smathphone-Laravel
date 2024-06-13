@@ -14,6 +14,8 @@ use App\Http\Controllers\RegisterPembeliController;
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\StatusOrderanController;
+use App\Http\Controllers\TransaksiController;
+
 
 
 
