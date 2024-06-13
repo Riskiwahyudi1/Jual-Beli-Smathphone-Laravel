@@ -27,6 +27,35 @@
 @extends('layouts.main')
 @section('container')
 <div class="grid grid-cols-1 gap-10 p-4 bg-white rounded-lg  xl:grid-cols-2 xl:mx-32">
+    @if ($getDetail->diskon > 0)
+    <div class="grid gap-4 ">
+        <div>
+            <div class="font-bold text-white bg-blue2  text-sm px-4 absolute rounded-tl-lg rounded-br-lg py-2 lg:w-1/12">{{ $getDetail->diskon }}% OFF</div>
+            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset('images/imgRiski/'. $fotos[0]) }}" alt="">
+        </div>
+        <div class="grid grid-cols-5 gap-4">
+            @foreach ($fotos as $foto)
+            <div>
+                <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset('images/imgRiski/'. $foto) }}" alt="">
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="">
+        <h1 class="font-bold text-lg ">{{ $getDetail->nama_produk }}</h1>
+        <div class="flex justify-star mb-10 mt-2">
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+        </div>
+        <div class="flex justify-star my-2 gap-3">
+            <p class="text-red-400 font-bold text-lg">Rp.{{ number_format($getDetail->harga - $getDetail->diskon / 100 * $getDetail->harga , 0, ',', '.') }}</p>
+            <small class="text-blue2 font-semibold line-through text-sm">Rp.{{ number_format($getDetail->harga, 0, ',', '.') }}</small>
+        </div> 
+    @else
+        
     <div class="grid gap-4 ">
         <div>
             <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset('images/imgRiski/'. $fotos[0]) }}" alt="">
@@ -50,6 +79,7 @@
         </div>
         <p class="text-lg font-bold text-blue1 mb-6">Rp.{{ number_format($getDetail->harga, 0, ',', '.')}}</p>
         {{-- <p>terjual: {{ number_format($getDetail->terjual, 0, ',', '.')}}</p> --}}
+    @endif
         <div>
             <button type="button" class="w-5 h-5 rounded-full bg-red" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
             <button type="button" class="w-5 h-5 rounded-full bg-blue2" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
@@ -106,7 +136,7 @@
         <div class="flex justify-star">
             <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-12 rounded-full h-12 mt-6">
             <div>
-                <p class="mt-6 ms-4 text-lg font-bold">Teraphone</p>
+                <p class="mt-6 ms-4 text-lg font-bold">{{ $getDetail->user->username }}</p>
                 <div class="flex justify-star">
                     <small class="font-bold ms-4 text-blue2">Produk : <span class="text-gray-500 font-semibold"> 456</span></small>
                     <small class="font-bold ms-4 text-blue2">Penjualan : <span class="text-gray-500 font-semibold"> 1562</span></small>
@@ -160,70 +190,7 @@
     </div>
         <p class="font-normal mx-44 my-4 w-1/4">Barang sangat bagus dan pengiriman cepat, respon penjual sangat sangat baik , sudah saya kasih bintang 5</p><br>
 </div>
-<footer class="bg-black  h-64 text-white py-8">
-    <div class="flex justify-between">
-        <div class="ms-28">
-            <h1 class="text-3xl font-bold">TeraPhone</h1>
-            <div class="flex justify-star gap-3 mt-4">
-                <p>
-                    <i class="fas fa-envelope text-blue2"></i>
-                </p>
-                <p>teraphone@gmail.com</p>
-            </div>
-            <div class="flex justify-star gap-3 mt-1">
-                <p>
-                    <i class="fas fa-phone text-blue2"></i>
-                </p>
-                <p>081234567891</p>
-            </div>
-            <div class="flex justify-star gap-3 mt-1">
-                <p>
-                    <i class="fas fa-map-pin text-blue2"></i>
-                </p>
-                <p>Batam, Kepulauan Riau, Indonesia</p>
-            </div>
-        </div>
-        <div class="mr-28">
-            <h1 class="text-lg font-bold">Tautan</h1>
-            <div class="mt-4">
-                <a href="#">Tentang Kami</a>
-            </div>
-            <div class="mt-1">
-                <a href="#">Pembayaran</a>
-            </div>
-            <div class="mt-1">
-                <a href="#">Pengiriman</a>
-            </div>
-            <div class="mt-1">
-                <a href="#">Service</a>
-            </div>
-        </div>
-        <div class="mr-28">
-            <h1 class="text-lg font-bold">Sosial Media</h1>
-            <div class="flex justify-star gap-3 mt-4">
-                <p>
-                    <i class="fab fa-instagram text-pink-700"></i>
-                </p>
-                <p>TeraPhone.id</p>
-            </div>
-            <div class="flex justify-star gap-3 mt-1">
-                <p>
-                    <i class="fab fa-facebook text-blue-500"></i>
-                </p>
-                <p>TeraPhone.id</p>
-            </div>
-            <div class="flex justify-star gap-3 mt-1">
-                <p>
-                    <i class="fab fa-youtube text-red"></i>
-                </p>
-                <p>TeraPhone</p>
-            </div>
-        </div>
-    </div>
-    <div class="flex justify-center mt-5">
-        <small>&commat;&nbsp;2024 TeraPhone, All Right Reserved</small>
-    </div>
-</footer>
+
 
 
 
