@@ -11,7 +11,6 @@ use App\Http\Controllers\HomePenjualController;
 use App\Http\Controllers\LoginPembeliController;
 use App\Http\Controllers\LayananPenggunaController;
 use App\Http\Controllers\RegisterPembeliController;
-use App\Http\Controllers\StatusOrderanController;
 
 
 
@@ -32,6 +31,5 @@ Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengg
 // route penjual 
 Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
-Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 
 
