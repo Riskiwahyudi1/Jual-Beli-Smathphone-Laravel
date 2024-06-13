@@ -25,7 +25,7 @@
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-list mr-2"></i>Brand</button>
     </a>
     <a href="#">
-        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-truck-pickup mr-2"></i>Expedisi</button>
+        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-truck mr-2"></i></i>Expedisi</button>
     </a>
     <a href="#">
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-tv mr-2"></i>Iklan</button>
