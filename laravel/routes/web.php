@@ -30,6 +30,7 @@ Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detail
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/keranjang', [KeranjangController::class, 'keranjang']);
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
+Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayatTransaksi']);
 
 // route penjual 
 Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
@@ -38,4 +39,5 @@ Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan'])
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
 Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin']);
+
 
