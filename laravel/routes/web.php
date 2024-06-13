@@ -14,8 +14,7 @@ use App\Http\Controllers\RegisterPembeliController;
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\StatusOrderanController;
-use App\Http\Controllers\TransaksiController;   
-
+use App\Http\Controllers\TransaksiController;
 
 
 
@@ -31,6 +30,7 @@ Route::get('/home', [HomeController::class, 'home']);
 Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/keranjang', [KeranjangController::class, 'keranjang']);
+Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk'])->middleware('auth');
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
 Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayatTransaksi']);
 
