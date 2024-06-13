@@ -11,11 +11,9 @@ use App\Http\Controllers\HomePenjualController;
 use App\Http\Controllers\LoginPembeliController;
 use App\Http\Controllers\LayananPenggunaController;
 use App\Http\Controllers\RegisterPembeliController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\HomeAdminController;
->>>>>>> bc2c8d04083186c0d7af34ac77966d3f4bac142f
+use App\Http\Controllers\StatusOrderanController;
 
 
 
@@ -36,11 +34,8 @@ Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengg
 // route penjual 
 Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
-
-<<<<<<< HEAD
-=======
+Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
 Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin']);
->>>>>>> bc2c8d04083186c0d7af34ac77966d3f4bac142f
 
