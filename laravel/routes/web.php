@@ -12,6 +12,7 @@ use App\Http\Controllers\LoginPembeliController;
 use App\Http\Controllers\LayananPenggunaController;
 use App\Http\Controllers\RegisterPembeliController;
 use App\Http\Controllers\AdminTransaksiController;
+use App\Http\Controllers\HomeAdminController;
 
 
 
@@ -35,5 +36,5 @@ Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
-
+Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin']);
 
