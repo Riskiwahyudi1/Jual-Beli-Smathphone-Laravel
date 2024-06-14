@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AdminBrandController extends Controller
 {
-    public function adminTransaksi(){
+    public function adminbrand(){
         return view('/admin/admin-brand',[
             'title' => 'TeraPhone| Admin Brand',
         
