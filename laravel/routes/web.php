@@ -52,5 +52,5 @@ Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan'])
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
 Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin']);
 Route::get('/data-user', [DataUserController::class, 'dataUser']);
-Route::get('/admin-brand', [DataUserController::class, 'adminbrand']);
+Route::get('/admin-brand', [AdminBrandController::class, 'adminbrand']);
 
