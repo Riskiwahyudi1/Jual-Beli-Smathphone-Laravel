@@ -22,15 +22,6 @@
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-check mr-2"></i>Transaksi</button>
     </a>
     <a href="#">
-        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-list mr-2"></i>Brand</button>
-    </a>
-    <a href="#">
-        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-truck mr-2"></i></i>Expedisi</button>
-    </a>
-    <a href="#">
-        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-tv mr-2"></i>Iklan</button>
-    </a>
-    <a href="#">
-        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-envelope mr-2"></i>Pesan</button>
+        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-list mr-2"></i>Lainnya</button>
     </a>
 </nav>
