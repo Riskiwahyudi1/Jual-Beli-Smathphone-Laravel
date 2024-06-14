@@ -66,10 +66,10 @@
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        
+        @foreach ($totalTransaksi as $transakasi)   
         <tr>
             <th scope="col" class="px-6 py-3">
-               
+                {{ $transaksi->produk->nama_produk }}
             </th>
             <th scope="col" class="px-6 py-3">
                 Status
@@ -87,6 +87,7 @@
                 Detail
             </th>
         </tr>
+        @endforeach
     </thead>
     <tbody>
         @foreach ($transaksiTerbaru as $transaksi) 
