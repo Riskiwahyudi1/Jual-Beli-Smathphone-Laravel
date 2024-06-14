@@ -66,10 +66,9 @@
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        @foreach ($totalTransaksi as $transakasi)   
         <tr>
             <th scope="col" class="px-6 py-3">
-                {{ $transaksi->produk->nama_produk }}
+                Produk
             </th>
             <th scope="col" class="px-6 py-3">
                 Status
@@ -81,13 +80,12 @@
                 Nama Pembeli
             </th>
             <th scope="col" class="px-6 py-3">
-                Alamat Pengiriman
+                Ongkir
             </th>
             <th scope="col" class="px-6 py-3">
                 Detail
             </th>
         </tr>
-        @endforeach
     </thead>
     <tbody>
         @foreach ($transaksiTerbaru as $transaksi) 
@@ -99,16 +97,16 @@
                 </div>
             </th>
             <td class="px-6 py-4">
-                {{ $transaksi->produk->status }}
+                {{ $transaksi->status }}
             </td>
             <td class="px-6 py-4">
                 Rp.{{ $transaksi->produk->harga }}            
             </td>
             <td class="px-6 py-4">
-                sesa
+                {{ $transaksi->user->username }}
             </td>
             <td class="px-6 py-4">
-                jambi selatan
+                Rp.{{ $transaksi->ongkir }}
             </td>
             <td class="px-6 py-4">
             <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300  rounded-full text-md px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 font-extrabold">!</button>

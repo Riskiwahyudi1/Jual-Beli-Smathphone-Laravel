@@ -16,6 +16,7 @@ class HomePenjualController extends Controller
         $dikirim = Transaksi::with('produk')->where('status', 'dikirim')->get();
         $selesai = Transaksi::with('produk')->where('status', 'selesai')->get();
         $dibatalkan = Transaksi::with('produk')->where('status', 'dibatalkan')->get();
+        $transaksiTerbaru = Transaksi::paginate(5);
 
 
         return view('/penjual/home-penjual', [
