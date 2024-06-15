@@ -23,7 +23,7 @@ use App\Http\Controllers\AdminExpedisiController;
 
 
 
-Route::get('/', [HomeController::class, 'welcome']);
+Route::get('/', function () { return redirect('/home');});
 Route::get('/register-pembeli', [RegisterPembeliController::class, 'index']);
 Route::post('/register-pembeli', [RegisterPembeliController::class, 'store']);
 Route::get('/login-pembeli', [LoginPembeliController::class, 'login'])->name('login');
