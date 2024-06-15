@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pembeli;
 use Carbon\Carbon;
 use App\Models\Produk;
 use App\Models\Kategori;
@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class TransaksiController extends Controller
 {
@@ -38,7 +39,7 @@ class TransaksiController extends Controller
             }
         }
         
-        return view('riwayat-transaksi', [
+        return view('pembeli.riwayat-transaksi', [
             'title' => 'Riwayat Transaksi',
             'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
             'transaksis' => $produkTransaksi,

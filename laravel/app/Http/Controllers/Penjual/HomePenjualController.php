@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Penjual;
 
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomePenjualController extends Controller
 {
@@ -40,7 +41,7 @@ class HomePenjualController extends Controller
         }
         
        
-        return view('/penjual/home-penjual', [
+        return view('penjual.home-penjual', [
             'title' => 'Home Penjual',
             'totalTransaksi' => $totalTransaksi,
             'menungguPembayaran' => $menungguPembayaran,

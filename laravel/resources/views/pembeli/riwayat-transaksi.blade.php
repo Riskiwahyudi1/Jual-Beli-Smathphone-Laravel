@@ -40,7 +40,7 @@
 @endif
 @extends('layouts.main')
 @section('container')
-<nav class="bg-gray-100 rounded-lg dark:bg-gray-700 top-20 left-0 right-0 w-5/6 z-30 mx-auto fixed">
+<nav class="bg-gray-100 rounded-lg dark:bg-gray-700 top-0 left-0 right-0 w-5/6 z-10 mx-auto fixed pt-20">
     <div class="px-4 py-3">
         <div class="flex items-center justify-center">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
@@ -68,7 +68,7 @@
         </div>
     </div>
 </nav>
-<div class="overflow-x-auto w-3/4  mx-auto mt-20 mb-20">
+<div class="overflow-x-auto w-3/4  mx-auto  mb-20">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -127,14 +127,16 @@
                     </td>
                     <td class="px-6 py-4">
                         @php
-                                        $totalSemuaTransaksi = 0;
-                                    @endphp
-                                    @foreach ($transaksiList as $transaksi)
-                                        @php
-                                            $totalSemuaTransaksi += $transaksi->produk->harga - $transaksi->produk->diskon / 100 * $transaksi->produk->harga *  $transaksi->jumlah ;
-                                        @endphp
-                                    @endforeach
-                        Rp.{{number_format($totalSemuaTransaksi + $transaksi->first()->ongkir, 0, ',', '.') }}
+                            $totalSemuaTransaksi = 0;
+                        @endphp
+                        @foreach ($transaksiList as $transaksi)
+                            @php
+                                $hargaSetelahDiskon = $transaksi->produk->harga - ($transaksi->produk->diskon / 100 * $transaksi->produk->harga);
+                                $totalSemuaTransaksi += $hargaSetelahDiskon * $transaksi->jumlah;
+                                $totalOngkir = $transaksi->first()->ongkir; 
+                            @endphp
+                        @endforeach
+                        Rp.{{ number_format($totalSemuaTransaksi + $totalOngkir, 0, ',', '.') }}
                     </td>
                     <td class="px-4 py-4">
                         {{ $penjual }}
@@ -198,7 +200,13 @@
                                         <div>
                                             <p class="ms-1 font-semibold">{{ $transaksi->produk->nama_produk }}</p>
                                             <small class="ms-1">Jumlah : <span class="text-blue2">{{ $transaksi->jumlah }} Pcs</span> </small><br>
-                                            <small class="ms-1">Total Harga : <span class="text-blue2"> Rp. {{ number_format($transaksi->produk->harga - $transaksi->produk->diskon / 100 * $transaksi->produk->harga, 0, ',', '.') }}</span></small>
+                                            @php
+                                                $hitungDiskon = $transaksi->produk->diskon / 100 * $transaksi->produk->harga;
+                                                $hargaSetelahDiskon = $transaksi->produk->harga - $hitungDiskon;
+                                                $hargaSesuaiJumlah = $hargaSetelahDiskon * $transaksi->jumlah;
+                                                
+                                            @endphp
+                                            <small class="ms-1">Total Harga : <span class="text-blue2"> Rp. {{ number_format($hargaSesuaiJumlah , 0, ',', '.') }}</span></small>
                                         </div>
                                     </div>
                                     @endforeach
@@ -249,11 +257,12 @@
                                     @endphp
                                     @foreach ($transaksiList as $transaksi)
                                         @php
-                                            $totalSemuaTransaksi += $transaksi->produk->harga - $transaksi->produk->diskon / 100 * $transaksi->produk->harga *  $transaksi->jumlah ;
-                                            
+                                            $hargaSetelahDiskon = $transaksi->produk->harga - ($transaksi->produk->diskon / 100 * $transaksi->produk->harga);
+                                            $totalSemuaTransaksi += $hargaSetelahDiskon * $transaksi->jumlah;
+                                            $totalOngkir = $transaksi->first()->ongkir; 
                                         @endphp
                                     @endforeach
-                                    <p class="text-md font-semibold">Total Pembayaran : <span class="font-bold text-blue2">Rp.{{number_format($totalSemuaTransaksi + $transaksi->first()->ongkir, 0, ',', '.') }}</span> </p>
+                                    <p class="text-md font-semibold">Total Pembayaran : <span class="font-bold text-blue2">Rp.{{number_format($totalSemuaTransaksi + $totalOngkir, 0, ',', '.') }}</span> </p>
                                 </div>
                                 @endif
                                 <button data-modal-hide="default-modal{{ $transaksiList->first()->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-red-500 rounded-lg border ">Tutup</button>

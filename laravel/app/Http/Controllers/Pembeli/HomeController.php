@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pembeli;
+
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Keranjang;
@@ -8,6 +9,7 @@ use App\Models\Transaksi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,7 @@ class HomeController extends Controller
 
     $search = Produk::populerFilter($filters)->paginate(20);
 
-    return view('home', [
+    return view('pembeli.home', [
          'cameraQuality' => Kategori::with(['produk' => function($query) {$query->where('diskon', '=', 0);}])->findOrFail(3),
          'midRange' => Kategori::with(['produk' => function($query) {$query->where('diskon', '=', 0);}])->findOrFail(4),
         'produks' => $produks,

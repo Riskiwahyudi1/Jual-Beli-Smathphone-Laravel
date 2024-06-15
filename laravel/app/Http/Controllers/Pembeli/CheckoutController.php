@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pembeli;
 
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
 {
     public function checkout(){
 
-        return view('checkout',[
+        return view('pembeli.checkout',[
             'title' => 'Checkout',
             'active' => 'checkout',
             'kategoris' => Kategori::all(),
@@ -42,7 +43,7 @@ class CheckoutController extends Controller
 
             } 
         }
-        return view('checkout', [
+        return view('pembeli.checkout', [
             'products' => $products,
             'action' => $action,
             'jumlah' => $jumlahProduk,

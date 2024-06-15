@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pembeli;
 
 use App\Models\Produk;
 use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class keranjangController extends Controller
 {
     public function keranjang(){
         $action = 'hapus';
-        return view('keranjang', [
+        return view('pembeli.keranjang', [
          'title' => 'Keranjang',
          'action' => $action,
          'produks' => Keranjang::where('user_id', Auth::id())->get()
