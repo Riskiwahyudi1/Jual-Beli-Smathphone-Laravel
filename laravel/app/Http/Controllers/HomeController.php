@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-         public function welcome(){
-            return view('welcome');
-      }
+        
       public function home()
 {
     $produks = Produk::with('kategori')->get();
