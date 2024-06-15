@@ -25,29 +25,28 @@ class TransaksiController extends Controller
 
     foreach ($penjualList as $penjual) {
         $transaksiList = Transaksi::transaksiFilter($filters)
-            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran') // Memastikan kolom yang tepat digunakan
+            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran')
             ->where('user_id', $userId)
             ->where('penjual', $penjual)
             ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status', 'bukti_pembayaran')
-            // ->havingRaw('COUNT(DISTINCT produk_id) > 1')
             ->latest()
             ->get()
             ->groupBy('created_at'); 
+            
+            if ($transaksiList->isNotEmpty()) {
+                $produkTransaksi[$penjual] = $transaksiList;
+            }
+        }
         
-        if ($transaksiList->isNotEmpty()) {
-            $produkTransaksi[$penjual] = $transaksiList;
-        }
+        return view('riwayat-transaksi', [
+            'title' => 'Riwayat Transaksi',
+            'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
+            'transaksis' => $produkTransaksi,
+        ]);
     }
-                        
-            return view('riwayat-transaksi', [
-                'title' => 'Riwayat Transaksi',
-                'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
-                'transaksis' => $produkTransaksi,
-            ]);
-        }
     public function batalkanTransaksi(Request $request){
         $transaksiIds = $request->input('transaksi', []);
-
+        
         foreach ($transaksiIds as $transaksiId) {
             $transaksi = Transaksi::findOrFail($transaksiId); 
             
@@ -63,12 +62,12 @@ class TransaksiController extends Controller
             'bukti-transaksi.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'transaksi-id.*' => 'required|integer|exists:transaksis,id',
         ]);
-
+        
         $buktiTransaksiFiles = $request->file('bukti-transaksi');
         $transaksiIds = $request->input('transaksi-id');
-
+        
         foreach ($transaksiIds as $index => $transaksiId) {
-         
+            
             $file = $buktiTransaksiFiles[$index];
             $fileName = time() . '_' . $file->getClientOriginalName();
             $destinationPath = 'images/buktiPembayaran/';
@@ -83,3 +82,4 @@ class TransaksiController extends Controller
     }
     
 }
+// ->havingRaw('COUNT(DISTINCT produk_id) > 1')

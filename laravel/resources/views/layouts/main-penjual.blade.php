@@ -17,6 +17,6 @@
     @yield('container-penjual')
     {{-- @include('partials.footer') --}}
 </body>
-<script src="{{ asset('jas/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('jas/pembeli.js') }}"></script>
+<script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('scripts/penjual.js') }}"></script>
 </html>
