@@ -26,10 +26,10 @@ class TransaksiController extends Controller
 
     foreach ($penjualList as $penjual) {
         $transaksiList = Transaksi::transaksiFilter($filters)
-            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran')
+            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran', 'alamat')
             ->where('user_id', $userId)
             ->where('penjual', $penjual)
-            ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status', 'bukti_pembayaran')
+            ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status', 'bukti_pembayaran', 'alamat')
             ->latest()
             ->get()
             ->groupBy('created_at'); 

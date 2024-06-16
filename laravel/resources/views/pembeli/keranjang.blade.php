@@ -59,6 +59,7 @@
             </thead>
             <tbody>
                 @foreach ($produks as $produk)
+                    
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <form action="checkout" method="post" id="ubah-action">
                             @csrf
@@ -68,15 +69,17 @@
                             {{-- input untuk menghapus produk dari keranjang --}}
                             <input type="hidden" name="check-produk-hapus[]" id="" class=" mt-3 input-hapus" value="{{$produk->id }}">
                             <input type="hidden" name="jumlah[]" value="" class="jml-checkout">
-                            <img class="h-auto w-10 mr-4 ms-4 " src="{{ asset('images/imgRiski/'. json_decode($produk->produk->foto)[0]) }}" alt="image description">
+                            <img class="h-10 w-10 mr-4 ms-4 " src="{{ asset('images/imgRiski/'. json_decode($produk->produk->foto)[0]) }}" alt="image description">
                             <div>
-                                <p class="w-80 overflow-hidden text-ellipsis whitespace-nowrap">{{ $produk->produk->nama_produk }}</p>
+                                <p class="w-80 overflow-hidden text-sm font-bold text-ellipsis whitespace-nowrap">{{ $produk->produk->nama_produk }}</p>
+                                <p class="text-xs" >Stok Produk : <span class="stok-produk">{{ $produk->produk->stok }}</span> pcs</p>
                                 @if ($produk->produk->diskon > 0)
                                 <small class="text-red-600 font-bold mr-3">Rp.{{ number_format($produk->produk->harga - $produk->produk->diskon / 100 * $produk->produk->harga , 0, ',', '.') }} / pcs</small>
                                 <small class="text-blue2 line-through">Rp.{{ number_format($produk->produk->harga, 0, ',', '.') }} / pcs</small>
                                 @else
                                 <small class="text-blue2">Rp.{{ number_format($produk->produk->harga, 0, ',', '.') }} / pcs</small>
                                 @endif
+                                <p  class=" text-xs ms-60 absolute text-red-600 dark:text-red-400 text-red hidden alert-stok">checkout produk sesuai stok tersedia !!</p>
                             </div>
                         </td>
                         <td class="px-6 py-4">

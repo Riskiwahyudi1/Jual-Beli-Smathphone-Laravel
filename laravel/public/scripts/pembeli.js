@@ -93,11 +93,16 @@ if (document.title === 'TeraPhone | Detail Produk'){
         }
         
         checklistProduk();
-        
+        const stokProduk = document.querySelectorAll('.stok-produk');
+        const peringatanStok = document.querySelectorAll('.alert-stok');
         // event listener untuk tombol tambah jml produk
         incrementButtons.forEach((plus, count) => {
             plus.addEventListener('click', () => {
-                counterProduk[count].innerHTML++;
+                if(counterProduk[count].innerHTML < stokProduk[count].innerHTML){
+                    counterProduk[count].innerHTML++;
+                }else{
+                    peringatanStok[count].classList.remove('hidden')
+                }
                 hitungTotalHarga(count);
                 // kirimJmlProduk()
                 jmlCheckout[count].value = counterProduk[count].innerText;

@@ -33,12 +33,13 @@ class CheckoutController extends Controller
             }
             $jumlahProduk = [];
             foreach ($productIds as $productId) {
+
                 // Cari indeks dari productId dalam array productIds
                 $index = array_search($productId, $request->input('check-produk'));
                 if ($index !== false && isset($jumlah[$index])) {
                     $jumlahProduk[$productId] = $jumlah[$index];
                 } else {
-                    $jumlahProduk[$productId] = 1; // atau nilai default lainnya
+                    $jumlahProduk[$productId] = 1; 
                 }
 
             } 
@@ -69,20 +70,17 @@ class CheckoutController extends Controller
             'kode_pos' => $kodePos,
             'no_hp' => $noHp,
         ];
-
-
+    
         // Ambil data dari request produk
         $produkIds = $request->input('produk');
         $jumlahProduks = $request->input('checkout-jumlah-produk');
         $penjual = $request->input('penjual');
         $status = $request->input('status');
         $ongkir = $request->input('ongkir');
-    
         $userId = auth()->id(); 
     
         // Loop melalui produkIds dan jumlahProduks untuk membuat entri transaksi
         foreach($produkIds as $index => $productId) {
-
     
             // Simpan data transaksi ke database
             Transaksi::create([
@@ -95,13 +93,20 @@ class CheckoutController extends Controller
                 'alamat' => json_encode($data)
                 // Tambahkan kolom lain yang diperlukan
             ]);
+    
+            // update terjual dan stok
+            $produk = Produk::findOrFail($productId);
+            $produk->terjual = $produk->terjual + $jumlahProduks[$index];
+            $produk->stok = $produk->stok - $jumlahProduks[$index]; // Asumsi ada kolom stok
+            $produk->save();
         }
     
         // Redirect kembali dengan pesan sukses
         $request->session()->flash('berhasil', 'Berhasil checkout, Silahkan lakukan pembayaran!!');
-
+    
         return redirect('/riwayat-transaksi?status=menunggu-pembayaran');
     }
+    
     // fungsi untuk checkout langsung dari detail peroduk
 
     public function checkoutDariDetail(Request $request){
