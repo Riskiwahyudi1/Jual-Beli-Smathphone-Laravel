@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Pembeli;
 
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\Keranjang;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -99,6 +100,9 @@ class CheckoutController extends Controller
             $produk->terjual = $produk->terjual + $jumlahProduks[$index];
             $produk->stok = $produk->stok - $jumlahProduks[$index]; // Asumsi ada kolom stok
             $produk->save();
+
+            Keranjang::where('user_id', $userId)->where('produk_id', $productId)->delete();
+        
         }
     
         // Redirect kembali dengan pesan sukses

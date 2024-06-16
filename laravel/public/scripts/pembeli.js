@@ -98,8 +98,13 @@ if (document.title === 'TeraPhone | Detail Produk'){
         // event listener untuk tombol tambah jml produk
         incrementButtons.forEach((plus, count) => {
             plus.addEventListener('click', () => {
-                if(counterProduk[count].innerHTML < stokProduk[count].innerHTML){
+                const stokValue = parseInt(stokProduk[count].innerHTML, 10);
+                const counterValue = parseInt(counterProduk[count].innerHTML, 10);
+
+               if(counterValue < stokValue){
                     counterProduk[count].innerHTML++;
+                    console.log(stokProduk[count].innerHTML)
+                    console.log(counterProduk[count].innerHTML)
                 }else{
                     peringatanStok[count].classList.remove('hidden')
                 }

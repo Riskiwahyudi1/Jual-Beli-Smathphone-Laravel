@@ -17,7 +17,7 @@ class HomeController extends Controller
       public function home()
 {
     $produks = Produk::with('kategori')->get();
-    $diskons = Produk::with('kategori')->where('diskon', '!=', 0)->where('stok', '!=', 0)->get();
+    $diskons = Produk::with('kategori')->where('diskon', '>', 0)->where('stok', '>', 0)->get();
     $kategoris = Kategori::get();
     $brands = Produk::pluck('brand')->all();
     $filters = [
@@ -38,7 +38,10 @@ class HomeController extends Controller
         'active' => 'Home',
         'title' => 'Home',
         'diskons' => $diskons,
-        'keranjangInfo' => Keranjang::where('user_id', Auth::id())->get(),
+        'keranjangInfo' => Keranjang::with(['produk' => function($query) {
+            $query->where('stok', '>', 0);}])
+            ->where('user_id', Auth::id())
+            ->get(),
         'TransaksiInfo' => Transaksi::where('user_id', Auth::id())->whereNotIn('status', ['selesai', 'dibatalkan'])->get()
     ]);
 }

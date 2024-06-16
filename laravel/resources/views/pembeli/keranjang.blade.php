@@ -79,7 +79,7 @@
                                 @else
                                 <small class="text-blue2">Rp.{{ number_format($produk->produk->harga, 0, ',', '.') }} / pcs</small>
                                 @endif
-                                <p  class=" text-xs ms-60 absolute text-red-600 dark:text-red-400 text-red hidden alert-stok">checkout produk sesuai stok tersedia !!</p>
+                                <p  class=" text-xs ms-60 absolute text-red-600 dark:text-red-400 text-red hidden alert-stok">Silahkan checkout produk sesuai stok tersedia !!</p>
                             </div>
                         </td>
                         <td class="px-6 py-4">
