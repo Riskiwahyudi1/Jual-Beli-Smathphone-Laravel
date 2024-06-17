@@ -55,7 +55,6 @@ class CheckoutController extends Controller
     public function konfirmasiCheckout(Request $request){
         // Ambil data dari request alamat pembeli
         $namaDepan = $request->input('nama-depan');
-        $namaBelakang = $request->input('nama-belakang');
         $alamat = $request->input('alamat');
         $kota = $request->input('kota');
         $provinsi = $request->input('provinsi');
@@ -64,7 +63,6 @@ class CheckoutController extends Controller
         
         $data = [
             'nama_depan' => $namaDepan,
-            'nama_belakang' => $namaBelakang,
             'alamat' => $alamat,
             'kota' => $kota,
             'provinsi' => $provinsi,
@@ -78,6 +76,7 @@ class CheckoutController extends Controller
         $penjual = $request->input('penjual');
         $status = $request->input('status');
         $ongkir = $request->input('ongkir');
+        $expedisi = $request->input('expedisi');
         $userId = auth()->id(); 
     
         // Loop melalui produkIds dan jumlahProduks untuk membuat entri transaksi
@@ -91,6 +90,7 @@ class CheckoutController extends Controller
                 'penjual' => $penjual[$index],
                 'status' => $status[$index],
                 'ongkir' => $ongkir[$index],
+                'expedisi' => $expedisi,
                 'alamat' => json_encode($data)
                 // Tambahkan kolom lain yang diperlukan
             ]);

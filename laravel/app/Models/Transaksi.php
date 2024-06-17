@@ -23,6 +23,7 @@ class Transaksi extends Model
             'alamat',
             'penjual',
             'ongkir',
+            'expedisi',
             'bukti_pembayaran',
     ];
     public function scopeTransaksiFilter($query, array $filters)

@@ -44,9 +44,12 @@ Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/checkout', [CheckoutController::class, 'getProduk']);
 Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
 Route::post('/checkout-dari-detail', [CheckoutController::class, 'getProduk']);
+
 Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayatTransaksi']);
 Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
 Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
+Route::post('/riwayat-transaksi-diterima', [TransaksiController::class, 'terimaTransaksi']);
+
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
 Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 
