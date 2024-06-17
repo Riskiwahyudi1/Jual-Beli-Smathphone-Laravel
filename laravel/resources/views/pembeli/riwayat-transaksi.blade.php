@@ -181,7 +181,8 @@
                         @elseif(request()->query('status') == 'selesai')
                         <button class="px-2 py-2 bg-blue2 rounded-md text-white">Beri Komentar</button>
                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
-                        <button class="px-2 py-2  rounded-md text-blue2">Cetak Invoice</button>
+                        <a href="{{ route('generate.pdf') }}" class="px-2 py-2  rounded-md text-blue2">Cetak Invoice</a>
+                        
                         @elseif(request()->query('status') == 'dibatalkan')
                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
                         @endif

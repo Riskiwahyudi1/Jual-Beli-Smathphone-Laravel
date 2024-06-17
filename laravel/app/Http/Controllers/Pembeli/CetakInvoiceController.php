@@ -12,7 +12,7 @@ class CetakInvoiceController extends Controller
     public function generateInvoice()
     {
         $data = ['title' => 'Invoice', 'date' => date('m/d/Y'), 'invoice_id' => 123];
-        $pdf = PDF::loadView('pdf_view', $data);
+        $pdf = PDF::loadView('pembeli.invoice', $data);
         
         return $pdf->download('invoice.pdf');
     }
