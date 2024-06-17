@@ -11,6 +11,7 @@ use App\Http\Controllers\Pembeli\LoginPembeliController;
 use App\Http\Controllers\Pembeli\LayananPenggunaController;
 use App\Http\Controllers\Pembeli\RegisterPembeliController;
 use App\Http\Controllers\Pembeli\TransaksiController;
+use App\Http\Controllers\Pembeli\CetakInvoiceController;
 
 // admin
 use App\Http\Controllers\Admin\AdminTransaksiController;
@@ -49,6 +50,7 @@ Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayatTransaksi'
 Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
 Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
 Route::post('/riwayat-transaksi-diterima', [TransaksiController::class, 'terimaTransaksi']);
+Route::get('/invoice', [CetakInvoiceController::class, 'generateInvoice'])->name('generate.pdf');
 
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
 Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
