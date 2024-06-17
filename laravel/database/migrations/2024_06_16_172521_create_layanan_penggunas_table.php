@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('layanan_penggunas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('masalah');
+            $table->string('email');
+            $table->string('nama');
+            $table->string('pengaduan');
             $table->text('pesan');
             $table->string('status');
             $table->timestamps();

@@ -24,6 +24,7 @@
     @if($title !== "Login" && $title !== "Register Pembeli" && $title !== "Riwayat Transaksi")
         @include('partials.footer')
     @endif
+    <a href="/layanan-pengguna"><i class="fas fa-headset right-2 bottom-2 text-blue2 font-bold text-3xl fixed"></i></a>
 </body>
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('scripts/pembeli.js') }}"></script>

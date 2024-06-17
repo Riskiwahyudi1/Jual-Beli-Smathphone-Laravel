@@ -47,6 +47,7 @@ Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayatTransaksi'
 Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
 Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
+Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 
 
 // route penjual 
