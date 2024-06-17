@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminExpedisiController;
-use App\Http\Controllers\Admin\AdminIklanController;
+use App\Http\Controllers\AdminIklanController;
 
 // Penjual
 use App\Http\Controllers\Penjual\StatusOrderanController;
