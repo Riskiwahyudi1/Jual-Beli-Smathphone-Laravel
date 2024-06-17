@@ -1,7 +1,7 @@
 @if(session()->has('berhasil'))
 <div class="flex justify-center">
 
-    <div class="absolute z-30 flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <div class="absolute z-20 flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
         <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
         </svg>
@@ -13,7 +13,7 @@
 </div>
 @elseif(session()->has('pembatalan-sukses'))
 <div class="flex justify-center">
-    <div class=" absolute w-1/4 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <div class=" absolute z-20 w-1/4 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
         <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
         </svg>
@@ -24,9 +24,22 @@
         </div>
     </div>
 </div>
+@elseif(session()->has('produk-diterima-sukses'))
+<div class="flex justify-center ">
+    <div class=" absolute w-1/4 z-20 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">{{ session('produk-diterima-sukses') }}
+            </div>
+        </div>
+    </div>
+</div>
 @elseif(session()->has('bukti-pembayaran-success'))
-<div class="flex justify-center">
-    <div class=" absolute w-1/4 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+<div class="flex justify-center ">
+    <div class=" absolute w-1/4 z-20 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
         <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
         </svg>
@@ -147,7 +160,7 @@
                     </td>
                     @elseif(request()->query('status') !== 'menunggu-pembayaran' && request()->query('status') !== 'dibatalkan')
                     <td class="px-4 py-4">
-                        JNT Express
+                        {{ $transaksiList->first()->expedisi }}
                     </td>
                     @endif
                     <td class=" px-6 py-4 gap-2">
@@ -163,12 +176,12 @@
                         @elseif(request()->query('status') == 'dikemas')
                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
                         @elseif(request()->query('status') == 'dikirim')
-                        <button class="px-2 py-2 bg-green-500 rounded-md text-white">Produk Diterima</button>
+                        <button data-modal-target="produk-diterima{{ $transaksiList->first()->id}}" data-modal-toggle="produk-diterima{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-green-500 rounded-md text-white">Produk Diterima</button>
                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
                         @elseif(request()->query('status') == 'selesai')
                         <button class="px-2 py-2 bg-blue2 rounded-md text-white">Beri Komentar</button>
                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
-                        <button class="px-2 py-2 bg-yellow-400 rounded-md text-white">Cetak Invoice</button>
+                        <button class="px-2 py-2  rounded-md text-blue2">Cetak Invoice</button>
                         @elseif(request()->query('status') == 'dibatalkan')
                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
                         @endif
@@ -221,7 +234,7 @@
                                 <div>
                                     <p class="text-md font-semibold">Expedisi Pengiriman:</p>
                                     <div>
-                                        <p class="ms-4 italic">JNT Express</p>
+                                        <p class="ms-4 italic">{{ $transaksiList->first()->expedisi }}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -285,8 +298,8 @@
                                 <!-- Modal body -->
                                 <form action="riwayat-transaksi" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="file" name="bukti-transaksi">
                                     @foreach ($transaksiList as $transaksi)
-                                    <input type="file" name="bukti-transaksi[]">
                                     <input type="hidden" name="status-transaksi[]" value="menunggu-verifikasi">
                                     <input type="hidden" name="transaksi-id[]" value="{{ $transaksi->id }}">
                                 @endforeach
@@ -331,6 +344,30 @@
                     </button>
                 </form>
                 <button data-modal-hide="popup-modal{{ $transaksiList->first()->id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- modal penerimaan produk --}}          
+                <div id="produk-diterima{{ $transaksiList->first()->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            
+                            <div class="p-4 md:p-5 text-center">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                </svg>
+                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda yakin?, apakah produk sudah anda terima?</h3>
+                                <form action="riwayat-transaksi-diterima" method="post">
+                                    @csrf
+                                    @foreach ($transaksiList as $transaksi)
+                                    <input type="hidden" name="transaksi[]" value="{{ $transaksi->id }} ">
+                                @endforeach
+                    <button data-modal-hide="produk-diterima" type="submit" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        Ya, lanjutkan
+                    </button>
+                </form>
+                <button data-modal-hide="produk-diterima{{ $transaksiList->first()->id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white focus:outline-none bg-red-600 hover:bg-red-800 rounded-lg border border-gray-200 hover:text-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, Tutup</button>
                             </div>
                         </div>
                     </div>

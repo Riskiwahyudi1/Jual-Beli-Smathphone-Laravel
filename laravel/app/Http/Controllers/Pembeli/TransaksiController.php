@@ -26,10 +26,10 @@ class TransaksiController extends Controller
 
     foreach ($penjualList as $penjual) {
         $transaksiList = Transaksi::transaksiFilter($filters)
-            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran', 'alamat')
+            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'expedisi', 'id', 'status','bukti_pembayaran', 'alamat')
             ->where('user_id', $userId)
             ->where('penjual', $penjual)
-            ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status', 'bukti_pembayaran', 'alamat')
+            ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'expedisi', 'id', 'status', 'bukti_pembayaran', 'alamat')
             ->latest()
             ->get()
             ->groupBy('created_at'); 
@@ -50,11 +50,23 @@ class TransaksiController extends Controller
         
         foreach ($transaksiIds as $transaksiId) {
             $transaksi = Transaksi::findOrFail($transaksiId); 
-            
+            $transaksi->produk->stok = $transaksi->produk->stok + $transaksi->jumlah ;
+            $transaksi->produk->terjual = $transaksi->produk->terjual - $transaksi->jumlah ;
             $transaksi->status = 'Dibatalkan'; 
             $transaksi->save(); 
+            $transaksi->produk->save(); 
         }
         return redirect()->back()->with('pembatalan-sukses', 'Transaksi dibatalkan ');
+    }
+    public function terimaTransaksi(Request $request){
+        $transaksiIds = $request->input('transaksi', []);
+        
+        foreach ($transaksiIds as $transaksiId) {
+            $transaksi = Transaksi::findOrFail($transaksiId); 
+            $transaksi->status = 'selesai'; 
+            $transaksi->save(); 
+        }
+        return redirect()->back()->with('produk-diterima-sukses', 'Transaksi Selesai');
     }
     
     public function pembayaran(Request $request)
@@ -64,17 +76,19 @@ class TransaksiController extends Controller
             'transaksi-id.*' => 'required|integer|exists:transaksis,id',
         ]);
         
+        // ambil data bukti transaksi
         $buktiTransaksiFiles = $request->file('bukti-transaksi');
         $transaksiIds = $request->input('transaksi-id');
         
+        // kelolah file
+        $file = $buktiTransaksiFiles;
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $destinationPath = 'images/buktiPembayaran/';
+        $file->move(public_path($destinationPath), $fileName);
+
         foreach ($transaksiIds as $index => $transaksiId) {
             
-            $file = $buktiTransaksiFiles[$index];
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = 'images/buktiPembayaran/';
-            $file->move(public_path($destinationPath), $fileName);
             $transaksi = Transaksi::findOrFail($transaksiId);
-            
             $transaksi->bukti_pembayaran = $fileName;
             $transaksi->save();
         }
@@ -83,4 +97,12 @@ class TransaksiController extends Controller
     }
     
 }
+
+
+
+
+
+
+
+
 // ->havingRaw('COUNT(DISTINCT produk_id) > 1')
