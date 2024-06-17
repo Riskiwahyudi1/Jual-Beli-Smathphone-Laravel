@@ -11,14 +11,14 @@ use App\Http\Controllers\Pembeli\LoginPembeliController;
 use App\Http\Controllers\Pembeli\LayananPenggunaController;
 use App\Http\Controllers\Pembeli\RegisterPembeliController;
 use App\Http\Controllers\Pembeli\TransaksiController;
-use App\Http\Controllers\Pembeli\DataUserController;
 
 // admin
 use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminExpedisiController;
-use App\Http\Controllers\AdminIklanController;
+use App\Http\Controllers\Admin\AdminIklanController;
+use App\Http\Controllers\DataUserController;
 
 // Penjual
 use App\Http\Controllers\Penjual\StatusOrderanController;
