@@ -23,7 +23,7 @@
     </div>
     <div class="flex justify-center">
         <div>
-            <p>Pesan</p>
+            <p>Pengaduan</p>
         </div>
     </div>
 </div>
