@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminExpedisiController;
+use App\Http\Controllers\Admin\AdminIklanController;
 
 // Penjual
 use App\Http\Controllers\Penjual\StatusOrderanController;
@@ -61,4 +62,5 @@ Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin']);
 Route::get('/data-user', [DataUserController::class, 'dataUser']);
 Route::get('/admin-brand', [AdminBrandController::class, 'adminbrand']);
 Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi']);
+Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 
