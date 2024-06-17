@@ -67,6 +67,6 @@ Route::get('/data-user', [DataUserController::class, 'dataUser']);
 Route::get('/admin-brand', [AdminBrandController::class, 'adminbrand']);
 Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi']);
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
-Route::get('/admin-pengauan', [AdminPengaduanController::class, 'adminpengaduan']);
+Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
 
 
