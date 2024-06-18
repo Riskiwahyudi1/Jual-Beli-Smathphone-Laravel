@@ -19,6 +19,6 @@ class CetakInvoiceController extends Controller
         $transaksi = ['transaksi' => $transaksi];
         $pdf = PDF::loadView('pembeli.invoice', $transaksi);
         
-        return $pdf->download('invoice.pdf');
+        return $pdf->download('TeraPhone invoice.pdf');
     }
 }

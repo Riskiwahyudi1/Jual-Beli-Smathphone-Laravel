@@ -116,7 +116,7 @@
                     Transfer Bank
                 </td>
                 <td>
-                   {{ Bank Mandiri }}
+                    Bank Mandiri 
                 </td>
             </tr>
             <tr class="heading">
