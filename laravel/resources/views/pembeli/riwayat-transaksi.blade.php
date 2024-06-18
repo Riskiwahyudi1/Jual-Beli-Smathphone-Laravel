@@ -124,9 +124,9 @@
                                 <div class="hidden multi-transaksi">
                                     @foreach ($transaksiList->slice(1) as $transaksi)
                                         <div class="flex mt-2">
-                                            <img class="h-auto w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
+                                            <img class="h-8 w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                             <div>
-                                                <small>{{ $transaksi->produk->nama_produk }}</small><br>
+                                                <p class="text-xs truncate w-56">{{ $transaksi->produk->nama_produk }}</p><br>
                                                 <small class="text-gray-500 ms-1">Jumlah : {{ $transaksi->jumlah }} Pcs</small>
                                             </div>
                                         </div>
@@ -156,7 +156,7 @@
                     <td class=" px-6 py-4 gap-2">
                         @if (request()->query('status') == 'menunggu-pembayaran')
                             @if($transaksiList->first()->bukti_pembayaran === null)
-                                <button data-modal-target="bukti-transaksi{{ $transaksiList->first()->id}}" data-modal-toggle="bukti-transaksi{{ $transaksiList->first()->id}}" class="px-2 py-2 bg-blue2 rounded-md text-white">Upload bukti Pembayaran</button>
+                                <button data-modal-target="bukti-transaksi{{ $transaksiList->first()->id}}" data-modal-toggle="bukti-transaksi{{ $transaksiList->first()->id}}" class="px-2 py-2 bg-blue2 rounded-md text-white">Bayar</button>
                                 <button data-modal-target="popup-modal{{ $transaksiList->first()->id}}" data-modal-toggle="popup-modal{{ $transaksiList->first()->id}}" class="px-2 py-2 bg-red-500 rounded-md text-white">Batalkan</button>
                                 <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
                             @else
@@ -179,6 +179,7 @@
                         
                     </td>
                 </tr>
+                
                 {{-- Modal detail transaksi --}}
                 <div id="default-modal{{ $transaksiList->first()->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div class="relative p-4 w-full max-w-2xl max-h-full">
@@ -202,7 +203,7 @@
                                     <div class="flex my-2">
                                         <img class="h-8 w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                         <div>
-                                            <p class="ms-1 font-semibold">{{ $transaksi->produk->nama_produk }}</p>
+                                            <p class="ms-1 font-semibold truncate w-96">{{ $transaksi->produk->nama_produk }}</p>
                                             <small class="ms-1">Jumlah : <span class="text-blue2">{{ $transaksi->jumlah }} Pcs</span> </small><br>
                                             @php
                                                 $hitungDiskon = $transaksi->produk->diskon / 100 * $transaksi->produk->harga;
@@ -272,11 +273,19 @@
                             <!-- Modal header -->
                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                    Kirim Bukti Pembayaran 
+                                    Pembayaran 
                                 </h3>
                                 
                                 </div>
                                 <!-- Modal body -->
+                                <p class="text-red-500 py-2 mx-5"> Lakukan pembayaran ke rekening berikut, pastikan nama penerima sesuai!!</p>
+                                <select name="rekening" id="rekening" class="w-full mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                                    <option value="" disabled selected>--Pilih Rekening Penjual--</option>
+                                    <option value="BCA - 1234567890">BCA - 1234567890 - Riski Wahyudi</option>
+                                    <option value="Mandiri - 0987654321">Mandiri - 0987654321 - Riski Wahyudi</option>
+                                    <option value="BNI - 1122334455">BNI - 1122334455 - Riski Wahyudi</option>
+                                    
+                                </select>
                                 <form action="riwayat-transaksi" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <input type="file" name="bukti-transaksi">
