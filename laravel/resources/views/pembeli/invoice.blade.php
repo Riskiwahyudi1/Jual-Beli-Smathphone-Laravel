@@ -13,7 +13,7 @@
         }
         .invoice-box {
             max-width: 800px;
-            margin: auto;
+            margin: 50px auto;
             padding: 30px;
             border: 1px solid #eee;
             background-color: #fff;
@@ -42,7 +42,6 @@
         }
         .invoice-box table tr.information table td {
             padding-bottom: 20px;
-            width: 10px;
         }
         .invoice-box table tr.heading td {
             background: #eee;
@@ -62,33 +61,50 @@
             border-top: 2px solid #eee;
             font-weight: bold;
         }
+        .product-quantity {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .product-discount {
+            color: red;
+            font-size: 12px;
+            margin-left : 13px;
+            margin-top : 3px;
+        }
+        .header-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .header-table td {
+            padding: 0;
+        }
+        .header-left {
+            text-align: left;
+        }
+        .header-right {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     <div class="invoice-box">
-        
-            
-        <table>
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td class="title">
-                                <h4>TeraPhone</h4>
-                            </td>
-                            <td>
-                                Invoice No : {{ $transaksi->id }}<br>
-                                Diterbitkan : {{ $transaksi->created_at }}<br>
-                            </td>
-                        </tr>
-                    </table>
+        <table class="header-table">
+            <tr>
+                <td class="header-left">
+                    <h3>TeraPhone</h3>
+                </td>
+                <td class="header-right">
+                    Invoice No: {{ $transaksi->id }}<br>
+                    Diterbitkan: {{ $transaksi->created_at }}<br>
                 </td>
             </tr>
+        </table>
+        <table>
             <tr class="heading">
                 <td colspan="2">Alamat Pengiriman :</td>
             </tr>
             <tr class="information">
-                <td colspan="1">
+                <td colspan="2">
                     <table>
                         <tr>
                             @php
@@ -98,7 +114,6 @@
                             <td>
                                 {{$alamatString}}
                             </td>
-                            
                         </tr>
                     </table>
                 </td>
@@ -127,38 +142,55 @@
                     Harga
                 </td>
             </tr>
-            <tr class="item">
-                <td>
-                    Website design
-                </td>
-                <td>
-                    $300.00
-                </td>
-            </tr>
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
-                </td>
-                <td>
-                    $75.00
-                </td>
-            </tr>
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-                <td>
-                    $10.00
-                </td>
-            </tr>
+            @php
+                $totalTransaksi = 0;
+            @endphp
+            @foreach ($transaksiProduks as $penjual => $transaksiListByTime)
+                @if ($penjual == $transaksi->penjual)
+                    @foreach ($transaksiListByTime as $createdAt => $transaksiList)
+                        @if ($createdAt == $transaksi->created_at)
+                            @foreach ($transaksiList as $transaksiItem)
+                                <tr class="item">
+                                    <td>
+                                        {{ $transaksiItem->produk->nama_produk }}
+                                        <span class="product-quantity">x {{ $transaksiItem->jumlah }} Pcs</span>
+                                        @if($transaksiItem->produk->diskon > 0)
+                                            <div class="product-discount">Diskon: {{ $transaksiItem->produk->diskon }}%</div>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @php
+                                            $hitungDiskon = $transaksiItem->produk->diskon / 100 * $transaksiItem->produk->harga;
+                                            $hargaSetelahDiskon = $transaksiItem->produk->harga - $hitungDiskon;
+                                            $hargaSesuaiJumlah = $hargaSetelahDiskon * $transaksiItem->jumlah;
+                                            $totalTransaksi += $hargaSesuaiJumlah;
+                                        @endphp
+                                        Rp. {{ number_format($hargaSesuaiJumlah, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr class="item">
+                                <td>
+                                    Ongkir
+                                </td>
+                                <td>
+                                    Rp. {{ number_format($transaksi->ongkir, 0, ',', '.') }}
+                                    @php
+                                        $totalTransaksi += $transaksi->ongkir;
+                                    @endphp
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
             <tr class="total">
                 <td></td>
                 <td>
-                   Total Transaksi: $385.00
+                   Total Transaksi: Rp. {{ number_format($totalTransaksi, 0, ',', '.') }}
                 </td>
             </tr>
         </table>
-
     </div>
 </body>
 </html>

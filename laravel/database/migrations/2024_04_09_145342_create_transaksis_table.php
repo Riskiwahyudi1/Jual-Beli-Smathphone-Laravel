@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->string('penjual');
             $table->string('ongkir');
+            $table->string('total_transaksi');
             $table->string('expedisi');
             $table->string('bukti_pembayaran')->nullable();
             $table->text('alamat');

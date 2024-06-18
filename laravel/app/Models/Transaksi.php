@@ -23,6 +23,7 @@ class Transaksi extends Model
             'alamat',
             'penjual',
             'ongkir',
+            'total_transaksi',
             'expedisi',
             'bukti_pembayaran',
     ];

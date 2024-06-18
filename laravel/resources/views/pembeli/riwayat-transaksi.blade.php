@@ -138,18 +138,8 @@
                             @endif
                         </div>
                     </td>
-                    <td class="px-6 py-4">
-                        @php
-                            $totalSemuaTransaksi = 0;
-                        @endphp
-                        @foreach ($transaksiList as $transaksi)
-                            @php
-                                $hargaSetelahDiskon = $transaksi->produk->harga - ($transaksi->produk->diskon / 100 * $transaksi->produk->harga);
-                                $totalSemuaTransaksi += $hargaSetelahDiskon * $transaksi->jumlah;
-                                $totalOngkir = $transaksi->first()->ongkir; 
-                            @endphp
-                        @endforeach
-                        Rp.{{ number_format($totalSemuaTransaksi + $totalOngkir, 0, ',', '.') }}
+                    <td class="px-6 py-4 font-semibold">
+                        Rp.{{ number_format($transaksiList->first()->total_transaksi, 0, ',', '.') }}
                     </td>
                     <td class="px-4 py-4">
                         {{ $penjual }}
@@ -266,17 +256,7 @@
                                 <div class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 @if(request()->query('status') !== 'dibatalkan')
                                 <div>
-                                    @php
-                                        $totalSemuaTransaksi = 0;
-                                    @endphp
-                                    @foreach ($transaksiList as $transaksi)
-                                        @php
-                                            $hargaSetelahDiskon = $transaksi->produk->harga - ($transaksi->produk->diskon / 100 * $transaksi->produk->harga);
-                                            $totalSemuaTransaksi += $hargaSetelahDiskon * $transaksi->jumlah;
-                                            $totalOngkir = $transaksi->first()->ongkir; 
-                                        @endphp
-                                    @endforeach
-                                    <p class="text-md font-semibold">Total Pembayaran : <span class="font-bold text-blue2">Rp.{{number_format($totalSemuaTransaksi + $totalOngkir, 0, ',', '.') }}</span> </p>
+                                    <p class="text-md font-semibold">Total Pembayaran : <span class="font-bold text-blue2">Rp.{{ number_format($transaksiList->first()->total_transaksi, 0, ',', '.') }}</span> </p>
                                 </div>
                                 @endif
                                 <button data-modal-hide="default-modal{{ $transaksiList->first()->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-red-500 rounded-lg border ">Tutup</button>

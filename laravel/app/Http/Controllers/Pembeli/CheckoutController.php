@@ -76,6 +76,7 @@ class CheckoutController extends Controller
         $penjual = $request->input('penjual');
         $status = $request->input('status');
         $ongkir = $request->input('ongkir');
+        $totalTransaksi = $request->input('total-transaksi');
         $expedisi = $request->input('expedisi');
         $userId = auth()->id(); 
     
@@ -90,6 +91,7 @@ class CheckoutController extends Controller
                 'penjual' => $penjual[$index],
                 'status' => $status[$index],
                 'ongkir' => $ongkir[$index],
+                'total_transaksi' => $totalTransaksi,
                 'expedisi' => $expedisi,
                 'alamat' => json_encode($data)
                 // Tambahkan kolom lain yang diperlukan

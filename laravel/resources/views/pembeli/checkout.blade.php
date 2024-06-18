@@ -64,7 +64,7 @@
                 <input type="hidden" name="penjual[]" value="{{ $product->user ? $product->user->username : 'Tidak Ada' }}">
                 <input type="hidden" name="checkout-jumlah-produk[]" value="{{ $jumlah[$product->id] }}">
                 <input type="hidden" name="status[]" value="menunggu-pembayaran"> 
-                <input type="hidden" name="ongkir[]" value="30000"> 
+                <input type="hidden" name="ongkir[]" value="30000">
             </div>
             <hr class="my-2 mr-28">
             @endforeach
@@ -86,6 +86,7 @@
                     <div class="flex justify-between">
                         <p class="font-bold">Total :</p>
                         <p class="font-bold ">Rp.<span class="total-harga-dan-ongkir"></span></p>
+                        <input type="hidden" id="total-harga-dan-ongkir-send" name="total-transaksi" value="">
                     </div>
                 </div>
                 
@@ -101,11 +102,11 @@
     const totalHarga = document.querySelector('.total-harga');
     const ongkir = document.querySelector('.ongkir');
     const totalHargaOngkir = document.querySelector('.total-harga-dan-ongkir');
+    const totalHargaOngkirSend = document.querySelector('#total-harga-dan-ongkir-send');
 
     function fixHarga(){
         harga.forEach((e, index) => {
            const jumlahkanHarga = parseInt(e.innerHTML.replace(/\D/g, '')) * parseInt(jumlah[index].innerHTML)
-           console.log(jumlahkanHarga)
            e.innerHTML = jumlahkanHarga.toLocaleString('id-ID')
         })
     }
@@ -124,7 +125,8 @@ totalHargaCheckout();
 function totalHargaPlusOngkir(){
     const jumlahkan = parseInt(totalHarga.innerHTML.replace(/\D/g, '')) + parseInt(ongkir.innerHTML.replace(/\D/g, ''))
     totalHargaOngkir.innerHTML = jumlahkan.toLocaleString('id-ID')
-    console.log(totalHargaOngkir.innerHTML)
+    totalHargaOngkirSend.value = parseInt(jumlahkan)
+    console.log(totalHargaOngkirSend.value)
 }
 totalHargaPlusOngkir()
 
