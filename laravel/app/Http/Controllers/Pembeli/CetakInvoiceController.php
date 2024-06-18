@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers\Pembeli;
 
+use PDF;
+use App\Models\Transaksi;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use PDF;
-
 class CetakInvoiceController extends Controller
 {
-    public function generateInvoice()
+    public function generateInvoice(Transaksi $transaksi)
     {
-        $data = ['title' => 'Invoice', 'date' => date('m/d/Y'), 'invoice_id' => 123];
-        $pdf = PDF::loadView('pembeli.invoice', $data);
+        // return view('pembeli.invoice', [
+
+        //     'transaksi' => $transaksi
+        // ]);
+        $transaksi = ['transaksi' => $transaksi];
+        $pdf = PDF::loadView('pembeli.invoice', $transaksi);
         
         return $pdf->download('invoice.pdf');
     }
