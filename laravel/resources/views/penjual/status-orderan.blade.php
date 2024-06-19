@@ -29,11 +29,8 @@
         </div>
 
     </div>
-    <div class="flex justify-center">
-        <div>
-            <p>Batam, Kepulauan Riau </p>
-        </div>
-    </div>
+    
+        
     <div class="flex justify-center">
         <div>
             <p>Dalam Pengiriman</p>

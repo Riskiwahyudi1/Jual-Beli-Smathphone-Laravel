@@ -3,8 +3,8 @@
 <div class="pt-10 ps-40">
     
     <p class="ms-6 mt-12 text-2xl font-bold text-black">Produk</p>
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button>
-    <div class="flex justify-center mt-4"> <!-- Flexbox container untuk pusat -->
+    <button type="button" class=" ms-6 mt-5 text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Jual Produk</button>
+    <div class="flex justify-center "> <!-- Flexbox container untuk pusat -->
         <div class="relative w-1/3"> <!-- Kontainer input dan svg -->
             <input type="text" name="name" class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200" placeholder="Cari Produk ...">
             <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100"
@@ -16,6 +16,46 @@
             </svg>
         </div>
     </div>
+    <div class="flex justify-center gap-20 shadow-lg py-4 mt-6 mx-32 rounded-md">
+
+<div class="flex justify-center">
+    <div>
+        <p>Semua</p>
+    </div>
+</div>
+<div class="flex justify-center">
+    <div>
+        <p>Menunggu Konfirmasi</p>
+    </div>
+
+</div>
+
+    
+<div class="flex justify-center">
+    <div>
+        <p>Dalam Pengiriman</p>
+    </div>
+</div>
+<div class="flex justify-center">
+    <div>
+        <p>Selesai</p>
+    </div>
+</div>
+<div class="flex justify-center">
+    <div>
+        <p>Dibatalkan</p>
+    </div>
+</div>
+
+</div>
+<button type="submit" style="height: 25px;"
+        class="text-blue-700 absolute   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg
+            class="w-4 h-4 text-white dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg></button>
+        <p class="ms-6 mt-12 text-2xl font-bold text-black">Daftar Produk</p>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-8"> <!-- Tambahkan margin atas -->
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -25,7 +65,7 @@
                 <th scope="col" class=" py-3">Produk</th>
                 <th scope="col" class=" py-3">Harga</th>
                 <th scope="col" class=" py-3">Brand</th>
-                <th scope="col" class=" py-3">Stok</th>
+                <th scope="col" class=" py-3">Terjual</th>
                 <th scope="col" class=" py-3">Aksi</th>
             </tr>
         </thead>
@@ -43,8 +83,9 @@
                 <td class=" py-4">Vivo</td>
                 <td class=" py-4">3</td>
                 <td class=" py-4">
-                     <i class=" text-green-600 fas fa-plus"></i>
+                
                      <i class="text-yellow-500 ms-4 fas fa-pen"></i>
+                     
                     
                 </td>
             </tr>
