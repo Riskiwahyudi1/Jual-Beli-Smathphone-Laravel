@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Pembeli;
+namespace App\Http\Controllers\penjual;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class RegisterPembeliController extends Controller
+class RegisterPenjualController extends Controller
 {
     public function index() {
       
@@ -25,7 +24,7 @@ class RegisterPembeliController extends Controller
      ], [
          'confirmasi-password.same' => 'Password dan konfirmasi password tidak cocok!!', 
      ]);
-     $validasiData['role'] = "buyer";
+     $validasiData['role'] = "seller";
       User::create($validasiData);
 
       $request->session()->flash('berhasil', 'Berhasil registrasi.');
@@ -33,3 +32,4 @@ class RegisterPembeliController extends Controller
       return redirect('/login-user');
      }
 }
+

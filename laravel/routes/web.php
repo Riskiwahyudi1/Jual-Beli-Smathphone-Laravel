@@ -2,42 +2,43 @@
 use Illuminate\Support\Facades\Route;
 
 // pembeli
+use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\Pembeli\HomeController;
+use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Pembeli\DetailController;
+use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Pembeli\InvoiceController;
+use App\Http\Controllers\Admin\AdminBrandController;
+use App\Http\Controllers\Admin\AdminIklanController;
 use App\Http\Controllers\Pembeli\CheckoutController;
 use App\Http\Controllers\Pembeli\KeranjangController;
-use App\Http\Controllers\Pembeli\LoginPembeliController;
-use App\Http\Controllers\Pembeli\LayananPenggunaController;
-use App\Http\Controllers\Pembeli\RegisterPembeliController;
-use App\Http\Controllers\Pembeli\TransaksiController;
-use App\Http\Controllers\Pembeli\CetakInvoiceController;
 
 // admin
-use App\Http\Controllers\Admin\AdminTransaksiController;
-use App\Http\Controllers\Admin\HomeAdminController;
-use App\Http\Controllers\Admin\AdminBrandController;
+use App\Http\Controllers\Pembeli\TransaksiController;
+use App\Http\Controllers\Penjual\KelolaStokController;
 use App\Http\Controllers\Admin\AdminExpedisiController;
-use App\Http\Controllers\Admin\AdminIklanController;
+use App\Http\Controllers\Penjual\HomePenjualController;
 use App\Http\Controllers\Admin\AdminPengaduanController;
-use App\Http\Controllers\Admin\DataUserController;
+use App\Http\Controllers\Admin\AdminTransaksiController;
+use App\Http\Controllers\Pembeli\CetakInvoiceController;
 
 // Penjual
-use App\Http\Controllers\Penjual\StatusOrderanController;
-use App\Http\Controllers\Penjual\KelolaStokController;
-use App\Http\Controllers\Penjual\HomePenjualController;
 use App\Http\Controllers\Penjual\ProdukPenjualController;
-
-
+use App\Http\Controllers\Penjual\StatusOrderanController;
+use App\Http\Controllers\Pembeli\LayananPenggunaController;
+use App\Http\Controllers\Pembeli\RegisterPembeliController;
+use App\Http\Controllers\penjual\RegisterPenjualController;
 
 
 // Route Pembeli
 Route::get('/', function () { return redirect('/home');});
 Route::get('/register-pembeli', [RegisterPembeliController::class, 'index']);
 Route::post('/register-pembeli', [RegisterPembeliController::class, 'store']);
-Route::get('/login-pembeli', [LoginPembeliController::class, 'login'])->name('login');
-Route::post('/login-pembeli', [LoginPembeliController::class, 'authenticate']);
-Route::post('/logout', [LoginPembeliController::class, 'logout']);
+Route::get('/register-penjual', [RegisterPenjualController::class, 'index']);
+Route::post('/register-penjual', [RegisterPenjualController::class, 'store']);
+Route::get('/login-user', [LoginUserController::class, 'login'])->name('login');
+Route::post('/login-user', [LoginUserController::class, 'authenticate']);
+Route::post('/logout', [LoginUserController::class, 'logout']);
 Route::get('/home', [HomeController::class, 'home']);
 Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk'])->middleware('auth');
 Route::get('/keranjang', [KeranjangController::class, 'keranjang'])->middleware('auth');
@@ -59,7 +60,6 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 
 
 // route penjual 
-Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
@@ -74,3 +74,13 @@ Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
 
 
+
+// Protected routes for seller
+Route::middleware(['auth', 'role:seller'])->group(function () {
+    Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual'])->name('/home-penjual');
+});
+
+// Protected routes for buyer
+Route::middleware(['auth', 'role:buyer'])->group(function () {
+    Route::get('/home', [HomeController::class, 'home'])->name('/home');
+});

@@ -17,25 +17,38 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use Notifiable;
+
     protected $fillable = [
-        'name',
-        'username',
-        'email',
-        'password',
-    ];
-    protected $attributes = [
-        'name' => '',
+        'username', 'email', 'password','role'
     ];
 
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    
+
+    public function isSeller()
+    {
+        return $this->role === 'seller';
+    }
+
+    public function isBuyer()
+    {
+        return $this->role === 'buyer';
+    }
+
+    protected $attributes = [
+        'name' => '',
+        'role' => ''
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+   
 
     /**
      * The attributes that should be cast.
@@ -46,4 +59,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
 }

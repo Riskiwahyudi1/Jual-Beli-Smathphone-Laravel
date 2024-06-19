@@ -24,4 +24,10 @@
     <a href="#">
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-question mr-2"></i>Bantuan</button>
     </a>
+    <form action="/logout" method="post">
+        
+    @csrf
+    <button type="submit" class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"></i>Logout</button>
+            
+    </form>
 </nav>

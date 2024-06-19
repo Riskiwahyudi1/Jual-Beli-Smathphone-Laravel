@@ -96,6 +96,7 @@
 
                         <div>
                             <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
+                            <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
                             <small class="text-gray-500">Jumlah : {{ $transaksiList->first()->jumlah }} Pcs</small>
                             @if($transaksiList->count() > 1)
                                 <div class="hidden multi-transaksi">
