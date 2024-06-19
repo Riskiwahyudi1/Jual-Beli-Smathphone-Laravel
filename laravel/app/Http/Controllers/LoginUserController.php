@@ -12,7 +12,7 @@ class LoginUserController extends Controller
    public function login() {
       
       return view('login.login-user', [
-         "title" => "Login",
+         "title" => "Login User",
          
       ]);
    }
