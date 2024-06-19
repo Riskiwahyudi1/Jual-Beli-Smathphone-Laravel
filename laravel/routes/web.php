@@ -26,6 +26,7 @@ use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\Penjual\StatusOrderanController;
 use App\Http\Controllers\Penjual\KelolaStokController;
 use App\Http\Controllers\Penjual\HomePenjualController;
+use App\Http\Controllers\Penjual\ProdukPenjualController;
 
 
 
@@ -61,6 +62,7 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual']);
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
+Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
 
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
