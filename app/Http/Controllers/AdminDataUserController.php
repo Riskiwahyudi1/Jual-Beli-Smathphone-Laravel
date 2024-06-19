@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AdminDataUserController extends Controller
 {
     public function AdminDataUser(){
-        return view('/admin/Admin-data-user',[
+        return view('/admin/admin-data-user',[
             'title' => 'TeraPhone| Admin Data User',
         
         ]);
