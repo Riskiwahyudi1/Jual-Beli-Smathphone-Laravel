@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<p class="ms-6 mt-12 text-2xl font-bold text-black gap-6">Daftar Brand</p>
+<p class="ms-6 mt-12 text-2xl font-bold text-black gap-6">Daftar Expedisi</p>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -37,10 +37,10 @@
                 No
             </th>
             <th scope="col" class="px-6 py-3">
-                Id Brand
+                Id Expedisi
             </th>
             <th scope="col" class="px-6 py-3">
-                Nama Brand
+                Nama Expedisi
             </th>
             <th scope="col" class="px-6 py-3">
                 Tanggal Ditambahkan
@@ -59,7 +59,7 @@
                 1235234
             </td>
             <td class="px-6 py-4">
-                Samsung sungA
+                J&T
             </td>
             <td class="px-6 py-4">
                 14-06-2024

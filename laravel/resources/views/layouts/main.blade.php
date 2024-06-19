@@ -15,15 +15,16 @@
     @if ($title === 'Kategori' || $title === "Home" || $title === "Brand")
          @include('partials.navbar')
     
-     @elseif($title !== 'Kategori' && $title !== "Home" && $title !== "Brand" && $title !== "Login" && $title !== "Register Pembeli" )
+     @elseif($title !== 'Kategori' && $title !== "Home" && $title !== "Brand" && $title !== "Login" && $title !== "Register Pembeli"  )
         <div class="flex justify-star mt-1 mb-6">
-            <a href="/home" class="font-semibold mt-4 ms-6 mx-2">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">{{ $title }}</span></a>
+            <a href="/home" class="font-semibold mt-4 ms-6 mx-2  z-20">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">{{ $title }}</span></a>
         </div> 
         @endif
         @yield('container')
     @if($title !== "Login" && $title !== "Register Pembeli" && $title !== "Riwayat Transaksi")
         @include('partials.footer')
     @endif
+    <a href="/layanan-pengguna"><i class="fas fa-headset right-2 bottom-2 text-blue2 font-bold text-3xl fixed"></i></a>
 </body>
 <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
 <script src="{{ asset('scripts/pembeli.js') }}"></script>

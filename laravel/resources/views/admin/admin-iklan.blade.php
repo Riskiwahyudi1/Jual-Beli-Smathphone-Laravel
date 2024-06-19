@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<p class="ms-6 mt-12 text-2xl font-bold text-black gap-6">Daftar Brand</p>
+<p class="ms-6 mt-12 text-2xl font-bold text-black gap-6">Daftar Iklan</p>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -37,13 +37,19 @@
                 No
             </th>
             <th scope="col" class="px-6 py-3">
-                Id Brand
+                Id Produk
             </th>
             <th scope="col" class="px-6 py-3">
-                Nama Brand
+                Produk
             </th>
             <th scope="col" class="px-6 py-3">
-                Tanggal Ditambahkan
+                Harga
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Penjual
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Jumlah
             </th>
             <th scope="col" class="px-6 py-3">
                 Aksi
@@ -62,11 +68,16 @@
                 Samsung sungA
             </td>
             <td class="px-6 py-4">
-                14-06-2024
+                2.300.000
+            </td>
+            <td class="px-6 py-4">
+                Teraphone
+            </td>
+            <td class="px-6 py-4">
+                200
             </td>
             <td class="px-6 py-4">   
-            <button><i class="text-yellow-500 ms-4 fas fa-pen"></i></button>
-            <button><i class="fas fa-solid fa-trash text-red-600 ms-2"></i></button>
+            <button class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300  rounded-full text-md px-1 py-1 me-2 mb-2 dark:focus:ring-yellow-900 font-bold"><i class="fas fa-exclamation"></i></button>
             </td>
         </tr>
     </tbody>

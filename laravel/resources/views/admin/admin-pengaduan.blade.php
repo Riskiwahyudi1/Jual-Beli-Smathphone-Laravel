@@ -23,12 +23,12 @@
     </div>
     <div class="flex justify-center">
         <div>
-            <p>Pengaduan</p>
+            <p>Pesan</p>
         </div>
     </div>
 </div>
 
-<p class="ms-6 mt-12 text-2xl font-bold text-black gap-6">Daftar Brand</p>
+<p class="ms-6 mt-12 text-2xl font-bold text-black gap-6">Daftar Pengaduan</p>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -37,13 +37,16 @@
                 No
             </th>
             <th scope="col" class="px-6 py-3">
-                Id Brand
+                Nama
             </th>
             <th scope="col" class="px-6 py-3">
-                Nama Brand
+                Kategori User
             </th>
             <th scope="col" class="px-6 py-3">
-                Tanggal Ditambahkan
+                Email
+            </th>
+            <th scope="col" class="px-6 py-3">
+                Jenis Pengaduan
             </th>
             <th scope="col" class="px-6 py-3">
                 Aksi
@@ -56,17 +59,19 @@
                 1
             </td>
             <td class="px-6 py-4">
-                1235234
+                Budire
             </td>
             <td class="px-6 py-4">
-                Samsung sungA
+                Pembeli
             </td>
             <td class="px-6 py-4">
-                14-06-2024
+                Budire@gmail.com
+            </td>
+            <td class="px-6 py-4">
+                Masalah Akun
             </td>
             <td class="px-6 py-4">   
-            <button><i class="text-yellow-500 ms-4 fas fa-pen"></i></button>
-            <button><i class="fas fa-solid fa-trash text-red-600 ms-2"></i></button>
+            <button class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300  rounded-full text-md px-1 py-1 me-2 mb-2 dark:focus:ring-yellow-900 font-bold"><i class="fas fa-exclamation"></i></button>
             </td>
         </tr>
     </tbody>
