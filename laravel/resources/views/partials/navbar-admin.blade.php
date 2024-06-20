@@ -25,3 +25,4 @@
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-list mr-2"></i>Lainnya</button>
     </a>
 </nav>
+
