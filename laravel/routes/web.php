@@ -39,7 +39,7 @@ Route::post('/register-penjual', [RegisterPenjualController::class, 'store']);
 Route::get('/login-user', [LoginUserController::class, 'login'])->name('login');
 Route::post('/login-user', [LoginUserController::class, 'authenticate']);
 Route::post('/logout', [LoginUserController::class, 'logout']);
-Route::get('/home', [HomeController::class, 'home']);
+Route::get('/home', [HomeController::class, 'home'])->name('/home');
 Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk'])->middleware('auth');
 Route::get('/keranjang', [KeranjangController::class, 'keranjang'])->middleware('auth');
 Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
@@ -75,12 +75,9 @@ Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan
 
 
 
-// Protected routes for seller
+// login role user penjual dan pembeli
 Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual'])->name('/home-penjual');
 });
 
-// Protected routes for buyer
-Route::middleware(['auth', 'role:buyer'])->group(function () {
-    Route::get('/home', [HomeController::class, 'home'])->name('/home');
-});
+

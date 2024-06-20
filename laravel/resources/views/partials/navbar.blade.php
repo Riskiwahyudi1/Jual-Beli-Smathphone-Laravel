@@ -62,7 +62,7 @@
             
             @else
             <div class="mt-2">
-                <a href="/login-pembeli" class="text-blue-600 bg-white hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-300 font-bold rounded-xl text-sm px-5 py-2 text-center me-2 mb-2">Login</a>                 
+                <a href="/login-user" class="text-blue-600 bg-white hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-300 font-bold rounded-xl text-sm px-5 py-2 text-center me-2 mb-2">Login</a>                 
                 <a href="/register-pembeli" class="text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-bold rounded-xl text-sm px-5 py-2 text-center me-2 mb-2">Register</a>                 
             </div>
             @endauth
