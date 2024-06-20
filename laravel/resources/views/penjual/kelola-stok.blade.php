@@ -3,9 +3,10 @@
 <div class="pt-10 ps-40">
     
     <p class="ms-6 mt-12 text-2xl font-bold text-black">Kelola Stok</p>
+    
 
-    <div class="flex justify-center mt-4"> <!-- Flexbox container untuk pusat -->
-        <div class="relative w-1/3"> <!-- Kontainer input dan svg -->
+    <div class="flex justify-center mt-4"> 
+        <div class="relative w-1/3"> 
             <input type="text" name="name" class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200" placeholder="Cari Produk ...">
             <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100"
                 x="10px" y="10px" viewBox="0 0 56.966 56.966"
@@ -16,7 +17,7 @@
             </svg>
         </div>
     </div>
-
+<div><p class="ms-6 mt-12 text-xl font-bold text-black">Hampir Habis</p></div>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-8"> <!-- Tambahkan margin atas -->
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
