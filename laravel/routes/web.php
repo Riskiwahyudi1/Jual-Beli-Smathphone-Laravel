@@ -30,6 +30,7 @@ use App\Http\Controllers\Penjual\StatusOrderanController;
 use App\Http\Controllers\Pembeli\LayananPenggunaController;
 use App\Http\Controllers\Pembeli\RegisterPembeliController;
 use App\Http\Controllers\penjual\RegisterPenjualController;
+use App\Http\Controllers\penjual\LayananPenggunaPenjualController;
 
 
 // Route Pembeli
@@ -66,6 +67,7 @@ Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
 Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'store']);
+Route::get('/layanan-pengguna', [LayananPenggunaPenjualController::class, 'layananPengguna']);
 
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
