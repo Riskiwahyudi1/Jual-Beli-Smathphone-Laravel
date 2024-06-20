@@ -203,7 +203,7 @@
                                     <div class="flex my-2">
                                         <img class="h-8 w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                         <div>
-                                            <p class="ms-1 font-semibold truncate w-96">{{ $transaksi->produk->nama_produk }}</p>
+                                            <p class="ms-1 font-semibold ">{{ $transaksi->produk->nama_produk }}</p>
                                             <small class="ms-1">Jumlah : <span class="text-blue2">{{ $transaksi->jumlah }} Pcs</span> </small><br>
                                             @php
                                                 $hitungDiskon = $transaksi->produk->diskon / 100 * $transaksi->produk->harga;
