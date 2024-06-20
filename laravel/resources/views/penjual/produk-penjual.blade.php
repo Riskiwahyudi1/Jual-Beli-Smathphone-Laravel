@@ -84,10 +84,12 @@
                 <td class=" py-4">3</td>
                 <td class=" py-4">
                 
-                <i class="text-yellow-500 ms-4 fas fa-pen" style="color: blue;"></i>
-                     <i class="fas fa-trash mr-2" style="color: red;"></i>
-                     <button type="button"
-                            class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300  rounded-full text-md px-3  py-1 me-2 mb-2 dark:focus:ring-yellow-900 font-bold">!</button>
+                <i class="text-yellow-500 ms-4 fas fa-pen" style="color: blue; margin-right: 10px;"></i>
+                <i class="fas fa-trash mr-2" style="color: red; margin-right: 10px;"></i>
+                <button type="button"
+                 class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 rounded-full text-sm px-2 py-0.5 me-2 mb-2 dark:focus:ring-yellow-900 font-bold" 
+                 style="margin-right: 10px;">!</button>
+
                     
                 </td>
             </tr>
