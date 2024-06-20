@@ -16,14 +16,15 @@ use App\Http\Controllers\Pembeli\KeranjangController;
 // admin
 use App\Http\Controllers\Pembeli\TransaksiController;
 use App\Http\Controllers\Penjual\KelolaStokController;
+use App\Http\Controllers\Admin\AdminDataUserController;
 use App\Http\Controllers\Admin\AdminExpedisiController;
 use App\Http\Controllers\Penjual\HomePenjualController;
 use App\Http\Controllers\Admin\AdminPengaduanController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Pembeli\CetakInvoiceController;
-use App\Http\Controllers\Admin\AdminDataUserController;
 
 // Penjual
+use App\Http\Controllers\penjual\TambahProdukController;
 use App\Http\Controllers\Penjual\ProdukPenjualController;
 use App\Http\Controllers\Penjual\StatusOrderanController;
 use App\Http\Controllers\Pembeli\LayananPenggunaController;
@@ -64,6 +65,7 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
+Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'store']);
 
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
