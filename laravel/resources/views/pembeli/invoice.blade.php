@@ -60,6 +60,7 @@
         .invoice-box table tr.total td:nth-child(2) {
             border-top: 2px solid #eee;
             font-weight: bold;
+            width: 50%
         }
         .product-quantity {
             color: #666;
@@ -187,7 +188,7 @@
             <tr class="total">
                 <td></td>
                 <td>
-                   Total Transaksi: Rp. {{ number_format($totalTransaksi, 0, ',', '.') }}
+                   Total Transaksi:   Rp. {{ number_format($totalTransaksi, 0, ',', '.') }}
                 </td>
             </tr>
         </table>
