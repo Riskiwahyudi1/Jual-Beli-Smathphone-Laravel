@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\penjual;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -9,7 +10,7 @@ class RegisterPenjualController extends Controller
 {
     public function index() {
       
-        return view('register.register-pembeli', [
+        return view('register.register-penjual', [
            "title" => "Register Pembeli",
           
         ]);

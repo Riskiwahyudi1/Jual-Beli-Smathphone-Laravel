@@ -66,7 +66,9 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
-Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'store']);
+Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'index'])->name('/tambah-produk');
+Route::resource('/crud-produk', TambahProdukController::class);
+
 Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
 
 // route admin
