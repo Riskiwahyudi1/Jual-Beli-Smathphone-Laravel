@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class LayananPenggunaPenjualController extends Controller
 {
-    public function layananPengguna(){
-        return view('penjual.layanan-pengguna',[
-            'title' => 'Layanan Pengguna'
+    public function layananPenggunaPenjual(){
+        return view('penjual.layanan-pengguna-penjual',[
+            'title' => 'Layanan Pengguna Penjual'
         ]);
     }
 }

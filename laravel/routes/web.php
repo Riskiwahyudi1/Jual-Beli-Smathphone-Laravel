@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminIklanController;
 use App\Http\Controllers\Pembeli\CheckoutController;
 use App\Http\Controllers\Pembeli\KeranjangController;
+use App\Http\Controllers\Pembeli\LayananPenggunaController;
 
 // admin
 use App\Http\Controllers\Pembeli\TransaksiController;
@@ -27,7 +28,6 @@ use App\Http\Controllers\Pembeli\CetakInvoiceController;
 use App\Http\Controllers\penjual\TambahProdukController;
 use App\Http\Controllers\Penjual\ProdukPenjualController;
 use App\Http\Controllers\Penjual\StatusOrderanController;
-use App\Http\Controllers\Pembeli\LayananPenggunaController;
 use App\Http\Controllers\Pembeli\RegisterPembeliController;
 use App\Http\Controllers\penjual\RegisterPenjualController;
 use App\Http\Controllers\penjual\LayananPenggunaPenjualController;
@@ -67,7 +67,7 @@ Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
 Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'store']);
-Route::get('/layanan-pengguna', [LayananPenggunaPenjualController::class, 'layananPengguna']);
+Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
 
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
@@ -84,5 +84,3 @@ Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan
 Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual'])->name('/home-penjual');
 });
-
-
