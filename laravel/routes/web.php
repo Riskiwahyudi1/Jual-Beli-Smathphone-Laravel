@@ -23,6 +23,7 @@ use App\Http\Controllers\Penjual\HomePenjualController;
 use App\Http\Controllers\Admin\AdminPengaduanController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Pembeli\CetakInvoiceController;
+use App\Http\Controllers\Admin\AdminProdukController;
 
 // Penjual
 use App\Http\Controllers\penjual\TambahProdukController;
@@ -79,6 +80,8 @@ Route::get('/admin-brand', [AdminBrandController::class, 'adminbrand']);
 Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi']);
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
+Route::get('/admin-produk', [AdminProdukController::class, 'adminProduk']);
+
 
 
 
