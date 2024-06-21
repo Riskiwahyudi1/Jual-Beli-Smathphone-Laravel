@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Penjual;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomePenjualController extends Controller
 {
@@ -21,7 +22,8 @@ class HomePenjualController extends Controller
 
 
     
-    // $userId = Auth::id();
+    $userId = Auth::id();
+    $user = Auth::user();
     $pembeliList = Transaksi::distinct()->pluck('user_id');
     $produkTransaksi = [];
     
@@ -29,7 +31,7 @@ class HomePenjualController extends Controller
         $transaksiList = Transaksi::
             select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran') // Memastikan kolom yang tepat digunakan
             ->where('user_id', $pembeliList)
-            // ->where('penjual', $penjual)
+            ->where('penjual', $user->username)
             ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status', 'bukti_pembayaran')
             ->latest()
             ->get()
@@ -38,12 +40,19 @@ class HomePenjualController extends Controller
             if ($transaksiList->isNotEmpty()) {
                 $produkTransaksi[$pembeli] = $transaksiList;
             }
+            
+            $jumlahTransaksi = 0;
+            foreach ($produkTransaksi as $penjual => $transaksiListByTime) {
+                foreach ($transaksiListByTime as $createdAt => $transaksiList) {
+                    $jumlahTransaksi = is_array($transaksiList) ? $transaksiList[0] : $transaksiList->first();
+                }
+            }
         }
         
        
         return view('penjual.home-penjual', [
             'title' => 'Home Penjual',
-            'totalTransaksi' => $totalTransaksi,
+            'totalTransaksi' => $jumlahTransaksi,
             'menungguPembayaran' => $menungguPembayaran,
             'dikemas' => $dikemas,
             'dikirim' => $dikirim,

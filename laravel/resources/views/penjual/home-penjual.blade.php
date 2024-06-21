@@ -8,7 +8,7 @@
                 <i class="fas fa-shopping-bag fa-3x text-blue2"></i>
                 <div>
                     <p class="text-xl font-bold">Total Order</p>
-                    <p class="text-3xl ms-6 font-bold">{{ $totalTransaksi->count() }}</p>
+                    <p class="text-3xl ms-6 font-bold">{{ $totalTransaksi }}</p>
                 </div>
             </div>
         </div>
