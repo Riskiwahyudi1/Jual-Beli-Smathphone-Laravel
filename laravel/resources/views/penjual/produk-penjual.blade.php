@@ -13,8 +13,8 @@
             <select id="countries"
                     class="bg-blue2 border border-blue2 text-white text-sm rounded-lg focus:ring-blue2 focus:border-blue2 block w-full p-2.5 dark:bg-blue2 dark:border-blue2 dark:placeholder-blue2 dark:text-white dark:focus:ring-blue2 dark:focus:border-blue2 ">
                     <option selected>Konfirmasi</option>
-                    <option value="US">Penjual</option>
-                    <option value="CA">Pembeli</option>
+                    <option value="US">Menunggu Verifikasi</option>
+                    <option value="CA">Terverifikasi</option>
                 </select>
             </div>
 
@@ -84,14 +84,16 @@
             <td class="px-6 py-4">
                 Admin
             </td>
-            <td class="px-6 py-4 flex">
-                <i class="text-yellow-500 fas fa-pen" style="color: blue; margin-right: 10px;"></i>
-                <i class="fas fa-trash" style="color: red; margin-right: 10px;"></i>
-                <button type="button"
-                    class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 rounded-full text-sm px-2 py-0.5 me-2 mb-2 dark:focus:ring-yellow-900 font-bold">
-                    !
-                </button>
-            </td>
+            
+            <td class="px-2 py-4 flex items-center justify-center">
+    <i class="text-yellow-500 fas fa-pen" style="color: blue; margin-right: 10px;"></i>
+    <i class="fas fa-trash" style="color: red; margin-right: 10px;"></i>
+    <button type="button"
+    class="px-2 rounded-full border-2 border-yellow-500 font-bold text-yellow-500">!</button>
+</button>
+
+</td>
+
         </tr>
     </tbody>
     </table>
