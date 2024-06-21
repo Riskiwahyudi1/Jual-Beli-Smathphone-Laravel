@@ -1,4 +1,4 @@
-@extends('layouts.main-admin')
+@extends('layouts.main-penjual')
 @section('container-penjual')
 <div class="pt-10 ps-40">
 
@@ -7,8 +7,6 @@
     <div class="flex justify-center mb-10"> <!-- Flexbox container untuk pusat -->
         <div>
 
-            <form class="max-w-sm mx-auto">
-            </form>
             <div class=""style="margin-right: 64px">
             <select id="countries"
                     class="bg-blue2 border border-blue2 text-white text-sm rounded-lg focus:ring-blue2 focus:border-blue2 block w-full p-2.5 dark:bg-blue2 dark:border-blue2 dark:placeholder-blue2 dark:text-white dark:focus:ring-blue2 dark:focus:border-blue2 ">
@@ -19,7 +17,7 @@
             </div>
 
         </div>
-        <div class="relative w-1/3 ms-10"> <!-- Kontainer input dan svg -->
+        <div class="relative w-1/3 ms-10"> 
             <input type="text" name="name"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
                 placeholder="Cari Produk ...">

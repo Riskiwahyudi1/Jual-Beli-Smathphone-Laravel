@@ -12,7 +12,7 @@
     <a href="home-penjual">
         <button class="px-4 py-2 ms-4 bg-blue2  mt-8 rounded-md text-white font-semibold"><i class="fas fa-landmark mr-2"></i>Beranda</button>
     </a>
-    <a href="#">
+    <a href="/produk-penjual">
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-box mr-2"></i>Produk</button>
     </a>
     <a href="/status-orderan">
