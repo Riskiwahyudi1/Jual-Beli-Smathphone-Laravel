@@ -2,21 +2,10 @@
 @section('container-penjual')
 <div class="pt-10 ps-40">
 
-    <p class="ms-6 mt-12 text-3xl font-bold text-black">Produk</p>
+    <p class="ms-6 mt-6 text-3xl font-bold text-black">Produk</p>
 
-    <div class="flex justify-center mb-10"> <!-- Flexbox container untuk pusat -->
-        <div>
-
-            <div class=""style="margin-right: 64px">
-            <select id="countries"
-                    class="bg-blue2 border border-blue2 text-white text-sm rounded-lg focus:ring-blue2 focus:border-blue2 block w-full p-2.5 dark:bg-blue2 dark:border-blue2 dark:placeholder-blue2 dark:text-white dark:focus:ring-blue2 dark:focus:border-blue2 ">
-                    <option selected>Konfirmasi</option>
-                    <option value="US">Menunggu Verifikasi</option>
-                    <option value="CA">Terverifikasi</option>
-                </select>
-            </div>
-
-        </div>
+    <div class="flex justify-star my-7 gap-56">
+        <button type="submit"  class="text-white bg-blue2 ms-10 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa-solid text-white mr-2 fa-circle-plus"></i>Tambah Produk</button>
         <div class="relative w-1/3 ms-10"> 
             <input type="text" name="name"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
@@ -29,8 +18,6 @@
             </svg>
         </div>
     </div>
-    {{-- <div><p class="ms-6 mt-12 text-xl font-bold text-black">Menunggu Konfirmasi</p></div> --}}
-
 
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -52,7 +39,7 @@
             Status
             </th>
             <th scope="col" class="px-6 py-3">
-                Jumlah
+                Terjual
             </th>
             <th scope="col" class="px-6 py-3">
                 Aksi
@@ -69,28 +56,26 @@
             <td class="px-6 py-4">
                 {{ $produk->id }}
             </td>
-            <td class="px-6 py-4">
-                {{ $produk->nama_produk }}
+            <td class="px-6 py-4 ">
+                <p class="truncate w-96">{{ $produk->nama_produk }}</p>
+                
             </td>
                 
             <td class="px-6 py-4">
-                Rp. {{ $produk->harga }}
+                Rp. {{ number_format($produk->harga, 0, ',', '.') }}
             </td>
             <td class="px-6 py-4">
                 Terverifikasi
             </td>
             <td class="px-6 py-4">
-                {{ $produk->stok }}
+                {{ $produk->terjual }}
             </td>
             
             <td class="px-2 py-4 flex items-center justify-center">
-    <i class="text-yellow-500 fas fa-pen" style="color: blue; margin-right: 10px;"></i>
-    <i class="fas fa-trash" style="color: red; margin-right: 10px;"></i>
-    <button type="button"
-    class="px-2 rounded-full border-2 border-yellow-500 font-bold text-yellow-500">!</button>
-</button>
-
-</td>
+                <i class="text-blue2 fas fa-pen mr-3"></i>
+                <i class="fa-regular fa-trash-can mr-3 text-red-600"></i>
+                <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation"></i>
+            </td>
 
         </tr>
         @endforeach
