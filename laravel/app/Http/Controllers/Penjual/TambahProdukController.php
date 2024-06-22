@@ -33,31 +33,32 @@ class TambahProdukController extends Controller
             'stok' => 'required|integer|min:0',
             'diskon' => 'nullable|integer|min:0|max:100',
             'brand' => 'nullable|string|max:255',
-            'foto.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Validasi untuk multiple files
+            'foto.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', 
         ]);
 
         // Proses upload file foto
         $fotoPaths = [];
-        if ($request->hasFile('fotos')) {
-            foreach ($request->file('fotos') as $file) {
+        if ($request->hasFile('foto')) {
+            foreach ($request->file('foto') as $file) {
                 $path = $file->store('public/images/foto_produk');
-                $fotoPaths[] = $path;
+                $fotoPaths[] = str_replace('public/', 'storage/', $path);
             }
-        }
+        } 
 
-        // Encode spesifikasi sebagai JSON
         $validatedData['spesifikasi'] = json_encode($validatedData['spesifikasi']);
-
-        // Tambahkan user_id dari authenticated user
+    
         $validatedData['user_id'] = auth()->id();
 
-        // Tambahkan path foto ke dalam data yang akan disimpan di database
-        $validatedData['foto'] = $fotoPaths;
+        $validatedData['foto'] = json_encode($fotoPaths);;
 
-        // Insert data ke database
-        Produk::create($validatedData);
+      
 
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan');
+        try {
+            Produk::create($validatedData);
+            return redirect()->back()->with('success', 'Produk berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Produk gagal ditambahkan: ' . $e->getMessage());
+        }
     }
 
     // public function show($id)
@@ -99,12 +100,4 @@ class TambahProdukController extends Controller
 }
 
 
-    // $produk = new Produk();
-    // $produk->nama = $validated['nama-produk'];
-    // $produk->harga = $validated['harga-produk'];
-    // $produk->kategori = $validated['kategori_id'];
-    // $produk->deskripsi = $validated['deskripsi-produk'];
-    // $produk->stok = $validated['stok-produk'];
-    // $produk->diskon = $validated['diskon-produk'];
-    // $produk->spesifikasi = json_encode($data);
-    // $produk->foto = 'tes';
+    

@@ -70,7 +70,7 @@
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                     <div class="font-bold text-white bg-blue2  text-sm px-4 absolute rounded-tl-lg rounded-br-lg py-2 lg:w-6/12">{{ $diskon->diskon }}% OFF</div>
                     <a href="/detail-produk/{{ $diskon->id . '-' . Str::slug($diskon->nama_produk) }}">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($diskon->foto)[0]) }}" alt="" />
+                        <img class="rounded-t-lg h-56 w-full" src="{{ json_decode($diskon->foto)[0] }}" alt="" />
                     </a>
                     <div class="p-5">
                         <a href="/detail-produk/{{ $diskon->id . '-' . Str::slug($diskon->nama_produk) }}">
@@ -163,7 +163,7 @@
                 @foreach ($cameraQuality->produk as $p)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                 <a href="#">
-                    <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($p->foto)[0]) }}" alt="" />
+                    <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($p->foto)[0])  }}" alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">

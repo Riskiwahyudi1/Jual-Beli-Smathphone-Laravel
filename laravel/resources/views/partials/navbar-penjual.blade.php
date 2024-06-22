@@ -1,4 +1,4 @@
-<nav class="flex justify-between py-3 shadow-md fixed w-full z-30 bg-white">
+<nav class="flex justify-between py-3 shadow-md fixed w-full z-20 bg-white">
     <div class="flex justify-star mx-5">
         <img src="{{ asset('images/imgRiski/Logo.png') }}" class="h-8 rounded-full " alt="Flowbite Logo" />
         <p class=" text-2xl font-bold text-blue2">eraPhone</p>
