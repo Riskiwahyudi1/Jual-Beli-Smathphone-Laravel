@@ -13,15 +13,9 @@ class TambahProdukController extends Controller
             'title' => 'Tambah Produk'
         ]);
     }
-    public function create()
-    {
-        // Tampilkan form untuk menambah produk baru
-        return view('produk.create');
-    }
 
     public function store(Request $request)
     {
-        // dd($request->all());
         // Validasi input
         $validatedData = $request->validate([
             'kategori_id' => 'required|exists:kategoris,id',

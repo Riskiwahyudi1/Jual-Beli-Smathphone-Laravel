@@ -29,7 +29,7 @@
             </svg>
         </div>
     </div>
-    <div><p class="ms-6 mt-12 text-xl font-bold text-black">Menunggu Konfirmasi</p></div>
+    {{-- <div><p class="ms-6 mt-12 text-xl font-bold text-black">Menunggu Konfirmasi</p></div> --}}
 
 
 
@@ -39,7 +39,7 @@
         <th scope="col" class="px-6 py-3">
                 No
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="">
                 Id Produk
             </th>
             <th scope="col" class="px-6 py-3">
@@ -49,7 +49,7 @@
                  Harga
             </th>
             <th scope="col" class="px-6 py-3">
-            Penjual
+            Status
             </th>
             <th scope="col" class="px-6 py-3">
                 Jumlah
@@ -60,27 +60,27 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($produks as $index => $produk)
+            
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td class="px-6 py-4">
-                1
+                {{ $index + 1 }}
             </td>
             <td class="px-6 py-4">
-                12345
-            </td>
-            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
-                <div class="pl-3">
-                    <div class="text-base font-semibold">Y22 4GB+128GB Metaverse Green</div>
-                </div>
-            </th>
-            <td class="px-6 py-4">
-                1.999.000 
+                {{ $produk->id }}
             </td>
             <td class="px-6 py-4">
-                Veronika
+                {{ $produk->nama_produk }}
+            </td>
+                
+            <td class="px-6 py-4">
+                Rp. {{ $produk->harga }}
             </td>
             <td class="px-6 py-4">
-                Admin
+                Terverifikasi
+            </td>
+            <td class="px-6 py-4">
+                {{ $produk->stok }}
             </td>
             
             <td class="px-2 py-4 flex items-center justify-center">
@@ -93,6 +93,8 @@
 </td>
 
         </tr>
+        @endforeach
+
     </tbody>
     </table>
 </div>

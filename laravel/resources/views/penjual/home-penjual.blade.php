@@ -17,7 +17,7 @@
                 <i class="fas fa-regular fa-clock fa-3x text-yellow-400"></i>
                 <div>
                     <p class="text-xl font-bold">Menunggu</p>
-                    <p class="text-3xl ms-6 font-bold">{{ $menungguPembayaran->count() }}</p>
+                    <p class="text-3xl ms-6 font-bold">{{ $menungguPembayaran }}</p>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <i class="fas fa-regular fa-box fa-3x text-purple-600"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Dikemas</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $dikemas->count() }}</p>
+                    <p class="text-3xl ms-5 font-bold">{{ $dikemas }}</p>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 <i class="fas fa-regular fa-paper-plane fa-3x text-blue-500"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Dikirim</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $dikirim->count() }}</p>
+                    <p class="text-3xl ms-5 font-bold">{{ $dikirim }}</p>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <i class="fas fa-check fa-3x text-green-700"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Selesai</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $selesai->count() }}</p>
+                    <p class="text-3xl ms-5 font-bold">{{ $selesai }}</p>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <i class="fas fa-ban fa-3x text-red-600"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Dibatalkan</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $dibatalkan->count() }}</p>
+                    <p class="text-3xl ms-5 font-bold">{{ $dibatalkan }}</p>
                 </div>
             </div>
         </div>
@@ -92,10 +92,9 @@
             @foreach ($transaksiListByTime as $createdAt => $transaksiList)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex justify-start">
-                        <img class="h-10 w-10 mr-4 ms-4" src="{{ asset('images/imgRiski/'. json_decode($transaksiList->first()->produk->foto)[0]) }}" alt="image description">
+                        <img class="h-10 w-10 mr-4 ms-4" src="{{ asset(json_decode($transaksiList->first()->produk->foto)[0]) }}" alt="image description">
 
                         <div>
-                            <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
                             <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
                             <small class="text-gray-500">Jumlah : {{ $transaksiList->first()->jumlah }} Pcs</small>
                             @if($transaksiList->count() > 1)
@@ -163,7 +162,7 @@
                                     <p class="text-md font-semibold">Produk :</p>
                                     @foreach ($transaksiList as $transaksi)
                                     <div class="flex my-2">
-                                        <img class="h-8 w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
+                                        <img class="h-8 w-8 mr-3" src="{{ asset(json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                         <div>
                                             <p class="ms-1 font-semibold">{{ $transaksi->produk->nama_produk }}</p>
                                             <small class="ms-1">Jumlah : <span class="text-blue2">{{ $transaksi->jumlah }} Pcs</span> </small><br>

@@ -16,6 +16,12 @@ return [
             'failed' => 'Email belum terdaftar!',
             'email' => 'Format email tidak sesuai!'
         ],
+        'foto.*' => [
+            'image' => 'Harap unggah file gambar (format: jpg, jpeg, png)',
+            'mimes' => 'Harap unggah file dengan format: :values',
+            'max' => 'Ukuran file tidak boleh lebih dari :max kilobytes',
+        ],
     ],
     
 ];
+

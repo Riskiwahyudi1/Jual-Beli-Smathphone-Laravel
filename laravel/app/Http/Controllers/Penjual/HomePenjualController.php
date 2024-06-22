@@ -39,12 +39,24 @@ class HomePenjualController extends Controller
             
             if ($transaksiList->isNotEmpty()) {
                 $produkTransaksi[$pembeli] = $transaksiList;
-            }
+            } 
             
+            // informasi card
             $jumlahTransaksi = 0;
+            $dikemas = 0;
+            $menungguPembayaran = 0;
+            $dikirim = 0;
+            $selesai = 0;
+            $dibatalkan = 0;
+
             foreach ($produkTransaksi as $penjual => $transaksiListByTime) {
                 foreach ($transaksiListByTime as $createdAt => $transaksiList) {
-                    $jumlahTransaksi = is_array($transaksiList) ? $transaksiList[0] : $transaksiList->first();
+                    $jumlahTransaksi += $transaksiList->count();
+                    $dikemas += $transaksiList->where('status', 'dikemas')->count();
+                    $menungguPembayaran += $transaksiList->where('status', 'menunggu-pembayaran')->count();
+                    $dikirim += $transaksiList->where('status', 'dikirim')->count();
+                    $selesai += $transaksiList->where('status', 'selesai')->count();
+                    $dibatalkan += $transaksiList->where('status', 'dibatalkan')->count();
                 }
             }
         }
@@ -52,6 +64,7 @@ class HomePenjualController extends Controller
        
         return view('penjual.home-penjual', [
             'title' => 'Home Penjual',
+            'active' => 'home-penjual',
             'totalTransaksi' => $jumlahTransaksi,
             'menungguPembayaran' => $menungguPembayaran,
             'dikemas' => $dikemas,

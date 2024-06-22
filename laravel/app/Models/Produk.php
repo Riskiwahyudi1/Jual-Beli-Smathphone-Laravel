@@ -31,7 +31,7 @@ class Produk extends Model
         // 'foto' => 'array', 
     ];
     protected $attributes = [
-        'terjual' => 0, // Nilai default untuk kolom 'terjual'
+        'terjual' => 0, 
     ];
     
     public function scopePopulerFilter($query, array $filters)

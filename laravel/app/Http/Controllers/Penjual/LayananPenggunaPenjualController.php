@@ -9,7 +9,8 @@ class LayananPenggunaPenjualController extends Controller
 {
     public function layananPenggunaPenjual(){
         return view('penjual.layanan-pengguna-penjual',[
-            'title' => 'Layanan Pengguna Penjual'
+            'title' => 'Layanan Pengguna Penjual',
+            'active' => 'layanan-pengguna-penjual',
         ]);
     }
 }
