@@ -101,7 +101,7 @@
                                 <div class="hidden multi-transaksi">
                                     @foreach ($transaksiList->slice(1) as $transaksi)
                                         <div class="flex mt-2">
-                                            <img class="h-auto w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
+                                            <img class="h-auto w-8 mr-3" src="{{ asset(json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                             <div>
                                                 <small>{{ $transaksi->produk->nama_produk }}</small><br>
                                                 <small class="text-gray-500 ms-1">Jumlah : {{ $transaksi->jumlah }} Pcs</small>

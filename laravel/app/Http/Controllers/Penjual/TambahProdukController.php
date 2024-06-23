@@ -56,12 +56,19 @@ class TambahProdukController extends Controller
         }
     }
 
-    // public function show($id)
-    // {
-    //     // Tampilkan detail produk dengan ID tertentu
-    //     $produk = Produk::findOrFail($id);
-    //     return view('produk.show', compact('produk'));
-    // }
+    public function show($id)
+    {
+        
+        $produk = Produk::findOrFail($id);
+        $spesifikasi = is_string($produk->spesifikasi) ? json_decode($produk->spesifikasi, true) : $produk->spesifikasi;
+        $fotos = json_decode($produk->foto);
+        return view('penjual.detail-produk-penjual', compact('produk'), [
+            'title' => 'Detail Produk',
+            'active' => 'detail-produk',
+            'spesifikasi' => $spesifikasi,
+            'fotos' => $fotos
+        ]);
+    }
 
     // public function edit($id)
     // {
@@ -84,9 +91,9 @@ class TambahProdukController extends Controller
     //     return redirect()->route('crud-produk.index')->with('success', 'Produk berhasil diperbarui');
     // }
 
+    // Hapus produk
     public function destroy($id)
     {
-        // Hapus produk dengan ID tertentu
         $produk = Produk::findOrFail($id);
         $produk->delete();
 

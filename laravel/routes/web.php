@@ -69,7 +69,6 @@ Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan'])
 Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual'])->name('/produk-penjual');
 Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'index'])->name('/tambah-produk');
 Route::resource('/crud-produk', TambahProdukController::class);
-
 Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
 
 // route admin
