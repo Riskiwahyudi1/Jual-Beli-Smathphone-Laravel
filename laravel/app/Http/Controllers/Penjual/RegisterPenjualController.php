@@ -31,6 +31,6 @@ class RegisterPenjualController extends Controller
       $request->session()->flash('berhasil', 'Berhasil registrasi.');
 
       return redirect('/login-user');
-     }
+    }
 }
 
