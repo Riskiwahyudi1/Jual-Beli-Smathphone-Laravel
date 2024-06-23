@@ -124,7 +124,7 @@
                                 <div class="hidden multi-transaksi">
                                     @foreach ($transaksiList->slice(1) as $transaksi)
                                         <div class="flex mt-2">
-                                            <img class="h-8 w-8 mr-3" src="{{ asset('images/imgRiski/'. json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
+                                            <img class="h-8 w-8 mr-3" src="{{ asset(json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                             <div>
                                                 <p class="text-xs truncate w-56">{{ $transaksi->produk->nama_produk }}</p><br>
                                                 <small class="text-gray-500 ms-1">Jumlah : {{ $transaksi->jumlah }} Pcs</small>
@@ -278,7 +278,7 @@
                                 
                                 </div>
                                 <!-- Modal body -->
-                                <p class="text-red-500 py-2 mx-5"> Lakukan pembayaran ke rekening berikut, pastikan nama penerima sesuai!!</p>
+                                <p class="text-red-600 font-semibold py-2 mx-5"> Lakukan pembayaran ke rekening berikut, pastikan nama penerima sesuai!!</p>
                                 <select name="rekening" id="rekening" class="w-full mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                     <option value="" disabled selected>--Pilih Rekening Penjual--</option>
                                     <option value="BCA - 1234567890">BCA - 1234567890 - Riski Wahyudi</option>
@@ -288,6 +288,7 @@
                                 </select>
                                 <form action="riwayat-transaksi" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    <p class="font-bold mt-4 mb-2">Upload bukti pembayaran :</p>
                                     <input type="file" name="bukti-transaksi">
                                     @foreach ($transaksiList as $transaksi)
                                     <input type="hidden" name="status-transaksi[]" value="menunggu-verifikasi">
@@ -310,7 +311,6 @@
                             
                             <img class="h-full w-full mr-3" src="{{ asset('images/buktiPembayaran/'. $transaksiList->first()->bukti_pembayaran) }}" alt="image description">
                                 
-                            
                         </div>
                     </div>
                 </div>

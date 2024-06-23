@@ -66,7 +66,7 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 // route penjual 
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
-Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
+Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual'])->name('/produk-penjual');
 Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'index'])->name('/tambah-produk');
 Route::resource('/crud-produk', TambahProdukController::class);
 

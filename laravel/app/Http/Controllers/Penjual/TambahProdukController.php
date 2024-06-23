@@ -10,7 +10,8 @@ class TambahProdukController extends Controller
 {
     public function index(){
         return view('penjual.tambah-produk-penjual',[
-            'title' => 'Tambah Produk'
+            'title' => 'Tambah Produk',
+            'active' => 'tambah-produk-penjual'
         ]);
     }
 
@@ -83,14 +84,14 @@ class TambahProdukController extends Controller
     //     return redirect()->route('crud-produk.index')->with('success', 'Produk berhasil diperbarui');
     // }
 
-    // public function destroy($id)
-    // {
-    //     // Hapus produk dengan ID tertentu
-    //     $produk = Produk::findOrFail($id);
-    //     $produk->delete();
+    public function destroy($id)
+    {
+        // Hapus produk dengan ID tertentu
+        $produk = Produk::findOrFail($id);
+        $produk->delete();
 
-    //     return redirect()->route('crud-produk.index')->with('success', 'Produk berhasil dihapus');
-    // }
+        return redirect()->route('/produk-penjual')->with('success', 'Produk berhasil dihapus');
+    }
 }
 
 

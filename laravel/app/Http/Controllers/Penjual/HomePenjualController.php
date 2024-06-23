@@ -12,12 +12,12 @@ class HomePenjualController extends Controller
     public function homePenjual(){
         
 
-        $totalTransaksi = Transaksi::with('produk')->get();
-        $menungguPembayaran = Transaksi::with('produk')->where('status', 'menunggu-pembayaran')->get();
-        $dikemas = Transaksi::with('produk')->where('status', 'dikemas')->get();
-        $dikirim = Transaksi::with('produk')->where('status', 'dikirim')->get();
-        $selesai = Transaksi::with('produk')->where('status', 'selesai')->get();
-        $dibatalkan = Transaksi::with('produk')->where('status', 'dibatalkan')->get();
+        // $totalTransaksi = Transaksi::with('produk')->get();
+        // $menungguPembayaran = Transaksi::with('produk')->where('status', 'menunggu-pembayaran')->get();
+        // $dikemas = Transaksi::with('produk')->where('status', 'dikemas')->get();
+        // $dikirim = Transaksi::with('produk')->where('status', 'dikirim')->get();
+        // $selesai = Transaksi::with('produk')->where('status', 'selesai')->get();
+        // $dibatalkan = Transaksi::with('produk')->where('status', 'dibatalkan')->get();
         // $transaksiTerbaru = Transaksi::paginate(10);
 
 
@@ -43,20 +43,28 @@ class HomePenjualController extends Controller
             
             // informasi card
             $jumlahTransaksi = 0;
-            $dikemas = 0;
-            $menungguPembayaran = 0;
-            $dikirim = 0;
-            $selesai = 0;
-            $dibatalkan = 0;
+            $jumlahTransaksiDikemas = 0;
+            $jumlahTransaksiMenunggu = 0;
+            $jumlahTransaksiDikirim = 0;
+            $jumlahTransaksiSelesai = 0;
+            $jumlahTransaksiDibatalkan = 0;
 
             foreach ($produkTransaksi as $penjual => $transaksiListByTime) {
                 foreach ($transaksiListByTime as $createdAt => $transaksiList) {
-                    $jumlahTransaksi += $transaksiList->count();
-                    $dikemas += $transaksiList->where('status', 'dikemas')->count();
-                    $menungguPembayaran += $transaksiList->where('status', 'menunggu-pembayaran')->count();
-                    $dikirim += $transaksiList->where('status', 'dikirim')->count();
-                    $selesai += $transaksiList->where('status', 'selesai')->count();
-                    $dibatalkan += $transaksiList->where('status', 'dibatalkan')->count();
+                    $jumlahTransaksi ++;
+                    if ($transaksiList->where('status', 'dikemas')->isNotEmpty()) {
+                        $jumlahTransaksiDikemas++;
+                    }else if($transaksiList->where('status', 'menunggu-pembayaran')->isNotEmpty()){
+                        $jumlahTransaksiMenunggu++;
+                    }else if($transaksiList->where('status', 'dikirim')->isNotEmpty()){
+                        $jumlahTransaksiDikirim++;
+                    }else if($transaksiList->where('status', 'selesai')->isNotEmpty()){
+                        $jumlahTransaksiSelesai++;
+                    }else if($transaksiList->where('status', 'dibatalkan')->isNotEmpty()){
+                        $jumlahTransaksiDibatalkan++;
+                    }
+                   
+                    
                 }
             }
         }
@@ -66,11 +74,11 @@ class HomePenjualController extends Controller
             'title' => 'Home Penjual',
             'active' => 'home-penjual',
             'totalTransaksi' => $jumlahTransaksi,
-            'menungguPembayaran' => $menungguPembayaran,
-            'dikemas' => $dikemas,
-            'dikirim' => $dikirim,
-            'selesai' => $selesai,
-            'dibatalkan' => $dibatalkan,
+            'menungguPembayaran' => $jumlahTransaksiMenunggu,
+            'dikemas' => $jumlahTransaksiDikemas,
+            'dikirim' => $jumlahTransaksiDikirim,
+            'selesai' => $jumlahTransaksiSelesai,
+            'dibatalkan' => $jumlahTransaksiDibatalkan,
             'transaksis' => $produkTransaksi,
 
         ]);
