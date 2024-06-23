@@ -86,7 +86,7 @@
             </td>
             
             <td class="px-2 py-4 flex items-center justify-center">
-                <i class="text-blue2 fas fa-pen mr-3"></i>    
+                <a href="{{ route('crud-produk.edit', $produk->id) }}"><i class="text-blue2 fas fa-pen mr-3"></i> </a>   
                 <button type="submit" data-modal-target="popup-modal{{ $produk->id}}" data-modal-toggle="popup-modal{{ $produk->id}}"><i class="fa-regular fa-trash-can mr-3 text-red-600"></i></button>
                 <a href="{{ route('crud-produk.show', $produk->id) }}"><i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation"></i></a>
             </td>

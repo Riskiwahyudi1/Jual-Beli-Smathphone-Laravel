@@ -44,7 +44,7 @@
             <p class="font-semibold">Brand Produk : <span class="font-normal">{{ $produk->brand}}</span></p>
             <p class="font-semibold">Stok Saat Ini : <span class="font-normal">{{ $produk->stok }} pcs</span></p>
             <p class="font-semibold">Jumlah Terjual : <span class="font-normal">{{ $produk->terjual }} pcs</span></p>
-            <p class="font-semibold">Diskon : <span class="font-normal">{{ $produk->diskon }} pcs</span></p>
+            <p class="font-semibold">Diskon : <span class="font-normal">{{ $produk->diskon }} %</span></p>
         </div>
         </div>
         <hr class="bg-gray-600 border-2 my-3">
