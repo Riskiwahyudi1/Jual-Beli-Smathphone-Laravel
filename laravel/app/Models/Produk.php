@@ -11,7 +11,28 @@ class Produk extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'terjual'];
+    protected $fillable = [
+        'kategori_id',
+        'user_id',
+        'nama_produk',
+        'deskripsi',
+        'spesifikasi',
+        'harga',
+        'stok',
+        'terjual',
+        'diskon',
+        'brand',
+        'foto',
+    ];
+
+    protected $casts = [
+        'spesifikasi' => 'array', 
+        // 'foto' => 'array', 
+    ];
+    protected $attributes = [
+        'terjual' => 0, 
+    ];
     
     public function scopePopulerFilter($query, array $filters)
     {
@@ -47,4 +68,6 @@ class Produk extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    
 }

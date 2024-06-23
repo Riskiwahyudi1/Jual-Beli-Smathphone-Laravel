@@ -6,17 +6,12 @@
         <p class="font-bold">Detail Penerima :</p>
         <form action="konfirmasi-checkout" method="post">
             @csrf
-            {{-- <div class="grid my-2 md:grid-cols-2"> --}}
-                <div >
-                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Depan</label>
-                    <input type="text" name="nama-depan" class="bg-gray-50 border w-11/12 my-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Lengkap Anda" required />
-                </div>
-                {{-- <div>
-                    <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Belakang</label>
-                    <input type="text" name="nama-belakang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Belakang Anda" required />
-                </div> --}}
-                
-            {{-- </div> --}}
+            
+            <div >
+                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama lengkap</label>
+                <input type="text" name="nama-depan" class="bg-gray-50 border w-11/12 my-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Lengkap Anda" required />
+            </div>
+            
             <div class="mb-2">
                 <label for="Alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat Lengkap</label>
                 <textarea name="alamat" rows="4" class="block p-2.5 w-11/12 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Contoh : Jalan Merdeka No. 123, perumahan merdeka blok A No 05, Kelurahan Kebon Jeruk, Kecamatan Kebon Jeruk" required></textarea>
@@ -55,7 +50,7 @@
         <p class="font-bold mb-4">Rincian Produk :</p>
         @foreach($products as $product)
         <div class="flex justify-star gap-4 mb-2">
-            <img class="h-auto w-14" src="{{ asset('images/imgRiski/'. json_decode($product->foto)[0]) }}" alt="image description">
+            <img class="h-auto w-14" src="{{ asset(json_decode($product->foto)[0]) }}" alt="image description">
             <div>
                 <p class="font-bold w-96 overflow-hidden text-ellipsis whitespace-nowrap">{{ $product->nama_produk }}</p>
                 <p class="font-bold "><small class="text-gray-500 jumlah-produk">{{ $jumlah[$product->id]}} pcs / </small>  <span class="text-blue2">Rp. <span class="checkout-harga-produk">{{  number_format($product->harga - $product->diskon / 100 * $product->harga , 0, ',', '.') }}</span></span></p>
@@ -68,7 +63,7 @@
             </div>
             <hr class="my-2 mr-28">
             @endforeach
-            <small class="text-blue2 hover:cursor-pointer ">Tampilkan Semua...</small>
+            {{-- <small class="text-blue2 hover:cursor-pointer ">Tampilkan Semua...</small> --}}
             <div class="mt-4">
             
                 <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

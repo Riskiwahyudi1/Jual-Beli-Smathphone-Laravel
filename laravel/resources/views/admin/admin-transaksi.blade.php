@@ -9,15 +9,7 @@
 
             <form class="max-w-sm mx-auto">
             </form>
-            <div class=""style="margin-right: 64px">
-            <select id="countries"
-                    class="bg-blue2 border border-blue2 text-white text-sm rounded-lg focus:ring-blue2 focus:border-blue2 block w-full p-2.5 dark:bg-blue2 dark:border-blue2 dark:placeholder-blue2 dark:text-white dark:focus:ring-blue2 dark:focus:border-blue2 ">
-                    <option selected>Semua</option>
-                    <option value="US">Penjual</option>
-                    <option value="CA">Pembeli</option>
-                </select>
-            </div>
-
+            
         </div>
         <div class="relative w-1/3 ms-10"> <!-- Kontainer input dan svg -->
             <input type="text" name="name"

@@ -70,7 +70,7 @@
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                     <div class="font-bold text-white bg-blue2  text-sm px-4 absolute rounded-tl-lg rounded-br-lg py-2 lg:w-6/12">{{ $diskon->diskon }}% OFF</div>
                     <a href="/detail-produk/{{ $diskon->id . '-' . Str::slug($diskon->nama_produk) }}">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($diskon->foto)[0]) }}" alt="" />
+                        <img class="rounded-t-lg h-56 w-full" src="{{ json_decode($diskon->foto)[0] }}" alt="" />
                     </a>
                     <div class="p-5">
                         <a href="/detail-produk/{{ $diskon->id . '-' . Str::slug($diskon->nama_produk) }}">
@@ -163,7 +163,7 @@
                 @foreach ($cameraQuality->produk as $p)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                 <a href="#">
-                    <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($p->foto)[0]) }}" alt="" />
+                    <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($p->foto)[0])  }}" alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">
@@ -240,7 +240,7 @@
                 @foreach ($midRange->produk as $p)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                     <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($p->foto)[0]) }}" alt="" />
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($p->foto)[0]) }}" alt="" />
                     </a>
                     <div class="p-5">
                         <a href="#">
@@ -314,17 +314,18 @@
 @else 
     <!-- Tampilkan hasil pencarian jika ada hasil pencarian -->
     @if ($search->isNotEmpty() && request()->has('kategori') || request()->has('search') || request()->has('brand'))
-    <div class="container grid grid-cols-4 mx-auto gap-4 px-36 pt-28">
+    <div class="container grid grid-cols-4 mx-auto gap-4 px-36 py-32">
         @foreach ($search as $produk)
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
-            <a href="#">
-                <img class="rounded-t-lg h-56 w-full" src="{{ asset('images/imgRiski/'. json_decode($produk->foto)[0]) }}" alt="" />
+
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+            <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">
+                <img class="rounded-t-lg h-56 w-full" src="{{ json_decode($produk->foto)[0] }}" alt="" />
             </a>
             <div class="p-5">
-                <a href="#">
+                <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">
                     <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $produk->nama_produk }}</p>
                 </a>
-                <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{ $produk->deskripsi }}</small><br>
+                {{-- <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$produk->deskripsi }}</small><br> --}}
                 <div class="flex justify-star my-3">
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -332,15 +333,15 @@
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                 </div>
-                <div class="flex justify-between my-2">
-                    <p class="text-orange font-medium">Rp.{{ number_format($produk->harga, 0, ',', '.') }}</p>
-                    <small class="font-semibold">Terjual : {{ $produk->terjual }}</small>
+                <div class="flex justify-star my-2 gap-3">
+                    <p class="text-orange font-medium text-lg">Rp.{{ number_format($produk->harga , 0, ',', '.') }}</p>
                 </div>
-                <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Lihat Detail
-                </a>
+                <div class="flex justify-between">
+                        
+                    <small class="font-semibold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
+                
+                </div>
             </div>
-    
         </div>
         @endforeach
     </div>

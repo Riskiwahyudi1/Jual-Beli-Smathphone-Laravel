@@ -31,12 +31,12 @@
     <div class="grid gap-4 ">
         <div>
             <div class="font-bold text-white bg-blue2  text-sm px-4 absolute rounded-tl-lg rounded-br-lg py-2 lg:w-1/12">{{ $getDetail->diskon }}% OFF</div>
-            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset('images/imgRiski/'. $fotos[0]) }}" alt="">
+            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset($fotos[0]) }}" alt="">
         </div>
         <div class="grid grid-cols-5 gap-4">
             @foreach ($fotos as $foto)
             <div>
-                <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset('images/imgRiski/'. $foto) }}" alt="">
+                <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset($foto) }}" alt="">
             </div>
             @endforeach
         </div>
@@ -58,12 +58,12 @@
         
     <div class="grid gap-4 ">
         <div>
-            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset('images/imgRiski/'. $fotos[0]) }}" alt="">
+            <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset($fotos[0]) }}" alt="">
         </div>
         <div class="grid grid-cols-5 gap-4">
             @foreach ($fotos as $foto)
             <div>
-                <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset('images/imgRiski/'. $foto) }}" alt="">
+                <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset($foto) }}" alt="">
             </div>
             @endforeach
         </div>

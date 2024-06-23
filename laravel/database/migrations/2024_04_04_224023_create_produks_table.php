@@ -17,15 +17,15 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('nama_produk');
             $table->text('deskripsi');
-            $table->text('spesifikasi');
+            $table->json('spesifikasi');  
             $table->string('harga');
-            $table-> integer('stok');
-            $table-> integer('terjual');
-            $table-> integer('diskon');
+            $table->integer('stok');
+            $table->integer('terjual');
+            $table->integer('diskon');
             $table->string('brand');
-            $table->string('foto');
+            $table->json('foto');
             $table->timestamps();
-        });
+        });        
     }
 
     /**

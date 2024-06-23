@@ -23,6 +23,7 @@ use App\Http\Controllers\Penjual\HomePenjualController;
 use App\Http\Controllers\Admin\AdminPengaduanController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Pembeli\CetakInvoiceController;
+use App\Http\Controllers\Admin\AdminProdukController;
 
 // Penjual
 use App\Http\Controllers\penjual\TambahProdukController;
@@ -65,10 +66,10 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 // route penjual 
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
-Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual']);
+Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual'])->name('/produk-penjual');
 Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'index'])->name('/tambah-produk');
+Route::get('/produk-penjual/search', [ProdukPenjualController::class, 'search'])->name('produk-penjual.search');
 Route::resource('/crud-produk', TambahProdukController::class);
-
 Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
 
 // route admin
@@ -79,6 +80,8 @@ Route::get('/admin-brand', [AdminBrandController::class, 'adminbrand']);
 Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi']);
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
+Route::get('/admin-produk', [AdminProdukController::class, 'adminProduk']);
+
 
 
 

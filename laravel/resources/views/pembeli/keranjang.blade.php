@@ -69,7 +69,7 @@
                             {{-- input untuk menghapus produk dari keranjang --}}
                             <input type="hidden" name="check-produk-hapus[]" id="" class=" mt-3 input-hapus" value="{{$produk->id }}">
                             <input type="hidden" name="jumlah[]" value="" class="jml-checkout">
-                            <img class="h-10 w-10 mr-4 ms-4 " src="{{ asset('images/imgRiski/'. json_decode($produk->produk->foto)[0]) }}" alt="image description">
+                            <img class="h-10 w-10 mr-4 ms-4 " src="{{ asset(json_decode($produk->produk->foto)[0]) }}" alt="image description">
                             <div>
                                 <p class="w-80 overflow-hidden text-sm font-bold text-ellipsis whitespace-nowrap">{{ $produk->produk->nama_produk }}</p>
                                 <p class="text-xs" >Stok Produk : <span class="stok-produk">{{ $produk->produk->stok }}</span> pcs</p>
