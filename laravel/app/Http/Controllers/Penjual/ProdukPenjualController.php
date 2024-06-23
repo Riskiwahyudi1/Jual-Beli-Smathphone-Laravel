@@ -19,4 +19,17 @@ class ProdukPenjualController extends Controller
             'produks' => $produks
         ]);
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+        $user = Auth::id();
+        $produksSearch = Produk::where('nama_produk', 'LIKE', "%{$query}%")
+                        ->where('user_id', $user)
+                        ->paginate(10); 
+
+        return view('penjual.produk-penjual', compact('produksSearch', 'query'),[
+            'title' => "Cari Produk",
+            'active' => 'cari-produk'
+        ]);
+    }
 }

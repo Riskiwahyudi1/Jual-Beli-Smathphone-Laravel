@@ -5,6 +5,7 @@ namespace App\Http\Controllers\penjual;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class TambahProdukController extends Controller
@@ -146,6 +147,7 @@ class TambahProdukController extends Controller
 
         return redirect()->route('/produk-penjual')->with('success', 'Produk berhasil dihapus');
     }
+   
 }
 
 
