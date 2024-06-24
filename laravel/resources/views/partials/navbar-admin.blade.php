@@ -22,7 +22,7 @@
         <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-check mr-2"></i>Transaksi</button>
     </a>
     <a href="#">
-        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-list mr-2"></i>Lainnya</button>
+        <button class="px-4 py-2 ms-4  mt-2 rounded-md font-semibold"><i class="fa-solid fa-envelope mr-2"></i>Pesan</button>
     </a>
 </nav>
 
