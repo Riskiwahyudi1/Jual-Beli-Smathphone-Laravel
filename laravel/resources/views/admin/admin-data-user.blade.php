@@ -4,11 +4,10 @@
 
     <p class="ms-6 mt-12 text-3xl font-bold text-black">User</p>
 
-    <div class="flex justify-center mb-10"> <!-- Flexbox container untuk pusat -->
+    <div class="flex justify-star mb-10 ms-16 mt-10"> <!-- Flexbox container untuk pusat -->
         <div>
 
-            <form class="max-w-sm mx-auto">
-            </form>
+            
             <div class=""style="margin-right: 64px">
             <select id="countries"
                     class="bg-blue2 border border-blue2 text-white text-sm rounded-lg focus:ring-blue2 focus:border-blue2 block w-full p-2.5 dark:bg-blue2 dark:border-blue2 dark:placeholder-blue2 dark:text-white dark:focus:ring-blue2 dark:focus:border-blue2 ">
@@ -19,7 +18,7 @@
             </div>
 
         </div>
-        <div class="relative w-1/3 ms-10"> <!-- Kontainer input dan svg -->
+        <div class="relative w-1/3 ms-40"> <!-- Kontainer input dan svg -->
             <input type="text" name="name"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
                 placeholder="Cari Produk ...">
@@ -77,24 +76,26 @@
                 </td>
                 <td class="px-16 py-4 pl-16">
                     <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen fa-2x"
+                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
                             style="color: blue; margin-right: 20px;"></i>
                     </button>
                     <button>
-                        <i class="fas fa-ban fa-2x text-red-600"
+                        <i class="fas fa-ban text-16 text-red-600"
                         style="color: red; margin-right: 20px;"></i>
                     </button>
-                    <button  class="px-3 rounded-full border-2 border-yellow-500 font-bold text-yellow-500 text-2xl">!</button>
+                    <button>
+                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
+                    </button>
                 </td>
             </tr>
         </tbody>
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
                 <td class="px-3 py-4 pl-16">
-                    Polibatam
+                    Teraphone
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Polibatam@gmail.com
+                    Teraphone@gmail.com
                 </td>
                 <td class="px-3 py-4 pl-16">
                     Penjual
@@ -103,81 +104,88 @@
                     081258926995
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    11-07-2025
+                    17-07-2024
                 </td>
                 <td class="px-16 py-4 pl-16">
                     <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen fa-2x"
+                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
                             style="color: blue; margin-right: 20px;"></i>
                     </button>
                     <button>
-                        <i class="fas fa-ban fa-2x text-red-600"
+                        <i class="fas fa-ban text-16 text-red-600"
                         style="color: red; margin-right: 20px;"></i>
                     </button>
-                    <button  class="px-3 rounded-full border-2 border-yellow-500 font-bold text-yellow-500 text-2xl">!</button>
+                    <button>
+                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
+                    </button>
                 </td>
             </tr>
         </tbody>
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
                 <td class="px-3 py-4 pl-16">
-                    Masruri Abdul Aziz
+                    Teraphone
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Achillsetara16@gmail.com
+                    Teraphone@gmail.com
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Pembeli
+                    Penjual
                 </td>
                 <td class="px-3 py-4 pl-16">
                     081258926995
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    09-01-2021
+                    17-07-2024
                 </td>
                 <td class="px-16 py-4 pl-16">
                     <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen fa-2x"
+                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
                             style="color: blue; margin-right: 20px;"></i>
                     </button>
                     <button>
-                        <i class="fas fa-ban fa-2x text-red-600"
+                        <i class="fas fa-ban text-16 text-red-600"
                         style="color: red; margin-right: 20px;"></i>
                     </button>
-                    <button  class="px-3 rounded-full border-2 border-yellow-500 font-bold text-yellow-500 text-2xl">!</button>
+                    <button>
+                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
+                    </button>
                 </td>
             </tr>
         </tbody>
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
                 <td class="px-3 py-4 pl-16">
-                    Manusia
+                    Teraphone
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Tulang@gmail.com
+                    Teraphone@gmail.com
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Pembeli
+                    Penjual
                 </td>
                 <td class="px-3 py-4 pl-16">
                     081258926995
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    01-06-2020
+                    17-07-2024
                 </td>
                 <td class="px-16 py-4 pl-16">
                     <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen fa-2x"
+                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
                             style="color: blue; margin-right: 20px;"></i>
                     </button>
                     <button>
-                        <i class="fas fa-ban fa-2x text-red-600"
+                        <i class="fas fa-ban text-16 text-red-600"
                         style="color: red; margin-right: 20px;"></i>
                     </button>
-                    <button  class="px-3 rounded-full border-2 border-yellow-500 font-bold text-yellow-500 text-2xl">!</button>
+                    <button>
+                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
+                    </button>
                 </td>
             </tr>
         </tbody>
+        
 
     </table>
 </div>
