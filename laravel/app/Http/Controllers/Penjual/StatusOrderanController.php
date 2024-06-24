@@ -6,6 +6,7 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Produk;
 
 class StatusOrderanController extends Controller
 {
@@ -16,6 +17,7 @@ class StatusOrderanController extends Controller
     $pembeliList = Transaksi::distinct()->pluck('user_id');
     $filters = [
         'status' => request('status'),
+        'status' => request('search'),
     ];
     $produkTransaksi = [];
     
@@ -42,4 +44,17 @@ class StatusOrderanController extends Controller
         
         ]);
     }
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('search');
+    //     $user = Auth::id();
+    //     $produksSearch = Produk::where('nama_produk', 'LIKE', "%{$query}%")
+    //                     ->where('user_id', $user)
+    //                     ->paginate(10); 
+
+    //     return view('penjual.status-orderan', compact('produksSearch', 'query'),[
+    //         'title' => "Status Orderan",
+    //         'active' => 'status-orderan'
+    //     ]);
+    // }
 }

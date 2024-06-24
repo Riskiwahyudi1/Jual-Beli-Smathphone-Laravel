@@ -29,7 +29,9 @@ class Transaksi extends Model
     ];
     public function scopeTransaksiFilter($query, array $filters)
     {
-
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('status', 'like', '%' . $search . '%');
+        });
         $query->when($filters['status'] ?? false, function ($query, $status) {
             return $query->where('status', $status);
         });
