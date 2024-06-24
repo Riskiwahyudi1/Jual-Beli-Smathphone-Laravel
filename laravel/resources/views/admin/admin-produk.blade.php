@@ -49,12 +49,13 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($produks as $produk)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">1</td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
                     <div class="pl-3">
-                        <div class="text-base font-semibold">Y22 4GB+128GB Metaverse Green</div>
+                        <div class="text-base font-semibold">{{$produk->nama_produk}}</div>
                     </div>
                 </th>
                 <td class="px-6 py-4">Id Produk</td>
@@ -68,6 +69,7 @@
                         class="focus:outline-none text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-full text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Confirm</button>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 
