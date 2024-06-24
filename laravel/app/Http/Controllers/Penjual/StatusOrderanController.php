@@ -17,7 +17,7 @@ class StatusOrderanController extends Controller
     $pembeliList = Transaksi::distinct()->pluck('user_id');
     $filters = [
         'status' => request('status'),
-        'status' => request('search'),
+        'search' => request('search'),
     ];
     $produkTransaksi = [];
     
