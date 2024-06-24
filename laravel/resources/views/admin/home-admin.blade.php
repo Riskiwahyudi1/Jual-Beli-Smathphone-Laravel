@@ -8,7 +8,7 @@
                 <i class="fas fa-regular fa-user fa-3x"></i>
             <div>
                 <p class="text-xl font-bold">User Pembeli</p>
-                <p class="text-3xl ms-6 font-bold">1000</p>
+                <p class="text-3xl ms-6 font-bold">{{$totalUserPembeli->count()}}</p>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
                 <i class="fas fa-regular fa-user fa-3x"></i>
             <div>
                 <p class="text-xl font-bold">User Penjual</p>
-                <p class="text-3xl ms-6 font-bold">1000</p>
+                <p class="text-3xl ms-6 font-bold">{{$totalUserPenjual->count()}}</p>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <i class="fas fa-solid fa-box fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Total Produk</p>
-                <p class="text-3xl ms-7 font-bold">1000+</p>
+                <p class="text-3xl ms-7 font-bold">{{$produks->count()}}</p>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 <i class="fas fa-solid fa-list-ul fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Total Transaksi</p>
-                <p class="text-3xl ms-10 font-bold">1000+</p>
+                <p class="text-3xl ms-10 font-bold">{{$transaksis->count()}}</p>
             </div>
         </div>
     </div>
