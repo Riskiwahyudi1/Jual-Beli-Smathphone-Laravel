@@ -23,8 +23,7 @@ class StatusOrderanController extends Controller
     
     foreach ($pembeliList as $pembeli) {
         $transaksiList = Transaksi::transaksiFilter($filters)
-            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran') // Memastikan kolom yang tepat digunakan
-            ->where('user_id', $pembeliList)
+            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status','bukti_pembayaran') 
             ->where('penjual', $user->username)
             ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'id', 'status', 'bukti_pembayaran')
             ->latest()
@@ -44,17 +43,28 @@ class StatusOrderanController extends Controller
         
         ]);
     }
-    // public function search(Request $request)
-    // {
-    //     $query = $request->input('search');
-    //     $user = Auth::id();
-    //     $produksSearch = Produk::where('nama_produk', 'LIKE', "%{$query}%")
-    //                     ->where('user_id', $user)
-    //                     ->paginate(10); 
+    public function konfirmasiTransaksi(Request $request){
 
-    //     return view('penjual.status-orderan', compact('produksSearch', 'query'),[
-    //         'title' => "Status Orderan",
-    //         'active' => 'status-orderan'
-    //     ]);
-    // }
+        $transaksiIds = $request->input('transaksi', []);
+        
+        foreach ($transaksiIds as $transaksiId) {
+            $transaksi = Transaksi::findOrFail($transaksiId); 
+            $transaksi->status = 'dikemas'; 
+            $transaksi->save(); 
+            $transaksi->produk->save(); 
+        }
+        return redirect()->back()->with('konfirmasi-sukses', 'Berhasil konfirmasi');
+    }
+    public function batalkanTransaksi(Request $request){
+
+        $transaksiIds = $request->input('transaksi', []);
+        
+        foreach ($transaksiIds as $transaksiId) {
+            $transaksi = Transaksi::findOrFail($transaksiId); 
+            $transaksi->status = 'dibatalkan'; 
+            $transaksi->save(); 
+            $transaksi->produk->save(); 
+        }
+        return redirect()->back()->with('pembatalan-sukses', 'Pembatalan berhasil');
+    }
 }
