@@ -11,17 +11,6 @@ class HomePenjualController extends Controller
 {
     public function homePenjual(){
         
-
-        // $totalTransaksi = Transaksi::with('produk')->get();
-        // $menungguPembayaran = Transaksi::with('produk')->where('status', 'menunggu-pembayaran')->get();
-        // $dikemas = Transaksi::with('produk')->where('status', 'dikemas')->get();
-        // $dikirim = Transaksi::with('produk')->where('status', 'dikirim')->get();
-        // $selesai = Transaksi::with('produk')->where('status', 'selesai')->get();
-        // $dibatalkan = Transaksi::with('produk')->where('status', 'dibatalkan')->get();
-        // $transaksiTerbaru = Transaksi::paginate(10);
-
-
-    
     $userId = Auth::id();
     $user = Auth::user();
     $pembeliList = Transaksi::distinct()->pluck('user_id');

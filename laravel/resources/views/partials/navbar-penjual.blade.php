@@ -13,7 +13,7 @@
         <button class="px-4 py-2 ms-4 {{ $active === "home-penjual" ? '  bg-blue2 text-white': '' }} mt-8 rounded-md  font-semibold"><i class="fa-solid fa-house mr-2"></i></i>Beranda</button>
     </a>
     <a href="/produk-penjual">
-        <button class="px-4 py-2 ms-4 {{ $active === "produk-penjual" || $active === "tambah-produk-penjual" || $active === "detail-produk"? '  bg-blue2 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-box mr-2"></i>Produk</button>
+        <button class="px-4 py-2 ms-4 {{ $active === "produk-penjual" || $active === "tambah-produk-penjual" || $active === "detail-produk" || $active === "cari-produk"? '  bg-blue2 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-box mr-2"></i>Produk</button>
     </a>
     <a href="/status-orderan">
         <button class="px-4  py-2 ms-4 {{ $active === "status-orderan" ? '  bg-blue2 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-list mr-2"></i>Orderan</button>
