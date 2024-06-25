@@ -91,11 +91,11 @@
     </thead>
     <tbody>
         @if (count($transaksis) > 0)
+                @php
+                    $no = 1
+                @endphp
                 @foreach ($transaksis as $penjual => $transaksiListByTime)
                     @foreach ($transaksiListByTime as $createdAt => $transaksiList)
-                        @php
-                            $no = 1
-                        @endphp
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="px-6 py-3">
                                 {{ $no++ }}
@@ -148,10 +148,20 @@
                                 {{ $transaksiList->first()->created_at->format('d/m/Y H:i')  }}
                             </td>
                             <td class="px-6 py-3">
-                                
-                                <button data-modal-target="konfirmasi-modal{{ $transaksiList->first()->id}}" data-modal-toggle="konfirmasi-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-check text-green-600 mr-3"></i></button>
+                                @if (request()->query('status') == 'menunggu-pembayaran')
+                                <button data-modal-target="konfirmasi-modal{{ $transaksiList->first()->id}}" data-modal-toggle="konfirmasi-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-check text-green-600 mr-3"></i></button>    
                                 <button data-modal-target="batalkan-modal{{ $transaksiList->first()->id}}" data-modal-toggle="batalkan-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-ban text-red-600 mr-3"></i></button>
                                 <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                @elseif (request()->query('status') == 'dikemas')
+                                <button data-modal-target="kirim-modal{{ $transaksiList->first()->id}}" data-modal-toggle="kirim-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-paper-plane text-blue2 mr-3"></i></button>
+                                <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                @elseif (request()->query('status') == 'dikirim')
+                                <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                @elseif (request()->query('status') == 'selesai')
+                                <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                @elseif (request()->query('status') == 'dibatalkan')
+                                <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                @endif
                             </td>
                         </tr>
                         {{-- Modal detail transaksi --}}
@@ -257,7 +267,7 @@
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                         </svg>
                                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Konfirmasi pesanan ini?, pastikan pembeli sudah melakukan pembayaran!</h3>
-                                        <form action="status-orderan" method="post">
+                                        <form action="status-orderan-konfirmasi" method="post">
                                             @csrf
                                             @foreach ($transaksiList as $transaksi)
                                             <input type="hidden" name="transaksi[]" value="{{ $transaksi->id }} ">
@@ -267,6 +277,30 @@
                             </button>
                         </form>
                         <button data-modal-hide="konfirmasi-modal{{ $transaksiList->first()->id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- modal konfirmasi produk --}}          
+                        <div id="kirim-modal{{ $transaksiList->first()->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-md max-h-full">
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    
+                                    <div class="p-4 md:p-5 text-center">
+                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Konfirmasi Pengiriman Produk?</h3>
+                                        <form action="status-orderan-kirim" method="post">
+                                            @csrf
+                                            @foreach ($transaksiList as $transaksi)
+                                            <input type="hidden" name="transaksi[]" value="{{ $transaksi->id }} ">
+                                        @endforeach
+                            <button data-modal-hide="popup-modal" type="submit" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                Ya, Konfirmasi
+                            </button>
+                        </form>
+                        <button data-modal-hide="kirim-modal{{ $transaksiList->first()->id}}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -281,7 +315,7 @@
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                         </svg>
                                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Batalkan pesanan ini?</h3>
-                                        <form action="status-orderan" method="post">
+                                        <form action="status-orderan-batalkan" method="post">
                                             @csrf
                                             @foreach ($transaksiList as $transaksi)
                                             <input type="hidden" name="transaksi[]" value="{{ $transaksi->id }} ">
@@ -364,10 +398,20 @@
                                         {{ $transaksiList->first()->created_at->format('d/m/Y H:i')  }}
                                     </td>
                                     <td class="px-6 py-3">
-                                        <button data-modal-target="konfirmasi-modal{{ $transaksiList->first()->id}}" data-modal-toggle="konfirmasi-modal{{ $transaksiList->first()->id }}"><i class="fa-solid fa-circle-check text-green-600 mr-3"></i></button>
-                                        
-                                        <i class="fa-solid fa-ban text-red-600 mr-3"></i>
+                                        @if (request()->has('search') && request()->query('status') == 'menunggu-pembayaran')
+                                        <button data-modal-target="konfirmasi-modal{{ $transaksiList->first()->id}}" data-modal-toggle="konfirmasi-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-check text-green-600 mr-3"></i></button>    
+                                        <button data-modal-target="batalkan-modal{{ $transaksiList->first()->id}}" data-modal-toggle="batalkan-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-ban text-red-600 mr-3"></i></button>
                                         <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                        @elseif (request()->query('status') == 'dikemas')
+                                        <button data-modal-target="kirim-modal{{ $transaksiList->first()->id}}" data-modal-toggle="kirim-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-paper-plane text-blue2 mr-3"></i></button>
+                                        <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                        @elseif (request()->query('status') == 'dikirim')
+                                        <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                        @elseif (request()->query('status') == 'selesai')
+                                        <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                        @elseif (request()->query('status') == 'dibatalkan')
+                                        <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
+                                        @endif
                                     </td>
                                 </tr>
                                 {{-- Modal detail transaksi --}}

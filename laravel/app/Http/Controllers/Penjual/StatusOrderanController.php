@@ -55,6 +55,7 @@ class StatusOrderanController extends Controller
         }
         return redirect()->back()->with('konfirmasi-sukses', 'Berhasil konfirmasi');
     }
+    
     public function batalkanTransaksi(Request $request){
 
         $transaksiIds = $request->input('transaksi', []);
@@ -66,5 +67,18 @@ class StatusOrderanController extends Controller
             $transaksi->produk->save(); 
         }
         return redirect()->back()->with('pembatalan-sukses', 'Pembatalan berhasil');
+    }
+    
+    public function kirimTransaksi(Request $request){
+
+        $transaksiIds = $request->input('transaksi', []);
+        
+        foreach ($transaksiIds as $transaksiId) {
+            $transaksi = Transaksi::findOrFail($transaksiId); 
+            $transaksi->status = 'dikirim'; 
+            $transaksi->save(); 
+            $transaksi->produk->save(); 
+        }
+        return redirect()->back()->with('pengiriman-sukses', 'Produk berhasil dikirim');
     }
 }
