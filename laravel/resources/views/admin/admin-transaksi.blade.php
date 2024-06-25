@@ -45,13 +45,13 @@
             <th scope="col" class="px-6 py-3">
                 Pembeli
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 pl-4">
                 Penjual
             </th>
             <th scope="col" class="px-6 py-3">
                 Tanggal
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 pl-8 ">
                 Aksi
             </th>
         </tr>
@@ -85,9 +85,10 @@
                     14/06/23
             </td>
             <td class="px-6 py-4">   
-            <i class="fas fa-trash mr-2"></i>
+            <i class="fas fa-trash mr-2" style="color: red;"></i>
             <button> 
-                <i class="fa-solid fa-trash"></i></button>
+            <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
+            </button>
 
 
 
