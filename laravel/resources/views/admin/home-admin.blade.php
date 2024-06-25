@@ -44,7 +44,7 @@
                 <i class="fas fa-regular fa-mobile fa-3x"></i>
             <div>
                 <p class="text-xl ms-4 font-bold">Brand</p>
-                <p class="text-3xl ms-6 font-bold">22</p>
+                <p class="text-3xl ms-6 font-bold"></p>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
                 <i class="fas fa-regular fa-envelope fa-3x"></i>
             <div>
                 <p class="text-xl font-bold ms-4">Pesan</p>
-                <p class="text-3xl ms-6 font-bold">30</p>
+                <p class="text-3xl ms-6 font-bold">{{$layananpenggunas->count()}}</p>
             </div>
         </div>
     </div>
