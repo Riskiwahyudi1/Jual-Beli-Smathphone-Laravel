@@ -33,6 +33,9 @@
     <form action="/status-orderan">
         <div class="flex justify-center my-3 gap-56">
             <div class="relative w-1/3 ms-10"> 
+                @if (request('status'))
+                    <input type="hidden" name="status" value="{{ request('status') }}"> 
+                    @endif
                 <input type="text" name="search"
                     class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
                     placeholder="Cari Transaksi ..." value="{{ request('search') }}">
@@ -84,13 +87,18 @@
                 <th scope="col" class="px-6 py-3">
                     Tanggal Transaksi
                 </th>
+                @if (request()->query('status') == 'menunggu-pembayaran')
+                <th scope="col" class="px-6 py-3">
+                    status bayar
+                </th>   
+                @endif
                 <th scope="col" class="px-6 py-3">
                     Aksi
                 </th>
             </tr>
     </thead>
     <tbody>
-        @if (count($transaksis) > 0)
+           
                 @php
                     $no = 1
                 @endphp
@@ -147,6 +155,17 @@
                             <td class="px-6 py-3">
                                 {{ $transaksiList->first()->created_at->format('d/m/Y H:i')  }}
                             </td>
+                            @if (request()->query('status') == 'menunggu-pembayaran')
+                                @if($transaksiList->first()->bukti_pembayaran === null)
+                                <td class="px-6 py-3 font-semibold text-black">
+                                    <p>Belum Bayar</p>
+                                </td>
+                                @else
+                                    <td class="px-6 py-3">
+                                        <button data-modal-target="bukti-transaksi-file{{ $transaksiList->first()->id}}" data-modal-toggle="bukti-transaksi-file{{ $transaksiList->first()->id}}" class="text-blue2"><i class="fa-solid fa-eye mr-1"></i> Bukti Pembayaran</button>
+                                    </td>
+                                @endif 
+                            @endif
                             <td class="px-6 py-3">
                                 @if (request()->query('status') == 'menunggu-pembayaran')
                                 <button data-modal-target="konfirmasi-modal{{ $transaksiList->first()->id}}" data-modal-toggle="konfirmasi-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-check text-green-600 mr-3"></i></button>    
@@ -155,11 +174,7 @@
                                 @elseif (request()->query('status') == 'dikemas')
                                 <button data-modal-target="kirim-modal{{ $transaksiList->first()->id}}" data-modal-toggle="kirim-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-paper-plane text-blue2 mr-3"></i></button>
                                 <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
-                                @elseif (request()->query('status') == 'dikirim')
-                                <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
-                                @elseif (request()->query('status') == 'selesai')
-                                <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
-                                @elseif (request()->query('status') == 'dibatalkan')
+                                @else
                                 <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}"  ><i class="fa-solid fa-circle-info text-yellow-500"></i></button>
                                 @endif
                             </td>
@@ -212,7 +227,7 @@
                                         <hr class="border-gray-300 py-1">
                                         <div>
                                             <p class="text-md font-semibold">Status Transaksi :</p>
-                                            <div>
+                                            <div >
                                                 <p class="ms-4 italic">{{ $transaksiList->first()->status }}</p>
                                             </div>
                                         </div>
@@ -254,6 +269,17 @@
                                         @endif
                                         <button data-modal-hide="default-modal{{ $transaksiList->first()->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-red-500 rounded-lg border ">Tutup</button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- modal bukti pembayaran  --}}
+                        <div id="bukti-transaksi-file{{ $transaksiList->first()->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4  max-w-lg max-h-lg">
+                                <!-- Modal content -->
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    
+                                    <img class="h-11/12 w-11/12 mr-3" src="{{ asset('images/buktiPembayaran/'. $transaksiList->first()->bukti_pembayaran) }}" alt="image description">
+                                        
                                 </div>
                             </div>
                         </div>
@@ -333,14 +359,9 @@
             
                          @endforeach
                     @endforeach
-                @else
-                    <tr>
-                        <td colspan="7" class="px-6 py-10 text-center font-bold text-red-500">
-                            Belum ada produk di toko anda !
-                        </td>
-                    </tr>
-                @endif
+               
             @elseif( request()->has('search') )
+                @if(count($transaksis) > 0)
                     @foreach ($transaksis as $penjual => $transaksiListByTime)
                             @foreach ($transaksiListByTime as $createdAt => $transaksiList)
                                 @php
@@ -377,7 +398,6 @@
                                             @endif
                                         </div>
                                     </td>
-            
             
                                     <td class="px-6 py-3">
                                         @php
@@ -534,8 +554,10 @@
                             @endforeach
                         @endforeach
                         
-                        
+                @else
+                <p class=" pt-16 font-bold text-red-500">Belum ada transaksi saat ini!</p>
                 @endif
+            @endif
             </tbody>
         </table>
 
