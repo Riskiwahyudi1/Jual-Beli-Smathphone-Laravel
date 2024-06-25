@@ -70,7 +70,7 @@
         <div class="flex justify-center items-center gap-2">
                 <i class="fas fa-regular fa-envelope fa-3x"></i>
             <div>
-                <p class="text-xl font-bold ms-4">Pesan</p>
+                <p class="text-xl font-bold ms-4">Pengaduan</p>
                 <p class="text-3xl ms-6 font-bold">{{$layananpenggunas->count()}}</p>
             </div>
         </div>
