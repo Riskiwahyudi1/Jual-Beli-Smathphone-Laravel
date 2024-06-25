@@ -1,5 +1,9 @@
 
 @extends('layouts.main')
+
+<div class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('{{ asset('images/imgRiski/background.jpeg') }}')">
+    
+
 <div class="w-full max-w-sm p-4 mx-auto mt-[10vh] bg-white border border-gray-200 rounded-xl shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
     <form class="space-y-6" action="/register-pembeli" method="post">
         @csrf
@@ -43,4 +47,5 @@
             <a href="/register-penjual" class="text-blue-700 hover:underline dark:text-blue-500">Register Penjual?</a>
         </div>
     </form>
+</div>
 </div>
