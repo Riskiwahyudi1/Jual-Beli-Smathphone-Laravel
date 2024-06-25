@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\AdminPengaduanController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Pembeli\CetakInvoiceController;
 use App\Http\Controllers\Admin\AdminProdukController;
+use App\Http\Controllers\Admin\LoginAdminController;
 
 // Penjual
 use App\Http\Controllers\penjual\TambahProdukController;
@@ -82,6 +83,7 @@ Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi'])
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
 Route::get('/admin-produk', [AdminProdukController::class, 'adminProduk']);
+Route::get('/login-admin', [LoginAdminController::class, 'loginAdmin']);
 
 
 
