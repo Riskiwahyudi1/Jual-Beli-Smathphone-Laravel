@@ -16,7 +16,7 @@
             </svg>
             <div class="relative">
                 <button id="dropdownButton" data-dropdown-toggle="dropdown" class="focus:outline-none text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-xl text-xs px-4 py-2 ml-2 dark:focus:ring-blue-900 font-bold" type="button">
-                    Pilih Status
+                    Status
                     <svg class="ml-6 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
@@ -43,25 +43,23 @@
                 <th scope="col" class="px-6 py-3">Id Produk</th>
                 <th scope="col" class="px-6 py-3">Produk</th>
                 <th scope="col" class="px-6 py-3">Harga</th>
-                <th scope="col" class="px-6 py-3">Pembeli</th>
                 <th scope="col" class="px-6 py-3">Penjual</th>
                 <th scope="col" class="px-6 py-3">Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($produks as $produk)
+            @foreach ($produks as $index=>$produk)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4">1</td>
+                <td class="px-6 py-4">{{ $index + 1 }}</td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
+                    <img class="h-8 w-8 mr-3" src="{{ asset(json_decode($produk->foto)[0]) }}" alt="image description">
                     <div class="pl-3">
-                        <div class="text-base font-semibold">{{$produk->nama_produk}}</div>
+                        <div class="truncate w-96">{{$produk->nama_produk}}</div>
                     </div>
                 </th>
-                <td class="px-6 py-4">Id Produk</td>
-                <td class="px-6 py-4">1.999.000</td>
-                <td class="px-6 py-4">Veronika</td>
-                <td class="px-6 py-4">Admin</td>
+                <td class="px-6 py-4">{{$produk->id}}</td>
+                <td class="px-6 py-4">Rp.{{number_format($produk->harga,0,',','.')}}</td>
+                <td class="px-6 py-4">{{$produk->user->username}}</td>
                 <td class="px-6 py-4">   
                     <button type="button" onclick="confirmDelete()"
                         class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-full text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-red-900 font-bold">Delete</button>
