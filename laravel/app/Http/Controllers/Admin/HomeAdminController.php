@@ -16,8 +16,9 @@ class HomeAdminController extends Controller
         $userPenjual = User::where("role", "seller")->get();
         $produks = Produk::all();
         $transaksis = Transaksi::all();
-        $brands = Produk::pluck('brand')->all();
+        $brands = Produk::get()->pluck('brand');
         $layananpenggunas = LayananPengguna::all(); 
+        $users = User::all();
         return view('admin.home-admin', [
             'title' => 'Home Admin',
             'totalUserPembeli' => $userPembeli,
@@ -26,6 +27,7 @@ class HomeAdminController extends Controller
             'transaksis' => $transaksis,
             'brands' => $brands,
             'layananpenggunas' => $layananpenggunas,
+            'users' => $users,
         ]);
         
     }
