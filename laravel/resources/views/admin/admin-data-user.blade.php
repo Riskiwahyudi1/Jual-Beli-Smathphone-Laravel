@@ -37,6 +37,9 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-3 py-3 pl-16">
+                    No
+                </th>
+                <th scope="col" class="px-3 py-3 pl-16">
                     Username
                 </th>
                 <th scope="col" class="px-3 py-3 pl-16">
@@ -58,27 +61,27 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($users as $index=>$user)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
                 <td class="px-3 py-4 pl-16">
-                    Teraphone
+                    {{$index+1}}
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Teraphone@gmail.com
+                    {{$user->username}}
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    Penjual
+                    {{$user->email}}
+                </td>
+                <td class="px-3 py-4 pl-16">
+                    {{$user->role}}
                 </td>
                 <td class="px-3 py-4 pl-16">
                     081258926995
                 </td>
                 <td class="px-3 py-4 pl-16">
-                    17-07-2024
+                    {{ $user->created_at->format('Y-m-d') }}
                 </td>
                 <td class="px-16 py-4 pl-16">
-                    <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
-                            style="color: blue; margin-right: 20px;"></i>
-                    </button>
                     <button>
                         <i class="fas fa-ban text-16 text-red-600"
                         style="color: red; margin-right: 20px;"></i>
@@ -88,105 +91,8 @@
                     </button>
                 </td>
             </tr>
+            @endforeach
         </tbody>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
-                <td class="px-3 py-4 pl-16">
-                    Teraphone
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    Teraphone@gmail.com
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    Penjual
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    081258926995
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    17-07-2024
-                </td>
-                <td class="px-16 py-4 pl-16">
-                    <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
-                            style="color: blue; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                        <i class="fas fa-ban text-16 text-red-600"
-                        style="color: red; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
-                <td class="px-3 py-4 pl-16">
-                    Teraphone
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    Teraphone@gmail.com
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    Penjual
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    081258926995
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    17-07-2024
-                </td>
-                <td class="px-16 py-4 pl-16">
-                    <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
-                            style="color: blue; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                        <i class="fas fa-ban text-16 text-red-600"
-                        style="color: red; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
-                <td class="px-3 py-4 pl-16">
-                    Teraphone
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    Teraphone@gmail.com
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    Penjual
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    081258926995
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    17-07-2024
-                </td>
-                <td class="px-16 py-4 pl-16">
-                    <button>
-                        <i class="text-yellow-500 ms-4 fas fa-pen px-2"
-                            style="color: blue; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                        <i class="fas fa-ban text-16 text-red-600"
-                        style="color: red; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-        
-
     </table>
 </div>
 </div>

@@ -18,7 +18,7 @@ class HomeAdminController extends Controller
         $transaksis = Transaksi::all();
         $brands = Produk::get()->pluck('brand');
         $layananpenggunas = LayananPengguna::all(); 
-        $users = User::all();
+        $users = User::latest()->get();
         return view('admin.home-admin', [
             'title' => 'Home Admin',
             'totalUserPembeli' => $userPembeli,

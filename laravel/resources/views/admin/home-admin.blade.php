@@ -80,7 +80,7 @@
                 Kategori User
             </th>
             <th scope="col" class="px-6 py-3">
-                No. Hp
+                Bergabung
             </th>
         </tr>
     </thead>
@@ -102,7 +102,7 @@
                 {{$user->role}}         
             </td>
             <td class="px-6 py-4">
-                089613997112
+                {{ $user->created_at}}
             </td>
         </tr>
         @endforeach
