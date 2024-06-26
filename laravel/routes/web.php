@@ -65,6 +65,7 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 
 // route penjual 
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
+Route::post('/kelola-stok-tambah', [KelolaStokController::class, 'kelolahStokTambah']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::post('/status-orderan-konfirmasi', [StatusOrderanController::class, 'konfirmasiTransaksi']);
 Route::post('/status-orderan-batalkan', [StatusOrderanController::class, 'batalkanTransaksi']);
@@ -74,6 +75,8 @@ Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'index'])->
 Route::get('/produk-penjual/search', [ProdukPenjualController::class, 'search'])->name('produk-penjual.search');
 Route::resource('/crud-produk', TambahProdukController::class);
 Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
+Route::post('/layanan-pengguna', [LayananPenggunaPenjualController::class, 'store']);
+
 
 // route admin
 Route::get('/admin-transaksi', [AdminTransaksiController::class, 'adminTransaksi']);
