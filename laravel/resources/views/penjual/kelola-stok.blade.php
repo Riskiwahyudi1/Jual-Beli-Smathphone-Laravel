@@ -1,3 +1,17 @@
+@if(session()->has('success'))
+<div class="flex justify-center ">
+    <div class=" absolute z-30 w-1/4  flex items mt-2 p-3 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">{{ session('success') }}
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @extends('layouts.main-penjual')
 @section('container-penjual')
 <div class="pt-10 ps-40">
@@ -31,24 +45,89 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($produks as $index => $produk)
+                
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-4 py-4">1</td>
-                <td class=" py-4">12345678</td>
+                <td class="px-4 py-4">{{ $index + 1 }}</td>
+                <td class=" py-4">{{ $produk->id }}</td>
                 <th scope="row" class="flex items-center py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
+                    <img class="w-10 h-10 mr-2" src="{{ asset(json_decode($produk->foto)[0]) }}" alt="">
                     <div class="">
-                        <div class="text-base font-semibold">Y22 4GB+128GB Metaverse Green</div>
+                        <div class="w-96">{{ $produk->nama_produk }}</div>
                     </div>
                 </th>
-                <td class=" py-4">1.999.000</td>
-                <td class=" py-4">Vivo</td>
-                <td class=" py-4">3</td>
+                <td class=" py-4">Rp.{{ number_format($produk->harga,0,',','.') }}</td>
+                <td class=" py-4">{{ $produk->brand }}</td>
+                <td class=" py-4">{{ $produk->stok }}</td>
                 <td class=" py-4">
-                     <i class=" text-green-600 fas fa-plus"></i>
-                     <i class="text-yellow-500 ms-4 fas fa-pen"></i>
-                    
+                    <button><i data-modal-target="tambah-modal{{ $produk->id}}" data-modal-toggle="tambah-modal{{ $produk->id }}" class=" text-green-600 fas fa-circle-plus"></i></button>
+                     <button><i data-modal-target="edit-modal{{ $produk->id}}" data-modal-toggle="edit-modal{{ $produk->id }}" class="text-yellow-500 ms-2 fas fa-pen"></i></button>
+                     
                 </td>
+                @error('tambah-stok[]')
+                                <p id="filled_error_help" class=" text-xs text-red-600 dark:text-red-400 text-red"><span class="font-medium">{{ $message }}</p>
+                @enderror
             </tr>
+             {{-- modal konfirmasi produk --}}          
+             <div id="edit-modal{{ $produk->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Edit stok produk 
+                            </h3>
+                            
+                            </div>
+                            <!-- Modal body -->
+                            
+                            <form action="riwayat-transaksi" method="post" enctype="multipart/form-data">
+                            <div class="mx-4 my-4 ">
+                                <label for="stok-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stok Produk :</label>
+                                <input type="number"  name="stok" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Stok produk" required/>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button data-modal-hide="edit-modal{{ $produk->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-red-600 rounded-lg border ">Batal</button>
+                            <button  type="submit" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-green-600 rounded-lg border ">Kirim</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- modal tambah stok produk --}}          
+            <div id="tambah-modal{{ $produk->id}}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-2xl max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                Edit stok produk 
+                            </h3>
+                            
+                            </div>
+                            <!-- Modal body -->
+                            
+                            <form action="kelola-stok-tambah" method="post" enctype="multipart/form-data">
+                                @csrf
+                            <div class="mx-4 my-4 ">
+                                <label for="stok-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambah Stok Produk :</label>
+                                <input type="number"  name="tambah-stok[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Jumlah" required/>
+                                <input type="hidden"  name="produk-id" value="{{ $produk->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Jumlah" required/>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="tambah-modal{{ $produk->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-red-600 rounded-lg border ">Batal</button>
+                                <button  type="submit" class="py-2.5 px-5 ms-3 text-sm font-medium text-white  bg-green-600 rounded-lg border ">Kirim</button>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </tbody>
     </table>
 </div>
