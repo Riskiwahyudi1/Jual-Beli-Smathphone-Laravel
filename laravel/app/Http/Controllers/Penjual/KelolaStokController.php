@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class KelolaStokController extends Controller
 {
     public function kelolaStok(){
+        $filters = [
+            'search' => request('search'),
+        ];
         $auth = Auth::id();
-        $produks = Produk::with('kategori', 'user')->where('user_id', $auth)->paginate(10);
+        $produks = Produk::populerFilter($filters)->with('kategori', 'user')->where('user_id', $auth)->paginate(10);
         
         return view('penjual.kelola-stok',[
             'title' => 'Kelola Stok Produk',
@@ -19,17 +22,40 @@ class KelolaStokController extends Controller
             'produks' => $produks
         ]);
     }
-    public function kelolahStokTambah(Request $request){
-        $produkid = $request->input['produk-id'];
-        $validasiData = $request->validate([
-            'tambah-stok' => 'required|integer',    
+    public function kelolahStokTambah(Request $request)
+    {
+        $request->validate([
+            'tambah-stok.*' => 'required|integer|min:1',
+            'produk-id' => 'required|integer|exists:produks,id',
         ]);
-    
-        $produk = $produkid; 
-        $produk->stok += $validasiData['tambah-stok']; 
-        $produk->save(); 
-    
-        return redirect()->back()->with('success', 'Produk berhasil diperbarui');
+
+        $productId = $request->input('produk-id');
+        $editStok = $request->input('tambah-stok')[0];  
+        $product = Produk::find($productId);
+        if ($product) {
+            $product->stok += $editStok;
+            $product->save();
+            return redirect()->back()->with('success', 'Stok produk berhasil ditambahkan.');
+        } else {
+            return redirect()->back()->with('error', 'Produk tidak ditemukan.');
+        }
     }
-    
+    public function kelolahStokEdit(Request $request)
+    {
+        $request->validate([
+            'edit-stok.*' => 'required|integer|min:1',
+            'produk-id' => 'required|integer|exists:produks,id',
+        ]);
+
+        $productId = $request->input('produk-id');
+        $editStok = $request->input('edit-stok')[0];  
+        $product = Produk::find($productId);
+        if ($product) {
+            $product->stok = $editStok;
+            $product->save();
+            return redirect()->back()->with('success', 'Stok produk berhasil ditambahkan.');
+        } else {
+            return redirect()->back()->with('error', 'Produk tidak ditemukan.');
+        }
+    }
 }

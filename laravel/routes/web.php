@@ -66,6 +66,7 @@ Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 // route penjual 
 Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
 Route::post('/kelola-stok-tambah', [KelolaStokController::class, 'kelolahStokTambah']);
+Route::post('/kelola-stok-edit', [KelolaStokController::class, 'kelolahStokEdit']);
 Route::get('/status-orderan', [StatusOrderanController::class, 'statusOrderan']);
 Route::post('/status-orderan-konfirmasi', [StatusOrderanController::class, 'konfirmasiTransaksi']);
 Route::post('/status-orderan-batalkan', [StatusOrderanController::class, 'batalkanTransaksi']);
