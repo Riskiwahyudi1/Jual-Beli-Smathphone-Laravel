@@ -34,13 +34,13 @@
                 No
             </th>
             <th scope="col" class="px-6 py-3">
-                Id Produk
+                Id Transaksi
             </th>
             <th scope="col" class="px-6 py-3">
                 Produk
             </th>
             <th scope="col" class="px-6 py-3">
-                 Total Pembayaran
+                Total Pembayaran
             </th>
             <th scope="col" class="px-6 py-3">
                 Pembeli
@@ -57,12 +57,13 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($transaksis as $index=>$transaksi)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td class="px-6 py-4">
-                1
+                {{$index+1}}
                 </td>
                 <td class="px-6 py-4">
-                12345
+                {{$transaksi->id}}
                 </td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
@@ -89,12 +90,8 @@
             <button> 
             <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
             </button>
-
-
-
-            
-            
         </tr>
+        @endforeach
     </tbody>
 </table>
 
