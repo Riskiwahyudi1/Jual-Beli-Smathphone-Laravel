@@ -30,21 +30,22 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($pesans as $index=>$pesan)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td class="px-6 py-4">
-                1
+                {{$index+1}}
             </td>
             <td class="px-6 py-4">
-                Budire
+                {{$pesan->nama}}
             </td>
             <td class="px-6 py-4">
                 Pembeli
             </td>
             <td class="px-6 py-4">
-                Budire@gmail.com
+                {{$pesan->email}}
             </td>
             <td class="px-6 py-4">
-                Masalah Akun
+                {{$pesan->pengaduan}}
             </td>
             <td class="px-6 py-4">   
             <button>
@@ -52,6 +53,7 @@
             </button>
             </td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 
