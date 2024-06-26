@@ -70,8 +70,8 @@
                 <td class=" py-4">{{ $produk->stok }}</td>
                 <td class=" py-4">
                     <button><i data-modal-target="tambah-modal{{ $produk->id}}" data-modal-toggle="tambah-modal{{ $produk->id }}" class=" text-green-600 fas fa-circle-plus"></i></button>
-                     <button><i data-modal-target="edit-modal{{ $produk->id}}" data-modal-toggle="edit-modal{{ $produk->id }}" class="text-yellow-500 ms-2 fas fa-pen"></i></button>
-                     
+                    <button><i data-modal-target="edit-modal{{ $produk->id}}" data-modal-toggle="edit-modal{{ $produk->id }}" class="text-yellow-500 ms-2 fas fa-pen"></i></button>
+                    
                 </td>
                 
             </tr>

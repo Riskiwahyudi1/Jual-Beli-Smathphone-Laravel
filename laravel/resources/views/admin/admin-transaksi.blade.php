@@ -66,24 +66,24 @@
                 {{$transaksi->id}}
                 </td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="w-10 h-10 rounded-full" src="{{ asset('images/imgRiski/1Iphone113.jpg') }}" alt="">
+                    <img class="h-10 w-10 mr-4 ms-4" src="{{ asset(json_decode($transaksi->first()->produk->foto)[0]) }}" alt="image description">
                     <div class="pl-3">
                         <div class="text-base font-semibold">Y22 4GB+128GB Metaverse Green</div>
                     </div>
                 </th>
                 
             <td class="px-6 py-4">
-            1.999.000 
+            Rp.{{number_format($transaksi->total_transaksi,0,',','.')}}
             </td>
             <td class="px-6 py-4">
                 Veronika
                 
             </td>
             <td class="px-6 py-4">
-                Admin
+                {{$transaksi->penjual}}
             </td>
             <td class="px-6 py-4">
-                    14/06/23
+                {{ $transaksi->created_at->format('Y-m-d') }}
             </td>
             <td class="px-6 py-4">   
             <i class="fas fa-trash mr-2" style="color: red;"></i>
