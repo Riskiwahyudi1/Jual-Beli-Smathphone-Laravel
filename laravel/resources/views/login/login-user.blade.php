@@ -49,8 +49,7 @@
             <a href="/register-pembeli" class="text-xl font-medium text-gray-400 dark:text-white mr-12">Register</a>
         </div>
         <div class="flex justify-center space-x-1 rtl:space-x-reverse">
-            <img src="{{ asset('images/imgRiski/Logo.png') }}" class="h-10 rounded-full " alt="Flowbite Logo" />
-            <p class=" text-2xl mt-2 font-semibold text-gray-700">eraPhone</p>
+            <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-10 rounded-full " alt="Flowbite Logo" />
         </div>
         {{-- form input --}}
         <div>

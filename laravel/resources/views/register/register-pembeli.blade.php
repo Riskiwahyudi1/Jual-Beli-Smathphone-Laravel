@@ -12,8 +12,7 @@
             <a href="/register-pembeli" class="text-xl font-medium text-blue1 dark:text-white mr-12">Register</a>
         </div>
         <div class="flex justify-center space-x-1 rtl:space-x-reverse">
-            <img src="{{ asset('images/imgRiski/Logo.png') }}" class="h-10 rounded-full " alt="Flowbite Logo" />
-            <p class=" text-2xl mt-2 font-semibold text-gray-700">eraPhone</p>
+            <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-10 rounded-full " alt="Flowbite Logo" />
         </div>
         <div>
             <input type="text" name="username" id="username" value="{{ old('username') }}" class="bg-gray-50 {{ $errors->has('username') ? 'border-red' : 'border-gray-300' }} text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600  dark:placeholder-gray-400 dark:text-white" placeholder="username"  />
