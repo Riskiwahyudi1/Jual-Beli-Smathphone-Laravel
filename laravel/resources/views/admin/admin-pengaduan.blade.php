@@ -39,7 +39,7 @@
                 {{$pesan->nama}}
             </td>
             <td class="px-6 py-4">
-                Pembeli
+                {{$pesan->user->role}}
             </td>
             <td class="px-6 py-4">
                 {{$pesan->email}}
@@ -47,10 +47,9 @@
             <td class="px-6 py-4">
                 {{$pesan->pengaduan}}
             </td>
-            <td class="px-6 py-4">   
-            <button>
-            <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
-            </button>
+            <td class="px-6 py-4"> 
+            <button><i class="fa-solid fa-circle-check text-green-600 mr-3"></i></button>  
+            <button><i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i></button>
             </td>
         </tr>
         @endforeach

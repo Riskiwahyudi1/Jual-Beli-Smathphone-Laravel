@@ -20,4 +20,9 @@ class LayananPengguna extends Model
         'pesan',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
