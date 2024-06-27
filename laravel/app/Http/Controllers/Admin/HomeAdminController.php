@@ -21,6 +21,7 @@ class HomeAdminController extends Controller
         $users = User::latest()->get();
         return view('admin.home-admin', [
             'title' => 'Home Admin',
+            'active' => 'Home Admin',
             'totalUserPembeli' => $userPembeli,
             'totalUserPenjual' => $userPenjual,
             'produks' => $produks,

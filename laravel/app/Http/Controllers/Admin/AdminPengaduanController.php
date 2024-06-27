@@ -11,7 +11,8 @@ class AdminPengaduanController extends Controller
     public function adminpengaduan(){
         $pesans = LayananPengguna::all();
         return view('admin.admin-pengaduan',[
-            'title' => 'TeraPhone| Admin Pengaduan',
+            'title' => 'Admin Pengaduan',
+            'active' => 'Admin Pengaduan',
             'pesans' => $pesans,
         ]);
     }

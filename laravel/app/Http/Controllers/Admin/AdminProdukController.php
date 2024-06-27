@@ -11,7 +11,8 @@ class AdminProdukController extends Controller
     public function adminProduk(){
         $produks = Produk::all();
         return view('admin.admin-produk',[
-            'title' => 'TeraPhone| Admin Produk',
+            'title' => 'Admin Produk',
+            'active' => 'Admin Produk',
             'produks' => $produks,
         ]);
     }

@@ -29,6 +29,7 @@
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        @if (count($transaksis) > 0)
         <tr>
         <th scope="col" class="px-6 py-3">
                 No
@@ -57,41 +58,64 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($transaksis as $index=>$transaksi)
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="px-6 py-4">
-                {{$index+1}}
+        @php
+            $no=1
+        @endphp
+        @foreach ($transaksis as $penjual => $transaksiListByTime)
+        @foreach ($transaksiListByTime as $createdAt => $transaksiList)
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-4 py-4">
+                    {{ $no++ }}
                 </td>
-                <td class="px-6 py-4">
-                {{$transaksi->id}}
+                <td class="px-4 py-4">
+                    {{ $transaksiList->first()->id }}
                 </td>
-                <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="h-10 w-10 mr-4 ms-4" src="{{ asset(json_decode($transaksi->first()->produk->foto)[0]) }}" alt="image description">
-                    <div class="pl-3">
-                        <div class="text-base font-semibold">Y22 4GB+128GB Metaverse Green</div>
+                <td scope="row" class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex justify-start">
+                    <img class="h-10 w-10 mr-4 ms-4" src="{{ asset(json_decode($transaksiList->first()->produk->foto)[0]) }}" alt="image description">
+
+                    <div>
+                        <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
+                        <small class="text-gray-500">Jumlah : {{ $transaksiList->first()->jumlah }} Pcs</small>
+                        @if($transaksiList->count() > 1)
+                            <div class="hidden multi-transaksi">
+                                @foreach ($transaksiList->slice(1) as $transaksi)
+                                    <div class="flex mt-2">
+                                        <img class="h-8 w-8 mr-3" src="{{ asset(json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
+                                        <div>
+                                            <p class="text-xs truncate w-56">{{ $transaksi->produk->nama_produk }}</p><br>
+                                            <small class="text-gray-500 ms-1">Jumlah : {{ $transaksi->jumlah }} Pcs</small>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div>
+                                <small class="text-blue2 mt-2 cursor-pointer btn-show-list-transaksi">Tampilkan Semua </small><small class="text-blue2 jumlah-transaksi">({{ $transaksiList->count() - 1 }})</small>
+                            </div>
+                        @endif
                     </div>
-                </th>
-                
-            <td class="px-6 py-4">
-            Rp.{{number_format($transaksi->total_transaksi,0,',','.')}}
-            </td>
-            <td class="px-6 py-4">
-                Veronika
-                
-            </td>
-            <td class="px-6 py-4">
-                {{$transaksi->penjual}}
-            </td>
-            <td class="px-6 py-4">
-                {{ $transaksi->created_at->format('Y-m-d') }}
-            </td>
-            <td class="px-6 py-4">   
-            <i class="fas fa-trash mr-2" style="color: red;"></i>
-            <button> 
-            <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
-            </button>
-        </tr>
+                </td>
+                <td class="px-6 py-4 font-semibold">
+                    Rp.{{ number_format($transaksiList->first()->total_transaksi, 0, ',', '.') }}
+                </td>
+                <td class="px-4 py-4">
+                    {{ $transaksiList->first()->user->username }}
+                </td>
+                <td class="px-4 py-4">
+                    {{ $penjual }}
+                </td>
+                <td class="px-4 py-4">
+                    {{ $transaksiList->first()->created_at }}
+                </td>
+                <td class="px-4 py-4">
+                    <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
+                </td>
+            </tr>
         @endforeach
+        @endforeach
+        @else
+                <p class=" pt-16 font-bold text-red-500">Belum ada transaksi saat ini!</p>
+                @endif
+            
     </tbody>
 </table>
 

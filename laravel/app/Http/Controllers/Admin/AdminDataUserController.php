@@ -11,7 +11,8 @@ class AdminDataUserController extends Controller
     public function adminDataUser(){
         $users = User::latest()->get();
         return view('admin.admin-data-user',[
-            'title' => 'TeraPhone| Admin Data User',
+            'title' => 'Admin Data User',
+            'active' => 'Admin Data User',
             'users' => $users,
         ]);
     }
