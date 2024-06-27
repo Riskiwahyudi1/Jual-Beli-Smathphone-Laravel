@@ -1,6 +1,7 @@
 
 @extends('layouts.main')
-<div class="w-full max-w-sm p-4 mx-auto mt-[10vh] bg-white border border-gray-200 rounded-xl shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('{{ asset('images/imgRiski/bgrnd.png') }}')">
+<div class="w-full max-w-sm p-4 mx-auto mt-[1vh] bg-white border border-gray-200 rounded-xl shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
     
     <form class="space-y-6" action="/login-user" method="post">
         @csrf
@@ -49,7 +50,7 @@
             <a href="/register-pembeli" class="text-xl font-medium text-gray-400 dark:text-white mr-12">Register</a>
         </div>
         <div class="flex justify-center space-x-1 rtl:space-x-reverse">
-            <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-10 rounded-full " alt="Flowbite Logo" />
+            <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-24 rounded-full " alt="Flowbite Logo" />
         </div>
         {{-- form input --}}
         <div>
