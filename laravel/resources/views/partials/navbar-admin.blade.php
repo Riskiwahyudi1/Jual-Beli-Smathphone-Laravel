@@ -1,7 +1,6 @@
 <nav class="flex justify-between py-3 shadow-md fixed w-full z-30 bg-white">
     <div class="flex justify-star mx-5">
-        <img src="{{ asset('images/imgRiski/Logo.png') }}" class="h-8 rounded-full " alt="Flowbite Logo" />
-        <p class=" text-2xl font-bold text-blue2">eraPhone</p>
+        <img src="{{ asset('images/imgRiski/Teraphone white.png') }}" class="h-16 rounded-full " alt="Flowbite Logo" />
     </div>
     <a href="#" class="flex justify-center mx-5">
         
