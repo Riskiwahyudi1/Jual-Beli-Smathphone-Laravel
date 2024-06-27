@@ -2,7 +2,7 @@
 <nav class="bg-blue1 border-gray-200 dark:bg-gray-900 top-0 left-0 w-full z-30 fixed">
     <div class="flex justify-between items-center mx-auto max-w-screen-2xl p-4 ms-5">
         <a href="/home" class="flex items-center space-x-1 rtl:space-x-reverse">
-            <img src="{{ asset('images/imgRiski/Teraphone white.png') }}" class="h-16 rounded-full " alt="Flowbite Logo" />
+            <img src="{{ asset('images/imgRiski/Teraphone white.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />
         </a>
         <div class=" w-1/3">
             <form class="max-w-md mx-auto" action="/home">   
