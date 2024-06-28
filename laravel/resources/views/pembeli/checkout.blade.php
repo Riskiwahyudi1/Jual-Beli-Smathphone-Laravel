@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('container')
 
-<div class="grid gap-2 grid-cols-1 mx-28 border bg-gray-50 rounded-md border-gray-200 lg:grid-cols-2 py-12">
+<div class="h-[95vh] grid gap-2 grid-cols-1 mx-28 border bg-gray-50 rounded-md border-gray-200 lg:grid-cols-2 py-6">
     <div class="w-full mx-10 mt-2">
-        <p class="font-bold">Detail Penerima :</p>
+        <p class="font-bold mb-2">Detail Penerima :</p>
         <form action="konfirmasi-checkout" method="post">
             @csrf
             
@@ -27,12 +27,12 @@
             </div>
             <div class="grid gap-6 mb-2 md:grid-cols-2">
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
-                    <input type="text" name="kota" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Kota" required />
+                    <label for="provinsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
+                    <input type="text" name="provinsi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Provinsi" required />
                 </div>
                 <div>
-                    <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
-                    <input type="text" name="provinsi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Provinsi" required />
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
+                    <input type="text" name="kota" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Kota" required />
                 </div>
                 <div>
                     <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Pos</label>

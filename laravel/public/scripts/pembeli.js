@@ -12,18 +12,19 @@ if (document.title === 'TeraPhone | Detail Produk'){
     const imgsmall = document.querySelectorAll('.imgSmall');
 
     imgsmall.forEach((img) => {
+        img.style.opacity = 0.5;
         if (img.src === imgZoom.src) {
             img.style.boxShadow = "0 0 10px rgba(0, 0, 0, 1)";
-            img.style.opacity = 0.5;
+            img.style.opacity = 1;
         }
         img.addEventListener('click', function() {
             imgZoom.src = img.src;
             imgsmall.forEach((img) => {
                 if (img === this) {
-                    img.style.opacity = 0.5;
                     img.style.boxShadow = "0 0 10px rgba(0, 0, 0, 1)";
-                } else {
                     img.style.opacity = 1;
+                } else {
+                    img.style.opacity = 0.5;
                     img.style.boxShadow = "none";
                 }
             });
@@ -38,6 +39,8 @@ if (document.title === 'TeraPhone | Detail Produk'){
         const counterProduk = document.querySelectorAll(".counter-produk");
         const hargaPcs = document.querySelectorAll(".hargaPcs");
         const checkProduk = document.querySelectorAll(".check-produk");
+        const tombolCheckout = document.querySelector("#checkout");
+        const alertCheckbox = document.querySelector(".alert-checkbox");
         let showTotal = document.querySelector("#show-total");
         let jmlCheckout = document.querySelectorAll('.jml-checkout');
     
@@ -81,16 +84,33 @@ if (document.title === 'TeraPhone | Detail Produk'){
         }
         // fungsi checlist produk yg ingin di beli
         
-        function checklistProduk(){
+        function checklistProduk() {
             checkProduk.forEach((e) => {
                 e.addEventListener('change', () => {
                     totalBelanja();
                     kirimJmlProduk();
                     hapusProduk();
-                    
-                })
-            })
+                    alertCheckbox.classList.add('hidden');
+                });
+            });
+        
+            // fungsi untuk cek produk sudah dipilih sebelum beli
+            tombolCheckout.addEventListener('click', (event) => {
+                const isAnyChecked = Array.from(checkProduk).some(e => e.checked);
+        
+                if (isAnyChecked) {
+                    tombolCheckout.type = 'submit';
+                } else {
+                    tombolCheckout.type = 'button';
+                    alertCheckbox.classList.remove('hidden');
+                    event.preventDefault();  // Prevent the default action of the button
+                }
+            });
         }
+        
+
+        
+
         
         checklistProduk();
         const stokProduk = document.querySelectorAll('.stok-produk');

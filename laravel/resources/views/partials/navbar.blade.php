@@ -2,7 +2,7 @@
 <nav class="bg-blue1 border-gray-200 dark:bg-gray-900 top-0 left-0 w-full z-30 fixed">
     <div class="flex justify-between items-center mx-auto max-w-screen-2xl p-4 ms-5">
         <a href="/home" class="flex items-center space-x-1 rtl:space-x-reverse">
-            <img src="{{ asset('images/imgRiski/Teraphone white.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />
+            <img src="{{ asset('images/imgRiski/Teraphone white.png') }}" class="h-9 rounded-full " alt="Flowbite Logo" />
         </a>
         <div class=" w-1/3">
             <form class="max-w-md mx-auto" action="/home">   
@@ -73,7 +73,7 @@
 <nav class="bg-gray-50 dark:bg-gray-700 shadow-lg top-16 left-0 w-full z-20 fixed">
     <div class="max-w-screen-2xl px-4 py-3 mx-auto">
         <div class="flex items-center">
-            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+            <ul class="flex flex-row font-medium mt-2 space-x-8 rtl:space-x-reverse text-sm">
                 <li>
                     
                 <p id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  text-center inline-flex items-center cursor-pointer" type="button">Brand<svg class="w-2.5 h-2 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">

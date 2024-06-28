@@ -28,7 +28,7 @@
 @extends('layouts.main')
 @section('container')
 @if ($produks->count() == 0)
-<div class="h-[85vh] mx-28 border bg-white rounded-md border-gray-200 flex justify-center items-center">
+<div class="h-[95vh] mx-28 border bg-white rounded-md border-gray-200 flex justify-center items-center">
     
         <div class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>          
@@ -40,7 +40,7 @@
     </div>
 </div>
 @else
-<div class="h-[85vh] mx-28 border bg-white rounded-md border-gray-200 flex justify-between">
+<div class="h-[95vh] mx-28 border bg-white rounded-md border-gray-200 flex justify-between">
     <div class="w-full mt-2">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -131,6 +131,7 @@
                 
                 <hr class="my-10 ">
                 <button type="submit" name="action" id="checkout" value="checkout" class="text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-4 ">Checkout</button>
+                <p  class=" text-xs text-red-600 dark:text-red-400 font-bold hidden alert-checkbox">Pilih produk yang ingin di checkout!!</p>
             </div>
         </div>
     </form>

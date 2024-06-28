@@ -60,7 +60,7 @@
         <div>
             <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset($fotos[0]) }}" alt="">
         </div>
-        <div class="grid grid-cols-5 gap-4">
+        <div class="grid grid-cols-5 gap-4 ">
             @foreach ($fotos as $foto)
             <div>
                 <img class="w-[200px] h-[100px] rounded-lg imgSmall cursor-pointer" src="{{ asset($foto) }}" alt="">
@@ -81,11 +81,13 @@
         {{-- <p>terjual: {{ number_format($getDetail->terjual, 0, ',', '.')}}</p> --}}
     @endif
         <div>
-            <button type="button" class="w-5 h-5 rounded-full bg-red" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-5 h-5 rounded-full bg-blue2" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-5 h-5 rounded-full bg-yellow-300" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-5 h-5 rounded-full bg-black" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-5 h-5 rounded-full bg-gray-600" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <select  name="warna" class="w-1/4 mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <option value="" disabled selected>--Pilih Warna--</option>
+                <option value="Gray">Gray</option>
+                <option value="Putih">Putih</option>
+                <option value="Merah">Merah</option>
+                <option value="silver">silver</option>
+            </select>
         </div>
         <div class="flex-col mt-4 mb-4 xl:justify-star">
             
@@ -151,22 +153,22 @@
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">SPESIFIKASI</h1>
 </div> 
 <div class="grid grid-cols-2 gap-5 ms-32 lg:grid-cols-3">
-    <small class="font-bold">Prosesor : <span class="text-gray-400"> Helio G85 Gaming Proseso</span></small>
-    <small class="font-bold">RAM/ROM : <span class="text-gray-400"> 6GB+6GB RAM*/128GB ROM</span></small>
-    <small class="font-bold">Baterai : <span class="text-gray-400"> 5000mAh</span></small>
-    <small class="font-bold">Dimensi : <span class="text-gray-400"> 164,30x76,10x8,38mm</span></small>
-    <small class="font-bold">Berat : <span class="text-gray-400"> 190g</span></small>
-    <small class="font-bold">Pengisi Daya : <span class="text-gray-400"> 18W Fast Charge</span></small>
-    <small class="font-bold">Resolusi : <span class="text-gray-400">  1612x720(HD+)</span></small>
-    <small class="font-bold">Layar : <span class="text-gray-400"> : 6,55 inch</span></small>
-    <small class="font-bold">Tipe Layar : <span class="text-gray-400"> LCD</span></small>
+    <small class="font-bold">Prosesor : <span class="text-gray-400"> {{ $spesifikasi['prosesor'] }}</span></small>
+    <small class="font-bold">RAM/ROM : <span class="text-gray-400"> {{ $spesifikasi['ram_rom'] }}</span></small>
+    <small class="font-bold">Baterai : <span class="text-gray-400"> {{ $spesifikasi['baterai'] }}</span></small>
+    <small class="font-bold">Dimensi : <span class="text-gray-400"> {{ $spesifikasi['dimensi'] }}</span></small>
+    <small class="font-bold">Berat : <span class="text-gray-400"> {{ $spesifikasi['berat'] }}</span></small>
+    <small class="font-bold">Pengisi Daya : <span class="text-gray-400"> {{ $spesifikasi['pengisi_daya'] }}</span></small>
+    <small class="font-bold">Resolusi : <span class="text-gray-400">{{ $spesifikasi['resolusi'] }}</span></small>
+    <small class="font-bold">Layar : <span class="text-gray-400">{{ $spesifikasi['layar'] }}</span></small>
+    <small class="font-bold">Tipe Layar : <span class="text-gray-400"> {{ $spesifikasi['tipe_layar'] }}</span></small>
 </div>
 <hr class="h-px my-4 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
 <div class="flex justify-star mt-6 mb-6 ms-32">
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">DESKRIPSI </h1>
 </div> 
 <div class="ms-32">
-    <p>{{!! nl2br($getDetail->deskripsi) !!}}</p>
+    <p>{!! nl2br($getDetail->deskripsi) !!}</p>
 </div>
 <hr class="h-px my-6 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
 <div class="flex justify-star mt-6 mb-6 ms-32">
