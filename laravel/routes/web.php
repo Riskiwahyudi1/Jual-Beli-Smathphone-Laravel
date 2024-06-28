@@ -51,6 +51,7 @@ Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
 Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk'])->middleware('auth');
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/checkout', [CheckoutController::class, 'getProduk']);
+// Route::get('/get-cities/{provinceId}', [CheckoutController::class, 'getCities']);
 Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
 Route::post('/checkout-dari-detail', [CheckoutController::class, 'getProduk']);
 

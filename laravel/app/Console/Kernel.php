@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Commands\MakeRajaOngkirService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,6 +23,11 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
+        $this->commands([
+            Commands\MakeRajaOngkirService::class,
+    ]);
         require base_path('routes/console.php');
     }
+
+    
 }

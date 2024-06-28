@@ -7,51 +7,63 @@ use App\Models\Kategori;
 use App\Models\Keranjang;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Services\RajaOngkirService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function checkout(){
+    // raja ongkir service
+    protected $rajaOngkirService;
 
-        return view('pembeli.checkout',[
-            'title' => 'Checkout',
-            'active' => 'checkout',
-            'kategoris' => Kategori::all(),
-        ]);
+    public function __construct(RajaOngkirService $rajaOngkirService)
+    {
+        $this->rajaOngkirService = $rajaOngkirService;
     }
-    public function getProduk(Request $request){
-        $productIds = $request->input('check-produk', []);
-        $jumlah = $request->input('jumlah', []);
-        $action = $request->input('action');
 
-        $action = 'checkout';
-        if ($action == 'checkout') {
-            if (!empty($productIds)) {
-                $products = Produk::with('user')->whereIn('id', $productIds)->get();
-            } else {
-                $products = collect();
-            }
-            $jumlahProduk = [];
-            foreach ($productIds as $productId) {
+public function getProduk(Request $request)
+{
+    $productIds = $request->input('check-produk', []);
+    $jumlah = $request->input('jumlah', []);
+    $action = $request->input('action');
 
-                // Cari indeks dari productId dalam array productIds
-                $index = array_search($productId, $request->input('check-produk'));
-                if ($index !== false && isset($jumlah[$index])) {
-                    $jumlahProduk[$productId] = $jumlah[$index];
-                } else {
-                    $jumlahProduk[$productId] = 1; 
-                }
+    $rajaOngkirService = new RajaOngkirService(); 
+    
+    $provinceId = $request->input('provinsi'); 
+    $provinces = $rajaOngkirService->getProvinces();
+    $kotaKota = $rajaOngkirService->getKota();
 
-            } 
+        // dd($kotaKota);
+
+    $action = 'checkout';
+    if ($action == 'checkout') {
+        if (!empty($productIds)) {
+            $products = Produk::with('user')->whereIn('id', $productIds)->get();
+        } else {
+            $products = collect();
         }
-        return view('pembeli.checkout', [
-            'products' => $products,
-            'action' => $action,
-            'jumlah' => $jumlahProduk,
-            'title' => 'Checkout'
-        ]);  
+        $jumlahProduk = [];
+        foreach ($productIds as $productId) {
+            // Cari indeks dari productId dalam array productIds
+            $index = array_search($productId, $request->input('check-produk'));
+            if ($index !== false && isset($jumlah[$index])) {
+                $jumlahProduk[$productId] = $jumlah[$index];
+            } else {
+                $jumlahProduk[$productId] = 1; 
+            }
+        }
     }
+
+    return view('pembeli.checkout', [
+        'products' => $products,
+        'action' => $action,
+        'jumlah' => $jumlahProduk,
+        'provinces' => $provinces, 
+        'kotaKota' => $kotaKota, 
+        'title' => 'Checkout'
+    ]);
+}
+
     public function konfirmasiCheckout(Request $request){
         // Ambil data dari request alamat pembeli
         $namaDepan = $request->input('nama-depan');
