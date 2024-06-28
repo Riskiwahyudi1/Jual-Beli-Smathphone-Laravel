@@ -1,6 +1,6 @@
 <nav class="flex justify-between py-3 shadow-md fixed w-full z-30 bg-white">
     <div class="flex justify-star mx-5">
-        <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-16 rounded-full " alt="Flowbite Logo" />
+        <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />
     </div>
     <a href="#" class="flex justify-center mx-5">
         
@@ -23,5 +23,11 @@
     <a href="/admin-pengaduan">
         <button class="w-32 py-2 text-left ps-4 {{ $active === "Admin Pengaduan" ? '  bg-blue2 ps-4 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fa-solid fa-envelope mr-2"></i>Pesan</button>
     </a>
+    <form action="/admin-logout" method="post">
+        
+        @csrf
+        <button type="submit" class=" absolute bottom-12 px-4 py-2 ms-4 text-red-600 mt-2 rounded-md font-bold"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
+                
+        </form>
 </nav>
 

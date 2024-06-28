@@ -103,7 +103,7 @@
                                             <div class="flex mt-2">
                                                 <img class="h-auto w-8 mr-3" src="{{ asset(json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                                 <div>
-                                                    <small>{{ $transaksi->produk->nama_produk }}</small><br>
+                                                    <p class="text-xs truncate w-56">{{ $transaksi->produk->nama_produk }}</p><br>
                                                     <small class="text-gray-500 ms-1">Jumlah : {{ $transaksi->jumlah }} Pcs</small>
                                                 </div>
                                             </div>

@@ -20,7 +20,7 @@ class RoleMiddleware
     public function handle($request, Closure $next, $role)
     {
         if (!Auth::check()) {
-            return redirect('login');
+            return redirect('login-admin');
         }
 
         $user = Auth::user();

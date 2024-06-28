@@ -62,7 +62,7 @@
                 <th scope="row" class="flex items-center py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <img class="w-10 h-10 mr-2" src="{{ asset(json_decode($produk->foto)[0]) }}" alt="">
                     <div class="">
-                        <div class="w-96">{{ $produk->nama_produk }}</div>
+                        <div class="truncate w-[600px]">{{ $produk->nama_produk }}</div>
                     </div>
                 </th>
                 <td class=" py-4">Rp.{{ number_format($produk->harga,0,',','.') }}</td>

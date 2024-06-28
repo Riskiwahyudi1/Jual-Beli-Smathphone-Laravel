@@ -20,7 +20,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'username', 'email', 'password','role'
+        'username', 'email', 'username', 'password','role'
     ];
 
     protected $hidden = [
@@ -37,6 +37,10 @@ class User extends Authenticatable
     public function isBuyer()
     {
         return $this->role === 'buyer';
+    }
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 
     protected $attributes = [

@@ -51,7 +51,6 @@ Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
 Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk'])->middleware('auth');
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/checkout', [CheckoutController::class, 'getProduk']);
-// Route::get('/get-cities/{provinceId}', [CheckoutController::class, 'getCities']);
 Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
 Route::post('/checkout-dari-detail', [CheckoutController::class, 'getProduk']);
 
@@ -89,12 +88,16 @@ Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi'])
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
 Route::get('/admin-produk', [AdminProdukController::class, 'adminProduk']);
-Route::get('/login-admin', [LoginAdminController::class, 'loginAdmin']);
+Route::get('admin-login', [LoginAdminController::class, 'loginAdmin'])->name('admin.login');
+Route::post('admin-login', [LoginAdminController::class, 'login']);
+Route::post('/admin-logout', [LoginAdminController::class, 'logout'])->name('admin.logout');
 
 
 
 
-// login role user penjual dan pembeli
 Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual'])->name('/home-penjual');
+});
+Route::middleware(['admin'])->group(function () {
+    Route::get('/home-admin', [HomeAdminController::class, 'homeAdmin'])->name('home.admin');
 });

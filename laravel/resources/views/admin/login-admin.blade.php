@@ -2,7 +2,7 @@
 @extends('layouts.main')
 <div class="w-full max-w-sm p-4 mx-auto mt-[10vh] bg-white border border-gray-200 rounded-xl shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
     
-    <form class="space-y-6" action="/login-user" method="post">
+    <form class="space-y-6" action="/admin-login" method="post">
         @csrf
 
         {{-- jika berhasil registrasi --}}

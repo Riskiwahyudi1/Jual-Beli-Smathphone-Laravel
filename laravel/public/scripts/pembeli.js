@@ -178,7 +178,7 @@ if (document.title === 'TeraPhone | Detail Produk'){
             inputHapus[index].checked = this.checked;
         });
     });
-}else if(document.title === 'TeraPhone | Riwayat Transaksi'){
+}else if(document.title === 'TeraPhone | Riwayat Transaksi' || document.title === 'TeraPhone | Admin Transaksi'){
     //3. halaman transaksi
             
     const btnShowList = document.querySelectorAll('.btn-show-list-transaksi');
@@ -197,8 +197,8 @@ if (document.title === 'TeraPhone | Detail Produk'){
             }
     })
     });
+}else if(document.title === 'TeraPhone | Admin Transaksi'){
+
 }
-
-
 
 
