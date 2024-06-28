@@ -4,13 +4,11 @@
 
     <p class="ms-6 mt-12 text-3xl font-bold text-black">User</p>
 
-    <div class="flex justify-star mb-10 ms-16 mt-10"> <!-- Flexbox container untuk pusat -->
+    <div class="flex justify-center mb-10 mt-10"> 
         <div>
-
-            
-            <div class=""style="margin-right: 64px">
+            <div class="mr-10">
             <select id="countries"
-                    class="bg-blue2 border border-blue2 text-white text-sm rounded-lg focus:ring-blue2 focus:border-blue2 block w-full p-2.5 dark:bg-blue2 dark:border-blue2 dark:placeholder-blue2 dark:text-white dark:focus:ring-blue2 dark:focus:border-blue2 ">
+                    class=" text-black text-sm rounded-lg  block w-full p-2.5 dark:text-black">
                     <option selected>Semua</option>
                     <option value="US">Penjual</option>
                     <option value="CA">Pembeli</option>
@@ -18,10 +16,10 @@
             </div>
 
         </div>
-        <div class="relative w-1/3 ms-40"> <!-- Kontainer input dan svg -->
+        <div class="relative w-1/3 "> 
             <input type="text" name="name"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
-                placeholder="Cari Produk ...">
+                placeholder="Cari User ...">
             <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100" x="10px" y="10px"
                 viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
                 <path
@@ -45,16 +43,16 @@
                 <th scope="col" class="px-3 py-3 pl-16">
                     Email
                 </th> 
-                <th scope="col" class="px-3 py-3 pl-11">
+                <th scope="col" class="px-3 py-3 pl-16">
                     Kategori User
                 </th>
-                <th scope="col" class="px-3 py-3 pl-20">
+                <th scope="col" class="px-3 py-3 pl-16">
                     No Hp
                 </th>
                 <th scope="col" class="px-3 py-3 pl-16">
                     Bergabung
                 </th>
-                <th scope="col" class="px-3 py-3 pl-32">
+                <th scope="col" class="px-3 py-3 pl-16">
                     Aksi
                 </th>
 
@@ -82,13 +80,8 @@
                     {{ $user->created_at->format('Y-m-d') }}
                 </td>
                 <td class="px-16 py-4 pl-16">
-                    <button>
-                        <i class="fas fa-ban text-16 text-red-600"
-                        style="color: red; margin-right: 20px;"></i>
-                    </button>
-                    <button>
-                    <i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i>
-                    </button>
+                    <button><i class="fas fa-ban text-16 text-red-600" ></i></button>
+                    <button><i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i></button>
                 </td>
             </tr>
             @endforeach

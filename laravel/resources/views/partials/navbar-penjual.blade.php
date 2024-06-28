@@ -1,10 +1,10 @@
 <nav class="flex justify-between py-3 shadow-md fixed w-full z-20 bg-white">
     <div class="flex justify-star mx-5">
-        <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />
+        <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-7 rounded-full " alt="Flowbite Logo" />
     </div>
     <a href="#" class="flex justify-center mx-5">
         
-        <p class="text-black font-semibold ms-1"><i class="fa-solid fa-shop mr-2"></i>{{ auth()->user()->username }}</p>                    
+        <p class="text-black font-semibold ms-1 mt-2"><i class="fa-solid fa-shop mr-2"></i>{{ auth()->user()->username }}</p>                    
     </a>
 </nav>
 <nav class="w-[10vw] bg-gray-200 h-[100vh] fixed mt-12 z-10">

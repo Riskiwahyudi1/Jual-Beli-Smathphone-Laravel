@@ -1,7 +1,7 @@
 @extends('layouts.main-admin')
 @section('container-penjual')
 <div class="pt-20 ps-40">
-    <p class="ms-6 text-2xl font-bold text-black">Dashboard </p>
+    <p class="ms-6 text-2xl font-bold text-black">Dashboard Admin</p>
     <div class="grid grid-cols-4 grid-rows-2 gap-6 mt-6 mx-12">
     <div class="px-12 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
         <div class="flex justify-center items-center gap-2">
@@ -77,7 +77,7 @@
                 Email
             </th>
             <th scope="col" class="px-6 py-3">
-                Kategori User
+                Role
             </th>
             <th scope="col" class="px-6 py-3">
                 Bergabung

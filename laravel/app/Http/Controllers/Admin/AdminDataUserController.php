@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class AdminDataUserController extends Controller
 {
     public function adminDataUser(){
-        $users = User::latest()->get();
+        $users = User::latest()->where('role', 'buyer')->orWhere('role', 'seller')->get();
         return view('admin.admin-data-user',[
             'title' => 'Admin Data User',
             'active' => 'Admin Data User',

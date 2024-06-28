@@ -4,35 +4,28 @@
     
     <p class="ms-6 mt-12 text-2xl font-bold text-black">Produk</p>
 
-    <div class="flex justify-center mb-10"> 
-        <div class="relative w-1/3 flex"> 
-            <input type="text" name="name" class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200" placeholder="Cari Produk ...">
-            <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100"
-                x="10px" y="10px" viewBox="0 0 56.966 56.966"
-                style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
+    <div class="flex justify-center mb-10 mt-10"> 
+        <div>
+            <div class="mr-10">
+            <select id="status-produk"
+                    class=" text-black text-sm rounded-lg  block p-2.5 dark:text-black">
+                    <option selected>Status Produk</option>
+                    <option value="Menunggu Verifikasi">Menunggu Verifikasi</option>
+                    <option value="Terverivikasi">Terverivikasi</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="relative w-1/3 "> 
+            <input type="text" name="name"
+                class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
+                placeholder="Cari Produk ...">
+            <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100" x="10px" y="10px"
+                viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
                 <path
                     d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z">
                 </path>
             </svg>
-            <div class="relative flex justify-center">
-                <button id="dropdownButton" data-dropdown-toggle="dropdown" class="focus:outline-none text-white bg-blue-600  hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-xl text-xs px-4 py-2 ml-2 dark:focus:ring-blue-900 font-bold" type="button">
-                    Status
-                    <svg class="ml-6 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <!-- Dropdown menu -->
-                <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
-                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownButton">
-                        <li>
-                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Menunggu Konfirmasi</button>
-                        </li>
-                        <li>
-                            <button class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Belum di Konfirmasi</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -51,20 +44,22 @@
             @foreach ($produks as $index=>$produk)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{{ $index + 1 }}</td>
+                <td class="px-6 py-4">{{$produk->id}}</td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <img class="h-8 w-8 mr-3" src="{{ asset(json_decode($produk->foto)[0]) }}" alt="image description">
                     <div class="pl-3">
                         <div class="truncate w-96">{{$produk->nama_produk}}</div>
                     </div>
                 </th>
-                <td class="px-6 py-4">{{$produk->id}}</td>
                 <td class="px-6 py-4">Rp.{{number_format($produk->harga,0,',','.')}}</td>
                 <td class="px-6 py-4">{{$produk->user->username}}</td>
                 <td class="px-6 py-4">   
                     <button type="button" onclick="confirmDelete()"
-                        class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-full text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-red-900 font-bold">Delete</button>
+                        class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-red-900 font-bold">Tolak</button>
                     <button type="button"
-                        class="focus:outline-none text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-full text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Confirm</button>
+                        class="focus:outline-none text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Verify</button>
+                    <button type="button"
+                        class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Detail</button>
                 </td>
             </tr>
             @endforeach
