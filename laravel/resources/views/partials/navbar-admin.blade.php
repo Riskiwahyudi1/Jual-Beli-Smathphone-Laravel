@@ -1,4 +1,4 @@
-<nav class="flex justify-between py-3 shadow-md fixed w-full z-20 bg-white">
+<nav class="flex justify-between py-3 shadow-md fixed w-full z-20 bg-gray-700">
     <div class="flex justify-star mx-5">
         <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-7 rounded-full " alt="Flowbite Logo" />
     </div>

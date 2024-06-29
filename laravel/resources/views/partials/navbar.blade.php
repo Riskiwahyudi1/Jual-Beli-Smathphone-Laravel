@@ -6,6 +6,7 @@
         </a>
         <div class=" w-1/3">
             <form class="max-w-md mx-auto" action="/home">   
+                @csrf
                 <div class="relative">
                     @if (request('kategori'))
                     <input type="hidden" name="kategori" value="{{ request('kategori') }}"> 

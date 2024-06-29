@@ -31,6 +31,7 @@
 
     <p class="ms-6 mt-10 text-2xl font-bold text-black">Status Orderan</p>
     <form action="/status-orderan">
+        @csrf
         <div class="flex justify-center my-3 gap-56">
             <div class="relative w-1/3 ms-10"> 
                 @if (request('status'))

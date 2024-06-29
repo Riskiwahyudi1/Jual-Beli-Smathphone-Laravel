@@ -107,7 +107,8 @@
                     {{ $transaksiList->first()->created_at }}
                 </td>
                 <td class="px-4 py-4">
-                    <button data-modal-target="default-modal{{ $transaksiList->first()->id}}" data-modal-toggle="default-modal{{ $transaksiList->first()->id }}" class="px-2 py-2 bg-yellow-400 rounded-md text-white">Detail</button>
+                    <a class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Detail</a>
+                    
                 </td>
             </tr>
         @endforeach

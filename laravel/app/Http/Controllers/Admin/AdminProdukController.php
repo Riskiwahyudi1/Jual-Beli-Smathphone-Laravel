@@ -14,7 +14,7 @@ class AdminProdukController extends Controller
             'status' => request('status')
         ];
     
-        $search = Produk::populerFilter($filters)->paginate(20);
+        $search = Produk::verivikasiFilter($filters)->paginate(20);
         return view('admin.admin-produk',[
             'title' => 'Admin Produk',
             'active' => 'Admin Produk',
@@ -28,7 +28,7 @@ class AdminProdukController extends Controller
         foreach ($ProdukIds as $ProdukId) {
             
             $ProdukId = Produk::findOrFail($ProdukId); 
-            $ProdukId->status = 'Terverifikasi'; 
+            $ProdukId->status = 'terverifikasi'; 
             $ProdukId->save(); 
         }
         return redirect()->back()->with('verifikasi-sukses', 'Berhasil Verifikasi');
@@ -41,7 +41,7 @@ class AdminProdukController extends Controller
         foreach ($ProdukIds as $ProdukId) {
             
             $ProdukId = Produk::findOrFail($ProdukId); 
-            $ProdukId->status = 'Pengajuan Ditolak'; 
+            $ProdukId->status = 'pengajuan-ditolak'; 
             $ProdukId->save(); 
         }
         return redirect()->back()->with('penolakan-sukses', 'Produk Ditolak');
