@@ -87,6 +87,7 @@ Route::get('/admin-brand', [AdminBrandController::class, 'adminbrand']);
 Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi']);
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
+Route::post('/admin-pengaduan', [AdminPengaduanController::class, 'done']);
 Route::get('/admin-produk', [AdminProdukController::class, 'adminProduk']);
 Route::Post('/admin-produk-verifikasi', [AdminProdukController::class, 'verifikasiProduk']);
 Route::Post('/admin-produk-tolak', [AdminProdukController::class, 'tolakProduk']);
