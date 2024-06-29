@@ -14,9 +14,8 @@
 @section('container-penjual')
 <div class="pt-10 ps-40">
     
-    <p class="ms-6 mt-12 text-4xl font-bold text-black">Pesan</p>
+    <p class="ms-6 mt-12 mb-4 text-4xl font-bold text-black">Pesan</p>
 
-<p class="ms-6 mt-7 text-2xl font-bold text-black gap-6 mb-2">Daftar Pengaduan</p>
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

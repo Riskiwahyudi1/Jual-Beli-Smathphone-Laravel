@@ -12,7 +12,7 @@
     @vite('resources/js/app.js')
     
 </head>
-<body class="bg-gray-700">
+<body class="bg-gray-300">
     @include('partials.navbar-admin')
     @yield('container-penjual')
     {{-- @include('partials.footer') --}}

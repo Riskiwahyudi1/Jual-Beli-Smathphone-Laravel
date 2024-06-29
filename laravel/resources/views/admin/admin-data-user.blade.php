@@ -5,17 +5,17 @@
     <p class="ms-6 mt-12 text-3xl font-bold text-black">User</p>
 
     <div class="flex justify-center mb-10 mt-10"> 
-        <div>
-            <div class="mr-10">
-            <select id="countries"
+        {{-- <div> --}}
+            {{-- <div class="mr-10"> --}}
+            {{-- <select id="countries"
                     class=" text-black text-sm rounded-lg  block w-full p-2.5 dark:text-black">
                     <option selected>Semua</option>
                     <option value="US">Penjual</option>
                     <option value="CA">Pembeli</option>
                 </select>
-            </div>
+            </div> --}}
 
-        </div>
+        {{-- </div> --}}
         <div class="relative w-1/3 "> 
             <input type="text" name="name"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
@@ -80,7 +80,7 @@
                     {{ $user->created_at->format('Y-m-d') }}
                 </td>
                 <td class="px-16 py-4 pl-16">
-                    <button><i class="fas fa-ban text-16 text-red-600" ></i></button>
+                    {{-- <button><i class="fas fa-ban text-16 text-red-600" ></i></button> --}}
                     <button><i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i></button>
                 </td>
             </tr>
