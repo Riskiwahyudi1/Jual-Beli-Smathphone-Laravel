@@ -58,7 +58,7 @@
                     @endif
             <input type="text" name="search"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
-                placeholder="Cari Produk ...">
+                placeholder="Cari Produk ..." value="{{ request('search') }}">
             <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100" x="10px" y="10px"
                 viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
                 <path

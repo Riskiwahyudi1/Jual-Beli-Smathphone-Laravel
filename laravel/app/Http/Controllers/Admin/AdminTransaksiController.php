@@ -12,19 +12,17 @@ use Illuminate\Support\Facades\Auth;
 class AdminTransaksiController extends Controller
 {
     public function adminTransaksi(){
-        $userId = Auth::id();
         $filters = [
             'status' => request('status'),
+            'search' => request('search'),
         ];
     
-        // Mengambil daftar penjual yang unik dari transaksi
         $penjualList = Transaksi::distinct()->pluck('penjual');
         $produkTransaksi = [];
     
         foreach ($penjualList as $penjual) {
             $transaksiList = Transaksi::transaksiFilter($filters)
                 ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'total_transaksi', 'expedisi', 'id', 'status','bukti_pembayaran', 'alamat')
-                // ->where('user_id', $userId)
                 ->where('penjual', $penjual)
                 ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'total_transaksi', 'expedisi', 'id', 'status', 'bukti_pembayaran', 'alamat')
                 ->latest()
