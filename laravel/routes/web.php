@@ -88,10 +88,12 @@ Route::get('/admin-expedisi', [AdminExpedisiController::class, 'adminexpedisi'])
 Route::get('/admin-iklan', [AdminIklanController::class, 'adminiklan']);
 Route::get('/admin-pengaduan', [AdminPengaduanController::class, 'adminpengaduan']);
 Route::get('/admin-produk', [AdminProdukController::class, 'adminProduk']);
+Route::Post('/admin-produk-verifikasi', [AdminProdukController::class, 'verifikasiProduk']);
+Route::Post('/admin-produk-tolak', [AdminProdukController::class, 'tolakProduk']);
+Route::get('/admin-detail-produk/{produk:id}', [AdminProdukController::class, 'detailProduk']);
 Route::get('admin-login', [LoginAdminController::class, 'loginAdmin'])->name('admin.login');
 Route::post('admin-login', [LoginAdminController::class, 'login']);
 Route::post('/admin-logout', [LoginAdminController::class, 'logout'])->name('admin.logout');
-
 
 
 

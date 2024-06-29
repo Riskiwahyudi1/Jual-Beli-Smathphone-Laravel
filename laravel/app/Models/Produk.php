@@ -24,6 +24,7 @@ class Produk extends Model
         'diskon',
         'brand',
         'foto',
+        'status'
     ];
 
     protected $casts = [
@@ -50,6 +51,20 @@ class Produk extends Model
 
         $query->when($filters['brand'] ?? false, function ($query, $brand) {
             return $query->where('brand', $brand);
+        });
+
+        return $query;
+    }
+    public function scopeVerivikasiFilter($query, array $filters)
+    {
+       
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('nama_produk', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['status'] ?? false, function ($query, $brand) {
+            return $query->where('status', $brand);
         });
 
         return $query;

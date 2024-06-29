@@ -1,3 +1,26 @@
+@if(session()->has('verifikasi-sukses'))
+<div class="flex justify-center ">
+    <div class=" absolute z-30 w-1/4  flex items mt-2 p-3 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <i class="fa-solid mr-3 mt-1 fa-circle-exclamation"></i>
+        {{-- <span class="sr-only">Info</span> --}}
+        <div>
+            <span class="font-medium">{{ session('verifikasi-sukses') }}
+            </div>
+        </div>
+    </div>
+</div>
+@elseif(session()->has('penolakan-sukses'))
+<div class="flex justify-center ">
+    <div class=" absolute z-30 w-1/4  flex items mt-2 p-3 mb-4 text-sm text-red-600 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <i class="fa-solid mr-3 mt-1 fa-circle-exclamation"></i>
+        {{-- <span class="sr-only">Info</span> --}}
+        <div>
+            <span class="font-medium">{{ session('penolakan-sukses') }}
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @extends('layouts.main-admin')
 @section('container-penjual')
 <div class="pt-10 ps-40">
@@ -41,6 +64,8 @@
             </tr>
         </thead>
         <tbody>
+            @if (!request()->has('search'))
+                
             @foreach ($produks as $index=>$produk)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{{ $index + 1 }}</td>
@@ -53,68 +78,72 @@
                 </th>
                 <td class="px-6 py-4">Rp.{{number_format($produk->harga,0,',','.')}}</td>
                 <td class="px-6 py-4">{{$produk->user->username}}</td>
-                <td class="px-6 py-4">   
-                    <button type="button" onclick="confirmDelete()"
-                        class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-red-900 font-bold">Tolak</button>
-                    <button type="button"
+                <td class="px-6 py-4">
+                    @if ($produk->status == 'Menunggu  Verifikasi')
+                    <button data-modal-target="verifikasi-modal{{ $produk->id }}" data-modal-toggle="verifikasi-modal{{ $produk->id }}" type="button"
                         class="focus:outline-none text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Verify</button>
-                    <button type="button"
-                        class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Detail</button>
+                        <button data-modal-target="tolak-modal{{ $produk->id }}" data-modal-toggle="tolak-modal{{ $produk->id }}" type="button"
+                            class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-red-900 font-bold">Tolak</button>  
+                        <a href="/admin-detail-produk/{{ $produk->id}}"
+                            class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Detail</a>
+                    @elseif ($produk->status == 'Terverifikasi')
+                    <button data-modal-target="tolak-modal{{ $produk->id }}" data-modal-toggle="tolak-modal{{ $produk->id }}" type="button"
+                        class="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-red-900 font-bold">Tolak</button>  
+                        <a href="/admin-detail-produk/{{ $produk->id}}"
+                            class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Detail</a>
+                    @elseif ($produk->status == 'Pengajuan Ditolak')
+                        <a href="/admin-detail-produk/{{ $produk->id}}"
+                            class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:ring-blue-300 rounded-md text-xs px-2 py-1 me-2 mb-2 dark:focus:ring-blue-900 font-bold">Detail</a>
+                    @endif
                 </td>
             </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <!-- Modal -->
-    <div id="deleteModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
-        <div class="flex items-center justify-center min-h-screen px-4 text-center">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
-                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                            <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            {{-- modal verifikasi produk --}}
+            <div id="verifikasi-modal{{ $produk->id }}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="p-4 md:p-5 text-center">
+                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
-                        </div>
-                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Hapus Produk</h3>
-                            <div class="mt-2">
-                                <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus produk ini? Tindakan ini tidak dapat dibatalkan.</p>
-                            </div>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda yakin memverifikasi produk ini?</h3>
+                            <form action="admin-produk-verifikasi" method="post">
+                                @csrf
+                                
+                                <input type="hidden" name="produk-id[]" value="{{ $produk->id }} ">
+                                <button data-modal-hide="verifikasi-modal" type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                    Ya, Verifikasi
+                                </button>
+                            </form>
+                            <button data-modal-hide="verifikasi-modal{{ $produk->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, Tutup</button>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="deleteProduct()">Hapus</button>
-                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm" onclick="closeModal()">Batal</button>
+            </div>
+            {{-- modal tolak produk --}}
+            <div id="tolak-modal{{ $produk->id }}" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="p-4 md:p-5 text-center">
+                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda yakin Menolak Pengajuan penjualan produk ini?</h3>
+                            <form action="admin-produk-tolak" method="post">
+                                @csrf
+                                <input type="hidden" name="produk-id[]" value="{{ $produk->id }} ">
+                                <button data-modal-hide="verifikasi-modal" type="submit" class="text-white bg-red-600 hover:bg-res-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                    Ya, Tolak
+                                </button>
+                            </form>
+                            <button data-modal-hide="tolak-modal{{ $produk->id }}" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak, Tutup</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <script>
-        function confirmDelete() {
-            document.getElementById('deleteModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('deleteModal').classList.add('hidden');
-        }
-
-        function deleteProduct() {
-            // Logic untuk menghapus produk
-            alert('Produk telah dihapus');
-            closeModal();
-        }
-
-        // Toggle dropdown
-        document.getElementById('dropdownButton').addEventListener('click', function() {
-            document.getElementById('dropdown').classList.toggle('hidden');
-        }); 
-    </script>
+            @endforeach
+            @endif
+        </tbody>
+    </table>
 
 </div>
 @endsection

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('diskon');
             $table->string('brand');
             $table->json('foto');
+            $table->string('status');
             $table->timestamps();
         });        
     }

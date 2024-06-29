@@ -46,7 +46,8 @@ class TambahProdukController extends Controller
     
         $validatedData['user_id'] = auth()->id();
 
-        $validatedData['foto'] = json_encode($fotoPaths);;
+        $validatedData['foto'] = json_encode($fotoPaths);
+        $validatedData['status'] = "Menunggu Verifikasi";
 
       
 

@@ -1,4 +1,4 @@
-<nav class="flex justify-between py-3 shadow-md fixed w-full z-30 bg-white">
+<nav class="flex justify-between py-3 shadow-md fixed w-full z-20 bg-white">
     <div class="flex justify-star mx-5">
         <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-7 rounded-full " alt="Flowbite Logo" />
     </div>
@@ -14,7 +14,7 @@
         <button class="w-32 py-2 text-left ps-4 {{ $active === "Admin Data User" ? '  bg-blue2 ps-4 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-regular fa-user mr-2"></i>User</button>
     </a>
     <a href="/admin-produk">
-        <button class="w-32 py-2 text-left ps-4 {{ $active === "Admin Produk" ? '  bg-blue2 ps-4 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-box mr-2"></i>Produk</button>
+        <button class="w-32 py-2 text-left ps-4 {{ $active === "Admin Produk" || $active === "detail-produk" ? '  bg-blue2 ps-4 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-box mr-2"></i>Produk</button>
     </a>
     <a href="/admin-transaksi">
         <button class="w-32 py-2 text-left ps-4 {{ $active === "Admin Transaksi" ? '  bg-blue2 ps-4 text-white': '' }} mt-2 rounded-md font-semibold"><i class="fas fa-solid fa-check mr-2"></i>Transaksi</button>

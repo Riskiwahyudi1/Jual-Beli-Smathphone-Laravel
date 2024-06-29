@@ -17,7 +17,7 @@ class HomeController extends Controller
       public function home()
 {
     $produks = Produk::with('kategori')->get();
-    $diskons = Produk::with('kategori')->where('diskon', '>', 0)->where('stok', '>', 0)->get();
+    $diskons = Produk::with('kategori')->where('diskon', '>', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi')->get();
     $kategoris = Kategori::get();
     $brands = Produk::pluck('brand')->all();
     $filters = [
@@ -26,11 +26,11 @@ class HomeController extends Controller
         'brand' => request('brand')
     ];
 
-    $search = Produk::populerFilter($filters)->paginate(20);
+    $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->paginate(20);
 
     return view('pembeli.home', [
-         'cameraQuality' => Kategori::with(['produk' => function($query) {$query->where('diskon', 0)->where('stok', '>', 0);}])->findOrFail(3),
-         'midRange' => Kategori::with(['produk' => function($query) {$query->where('diskon', 0)->where('stok', '>', 0);}])->findOrFail(4),
+         'cameraQuality' => Kategori::with(['produk' => function($query) {$query->where('diskon', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi');}])->findOrFail(3),
+         'midRange' => Kategori::with(['produk' => function($query) {$query->where('diskon', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi');}])->findOrFail(4),
         'produks' => $produks,
         'kategoris' => $kategoris,
         'brands' => $brands,
