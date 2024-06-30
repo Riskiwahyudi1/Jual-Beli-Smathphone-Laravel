@@ -55,7 +55,7 @@ class Produk extends Model
 
         return $query;
     }
-    public function scopeVerivikasiFilter($query, array $filters)
+    public function scopeVerifikasiFilter($query, array $filters)
     {
        
 

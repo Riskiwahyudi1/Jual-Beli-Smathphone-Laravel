@@ -14,7 +14,7 @@ class AdminProdukController extends Controller
             'status' => request('status')
         ];
     
-        $search = Produk::verivikasiFilter($filters)->paginate(20);
+        $search = Produk::verifikasiFilter($filters)->paginate(20);
         return view('admin.admin-produk',[
             'title' => 'Admin Produk',
             'active' => 'Admin Produk',

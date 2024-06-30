@@ -63,5 +63,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scopeUserFilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('username', 'like', '%' . $search . '%');
+        });
+
+        
+
+        return $query;
+    }
     
 }

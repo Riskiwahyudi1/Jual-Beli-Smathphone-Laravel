@@ -8,12 +8,17 @@ use App\Http\Controllers\Controller;
 
 class AdminDataUserController extends Controller
 {
+    
     public function adminDataUser(){
-        $users = User::latest()->where('role', 'buyer')->orWhere('role', 'seller')->get();
+        $filters = [
+            'search' => request('search'),
+        ];
+    
+        $search = User::latest()->userFilter($filters)->where('role', 'buyer')->orWhere('role', 'seller')->paginate(20);
         return view('admin.admin-data-user',[
             'title' => 'Admin Data User',
             'active' => 'Admin Data User',
-            'users' => $users,
+            'users' => $search,
         ]);
     }
 }

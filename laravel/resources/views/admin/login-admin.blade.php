@@ -45,8 +45,7 @@
 
     @endif
     <div class="flex justify-center rtl:space-x-reverse">
-        <img src="{{ asset('images/imgRiski/Logo.png') }}" class="h-10 rounded-full " alt="Flowbite Logo" />
-        <p class=" text-2xl mt-2 font-semibold text-gray-700">eraPhone</p>
+      <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />
     </div>
     <div class="flex justify-center">
         <a href="/login" class="text-xl text-blue1 dark:text-white font-bold">Login Admin</a>

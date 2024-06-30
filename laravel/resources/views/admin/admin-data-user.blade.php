@@ -3,23 +3,14 @@
 <div class="pt-10 ps-40">
 
     <p class="ms-6 mt-12 text-3xl font-bold text-black">User</p>
-
+    
+    <form action="/admin-data-user">
+        @csrf
     <div class="flex justify-center mb-10 mt-10"> 
-        {{-- <div> --}}
-            {{-- <div class="mr-10"> --}}
-            {{-- <select id="countries"
-                    class=" text-black text-sm rounded-lg  block w-full p-2.5 dark:text-black">
-                    <option selected>Semua</option>
-                    <option value="US">Penjual</option>
-                    <option value="CA">Pembeli</option>
-                </select>
-            </div> --}}
-
-        {{-- </div> --}}
         <div class="relative w-1/3 "> 
-            <input type="text" name="name"
+            <input type="text" name="search"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
-                placeholder="Cari User ...">
+                placeholder="Cari User ..." value="{{ request('search') }}">
             <svg class="text-gray-600 h-5 w-5 absolute top-2 right-2 fill-current dark:text-gray-100" x="10px" y="10px"
                 viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
                 <path
@@ -28,7 +19,7 @@
             </svg>
         </div>
     </div>
-
+</form>
 
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -52,40 +43,57 @@
                 <th scope="col" class="px-3 py-3 pl-16">
                     Bergabung
                 </th>
-                <th scope="col" class="px-3 py-3 pl-16">
+                {{-- <th scope="col" class="px-3 py-3 pl-16">
                     Aksi
-                </th>
+                </th> --}}
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $index=>$user)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 " >
-                <td class="px-3 py-4 pl-16">
-                    {{$index+1}}
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    {{$user->username}}
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    {{$user->email}}
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    {{$user->role}}
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    081258926995
-                </td>
-                <td class="px-3 py-4 pl-16">
-                    {{ $user->created_at->format('Y-m-d') }}
-                </td>
-                <td class="px-16 py-4 pl-16">
-                    {{-- <button><i class="fas fa-ban text-16 text-red-600" ></i></button> --}}
-                    <button><i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"> </i></button>
-                </td>
-            </tr>
-            @endforeach
+            @if (request()->has('search') && $users->isEmpty())
+                <tr>
+                    <td colspan="7" class="text-center py-4 text-red-600 font-bold">
+                        User tidak ditemukan.
+                    </td>
+                </tr>
+            @else
+                @foreach ($users as $index => $user)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-3 py-4 pl-16">
+                            {{ $index + 1 }}
+                        </td>
+                        <td class="px-3 py-4 pl-16">
+                            {{ $user->username }}
+                        </td>
+                        <td class="px-3 py-4 pl-16">
+                            {{ $user->email }}
+                        </td>
+                        <td class="px-3 py-4 pl-16">
+                            {{ $user->role }}
+                        </td>
+                        <td class="px-3 py-4 pl-16">
+                            081258926995
+                        </td>
+                        <td class="px-3 py-4 pl-16">
+                            {{ $user->created_at }}
+                        </td>
+                        {{-- <td class="px-16 py-4 pl-16">
+                            <button><i class="fas fa-ban text-16 text-red-600"></i></button>
+                            <button><i class="fa-solid mr-3 text-yellow-500 fa-circle-exclamation px-2"></i></button>
+                        </td> --}}
+                    </tr>
+                @endforeach
+        
+                @if ($users->isEmpty())
+                    <tr>
+                        <td colspan="7" class="text-center py-4">
+                            Tidak ada user yang ditemukan.
+                        </td>
+                    </tr>
+                @endif
+            @endif
         </tbody>
+        
     </table>
 </div>
 </div>

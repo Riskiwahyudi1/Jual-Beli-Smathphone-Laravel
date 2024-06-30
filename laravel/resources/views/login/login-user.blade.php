@@ -50,7 +50,7 @@
             <a href="/register-pembeli" class="text-xl font-medium text-gray-400 dark:text-white mr-12">Register</a>
         </div>
         <div class="flex justify-center space-x-1 rtl:space-x-reverse">
-            <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-24 rounded-full " alt="Flowbite Logo" />
+            <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />
         </div>
         {{-- form input --}}
         <div>
