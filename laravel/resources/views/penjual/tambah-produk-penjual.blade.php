@@ -61,8 +61,13 @@
                         <option value="Samsung">Samsung</option>
                         <option value ="Oppo">OPPO</option>
                         <option value="Nokia">Nokia</option>
-                        <option value="Xiomi">Xiomi</option>
+                        <option value="Xiomi">Xiaomi</option>
                         <option value="Asus">Asus</option>
+                        <option value="Asus">POCO</option>
+                        <option value="Asus">Infinix</option>
+                        <option value="Asus">Realme</option>
+                        <option value="Asus">Vivo</option>
+                        <option value="Asus">Iphone</option>
                     </select>
                 </div>
 
