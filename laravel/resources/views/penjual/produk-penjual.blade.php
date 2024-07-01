@@ -83,7 +83,7 @@
                             Rp. {{ number_format($produk->harga, 0, ',', '.') }}
                         </td>
                         <td class="px-6 py-4">
-                            Terverifikasi
+                            {{ $produk->status }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $produk->terjual }}
