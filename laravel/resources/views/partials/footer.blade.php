@@ -52,7 +52,7 @@
             </div>
             <div class="flex justify-star gap-3 mt-1">
                 <p>
-                    <i class="fab fa-youtube text-red"></i>
+                    <i class="fab fa-youtube text-red-600"></i>
                 </p>
                 <p>TeraPhone</p>
             </div>

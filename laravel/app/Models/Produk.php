@@ -48,6 +48,11 @@ class Produk extends Model
                 $query->where('slug', $kategori);
             });
         });
+        $query->when($filters['user'] ?? false, function ($query, $user) {
+            return $query->with('user')->whereHas('user', function ($query) use ($user) {
+                $query->where('username', $user);
+            });
+        });
 
         $query->when($filters['brand'] ?? false, function ($query, $brand) {
             return $query->where('brand', $brand);

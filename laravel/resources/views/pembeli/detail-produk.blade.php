@@ -139,14 +139,17 @@
             <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-12 rounded-full h-12 mt-6">
             <div>
                 <p class="mt-6 ms-4 text-lg font-bold">{{ $getDetail->user->username }}</p>
-                <div class="flex justify-star">
+                <div class="flex justify-star mt-2">
                     <small class="font-bold ms-4 text-blue2">Produk : <span class="text-gray-500 font-semibold"> 456</span></small>
                     <small class="font-bold ms-4 text-blue2">Penjualan : <span class="text-gray-500 font-semibold"> 1562</span></small>
                     <small class="font-bold ms-4 text-blue2">Penilaian : <span class="text-gray-500 font-semibold"> 4.9</span></small>
                 </div>
             </div>
         </div>
-        <a href="/view-penjual" class="mt-4  text-blue2 ring-2 ring-blue2 hover:bg-gray-100 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2 text-center">Kunjungi Toko</a>
+        <div class="ms-16 mt-4">
+
+            <a href="/view-penjual?user={{ $getDetail->user->username }}" class="text-blue2 ring-2 ring-blue2 hover:bg-gray-100 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2 text-center">Kunjungi Toko</a>
+        </div>
     </div>
 </div>
 <div class="flex justify-star mt-6 mb-6 ms-32">
