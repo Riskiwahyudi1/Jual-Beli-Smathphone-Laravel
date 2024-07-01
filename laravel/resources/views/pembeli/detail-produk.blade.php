@@ -146,7 +146,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="mt-4  text-blue2 ring-2 ring-blue2 hover:bg-gray-100 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2 text-center">Kunjungi Toko</button>
+        <a href="/view-penjual" class="mt-4  text-blue2 ring-2 ring-blue2 hover:bg-gray-100 focus:outline-none  font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2 text-center">Kunjungi Toko</a>
     </div>
 </div>
 <div class="flex justify-star mt-6 mb-6 ms-32">
