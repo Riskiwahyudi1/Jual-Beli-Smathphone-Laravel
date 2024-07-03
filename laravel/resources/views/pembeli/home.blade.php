@@ -76,8 +76,7 @@
                         <a href="/detail-produk/{{ $diskon->id . '-' . Str::slug($diskon->nama_produk) }}">
                             <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $diskon->nama_produk }}</p>
                         </a>
-                        {{-- <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$produk->deskripsi }}</small><br> --}}
-                        <div class="flex justify-star my-3">
+                        <div class="flex justify-star mt-8">
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -85,12 +84,13 @@
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                         </div>
                         <div class="flex justify-star my-2 gap-3">
-                            <p class="text-orange font-medium text-lg">Rp.{{ number_format($diskon->harga - $diskon->diskon / 100 * $diskon->harga , 0, ',', '.') }}</p>
+                            <p class="text-red-600 font-bold text-lg">Rp.{{ number_format($diskon->harga - $diskon->diskon / 100 * $diskon->harga , 0, ',', '.') }}</p>
                             <small class="text-blue2 line-through text-sm">Rp.{{ number_format($diskon->harga, 0, ',', '.') }}</small>
                         </div>
                         <div class="flex justify-between">
                                 
-                            <small class="font-semibold">Terjual : {{ number_format($diskon->terjual, 0, ',', '.') }}</small>
+                            <small class="font-bold">Tersedia : {{ number_format($diskon->stok, 0, ',', '.') }}</small>
+                            <small class="font-bold">Terjual : {{ number_format($diskon->terjual, 0, ',', '.') }}</small>
                         
                         </div>
                     </div>
@@ -150,7 +150,7 @@
 <div class="flex justify-center mx-28 my-10 ">
 
     <div class="w-96 bg-gray-800 mx-2 bg-cover bg-center rounded-tl-xl rounded-bl-xl mr-6" style="background-image: url('images/imgRiski/camera.png');">
-        <div class="ms-5 my-44">
+        <div class="ms-5 mt-44">
             <h3 class="text-blue2 font-black text-lg">Camera Quality</h3>
             <p class="py-3 text-white">Pilih dan dapatkan sekarang</p>
             <a href="/home?kategori=camera-quality" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
@@ -160,17 +160,16 @@
         <div class="slide-content-2-card">
             <div class=" swiper-wrapper">
                 
-                @foreach ($cameraQuality->produk as $p)
+                @foreach ($cameraQuality->produk as $item)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
-                <a href="#">
-                    <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($p->foto)[0])  }}" alt="" />
+                <a href="/detail-produk/{{ $item->id . '-' . Str::slug($item->nama_produk) }}">
+                    <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($item->foto)[0])  }}" alt="" />
                 </a>
                 <div class="p-5">
-                    <a href="#">
-                        <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $p->nama_produk }}</p>
+                    <a href="/detail-produk/{{ $item->id . '-' . Str::slug($item->nama_produk) }}">
+                        <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $item->nama_produk }}</p>
                     </a>
-                    <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$p->deskripsi }}</small><br>
-                    <div class="flex justify-star my-3">
+                    <div class="flex justify-star mt-6">
                         <i class="fas fa-star" style="color: #FFD43B;"></i>
                         <i class="fas fa-star" style="color: #FFD43B;"></i>
                         <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -178,13 +177,12 @@
                         <i class="fas fa-star" style="color: #FFD43B;"></i>
                     </div>
                     <div class="flex justify-star my-2 gap-3">
-                        <p class="text-orange font-medium text-lg">Rp.{{ number_format($p->harga, 0, ',', '.') }}</p>
+                        <p class="text-blue2 font-bold text-lg">Rp.{{ number_format($item->harga, 0, ',', '.') }}</p>
                     </div>
                     <div class="flex justify-between">
-                        <a href="/detail-produk/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Lihat Detail
-                        </a>
-                        <small class="font-semibold">Terjual : {{ number_format($p->terjual, 0, ',', '.') }}</small>
+                       
+                        <small class="font-bold">Tersedia : {{ number_format($item->stok, 0, ',', '.') }}</small>
+                        <small class="font-bold">Terjual : {{ number_format($item->terjual, 0, ',', '.') }}</small>
 
                     </div>
                 </div>
@@ -227,7 +225,7 @@
 <div class="flex justify-center mx-28 mt-10 ">
 
     <div class="w-96 bg-gray-800 mx-2 bg-cover bg-center rounded-tl-xl rounded-bl-xl mr-6" style="background-image: url('images/imgRiski/mid-range.png');">
-        <div class="ms-5 my-44">
+        <div class="ms-5 mt-44">
             <h3 class="text-blue2 font-black text-lg">Mid Range Smarthphone</h3>
             <p class="py-3 text-white ">Pilih dan dapatkan sekarang</p>
             <a href="/home?kategori=mid-range" class="text-white bg-blue2 hover:bg-blue focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 z-10">Tampilkan Semua</a>
@@ -237,17 +235,16 @@
         <div class="slide-content-2-card">
             <div class=" swiper-wrapper">
                 
-                @foreach ($midRange->produk as $p)
+                @foreach ($midRange->produk as $item)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
-                    <a href="#">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($p->foto)[0]) }}" alt="" />
+                    <a href="/detail-produk/{{ $item->id . '-' . Str::slug($item->nama_produk) }}">
+                        <img class="rounded-t-lg h-56 w-full" src="{{ asset(json_decode($item->foto)[0]) }}" alt="" />
                     </a>
                     <div class="p-5">
-                        <a href="#">
-                            <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $p->nama_produk }}</p>
+                        <a href="/detail-produk/{{ $item->id . '-' . Str::slug($item->nama_produk) }}">
+                            <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $item->nama_produk }}</p>
                         </a>
-                        <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$p->deskripsi }}</small><br>
-                        <div class="flex justify-star my-3">
+                        <div class="flex justify-star mt-8">
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -255,13 +252,12 @@
                             <i class="fas fa-star" style="color: #FFD43B;"></i>
                         </div>
                         <div class="flex justify-star my-2 gap-3">
-                            <p class="text-orange font-medium text-lg">Rp.{{ number_format($p->harga, 0, ',', '.') }}</p>
+                            <p class="text-blue2 font-bold text-lg">Rp.{{ number_format($item->harga, 0, ',', '.') }}</p>
                         </div>
                         <div class="flex justify-between">
-                            <a href="/detail-produk/{{ $p->id . '-' . Str::slug($p->nama_produk) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue2 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                Lihat Detail
-                            </a>
-                            <small class="font-semibold">Terjual : {{ number_format($p->terjual, 0, ',', '.') }}</small>
+                           
+                            <small class="font-bold">Tersedia : {{ number_format($item->stok, 0, ',', '.') }}</small>
+                            <small class="font-bold">Terjual : {{ number_format($item->terjual, 0, ',', '.') }}</small>
     
                         </div>
                     </div>
@@ -325,8 +321,7 @@
                 <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">
                     <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $produk->nama_produk }}</p>
                 </a>
-                {{-- <small class="font-normal line-clamp-2 text-gray-700 dark:text-gray-400 ">{{$produk->deskripsi }}</small><br> --}}
-                <div class="flex justify-star my-3">
+                <div class="flex justify-star mt-8">
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
@@ -334,11 +329,12 @@
                     <i class="fas fa-star" style="color: #FFD43B;"></i>
                 </div>
                 <div class="flex justify-star my-2 gap-3">
-                    <p class="text-orange font-medium text-lg">Rp.{{ number_format($produk->harga , 0, ',', '.') }}</p>
+                    <p class="text-blue2 font-bold text-lg">Rp.{{ number_format($produk->harga , 0, ',', '.') }}</p>
                 </div>
                 <div class="flex justify-between">
                         
-                    <small class="font-semibold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
+                    <small class="font-bold">Tersedia : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
+                    <small class="font-bold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
                 
                 </div>
             </div>

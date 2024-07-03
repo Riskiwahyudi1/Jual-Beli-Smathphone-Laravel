@@ -1,6 +1,6 @@
 <footer class="bg-black  h-64 text-white py-8">
-    <div class="flex justify-between">
-        <div class="ms-28">
+    <div class="flex justify-between mx-16">
+        <div class="">
             <h1 class="text-3xl font-bold">TeraPhone</h1>
             <div class="flex justify-star gap-3 mt-4">
                 <p>
@@ -21,7 +21,7 @@
                 <p>Batam, Kepulauan Riau, Indonesia</p>
             </div>
         </div>
-        <div class="mr-28">
+        <div class="">
             <h1 class="text-lg font-bold">Tautan</h1>
             <div class="mt-4">
                 <a href="#">Tentang Kami</a>
@@ -36,7 +36,7 @@
                 <a href="#">Layanan Pengguna</a>
             </div>
         </div>
-        <div class="mr-28">
+        <div class="">
             <h1 class="text-lg font-bold">Sosial Media</h1>
             <div class="flex justify-star gap-3 mt-4">
                 <p>

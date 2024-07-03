@@ -30,6 +30,23 @@ if (document.title === 'TeraPhone | Detail Produk'){
             });
         });
     });
+
+    const reviewStar = document.querySelectorAll('.star-review');
+
+    reviewStar.forEach((star) => {
+        star.addEventListener('click', () => {
+            if(star.classList.contains('fa-regular')){
+                star.classList.remove('fa-regular')
+                star.classList.add('fa-solid')
+            }else{
+                star.classList.remove('fa-solid')
+                star.classList.add('fa-regular')
+            }
+        })
+    })
+
+
+
 }else if(document.title === 'TeraPhone | Keranjang' || document.title === 'TeraPhone | Checkout'){
 
     // 2. keranjang pembeli

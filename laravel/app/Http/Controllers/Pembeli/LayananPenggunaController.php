@@ -31,8 +31,7 @@ class LayananPenggunaController extends Controller
 
         LayananPengguna::create($validasiData);
 
-        $request->session()->flash('berhasil', 'Terkirim, pengaduan anda akan di cek admin.');
+        return redirect()->back()->with('berhasil', 'Terkirim, pengaduan anda akan di cek admin.');
 
-        return redirect('/layanan-pengguna');
     }
 }

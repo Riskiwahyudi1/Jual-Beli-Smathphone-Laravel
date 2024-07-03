@@ -30,7 +30,6 @@
     @if ($getDetail->diskon > 0)
     <div class="grid gap-4 ">
         <div>
-            <div class="font-bold text-white bg-blue2  text-sm px-4 absolute rounded-tl-lg rounded-br-lg py-2 lg:w-1/12">{{ $getDetail->diskon }}% OFF</div>
             <img class="w-[600px] h-96 rounded-lg " id="imgZoom" src="{{ asset($fotos[0]) }}" alt="">
         </div>
         <div class="grid grid-cols-5 gap-4">
@@ -51,8 +50,9 @@
             <i class="fas fa-star" style="color: #FFD43B;"></i>
         </div>
         <div class="flex justify-star my-2 gap-3">
-            <p class="text-red-400 font-bold text-lg">Rp.{{ number_format($getDetail->harga - $getDetail->diskon / 100 * $getDetail->harga , 0, ',', '.') }}</p>
+            <p class="text-red-600 font-bold text-lg">Rp.{{ number_format($getDetail->harga - $getDetail->diskon / 100 * $getDetail->harga , 0, ',', '.') }}</p>
             <small class="text-blue2 font-semibold line-through text-sm">Rp.{{ number_format($getDetail->harga, 0, ',', '.') }}</small>
+            <p class="ms-4 text-red-600 font-bold text-xl">{{ $getDetail->diskon }}% OFF</p>
         </div> 
     @else
         
@@ -77,8 +77,7 @@
             <i class="fas fa-star" style="color: #FFD43B;"></i>
             <i class="fas fa-star" style="color: #FFD43B;"></i>
         </div>
-        <p class="text-lg font-bold text-blue1 mb-6">Rp.{{ number_format($getDetail->harga, 0, ',', '.')}}</p>
-        {{-- <p>terjual: {{ number_format($getDetail->terjual, 0, ',', '.')}}</p> --}}
+        <p class="text-lg font-bold text-blue2 mb-6">Rp.{{ number_format($getDetail->harga, 0, ',', '.')}}</p>
     @endif
         <div>
             <select  name="warna" class="w-1/4 mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
@@ -132,7 +131,9 @@
             
         </div>
         <small class="font-bold ">Kategori : <span class="text-gray-400">{{ $getDetail->kategori->nama }}</span></small><br>
-        <small class="font-bold">Brand : <span class="text-gray-400"> {{ $getDetail->brand }}</span></small>
+        <small class="font-bold">Brand : <span class="text-gray-400"> {{ $getDetail->brand }}</span></small><br>
+        <small class="font-bold">Stok : <span class="text-gray-400"> {{ $getDetail->stok }} Pcs</span></small><br>
+        <small class="font-bold">Terjual : <span class="text-gray-400"> {{ $getDetail->terjual }} Pcs</span></small>
         <hr class="h-px mt-3  bg-gray-300 border-0 dark:bg-gray-700 ">
 
         <div class="flex justify-star">
@@ -140,8 +141,8 @@
             <div>
                 <p class="mt-6 ms-4 text-lg font-bold">{{ $getDetail->user->username }}</p>
                 <div class="flex justify-star mt-2">
-                    <small class="font-bold ms-4 text-blue2">Produk : <span class="text-gray-500 font-semibold"> 456</span></small>
-                    <small class="font-bold ms-4 text-blue2">Penjualan : <span class="text-gray-500 font-semibold"> 1562</span></small>
+                    <small class="font-bold ms-4 text-blue2">Produk : <span class="text-gray-500 font-semibold"> {{ $jmlProdukToko }}</span></small>
+                    <small class="font-bold ms-4 text-blue2">Penjualan : <span class="text-gray-500 font-semibold"> {{ $penjualan }}</span></small>
                     <small class="font-bold ms-4 text-blue2">Penilaian : <span class="text-gray-500 font-semibold"> 4.9</span></small>
                 </div>
             </div>
@@ -155,7 +156,7 @@
 <div class="flex justify-star mt-6 mb-6 ms-32">
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">SPESIFIKASI</h1>
 </div> 
-<div class="grid grid-cols-2 gap-5 ms-32 lg:grid-cols-3">
+<div class="grid grid-cols-2 gap-5 mx-32 lg:grid-cols-3 bg-white p-8 rounded-lg">
     <small class="font-bold">Prosesor : <span class="text-gray-400"> {{ $spesifikasi['prosesor'] }}</span></small>
     <small class="font-bold">RAM/ROM : <span class="text-gray-400"> {{ $spesifikasi['ram_rom'] }}</span></small>
     <small class="font-bold">Baterai : <span class="text-gray-400"> {{ $spesifikasi['baterai'] }}</span></small>
@@ -167,33 +168,49 @@
     <small class="font-bold">Tipe Layar : <span class="text-gray-400"> {{ $spesifikasi['tipe_layar'] }}</span></small>
 </div>
 <hr class="h-px my-4 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
-<div class="flex justify-star mt-6 mb-6 ms-32">
+<div class="flex justify-star mt-6 mb-6 mx-32">
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">DESKRIPSI </h1>
 </div> 
-<div class="ms-32">
+<div class=" mx-32 p-8 rounded-lg bg-white">
     <p>{!! nl2br($getDetail->deskripsi) !!}</p>
 </div>
 <hr class="h-px my-6 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
 <div class="flex justify-star mt-6 mb-6 ms-32">
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">PENILAIAN </h1>
 </div> 
-<div class="ms-4">
-    <div class="flex justify-star mx-32">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-8 rounded-full h-8 ">
-        <p class=" ms-4 text-sm font-bold">S.F Trialaka <span class="text-gray-500 font-normal">16-04-2024 </span></p>
+<div class="mx-32 p-8 rounded-lg bg-white">
+    <div class="mb-2">
+        <div class="flex justify-star mb-4 ">
+            <i class="fa-regular fa-star text-yellow-300 fa-2x cursor-pointer star-review "></i>
+            <i class="fa-regular fa-star text-yellow-300 fa-2x cursor-pointer star-review"></i>
+            <i class="fa-regular fa-star text-yellow-300 fa-2x cursor-pointer star-review"></i>
+            <i class="fa-regular fa-star text-yellow-300 fa-2x cursor-pointer star-review"></i>
+            <i class="fa-regular fa-star text-yellow-300 fa-2x cursor-pointer star-review"></i>
+        </div>
+        <label for="ulasan" class="block mb-2 text-sm font-bold text-black dark:text-white">Tambahkan Komentar :</label>
+        <textarea name="ulasan"  rows="4" class="block p-2.5 w-11/12 mt-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tulis komentar anda di sini!" required></textarea>
+        <button type="submit"  class="text-white mt-4 bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">Tambahkan</button>
     </div>
-    <div class="flex justify-star mb-4 mx-44">
-        <i class="fas fa-star" style="color: #FFD43B;"></i>
-        <i class="fas fa-star" style="color: #FFD43B;"></i>
-        <i class="fas fa-star" style="color: #FFD43B;"></i>
-        <i class="fas fa-star" style="color: #FFD43B;"></i>
-        <i class="fas fa-star" style="color: #FFD43B;"></i>
+<hr class="h-px my-8  bg-gray-300 border-1 dark:bg-gray-700 ">
+
+    <div>
+        <div class="flex justify-star mt-8">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-8 rounded-full h-8 ">
+            <p class=" ms-4 text-sm font-bold">S.F Trialaka <span class="text-gray-500 font-normal">16-04-2024 </span></p>
+        </div>
+        <div class="flex justify-star mb-4 mx-12">
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+            <i class="fas fa-star" style="color: #FFD43B;"></i>
+        </div>
+        <div class="flex justify-star  gap-3">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-12  h-12 ms-12">
+            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-12  h-12">
+        </div>
+            <p class="font-normal mx-12 my-4 w-2/4">Barang sangat bagus dan pengiriman cepat, respon penjual sangat sangat baik , sudah saya kasih bintang 5</p><br>
     </div>
-    <div class="flex justify-star mx-32 gap-3">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-12  h-12 ms-12">
-        <img src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="" class="w-12  h-12">
-    </div>
-        <p class="font-normal mx-44 my-4 w-1/4">Barang sangat bagus dan pengiriman cepat, respon penjual sangat sangat baik , sudah saya kasih bintang 5</p><br>
 </div>
 
 

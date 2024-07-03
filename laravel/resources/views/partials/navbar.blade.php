@@ -47,13 +47,13 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownHover" class="z-30 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pengaturan akun</a>
-                        </li>
-                        <form action="/logout" method="post">
-                        <li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">Pengaturan akun</a>
+                            </li>
+                            <form action="/logout" method="post">
+                            <li>
                                 @csrf
-                                <button type="submit" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">logout</button>
+                                <button type="submit" class="text-left px-4 w-full py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
                             </li>
                         </form>
                         </ul>

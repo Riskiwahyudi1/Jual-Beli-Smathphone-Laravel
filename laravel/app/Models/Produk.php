@@ -62,7 +62,6 @@ class Produk extends Model
     }
     public function scopeVerifikasiFilter($query, array $filters)
     {
-       
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('nama_produk', 'like', '%' . $search . '%');
