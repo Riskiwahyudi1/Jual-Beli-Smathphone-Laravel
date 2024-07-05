@@ -172,8 +172,67 @@
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">DESKRIPSI </h1>
 </div> 
 <div class=" mx-32 p-8 rounded-lg bg-white">
-    <p>{!! nl2br($getDetail->deskripsi) !!}</p>
+    <p id="deskripsi-produk" class="line-clamp-6">{!! nl2br($getDetail->deskripsi) !!}</p>
+    <p id="deskripsi-full" class="text-blue2 font-semibold cursor-pointer">Selengkapnya...</p>
 </div>
+<div class="flex justify-center mt-10 mb-10">
+    <h1 class="text-2xl font-bold border-b-4 px-8 border-blue2">Produk Serupa</h1>
+</div>
+<div class="swiper w-5/6 ">
+    <div class="slide-content-4-card">
+        <div class=" swiper-wrapper">
+            @foreach ($rekomendasiProduk as $produk)
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
+                    <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">
+                        <img class="rounded-t-lg h-56 w-full" src="{{ json_decode($produk->foto)[0] }}" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">
+                            <p class="mb-2 text-md font-bold line-clamp-1 tracking-tight text-gray-900 dark:text-white">{{ $produk->nama_produk }}</p>
+                        </a>
+                        <div class="flex justify-star mt-8">
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                            <i class="fas fa-star" style="color: #FFD43B;"></i>
+                        </div>
+                        <div class="flex justify-star my-2 gap-3">
+                            <p class="text-blue2 font-bold text-lg">Rp.{{ number_format($produk->harga, 0, ',', '.') }}</p>
+                        </div>
+                        <div class="flex justify-between">
+                            <small class="font-bold">Tersedia : {{ number_format($produk->stok, 0, ',', '.') }}</small>
+                            <small class="font-bold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="prev-swipe">
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+    </div>
+    <div class="next-swipe">
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-4 h-4 text-gray-400 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+    </div>
+
+</div>
+
 <hr class="h-px my-6 mx-32 bg-gray-300 border-0 dark:bg-gray-700 ">
 <div class="flex justify-star mt-6 mb-6 ms-32">
     <h1 class="text-xl font-bold border-b-4 px-1 rounded-sm border-blue2">PENILAIAN </h1>

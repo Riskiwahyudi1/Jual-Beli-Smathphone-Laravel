@@ -16,12 +16,21 @@ class DetailController extends Controller
         $fotos = json_decode($produk->foto);
         
         $penjualan = 0;
-        $getPenjualan = Produk::where('user_id', $auth)->pluck('terjual')->all();
+        $getPenjualan = Produk::where('user_id', $auth)
+                                ->pluck('terjual')
+                                ->all();
         $penjualan += array_sum($getPenjualan);
         
         $jmlProdukToko = Produk::where('user_id', $auth)
                         ->where('status', 'terverifikasi')
                         ->get();
+
+
+        $rekomendasiProduk = Produk::where('brand', $produk->brand)
+                                    ->where('status', 'terverifikasi')
+                                    ->where('id', '!=',  $produk->id)
+                                    ->limit(20)
+                                    ->get();
 
         return view('pembeli.detail-produk', [
         "title" => "Detail Produk",
@@ -31,6 +40,7 @@ class DetailController extends Controller
         'fotos' => $fotos,
         'penjualan' => $penjualan,
         'jmlProdukToko' => $jmlProdukToko->count(),
+        'rekomendasiProduk' => $rekomendasiProduk
         ]);
     }
 }

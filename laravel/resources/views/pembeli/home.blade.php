@@ -333,7 +333,7 @@
                 </div>
                 <div class="flex justify-between">
                         
-                    <small class="font-bold">Tersedia : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
+                    <small class="font-bold">Tersedia : {{ number_format($produk->stok, 0, ',', '.') }}</small>
                     <small class="font-bold">Terjual : {{ number_format($produk->terjual, 0, ',', '.') }}</small>
                 
                 </div>

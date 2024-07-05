@@ -30,7 +30,21 @@ if (document.title === 'TeraPhone | Detail Produk'){
             });
         });
     });
+    // deskripsi produk
+    const deskripsiProduk = document.querySelector('#deskripsi-produk');
+    const deskripsiFull = document.querySelector('#deskripsi-full');
 
+    deskripsiFull.addEventListener('click', () => {
+        deskripsiProduk.classList.toggle('line-clamp-6');
+        if(deskripsiProduk.classList.contains('line-clamp-6')){
+            deskripsiFull.innerHTML = "Selengkapnya...";
+        }else{
+            deskripsiFull.innerHTML = 'Sembunyikan';
+        }
+    })
+
+
+    // review produk
     const reviewStar = document.querySelectorAll('.star-review');
 
     reviewStar.forEach((star) => {

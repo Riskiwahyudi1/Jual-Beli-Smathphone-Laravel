@@ -21,7 +21,7 @@ class ViewPenjualController extends Controller
             'brand' => request('brand'),
             'user' => request('user')
         ];
-        $brands = Produk::pluck('brand')->all();
+        $brands = Produk::where('user_id', $auth)->pluck('brand')->all();
         $search = Produk::populerFilter($filters)->where('status', 'terverifikasi')->paginate(20);
         $kategoris = Kategori::get();
 
