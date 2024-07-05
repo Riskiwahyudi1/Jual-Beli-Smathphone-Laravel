@@ -53,7 +53,7 @@
 @endif
 @extends('layouts.main')
 @section('container')
-<nav class="bg-gray-100 rounded-lg dark:bg-gray-700 top-0 left-0 right-0 w-5/6 z-10 mx-auto fixed pt-20">
+<nav class="bg-gray-100 rounded-lg dark:bg-gray-700 top-0 left-0 right-0 w-full z-10 mx-auto fixed pt-20">
     <div class="px-4 py-3">
         <div class="flex items-center justify-center">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
