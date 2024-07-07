@@ -184,7 +184,7 @@
             @foreach ($rekomendasiProduk as $produk)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">
                     <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">
-                        <img class="rounded-t-lg h-56 w-full" src="{{ json_decode($produk->foto)[0] }}" alt="" />
+                        <img class="rounded-t-lg h-56 w-full" src="/{{ json_decode($produk->foto)[0] }}" alt="" />
                     </a>
                     <div class="p-5">
                         <a href="/detail-produk/{{ $produk->id . '-' . Str::slug($produk->nama_produk) }}">

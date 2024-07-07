@@ -310,7 +310,7 @@
 @else 
     <!-- Tampilkan hasil pencarian jika ada hasil pencarian -->
     @if ($search->isNotEmpty() && request()->has('kategori') || request()->has('search') || request()->has('brand'))
-    <div class="container grid grid-cols-4 mx-auto gap-4 px-36 py-32">
+    <div class="container grid grid-cols-5 mx-auto gap-4 px-20 py-32">
         @foreach ($search as $produk)
 
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 swiper-slide">

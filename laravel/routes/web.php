@@ -89,7 +89,7 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/produk-penjual/search', [ProdukPenjualController::class, 'search'])->name('produk-penjual.search');
     Route::resource('/crud-produk', TambahProdukController::class);
     Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
-    Route::post('/layanan-pengguna', [LayananPenggunaPenjualController::class, 'store']);
+    Route::post('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'store']);
 });
 
 // admin

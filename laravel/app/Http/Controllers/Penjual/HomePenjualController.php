@@ -49,7 +49,7 @@ class HomePenjualController extends Controller
                         $jumlahTransaksiDikirim++;
                     }else if($transaksiList->where('status', 'selesai')->isNotEmpty()){
                         $jumlahTransaksiSelesai++;
-                    }else if($transaksiList->where('status', 'dibatalkan')->isNotEmpty()){
+                    }else if($transaksiList->where('status', 'Dibatalkan')->isNotEmpty()){
                         $jumlahTransaksiDibatalkan++;
                     }
                    
