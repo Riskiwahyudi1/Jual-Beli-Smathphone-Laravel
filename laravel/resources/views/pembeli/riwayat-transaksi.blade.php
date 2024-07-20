@@ -61,11 +61,26 @@
                 <li>
                     <div class="{{ request('status') === $s ? '  border-gray-500 border-b-2 px-1 text-blue2 font-bold' : 'text-gray-400' }} ">
                         @if ($s === 'menunggu-pembayaran')
-                        <i class="fas fa-hourglass-start"></i>                      
+                        <div class="relative inline-block">
+                            <i class="fas fa-hourglass-start mr-1"></i>
+                            @if ($statusCounts['menunggu-pembayaran'] > 0)
+                            <div class="absolute top-0 left-1.5 inline-flex items-center justify-center w-3 h-3 text-xs font-medium text-white bg-red-600 border-2 border-red-600 rounded-full">!</div>
+                            @endif
+                        </div>
                         @elseif($s === 'dikemas')
-                        <i class="fas fa-box"></i>                      
+                        <div class="relative inline-block">
+                            <i class="fas fa-box mr-1"></i>
+                            @if ($statusCounts['dikemas'] > 0)
+                            <div class="absolute top-0 left-1.5 inline-flex items-center justify-center w-3 h-3 text-xs font-medium text-white bg-red-600 border-2 border-red-600 rounded-full">!</div>
+                            @endif
+                        </div>                   
                         @elseif($s === 'dikirim')
-                        <i class="fas fa-truck"></i>                      
+                        <div class="relative inline-block">
+                            <i class="fas fa-truck mr-1"></i>
+                            @if ($statusCounts['dikirim'] > 0)
+                            <div class="absolute top-0 left-1.5 inline-flex items-center justify-center w-3 h-3 text-xs font-medium text-white bg-red-600 border-2 border-red-600 rounded-full">!</div>
+                            @endif
+                        </div>                   
                         @elseif($s === 'selesai')
                         <i class="fas fa-check"></i>                      
                         @elseif($s === 'dibatalkan')
@@ -84,6 +99,7 @@
 <div class="overflow-x-auto w-3/4  mx-auto mt-24 mb-20">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            @if (count($transaksis) > 0)
             <tr>
                 <th scope="col" class="px-10 py-3">
                     Produk
@@ -107,10 +123,14 @@
                     Aksi
                 </th>
             </tr>
+            @else
+                <tr>
+                    <th colspan="10" class="px-10 py-64  text-center text-red-600">Tidak ada transaksi yang {{ request('status') }} !</th>
+                </tr>
+            @endif
         </thead>
         
         <tbody>
-        {{-- @if ($transaksis->count() > 0) --}}
         @foreach ($transaksis as $penjual => $transaksiListByTime)
             @foreach ($transaksiListByTime as $createdAt => $transaksiList)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -118,7 +138,9 @@
                         <img class="h-10 w-10 mr-4 ms-4" src="{{ asset(json_decode($transaksiList->first()->produk->foto)[0]) }}" alt="image description">
 
                         <div>
-                            <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
+                            <a href="/detail-produk/{{ $transaksiList->first()->produk->id . '-' . Str::slug($transaksiList->first()->produk->nama_produk) }}">
+                                <p class="truncate w-56">{{ $transaksiList->first()->produk->nama_produk }}</p>
+                            </a>
                             <small class="text-gray-500">Jumlah : {{ $transaksiList->first()->jumlah }} Pcs</small>
                             @if($transaksiList->count() > 1)
                                 <div class="hidden multi-transaksi">
@@ -126,7 +148,9 @@
                                         <div class="flex mt-2">
                                             <img class="h-8 w-8 mr-3" src="{{ asset(json_decode($transaksi->produk->foto)[0]) }}" alt="image description">
                                             <div>
-                                                <p class="text-xs truncate w-56">{{ $transaksi->produk->nama_produk }}</p><br>
+                                                <a href="/detail-produk/{{ $transaksi->produk->id . '-' . Str::slug($transaksi->produk->nama_produk) }}">
+                                                    <p class="text-xs truncate w-56">{{ $transaksi->produk->nama_produk }}</p>
+                                                </a>
                                                 <small class="text-gray-500 ms-1">Jumlah : {{ $transaksi->jumlah }} Pcs</small>
                                             </div>
                                         </div>
@@ -289,7 +313,10 @@
                                 <form action="riwayat-transaksi" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <p class="font-bold mt-4 mb-2">Upload bukti pembayaran :</p>
-                                    <input type="file" name="bukti-transaksi">
+                                    <input type="file" name="bukti-transaksi" required>
+                                    @error('bukti-transaksi')
+                                    <p id="filled_error_help" class=" text-xs text-red-600 dark:text-red-400 text-red"><span class="font-medium">{{ $message }}</p>
+                                    @enderror
                                     @foreach ($transaksiList as $transaksi)
                                     <input type="hidden" name="status-transaksi[]" value="menunggu-verifikasi">
                                     <input type="hidden" name="transaksi-id[]" value="{{ $transaksi->id }}">
@@ -309,7 +336,7 @@
                         <!-- Modal content -->
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             
-                            <img class="h-full w-full mr-3" src="{{ asset('images/buktiPembayaran/'. $transaksiList->first()->bukti_pembayaran) }}" alt="image description">
+                            <img class="h-full w-full mr-3" src="{{ asset($transaksiList->first()->bukti_pembayaran) }}" alt="image description">
                                 
                         </div>
                     </div>

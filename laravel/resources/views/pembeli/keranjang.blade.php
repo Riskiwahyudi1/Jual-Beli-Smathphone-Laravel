@@ -71,7 +71,9 @@
                             <input type="hidden" name="jumlah[]" value="" class="jml-checkout">
                             <img class="h-10 w-10 mr-4 ms-4 " src="{{ asset(json_decode($produk->produk->foto)[0]) }}" alt="image description">
                             <div>
-                                <p class="w-80 overflow-hidden text-sm font-bold text-ellipsis whitespace-nowrap">{{ $produk->produk->nama_produk }}</p>
+                                <a href="/detail-produk/{{ $produk->produk->id . '-' . Str::slug($produk->produk->nama_produk) }}">
+                                    <p class="w-80 overflow-hidden text-sm font-bold text-ellipsis whitespace-nowrap">{{ $produk->produk->nama_produk }}</p>
+                                </a>
                                 <p class="text-xs" >Stok Produk : <span class="stok-produk">{{ $produk->produk->stok }}</span> pcs</p>
                                 @if ($produk->produk->diskon > 0)
                                 <small class="text-red-600 font-bold mr-3">Rp.{{ number_format($produk->produk->harga - $produk->produk->diskon / 100 * $produk->produk->harga , 0, ',', '.') }} / pcs</small>

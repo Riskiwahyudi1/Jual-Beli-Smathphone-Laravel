@@ -70,6 +70,25 @@
         </form>
         </div>
     </div>
+    @if (count($pesans) > 0)
+    <div class="container mx-auto py-8 px-6">
+        <h1 class="text-2xl font-bold mb-6">Riwayat Pengaduan</h1>
+        <ul class="list-disc pl-5 max-w-full">
+            @foreach($pesans as $pesan)
+                <li class="mb-4 bg-white p-4 list-none cursor-pointer">
+                    <h2 class="text-lg font-bold">{{ $pesan->pengaduan }}
+                        @if ($pesan->status == 'Selesai')
+                            <span class="bg-green-300 text-green-800 text-xs rounded-md font-semibold me-2 px-2.5 py-0.5">Selesai</span>
+                        @endif
+                    </h2>
+                    <p class="break-words">{{ $pesan->pesan }}</p>
+                    <p class="text-sm text-gray-600"><small>Tanggal: {{ $pesan->created_at }}</small></p>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+             
 </div>
 
 @endsection

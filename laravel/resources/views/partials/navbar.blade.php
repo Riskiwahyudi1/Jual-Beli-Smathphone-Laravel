@@ -32,8 +32,8 @@
                 <a href="riwayat-transaksi?status=menunggu-pembayaran" class=" text-white ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>                     
                 </a>
-                @if ($TransaksiInfo->count() > 0)
-                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">{{ $TransaksiInfo->count() }}</div>
+                @if ($TransaksiInfo > 0)
+                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">{{ $TransaksiInfo }}</div>
                 @endif
             </div>
             <div class="relative inline-flex items-center ms-12 mr-1 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
@@ -48,7 +48,7 @@
                     <div id="dropdownHover" class="z-30 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">Pengaturan akun</a>
+                                <a href="/profil" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">Pengaturan akun</a>
                             </li>
                             <form action="/logout" method="post">
                             <li>

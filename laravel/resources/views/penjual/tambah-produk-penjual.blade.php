@@ -36,86 +36,86 @@
         
             <div>
                 <label for="nama-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Produk :</label>
-                <input type="text" name="nama_produk" class="bg-gray-50 border w-11/12 my-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Produk" required/>
+                <input type="text" name="nama_produk" value="{{ old('nama_produk') }}" class="bg-gray-50 border w-11/12 my-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Produk" required/>
             </div>
             <div>
                 <label for="harga-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga Produk :</label>
-                <input type="number"  name="harga" class="bg-gray-50 border w-11/12 my-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan harga Produk" required/>
+                <input type="number"  name="harga" value="{{ old('harga') }}" class="bg-gray-50 border w-11/12 my-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan harga Produk" required/>
             </div>
             <div class="grid gap-6 mb-2 md:grid-cols-2">
                 <div class="mb-2">
                     <label for="Kategori Produk :" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori Produk :</label>
                     <select name="kategori_id" class="w-3/4 mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option value="" disabled selected>--Pilih Kategori--</option>
-                        <option value="1">Gaming Smartphone</option>
-                        <option value="2">Flagship Smartphone</option>
-                        <option  value="3">Camera Quality</option>
-                        <option value="4">Mid Range</option>
-                        <option value="5">Low Range</option>
-                    </select>
+                        <option value="" disabled {{ old('kategori_id') == '' ? 'selected' : '' }}>--Pilih Kategori--</option>
+                        <option value="1" {{ old('kategori_id') == '1' ? 'selected' : '' }}>Gaming Smartphone</option>
+                        <option value="2" {{ old('kategori_id') == '2' ? 'selected' : '' }}>Flagship Smartphone</option>
+                        <option value="3" {{ old('kategori_id') == '3' ? 'selected' : '' }}>Camera Quality</option>
+                        <option value="4" {{ old('kategori_id') == '4' ? 'selected' : '' }}>Mid Range</option>
+                        <option value="5" {{ old('kategori_id') == '5' ? 'selected' : '' }}>Low Range</option>
+                    </select>                    
                 </div>
                 <div class="mb-2">
                     <label for="Brand :" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand :</label>
                     <select name="brand" class="w-3/4 mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option value="" disabled selected>--Pilih Brand--</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value ="Oppo">OPPO</option>
-                        <option value="Nokia">Nokia</option>
-                        <option value="Xiomi">Xiaomi</option>
-                        <option value="Asus">Asus</option>
-                        <option value="Asus">POCO</option>
-                        <option value="Asus">Infinix</option>
-                        <option value="Asus">Realme</option>
-                        <option value="Asus">Vivo</option>
-                        <option value="Asus">Iphone</option>
-                    </select>
+                        <option value="" disabled {{ old('brand') == '' ? 'selected' : '' }}>--Pilih Brand--</option>
+                        <option value="Samsung" {{ old('brand') == 'Samsung' ? 'selected' : '' }}>Samsung</option>
+                        <option value="Oppo" {{ old('brand') == 'Oppo' ? 'selected' : '' }}>OPPO</option>
+                        <option value="Nokia" {{ old('brand') == 'Nokia' ? 'selected' : '' }}>Nokia</option>
+                        <option value="Xiomi" {{ old('brand') == 'Xiomi' ? 'selected' : '' }}>Xiaomi</option>
+                        <option value="Asus" {{ old('brand') == 'Asus' ? 'selected' : '' }}>Asus</option>
+                        <option value="Poco" {{ old('brand') == 'Poco' ? 'selected' : '' }}>POCO</option>
+                        <option value="Infinix" {{ old('brand') == 'Infinix' ? 'selected' : '' }}>Infinix</option>
+                        <option value="Realme" {{ old('brand') == 'Realme' ? 'selected' : '' }}>Realme</option>
+                        <option value="Vivo" {{ old('brand') == 'Vivo' ? 'selected' : '' }}>Vivo</option>
+                        <option value="Iphone" {{ old('brand') == 'Iphone' ? 'selected' : '' }}>Iphone</option>
+                    </select>                    
                 </div>
 
             </div>
             <div class="mb-2">
                 <label for="deskripsi-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Produk :</label>
-                <textarea name="deskripsi"  rows="12" class="block p-2.5 w-11/12 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Deskripsi Produk" required></textarea>
+                <textarea name="deskripsi"  rows="12" class="block p-2.5 w-11/12 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Deskripsi Produk" required>{{ old('deskripsi') }}</textarea>
             </div>
     </div>
     <div class="w-1/2 mt-10">
         <div class="grid gap-6 mb-2 md:grid-cols-2">
             <div>
                 <label for="stok-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah :</label>
-                <input type="number"  name="stok" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Jumlah produk" required/>
+                <input type="number"  name="stok" value="{{ old('stok') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Jumlah produk" required/>
             </div>
             <div>
                 <label for="diskon-produk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Diskon :</label>
-                <input type="number" value="0" name="diskon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0" />
+                <input type="number" name="diskon" value="{{ old('diskon', 0) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0" />
             </div>
         </div>
         <p class="font-semibold mb-2 mt-8">Spesifikasi Produk :</p>
         <div class="grid gap-6 mb-2 md:grid-cols-2">
             <div>
-                <input type="text"  name="spesifikasi[prosesor]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Prosesor" required/>
+                <input type="text"  name="spesifikasi[prosesor]" value="{{ old('spesifikasi.prosesor') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Prosesor" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[dimensi]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Dimensi" required/>
+                <input type="text"  name="spesifikasi[dimensi]" value="{{ old('spesifikasi.dimensi') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Dimensi" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[resolusi]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Resolusi" required/>
+                <input type="text"  name="spesifikasi[resolusi]" value="{{ old('spesifikasi.resolusi') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Resolusi" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[ram_rom]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ram/Rom" required/>
+                <input type="text"  name="spesifikasi[ram_rom]" value="{{ old('spesifikasi.ram_rom') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ram/Rom" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[berat]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Berat" required/>
+                <input type="text"  name="spesifikasi[berat]" value="{{ old('spesifikasi.berat') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Berat" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[layar]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Layar" required/>
+                <input type="text"  name="spesifikasi[layar]" value="{{ old('spesifikasi.layar') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Layar" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[baterai]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Baterai" required/>
+                <input type="text"  name="spesifikasi[baterai]" value="{{ old('spesifikasi.baterai') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Baterai" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[pengisi_daya]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pengisi Daya" required/>
+                <input type="text"  name="spesifikasi[pengisi_daya]" value="{{ old('spesifikasi.pengisi_daya') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pengisi Daya" required/>
             </div>
             <div>
-                <input type="text"  name="spesifikasi[tipe_layar]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tipe Layar" required/>
+                <input type="text"  name="spesifikasi[tipe_layar]" value="{{ old('spesifikasi.tipe_layar') }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-5/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tipe Layar" required/>
             </div>
         </div>
         <div>

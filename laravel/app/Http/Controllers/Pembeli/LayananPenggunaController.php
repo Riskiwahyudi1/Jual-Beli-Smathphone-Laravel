@@ -12,8 +12,13 @@ class LayananPenggunaController extends Controller
 {
     public function layananPengguna()
     {
+        $auth = Auth::id();
+        $pesans = LayananPengguna::where('user_id', $auth)->orderByRaw("FIELD(status, 'diproses') DESC")->get();
+        
         return view('pembeli.layanan-pengguna', [
-            "title" => "Layanan Pengguna"
+            "title" => "Layanan Pengguna",
+            'active' => 'Layanan Pengaduan',
+            'pesans' => $pesans,
         ]);
     }
 

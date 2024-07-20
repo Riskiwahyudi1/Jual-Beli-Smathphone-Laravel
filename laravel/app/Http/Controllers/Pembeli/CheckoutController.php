@@ -92,10 +92,8 @@ public function getProduk(Request $request)
         $expedisi = $request->input('expedisi');
         $userId = auth()->id(); 
     
-        // Loop melalui produkIds dan jumlahProduks untuk membuat entri transaksi
         foreach($produkIds as $index => $productId) {
     
-            // Simpan data transaksi ke database
             Transaksi::create([
                 'user_id' => $userId,
                 'produk_id' => $productId,
@@ -106,7 +104,6 @@ public function getProduk(Request $request)
                 'total_transaksi' => $totalTransaksi,
                 'expedisi' => $expedisi,
                 'alamat' => json_encode($data)
-                // Tambahkan kolom lain yang diperlukan
             ]);
     
             // update terjual dan stok
@@ -119,13 +116,11 @@ public function getProduk(Request $request)
         
         }
     
-        // Redirect kembali dengan pesan sukses
         $request->session()->flash('berhasil', 'Berhasil checkout, Silahkan lakukan pembayaran!!');
     
         return redirect('/riwayat-transaksi?status=menunggu-pembayaran');
     }
     
-    // fungsi untuk checkout langsung dari detail peroduk
 
     public function checkoutDariDetail(Request $request){
 

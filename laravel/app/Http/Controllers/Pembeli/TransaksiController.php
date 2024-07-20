@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Pembeli;
 use Carbon\Carbon;
 use App\Models\Produk;
 use App\Models\Kategori;
-
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,39 +11,75 @@ use App\Http\Controllers\Controller;
 
 class TransaksiController extends Controller
 {
-
-    public function riwayatTransaksi()
-{
-    $userId = Auth::id();
-    $filters = [
-        'status' => request('status'),
-    ];
-
-    // Mengambil daftar penjual yang unik dari transaksi
-    $penjualList = Transaksi::distinct()->pluck('penjual');
-    $produkTransaksi = [];
-
-    foreach ($penjualList as $penjual) {
-        $transaksiList = Transaksi::transaksiFilter($filters)
-            ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'total_transaksi', 'expedisi', 'id', 'status','bukti_pembayaran', 'alamat')
-            ->where('user_id', $userId)
-            ->where('penjual', $penjual)
-            ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'total_transaksi', 'expedisi', 'id', 'status', 'bukti_pembayaran', 'alamat')
-            ->latest()
-            ->get()
-            ->groupBy('created_at'); 
+        // fungsi menampilkan transaksi
+        public function riwayatTransaksi()
+        {
+            $userId = Auth::id();
+            $filters = [
+                'status' => request('status'),
+            ];
+    
+            // Mengambil daftar penjual yang unik dari transaksi
+            $penjualList = Transaksi::distinct()->pluck('penjual');
+            $produkTransaksi = [];
+            $jumlahTransaksi = 0;
             
-            if ($transaksiList->isNotEmpty()) {
-                $produkTransaksi[$penjual] = $transaksiList;
+            
+            foreach ($penjualList as $penjual) {
+                $transaksiList = Transaksi::transaksiFilter($filters)
+                ->select('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'total_transaksi', 'expedisi', 'id', 'status','bukti_pembayaran', 'alamat')
+                ->where('user_id', $userId)
+                ->where('penjual', $penjual)
+                ->groupBy('user_id', 'penjual', 'created_at', 'produk_id', 'jumlah', 'ongkir', 'total_transaksi', 'expedisi', 'id', 'status', 'bukti_pembayaran', 'alamat')
+                ->latest()
+                ->get()
+                ->groupBy('created_at'); 
+                
+                if ($transaksiList->isNotEmpty()) {
+                    $produkTransaksi[$penjual] = $transaksiList;
+                    $jumlahTransaksi = 0;
+                }
+                
+                if (count($produkTransaksi) > 0){
+                    foreach ($produkTransaksi as $penjual => $transaksiListByTime) {
+                        foreach ($transaksiListByTime as $createdAt => $transaksiList) {
+                            if ($transaksiList->first()->status !== 'selesai' && $transaksiList->first()->status !== 'Dibatalkan') {
+                                $jumlahTransaksi++;
+                            }
+                        }
+                    }
+                }
             }
+    
+            // tanda alert dalam riwayat transaksi
+            $transaksis = Transaksi::where('user_id', $userId)->get();
+            $statusCounts = [
+                'menunggu-pembayaran' => $transaksis->where('status', 'menunggu-pembayaran')->count(),
+                'dikemas' => $transaksis->where('status', 'dikemas')->count(),
+                'dikirim' => $transaksis->where('status', 'dikirim')->count(),
+            ];
+            
+            return [
+                'produkTransaksi' => $produkTransaksi,
+                'statusCounts' => $statusCounts,
+                'jumlahTransaksi' => $jumlahTransaksi
+            ];
         }
-        
-        return view('pembeli.riwayat-transaksi', [
-            'title' => 'Riwayat Transaksi',
-            'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
-            'transaksis' => $produkTransaksi,
-        ]);
-    }
+    
+        public function tampilkanRiwayatTransaksi()
+        {
+            $data = $this->riwayatTransaksi();
+    
+            return view('pembeli.riwayat-transaksi', [
+                'title' => 'Riwayat Transaksi',
+                'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
+                'transaksis' => $data['produkTransaksi'],
+                'statusCounts' => $data['statusCounts'],
+            ]);
+        }
+    
+
+        // fungsi batalkan transaksi
     public function batalkanTransaksi(Request $request){
         $transaksiIds = $request->input('transaksi', []);
         
@@ -58,6 +93,7 @@ class TransaksiController extends Controller
         }
         return redirect()->back()->with('pembatalan-sukses', 'Transaksi dibatalkan ');
     }
+    // fungsi konfirmasi penerimaan transaksi
     public function terimaTransaksi(Request $request){
         $transaksiIds = $request->input('transaksi', []);
         
@@ -69,27 +105,28 @@ class TransaksiController extends Controller
         return redirect()->back()->with('produk-diterima-sukses', 'Transaksi Selesai');
     }
     
+    // fungsi upload bukti transaksi
     public function pembayaran(Request $request)
     {
-        $request->validate([
-            'bukti-transaksi.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        $validasiData = $request->validate([
+            'bukti-transaksi' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'transaksi-id.*' => 'required|integer|exists:transaksis,id',
         ]);
         
-        // ambil data bukti transaksi
-        $buktiTransaksiFiles = $request->file('bukti-transaksi');
-        $transaksiIds = $request->input('transaksi-id');
+
+        $buktiTransaksiFiles = $validasiData['bukti-transaksi'];
+        $transaksiIds = $validasiData['transaksi-id'] ?? [];
         
-        // kelolah file
-        $file = $buktiTransaksiFiles;
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $destinationPath = 'images/buktiPembayaran/';
-        $file->move(public_path($destinationPath), $fileName);
+
+        if ($request->hasFile('bukti-transaksi',[])) {
+                $path = $buktiTransaksiFiles->store('public/images/bukti_pembayaran');
+                $buktiTransaksiFiles = str_replace('public/', 'storage/', $path);
+        } 
 
         foreach ($transaksiIds as $index => $transaksiId) {
             
             $transaksi = Transaksi::findOrFail($transaksiId);
-            $transaksi->bukti_pembayaran = $fileName;
+            $transaksi->bukti_pembayaran = $buktiTransaksiFiles;
             $transaksi->save();
         }
 
@@ -97,12 +134,3 @@ class TransaksiController extends Controller
     }
     
 }
-
-
-
-
-
-
-
-
-// ->havingRaw('COUNT(DISTINCT produk_id) > 1')

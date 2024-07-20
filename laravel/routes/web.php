@@ -28,6 +28,7 @@ use App\Http\Controllers\Pembeli\CetakInvoiceController;
 
 // Penjual
 use App\Http\Controllers\penjual\TambahProdukController;
+use App\Http\Controllers\Pembeli\ProfilPembeliController;
 use App\Http\Controllers\Penjual\ProdukPenjualController;
 use App\Http\Controllers\Penjual\StatusOrderanController;
 use App\Http\Controllers\Pembeli\LayananPenggunaController;
@@ -62,7 +63,7 @@ Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/checkout', [CheckoutController::class, 'getProduk']);
 Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
 Route::post('/checkout-dari-detail', [CheckoutController::class, 'getProduk']);
-Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayatTransaksi']);
+Route::get('/riwayat-transaksi', [TransaksiController::class, 'tampilkanRiwayatTransaksi']);
 Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
 Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
 Route::post('/riwayat-transaksi-diterima', [TransaksiController::class, 'terimaTransaksi']);
@@ -70,6 +71,7 @@ Route::get('/invoice/{transaksi:id}', [CetakInvoiceController::class, 'generateI
 Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
 Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
 Route::get('/view-penjual', [ViewPenjualController::class, 'viewPenjual']);
+Route::get('/profil', [ProfilPembeliController::class, 'profilPembeli']);
 
 });
 

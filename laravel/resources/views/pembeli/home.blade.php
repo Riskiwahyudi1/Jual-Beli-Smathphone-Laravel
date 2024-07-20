@@ -304,9 +304,15 @@
     </div>
 </div>
 @elseif($search->isEmpty() && request()->has('kategori'))
-<p class="pb-[45vh] pt-36 ms-[35vw]">Produk tidak ditemukan di kategori " <span class="text-red font-bold">{{ request('kategori') }}</span> " !!</p>
+<div class="h-[80vh] mx-32 bg-gray-300 my-32 rounded-md">
+    <p class="text-center pt-64 ">Produk belum tersedia di kategori " <span class="font-bold text-red-600">{{ request('kategori') }}</span> " !!</p>
+</div>
 @elseif($search->isEmpty() && request()->has('search'))
 <p class="pb-[45vh] pt-36 ms-[40vw]">Produk  " <span class="text-red font-bold">{{ request('search') }}</span> " tidak tersedia !!</p>
+@elseif($search->isEmpty() && request()->has('brand'))
+<div class="h-[80vh] mx-32 bg-gray-300 my-32 rounded-md">
+    <p class="text-center pt-64">Produk dengan brand " <span class="text-red-600 font-bold">{{ request('brand') }}</span> " belum tersedia !!</p>
+</div>
 @else 
     <!-- Tampilkan hasil pencarian jika ada hasil pencarian -->
     @if ($search->isNotEmpty() && request()->has('kategori') || request()->has('search') || request()->has('brand'))
