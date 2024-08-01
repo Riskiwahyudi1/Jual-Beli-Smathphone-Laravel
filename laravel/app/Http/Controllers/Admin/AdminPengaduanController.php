@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class AdminPengaduanController extends Controller
 {
     public function adminpengaduan(){
-        $pesans = LayananPengguna::orderByRaw("FIELD(status, 'diproses') DESC")->get();
+        $pesans = LayananPengguna::orderByRaw("FIELD(status, 'diproses') DESC")->paginate(20);
         return view('admin.admin-pengaduan',[
             'title' => 'Admin Pengaduan',
             'active' => 'Admin Pengaduan',

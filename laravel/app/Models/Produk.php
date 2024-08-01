@@ -37,7 +37,7 @@ class Produk extends Model
     
     public function scopePopulerFilter($query, array $filters)
     {
-        $query->orderByDesc('terjual');
+        // $query->orderByDesc('terjual');
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where('nama_produk', 'like', '%' . $search . '%');

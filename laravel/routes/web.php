@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // pembeli
@@ -28,6 +29,7 @@ use App\Http\Controllers\Pembeli\CetakInvoiceController;
 
 // Penjual
 use App\Http\Controllers\penjual\TambahProdukController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Pembeli\ProfilPembeliController;
 use App\Http\Controllers\Penjual\ProdukPenjualController;
 use App\Http\Controllers\Penjual\StatusOrderanController;
@@ -37,24 +39,59 @@ use App\Http\Controllers\penjual\RegisterPenjualController;
 use App\Http\Controllers\penjual\LayananPenggunaPenjualController;
 
 
-// Route Pembeli
-Route::middleware(['guest'])->group(function () {
-Route::get('/', function () { return redirect('/home');});
-Route::get('/register-pembeli', [RegisterPembeliController::class, 'index']);
+
+
+Route::get('/register-pembeli', [RegisterPembeliController::class, 'index'])->name('register-pembeli');
 Route::post('/register-pembeli', [RegisterPembeliController::class, 'store']);
 Route::get('/register-penjual', [RegisterPenjualController::class, 'index']);
 Route::post('/register-penjual', [RegisterPenjualController::class, 'store']);
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    // Cek apakah email sudah terverifikasi
+    if ($request->user()->hasVerifiedEmail()) {
+        if ($request->user()->role === 'buyer') {
+            return redirect('/home')->with('message', 'Email sudah diverifikasi.');
+        } else {
+            return redirect('/home-penjual')->with('message', 'Email sudah diverifikasi.');
+        }
+    }
+    
+    // Verifikasi email dan login otomatis
+    $request->fulfill();
+    Auth::login($request->user());
+    
+    // Redirect berdasarkan peran pengguna
+    if ($request->user()->role === 'buyer') {
+        return redirect('/home')->with('message', 'Email berhasil diverifikasi.');
+    } else {
+        return redirect('/home-penjual')->with('message', 'Email berhasil diverifikasi.');
+    }
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::post('/email/verification-notification', [RegisterPembeliController::class, 'resend'])
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('verification.resend');
+
+// Route Pembeli
+Route::middleware(['guest'])->group(function () {
+Route::get('/', function () { return redirect('/home');});
 Route::get('/login-user', [LoginUserController::class, 'login'])->name('login');
 Route::post('/login-user', [LoginUserController::class, 'authenticate']);
 Route::get('admin-login', [LoginAdminController::class, 'loginAdmin'])->name('admin.login');
 Route::post('admin-login', [LoginAdminController::class, 'login']);
+
+
 });
 
 Route::get('/home', [HomeController::class, 'home'])->name('/home');
 Route::post('/logout', [LoginUserController::class, 'logout']);
 
 // pembeli
-Route::middleware(['auth', 'role:buyer'])->group(function () {
+Route::middleware(['auth', 'role:buyer', 'verified'])->group(function () {
 Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk'])->middleware('auth');
 Route::get('/keranjang', [KeranjangController::class, 'keranjang'])->middleware('auth');
 Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
@@ -77,7 +114,7 @@ Route::get('/profil', [ProfilPembeliController::class, 'profilPembeli']);
 
 // penjual
 
-Route::middleware(['auth', 'role:seller'])->group(function () {
+Route::middleware(['auth', 'role:seller', 'verified'])->group(function () {
     Route::get('/home-penjual', [HomePenjualController::class, 'homePenjual'])->name('/home-penjual');
     Route::get('/kelola-stok', [KelolaStokController::class, 'kelolaStok']);
     Route::post('/kelola-stok-tambah', [KelolaStokController::class, 'kelolahStokTambah']);
@@ -88,7 +125,7 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::post('/status-orderan-kirim', [StatusOrderanController::class, 'kirimTransaksi']);
     Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkPenjual'])->name('/produk-penjual');
     Route::get('/tambah-produk-penjual', [TambahProdukController::class, 'index'])->name('/tambah-produk');
-    Route::get('/produk-penjual/search', [ProdukPenjualController::class, 'search'])->name('produk-penjual.search');
+    Route::get('/produk-penjual', [ProdukPenjualController::class, 'produkpenjual'])->name('produk-penjual.search');
     Route::resource('/crud-produk', TambahProdukController::class);
     Route::get('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'layananPenggunaPenjual']);
     Route::post('/layanan-pengguna-penjual', [LayananPenggunaPenjualController::class, 'store']);

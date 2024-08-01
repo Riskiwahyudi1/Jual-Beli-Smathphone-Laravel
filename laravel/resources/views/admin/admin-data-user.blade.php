@@ -7,7 +7,29 @@
     <form action="/admin-data-user">
         @csrf
     <div class="flex justify-center mb-10 mt-10"> 
-        <div class="relative w-1/3 "> 
+        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center " type="button"><span id="title-role">Role User</span><svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+            </button>
+            
+            <!-- Dropdown menu -->
+            <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                    <li>
+                        <a href="/admin-data-user" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white font-bold">Semua</a> 
+                    </li>                       
+                    <li>
+                        <a href="/admin-data-user?role=buyer" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white font-bold">Buyer</a> 
+                    </li>                       
+                    <li>
+                        <a href="/admin-data-user?role=seller" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white font-bold">Seller</a> 
+                    </li>                       
+                </ul>
+            </div>
+        <div class="relative w-1/3 ms-4">
+            @if (request('role'))
+            <input id="role-user" type="hidden" name="status" value="{{ request('role') }}"> 
+            @endif 
             <input type="text" name="search"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"
                 placeholder="Cari User ..." value="{{ request('search') }}">
@@ -97,5 +119,7 @@
     </table>
 </div>
 </div>
-
+<div class=" my-5 inset-x-0  flex justify-center">
+    {{ $users->links() }}
+</div>
 @endsection

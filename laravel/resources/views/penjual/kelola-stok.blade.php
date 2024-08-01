@@ -36,7 +36,6 @@
         </div>
         
 </form>
-<div><p class="ms-6 mt-12 text-xl font-bold text-black">Hampir Habis</p></div>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-8"> <!-- Tambahkan margin atas -->
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -67,7 +66,7 @@
                 </th>
                 <td class=" py-4">Rp.{{ number_format($produk->harga,0,',','.') }}</td>
                 <td class=" py-4">{{ $produk->brand }}</td>
-                <td class=" py-4">{{ $produk->stok }}</td>
+                <td class=" py-4 {{ $produk->stok <= 5 ? ' text-red-600 font-bold underline': '' }}">{{ $produk->stok }}</td>
                 <td class=" py-4">
                     <button><i data-modal-target="tambah-modal{{ $produk->id}}" data-modal-toggle="tambah-modal{{ $produk->id }}" class=" text-green-600 fas fa-circle-plus"></i></button>
                     <button><i data-modal-target="edit-modal{{ $produk->id}}" data-modal-toggle="edit-modal{{ $produk->id }}" class="text-yellow-500 ms-2 fas fa-pen"></i></button>
@@ -247,5 +246,8 @@
             @endif
         </tbody>
     </table>
+</div>
+<div class=" my-5 inset-x-0  flex justify-center">
+    {{ $produks->links() }}
 </div>
 @endsection

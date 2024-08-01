@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class LayananPenggunaPenjualController extends Controller
 {
     public function layananPenggunaPenjual(){
+        $auth = Auth::id();
+        $pesans = LayananPengguna::where('user_id', $auth)->orderByRaw("FIELD(status, 'diproses') DESC")->get();
         return view('penjual.layanan-pengguna-penjual',[
             'title' => 'Layanan Pengguna Penjual',
             'active' => 'layanan-pengguna-penjual',
+            'pesans' => $pesans,
         ]);
     }
     public function store(Request $request)

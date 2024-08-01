@@ -28,17 +28,15 @@ class HomeController extends Controller
     // metode dependency injection construct TransaksiController
     $data = $this->infoTransaksi->riwayatTransaksi();
 
-    // Inisialisasi $jumlahTransaksi dengan nilai default 0
     $jumlahTransaksi = 0;
 
-    // Ambil nilai $jumlahTransaksi dari hasil riwayat transaksi jika tersedia
     if (isset($data['jumlahTransaksi'])) {
         $jumlahTransaksi = $data['jumlahTransaksi'];
     }
 
     $produks = Produk::with('kategori')->get();
     $kategoris = Kategori::get();
-    $diskons = Produk::with('kategori')->where('diskon', '>', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi')->get();
+    $diskons = Produk::with('kategori')->where('diskon', '>', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi')->orderByDesc('terjual')->get();
     $brands = Produk::where('diskon', '>', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi')->pluck('brand')->all();
     $keranjangInfo = Keranjang::with(['produk' => function($query) { $query->where('stok', '>', 0);}])->where('user_id', Auth::id())->get();
     $cameraQualityProduk = Kategori::with(['produk' => function($query) {$query->where('diskon', 0)->where('stok', '>', 0)->where('status', 'Terverifikasi');}])->findOrFail(3);
@@ -48,7 +46,7 @@ class HomeController extends Controller
                 'kategori' => request('kategori'),
                 'brand' => request('brand')
             ];
-    $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->paginate(20);
+    $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->orderByDesc('terjual')->paginate(20);
 
     return view('pembeli.home', [
         'cameraQuality' => $cameraQualityProduk,

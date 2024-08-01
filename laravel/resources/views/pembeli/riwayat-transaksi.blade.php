@@ -82,9 +82,19 @@
                             @endif
                         </div>                   
                         @elseif($s === 'selesai')
-                        <i class="fas fa-check"></i>                      
+                        <div class="relative inline-block">
+                            <i class="fas fa-check"></i> 
+                            @if(session()->has('produk-diterima-sukses'))
+                            <div class="absolute top-0 left-1.5 inline-flex items-center justify-center w-3 h-3 text-xs font-medium text-white bg-red-600 border-2 border-red-600 rounded-full">!</div>
+                            @endif
+                        </div>                       
                         @elseif($s === 'dibatalkan')
-                        <i class="fas fa-ban"></i>                      
+                        <div class="relative inline-block">
+                            <i class="fas fa-ban"></i> 
+                            @if(session()->has('pembatalan-sukses'))
+                            <div class="absolute top-0 left-1.5 inline-flex items-center justify-center w-3 h-3 text-xs font-medium text-white bg-red-600 border-2 border-red-600 rounded-full">!</div>
+                            @endif
+                        </div>                    
                         @endif
                         <a href="/riwayat-transaksi?status={{ $s }}" class="{{ request('status') === $s ? ' text-blue1 font-bold' : 'text-gray-400' }} " aria-current="page">{{ ucwords(str_replace('-', ' ', $s)) }}
                         </a>
@@ -233,7 +243,6 @@
                                                 $hitungDiskon = $transaksi->produk->diskon / 100 * $transaksi->produk->harga;
                                                 $hargaSetelahDiskon = $transaksi->produk->harga - $hitungDiskon;
                                                 $hargaSesuaiJumlah = $hargaSetelahDiskon * $transaksi->jumlah;
-                                                
                                             @endphp
                                             <small class="ms-1">Total Harga : <span class="text-blue2"> Rp. {{ number_format($hargaSesuaiJumlah , 0, ',', '.') }}</span></small>
                                         </div>

@@ -5,10 +5,28 @@
     <div class="grid grid-cols-4 gap-6 mt-6 mx-12">
         <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-2">
+                <i class="fa-solid fa-boxes-stacked fa-3x text-gray-500"></i>
+                <div>
+                    <p class="text-xl font-bold">Total Produk</p>
+                    <p class="text-3xl ms-6 font-bold">{{ $totalProduk }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
+            <div class="flex justify-center items-center gap-2">
                 <i class="fas fa-shopping-bag fa-3x text-blue2"></i>
                 <div>
-                    <p class="text-xl font-bold">Total Order</p>
+                    <p class="text-xl font-bold">Total Transaksi</p>
                     <p class="text-3xl ms-6 font-bold">{{ $totalTransaksi }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
+            <div class="flex justify-center items-center gap-2">
+                <i class="fas fa-money-check-dollar fa-3x text-green-600"></i>
+                <div>
+                    <p class="text-xl font-bold">Omset</p>
+                    <p class="text-md ms-6 font-extrabold">Rp.{{ number_format($jumlahPendapatan, 0, ',', '.') }}</p>
                 </div>
             </div>
         </div>
@@ -23,7 +41,7 @@
         </div>
         <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-1">
-                <i class="fas fa-regular fa-box fa-3x text-purple-600"></i>
+                <i class="fas fa-regular fa-box-open fa-3x text-purple-600"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Dikemas</p>
                     <p class="text-3xl ms-5 font-bold">{{ $dikemas }}</p>
@@ -32,7 +50,7 @@
         </div>
         <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
             <div class="flex justify-center items-center gap-1">
-                <i class="fas fa-regular fa-paper-plane fa-3x text-blue-500"></i>
+                <i class="fa-solid fa-truck-fast fa-3x text-blue-500"></i>
                 <div>
                     <p class="text-xl font-bold ms-4">Dikirim</p>
                     <p class="text-3xl ms-5 font-bold">{{ $dikirim }}</p>

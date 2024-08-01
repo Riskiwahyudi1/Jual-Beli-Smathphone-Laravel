@@ -14,7 +14,7 @@ class KelolaStokController extends Controller
             'search' => request('search'),
         ];
         $auth = Auth::id();
-        $produks = Produk::populerFilter($filters)->with('kategori', 'user')->where('user_id', $auth)->paginate(10);
+        $produks = Produk::populerFilter($filters)->with('kategori', 'user')->where('user_id', $auth)->orderBy('stok')->paginate(10);
         
         return view('penjual.kelola-stok',[
             'title' => 'Kelola Stok Produk',

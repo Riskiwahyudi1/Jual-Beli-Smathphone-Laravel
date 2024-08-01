@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Penjual;
 
+use App\Models\Produk;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,8 +14,19 @@ class HomePenjualController extends Controller
         
     $userId = Auth::id();
     $user = Auth::user();
+    $produk = Produk::where('user_id', $userId)->get();
     $pembeliList = Transaksi::distinct()->pluck('user_id');
     $produkTransaksi = [];
+
+    // informasi card
+    $jumlahTransaksi = 0;
+    $jumlahPendapatan = 0;
+    $jumlahTransaksiDikemas = 0;
+    $jumlahTransaksiMenunggu = 0;
+    $jumlahTransaksiDikirim = 0;
+    $jumlahTransaksiSelesai = 0;
+    $jumlahTransaksiDibatalkan = 0;
+
     
     foreach ($pembeliList as $pembeli) {
         $transaksiList = Transaksi::
@@ -29,18 +41,18 @@ class HomePenjualController extends Controller
             if ($transaksiList->isNotEmpty()) {
                 $produkTransaksi[$pembeli] = $transaksiList;
             } 
-            
-            // informasi card
-            $jumlahTransaksi = 0;
-            $jumlahTransaksiDikemas = 0;
-            $jumlahTransaksiMenunggu = 0;
-            $jumlahTransaksiDikirim = 0;
-            $jumlahTransaksiSelesai = 0;
-            $jumlahTransaksiDibatalkan = 0;
 
             foreach ($produkTransaksi as $penjual => $transaksiListByTime) {
                 foreach ($transaksiListByTime as $createdAt => $transaksiList) {
+                    
                     $jumlahTransaksi ++;
+
+                    $transaksiListValid = $transaksiList->filter(function ($transaksi) {
+                        return $transaksi->status == 'selesai';
+                    });                    
+                    foreach ($transaksiListValid as $transaksi) {
+                        $jumlahPendapatan += ($transaksi->produk->harga - ($transaksi->produk->diskon / 100 * $transaksi->produk->harga)) * $transaksi->jumlah + $transaksiListValid->first()->ongkir;
+                    }
                     if ($transaksiList->where('status', 'dikemas')->isNotEmpty()) {
                         $jumlahTransaksiDikemas++;
                     }else if($transaksiList->where('status', 'menunggu-pembayaran')->isNotEmpty()){
@@ -62,6 +74,8 @@ class HomePenjualController extends Controller
         return view('penjual.home-penjual', [
             'title' => 'Home Penjual',
             'active' => 'home-penjual',
+            'totalProduk' => $produk->count(),
+            'jumlahPendapatan' => $jumlahPendapatan,
             'totalTransaksi' => $jumlahTransaksi,
             'menungguPembayaran' => $jumlahTransaksiMenunggu,
             'dikemas' => $jumlahTransaksiDikemas,

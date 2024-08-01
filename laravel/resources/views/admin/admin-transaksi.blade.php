@@ -30,7 +30,7 @@
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        {{-- @if (count($transaksis) > 0) --}}
+        
         <tr>
         <th scope="col" class="px-6 py-3">
                 No
@@ -58,6 +58,7 @@
             </th>
         </tr>
     </thead>
+    @if (count($transaksis) > 0)
     <tbody>
         @php
             $no=1
@@ -214,7 +215,13 @@
             </div>
         @endforeach
         @endforeach
-       
+       @else
+        <tr>
+            <td colspan="8" class="text-center text-red-600">
+                <p class="font-semibold text-md mt-10">Transaksi "<span class="text-black">{{ request('search') }}</span>" tidak ditemukan!</p>
+            </td>
+        </tr>
+       @endif
     </tbody>
 </table>
 

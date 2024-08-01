@@ -12,9 +12,10 @@ class AdminDataUserController extends Controller
     public function adminDataUser(){
         $filters = [
             'search' => request('search'),
+            'role' => request('role'),
         ];
     
-        $search = User::latest()->userFilter($filters)->where('role', 'buyer')->orWhere('role', 'seller')->paginate(20);
+        $search = User::userFilter($filters)->where('role', '!=', 'admin')->paginate(20);
         return view('admin.admin-data-user',[
             'title' => 'Admin Data User',
             'active' => 'Admin Data User',

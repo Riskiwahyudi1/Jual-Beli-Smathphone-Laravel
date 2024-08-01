@@ -22,7 +22,7 @@ class ViewPenjualController extends Controller
             'user' => request('user')
         ];
         $brands = Produk::where('user_id', $auth)->pluck('brand')->all();
-        $search = Produk::populerFilter($filters)->where('status', 'terverifikasi')->paginate(20);
+        $search = Produk::populerFilter($filters)->where('status', 'terverifikasi')->orderByDesc('terjual')->paginate(20);
         $kategoris = Kategori::get();
 
         $penjualan = 0;
@@ -34,13 +34,14 @@ class ViewPenjualController extends Controller
                         ->get();
 
         return view('pembeli.view-penjual', [
-         'title' => 'View Penjual',
-         'active' => 'View Penjual',
-         'search' => $search,
-        'brands' => $brands,
-        'kategoris' => $kategoris,
-        'penjualan' => $penjualan,
-        'jmlProdukToko' => $jmlProdukToko->count(),
+            
+            'title' => 'View Penjual',
+            'active' => 'View Penjual',
+            'search' => $search,
+            'brands' => $brands,
+            'kategoris' => $kategoris,
+            'penjualan' => $penjualan,
+            'jmlProdukToko' => $jmlProdukToko->count(),
         ]);
     }
 

@@ -5,8 +5,8 @@
     <form class="space-y-6" action="/register-penjual" method="post">
         @csrf
         <div class="flex justify-between">
-            <a href="/login-user" class="text-xl font-medium text-gray-400 dark:text-white ms-12">Login</a>
-            <a href="/register-pembeli" class="text-xl font-medium text-blue1 dark:text-white mr-12">Register</a>
+            <a href="/login-user" class="text-lg font-medium text-gray-400 dark:text-white ms-12">Login</a>
+            <a href="/register-pembeli" class="text-lg font-medium text-blue1 dark:text-white mr-12">Register Penjual</a>
         </div>
         <div class="flex justify-center space-x-1 rtl:space-x-reverse">
             <img src="{{ asset('images/imgRiski/terafon.png') }}" class="h-12 rounded-full " alt="Flowbite Logo" />

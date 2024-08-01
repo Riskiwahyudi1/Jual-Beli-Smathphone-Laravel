@@ -158,9 +158,14 @@
                     </td>
                 </tr>
             @endif
-        
-        @endif
-    </tbody>
+            
+            @endif
+        </tbody>
     </table>
+    
 </div>
+<div class=" my-5 inset-x-0  flex justify-center">
+    {{ $produks->links() }}
+</div>
+
 @endsection

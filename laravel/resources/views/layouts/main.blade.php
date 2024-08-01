@@ -10,23 +10,33 @@
     <link href="{{ asset('styles/swiper-bundle.min.css') }}" rel="stylesheet">
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    
 </head>
 <body class="bg-gray-200">
-    @if ($title === 'Kategori' || $title === "Home" || $title === "Brand")
-         @include('partials.navbar')
-    
-     @elseif($title !== 'Kategori' && $title !== "Home" && $title !== "Brand" && $title !== "Login User" && $title !== "Register Pembeli" && $title !== "Login Admin" && $title !== "View Penjual" )
-        <div class="flex justify-star mt-1 mb-6">
-            <a href="/home" class="font-semibold mt-4 ms-6 mx-2  z-20">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">{{ $title }}</span></a>
-        </div> 
+
+    @auth
+        @if(Auth::user()->role == 'seller' || Auth::user()->role == 'admin')
+            <!-- Konten untuk pengguna dengan peran seller -->
+            <p class="text-red-600 font-semibold">Anda tidak bisa mengakses sesi ini, silahkan logout pada dashboard {{ Auth::user()->role }}</p>
+        @endif
+    @endauth
+
+    @if (!Auth::check() || Auth::user()->role == 'buyer')
+        <!-- Konten untuk guest dan buyer -->
+        @if ($title === 'Kategori' || $title === "Home" || $title === "Brand")
+            @include('partials.navbar')
+        @elseif (!in_array($title, ['Login User', 'Register Pembeli', 'Login Admin', 'View Penjual']))
+            <div class="flex justify-star mt-1 mb-6">
+                <a href="/home" class="font-semibold mt-4 ms-6 mx-2 z-20">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">{{ $title }}</span></a>
+            </div>
         @endif
         @yield('container')
-    @if($title !== "Login User" && $title !== "Register Pembeli" && $title !== "Riwayat Transaksi" && $title !== "Login Admin")
-        @include('partials.footer')
+        @if (!in_array($title, ['Login User', 'Register Pembeli', 'Riwayat Transaksi', 'Login Admin']))
+            @include('partials.footer')
+        @endif
+        <a href="/layanan-pengguna"><i class="fas fa-headset right-2 bottom-2 text-blue2 font-bold text-3xl fixed"></i></a>
     @endif
-    <a href="/layanan-pengguna"><i class="fas fa-headset right-2 bottom-2 text-blue2 font-bold text-3xl fixed"></i></a>
+
+    <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('scripts/pembeli.js') }}"></script>
 </body>
-<script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('scripts/pembeli.js') }}"></script>
 </html>

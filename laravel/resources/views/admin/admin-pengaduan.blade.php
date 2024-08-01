@@ -149,4 +149,7 @@
 
     </div>
 </div>
+<div class=" my-5 inset-x-0  flex justify-center">
+    {{ $pesans->links() }}
+</div>
 @endsection
