@@ -5,23 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @auth
     <title>TeraPhone | {{ $title }}</title>
+    @else
+    <title>TeraPhone</title>
+    @endauth
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="{{ asset('styles/swiper-bundle.min.css') }}" rel="stylesheet">
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
 <body class="bg-gray-200">
-
-    @auth
-        @if(Auth::user()->role == 'seller' || Auth::user()->role == 'admin')
-            <!-- Konten untuk pengguna dengan peran seller -->
-            <p class="text-red-600 font-semibold">Anda tidak bisa mengakses sesi ini, silahkan logout pada dashboard {{ Auth::user()->role }}</p>
-        @endif
-    @endauth
-
-    @if (!Auth::check() || Auth::user()->role == 'buyer')
-        <!-- Konten untuk guest dan buyer -->
         @if ($title === 'Kategori' || $title === "Home" || $title === "Brand")
             @include('partials.navbar')
         @elseif (!in_array($title, ['Login User', 'Register Pembeli', 'Login Admin', 'View Penjual']))
@@ -34,7 +28,7 @@
             @include('partials.footer')
         @endif
         <a href="/layanan-pengguna"><i class="fas fa-headset right-2 bottom-2 text-blue2 font-bold text-3xl fixed"></i></a>
-    @endif
+
 
     <script src="{{ asset('scripts/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('scripts/pembeli.js') }}"></script>

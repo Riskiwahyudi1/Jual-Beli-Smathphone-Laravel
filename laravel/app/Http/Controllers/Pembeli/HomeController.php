@@ -22,7 +22,7 @@ class HomeController extends Controller
     }
 
     
-    public function home()
+    public function dataProduk()
     {
     
     // metode dependency injection construct TransaksiController
@@ -48,19 +48,51 @@ class HomeController extends Controller
             ];
     $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->orderByDesc('terjual')->paginate(20);
 
-    return view('pembeli.home', [
+    return [
         'cameraQuality' => $cameraQualityProduk,
         'midRange' => $midRangeProduk,
         'produks' => $produks,
         'kategoris' => $kategoris,
         'brands' => $brands,
         'search' => $search,
-        'active' => 'Home',
-        'title' => 'Home',
         'diskons' => $diskons,
         'keranjangInfo' => $keranjangInfo,
         'TransaksiInfo' => $jumlahTransaksi
-    ]);
-}
+    ];
+    }
+    public function welcome(){
 
+        $data = $this->dataProduk();
+        return view('/welcome', [
+            'cameraQuality' => $data['cameraQuality'],
+            'midRange' => $data['midRange'],
+            'produks' => $data['produks'],
+            'kategoris' => $data['kategoris'],
+            'brands' => $data['brands'],
+            'search' => $data['search'],
+            'active' => 'Home',
+            'title' => 'Home',
+            'diskons' => $data['diskons'],
+            'keranjangInfo' => $data['keranjangInfo'],
+            'TransaksiInfo' => $data['TransaksiInfo'],
+        ]);
+    }
+    public function home(){
+
+        $data = $this->dataProduk();
+        
+        return view('pembeli.home', [
+            'cameraQuality' => $data['cameraQuality'],
+            'midRange' => $data['midRange'],
+            'produks' => $data['produks'],
+            'kategoris' => $data['kategoris'],
+            'brands' => $data['brands'],
+            'search' => $data['search'],
+            'active' => 'Home',
+            'title' => 'Home',
+            'diskons' => $data['diskons'],
+            'keranjangInfo' => $data['keranjangInfo'],
+            'TransaksiInfo' => $data['TransaksiInfo'],
+        ]);
+    }
 }

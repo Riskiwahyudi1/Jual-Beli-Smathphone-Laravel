@@ -65,8 +65,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
         return redirect('/home')->with('message', 'Email berhasil diverifikasi.');
     } else {
         return redirect('/home-penjual')->with('message', 'Email berhasil diverifikasi.');
-    }
-})->middleware(['auth', 'signed'])->name('verification.verify');
+    }})->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -78,37 +77,36 @@ Route::post('/email/verification-notification', [RegisterPembeliController::clas
 
 // Route Pembeli
 Route::middleware(['guest'])->group(function () {
-Route::get('/', function () { return redirect('/home');});
-Route::get('/login-user', [LoginUserController::class, 'login'])->name('login');
-Route::post('/login-user', [LoginUserController::class, 'authenticate']);
-Route::get('admin-login', [LoginAdminController::class, 'loginAdmin'])->name('admin.login');
-Route::post('admin-login', [LoginAdminController::class, 'login']);
+    Route::get('/', [HomeController::class, 'welcome'])->name('landingPage');
+    Route::get('/login-user', [LoginUserController::class, 'login'])->name('login');
+    Route::post('/login-user', [LoginUserController::class, 'authenticate']);
+    Route::get('admin-login', [LoginAdminController::class, 'loginAdmin'])->name('admin.login');
+    Route::post('admin-login', [LoginAdminController::class, 'login']);
 
 
 });
-
-Route::get('/home', [HomeController::class, 'home'])->name('/home');
 Route::post('/logout', [LoginUserController::class, 'logout']);
 
 // pembeli
 Route::middleware(['auth', 'role:buyer', 'verified'])->group(function () {
-Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk'])->middleware('auth');
-Route::get('/keranjang', [KeranjangController::class, 'keranjang'])->middleware('auth');
-Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
-Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk'])->middleware('auth');
-Route::get('/checkout', [CheckoutController::class, 'checkout']);
-Route::post('/checkout', [CheckoutController::class, 'getProduk']);
-Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
-Route::post('/checkout-dari-detail', [CheckoutController::class, 'getProduk']);
-Route::get('/riwayat-transaksi', [TransaksiController::class, 'tampilkanRiwayatTransaksi']);
-Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
-Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
-Route::post('/riwayat-transaksi-diterima', [TransaksiController::class, 'terimaTransaksi']);
-Route::get('/invoice/{transaksi:id}', [CetakInvoiceController::class, 'generateInvoice'])->name('generate.pdf');
-Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
-Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
-Route::get('/view-penjual', [ViewPenjualController::class, 'viewPenjual']);
-Route::get('/profil', [ProfilPembeliController::class, 'profilPembeli']);
+    Route::get('/home', [HomeController::class, 'home'])->name('/home');
+    Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk'])->middleware('auth');
+    Route::get('/keranjang', [KeranjangController::class, 'keranjang'])->middleware('auth');
+    Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
+    Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk'])->middleware('auth');
+    Route::get('/checkout', [CheckoutController::class, 'checkout']);
+    Route::post('/checkout', [CheckoutController::class, 'getProduk']);
+    Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
+    Route::post('/checkout-dari-detail', [CheckoutController::class, 'getProduk']);
+    Route::get('/riwayat-transaksi', [TransaksiController::class, 'tampilkanRiwayatTransaksi']);
+    Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
+    Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
+    Route::post('/riwayat-transaksi-diterima', [TransaksiController::class, 'terimaTransaksi']);
+    Route::get('/invoice/{transaksi:id}', [CetakInvoiceController::class, 'generateInvoice'])->name('generate.pdf');
+    Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
+    Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
+    Route::get('/view-penjual', [ViewPenjualController::class, 'viewPenjual']);
+    Route::get('/profil', [ProfilPembeliController::class, 'profilPembeli']);
 
 });
 

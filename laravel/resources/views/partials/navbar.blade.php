@@ -5,7 +5,11 @@
             <img src="{{ asset('images/imgRiski/Teraphone white.png') }}" class="h-9 rounded-full " alt="Flowbite Logo" />
         </a>
         <div class=" w-1/3">
-            <form class="max-w-md mx-auto" action="/home">   
+            @auth
+                <form class="max-w-md mx-auto" action="/home">   
+            @else
+                <form class="max-w-md mx-auto" action="/">   
+            @endauth
                 @csrf
                 <div class="relative">
                     @if (request('kategori'))
@@ -87,7 +91,11 @@
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             @foreach (array_unique($brands) as $brand)
                                 <li>
+                                    @auth
                                     <a href="/home?brand={{ $brand }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $brand }}</a>
+                                    @else
+                                    <a href="?brand={{ $brand }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $brand }}</a>
+                                    @endauth
                                 </li>
                                 
                             @endforeach
@@ -96,11 +104,19 @@
                     </div>
                 </li>
                 <li>
+                    @auth
                     <a href="/home" class="text-gray-500 {{ $active === $title && $title !== "Brand" && !request('kategori') ? '  border-gray-400 border-b-2 px-1 text-gray-900 font-bold': '' }} dark:text-white hover:text-gray-700" aria-current="page">Home</a>
+                    @else
+                    <a href="/" class="text-gray-500 {{ $active === $title && $title !== "Brand" && !request('kategori') ? '  border-gray-400 border-b-2 px-1 text-gray-900 font-bold': '' }} dark:text-white hover:text-gray-700" aria-current="page">Home</a>
+                    @endauth
                 </li>
                 @foreach ($kategoris as $k)  
                 <li>
+                    @auth
                     <a href="/home?kategori={{ $k->slug }}" class="text-gray-500 {{ request('kategori') === $k->slug && $title !== "Brand" ? '  border-gray-400 border-b-2 px-1 text-gray-900 font-bold' : '' }} dark:text-white hover:text-gray-700 transition" >{{ $k->nama }}</a>
+                    @else
+                    <a href="?kategori={{ $k->slug }}" class="text-gray-500 {{ request('kategori') === $k->slug && $title !== "Brand" ? '  border-gray-400 border-b-2 px-1 text-gray-900 font-bold' : '' }} dark:text-white hover:text-gray-700 transition" >{{ $k->nama }}</a>
+                    @endauth
                 </li>
                 @endforeach
             </ul>
