@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Pembeli\CheckoutController;
 use App\Http\Controllers\Admin\AdminProdukController;
 
+use App\Http\Controllers\UserProfilController;
 // admin
 use App\Http\Controllers\Pembeli\KeranjangController;
 use App\Http\Controllers\Pembeli\TransaksiController;
@@ -25,12 +26,11 @@ use App\Http\Controllers\Pembeli\ViewPenjualController;
 use App\Http\Controllers\Penjual\HomePenjualController;
 use App\Http\Controllers\Admin\AdminPengaduanController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
-use App\Http\Controllers\Pembeli\CetakInvoiceController;
 
 // Penjual
+use App\Http\Controllers\Pembeli\CetakInvoiceController;
 use App\Http\Controllers\penjual\TambahProdukController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use App\Http\Controllers\Pembeli\ProfilPembeliController;
 use App\Http\Controllers\Penjual\ProdukPenjualController;
 use App\Http\Controllers\Penjual\StatusOrderanController;
 use App\Http\Controllers\Pembeli\LayananPenggunaController;
@@ -87,13 +87,20 @@ Route::middleware(['guest'])->group(function () {
 });
 Route::post('/logout', [LoginUserController::class, 'logout']);
 
+// User Data
+Route::get('/user-profil', [UserProfilController::class, 'userProfil'])->middleware('auth');
+Route::post('/edit-profil', [UserProfilController::class, 'editProfil'])->middleware('auth');
+Route::post('/tambah-rekening', [UserProfilController::class, 'tambahRekening'])->middleware('auth');
+Route::post('/edit-rekening', [UserProfilController::class, 'editRekening'])->middleware('auth');
+Route::delete('/hapus-rekening', [UserProfilController::class, 'deleteRekening'])->middleware('auth');
+
 // pembeli
 Route::middleware(['auth', 'role:buyer', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('/home');
-    Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk'])->middleware('auth');
-    Route::get('/keranjang', [KeranjangController::class, 'keranjang'])->middleware('auth');
+    Route::get('/detail-produk/{produk:id}{slug}', [DetailController::class, 'detailProduk']);
+    Route::get('/keranjang', [KeranjangController::class, 'keranjang']);
     Route::post('/hapus-produk', [keranjangController::class, 'hapusProduk']);
-    Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk'])->middleware('auth');
+    Route::post('/tambah-keranjang', [KeranjangController::class, 'simpanProduk']);
     Route::get('/checkout', [CheckoutController::class, 'checkout']);
     Route::post('/checkout', [CheckoutController::class, 'getProduk']);
     Route::post('/konfirmasi-checkout', [CheckoutController::class, 'konfirmasiCheckout']);
@@ -106,10 +113,8 @@ Route::middleware(['auth', 'role:buyer', 'verified'])->group(function () {
     Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
     Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);
     Route::get('/view-penjual', [ViewPenjualController::class, 'viewPenjual']);
-    Route::get('/profil', [ProfilPembeliController::class, 'profilPembeli']);
-
+    
 });
-
 // penjual
 
 Route::middleware(['auth', 'role:seller', 'verified'])->group(function () {
