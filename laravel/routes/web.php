@@ -3,20 +3,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // pembeli
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\UserProfilController;
 use App\Http\Controllers\Pembeli\HomeController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\Admin\DataUserController;
 use App\Http\Controllers\Pembeli\DetailController;
 use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Pembeli\InvoiceController;
 use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminIklanController;
+
 use App\Http\Controllers\Admin\LoginAdminController;
+// admin
 use App\Http\Controllers\Pembeli\CheckoutController;
 use App\Http\Controllers\Admin\AdminProdukController;
-
-use App\Http\Controllers\UserProfilController;
-// admin
 use App\Http\Controllers\Pembeli\KeranjangController;
 use App\Http\Controllers\Pembeli\TransaksiController;
 use App\Http\Controllers\Penjual\KelolaStokController;
@@ -24,10 +26,10 @@ use App\Http\Controllers\Admin\AdminDataUserController;
 use App\Http\Controllers\Admin\AdminExpedisiController;
 use App\Http\Controllers\Pembeli\ViewPenjualController;
 use App\Http\Controllers\Penjual\HomePenjualController;
-use App\Http\Controllers\Admin\AdminPengaduanController;
-use App\Http\Controllers\Admin\AdminTransaksiController;
 
 // Penjual
+use App\Http\Controllers\Admin\AdminPengaduanController;
+use App\Http\Controllers\Admin\AdminTransaksiController;
 use App\Http\Controllers\Pembeli\CetakInvoiceController;
 use App\Http\Controllers\penjual\TambahProdukController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -75,6 +77,12 @@ Route::post('/email/verification-notification', [RegisterPembeliController::clas
     ->middleware(['auth', 'throttle:6,1'])
     ->name('verification.resend');
 
+// password change
+Route::middleware(['auth'])->group(function () {
+    Route::get('/change-password', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
+    Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('password.update');
+});
+
 // Route Pembeli
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [HomeController::class, 'welcome'])->name('landingPage');
@@ -109,6 +117,7 @@ Route::middleware(['auth', 'role:buyer', 'verified'])->group(function () {
     Route::post('/riwayat-transaksi', [TransaksiController::class, 'pembayaran']);
     Route::post('/riwayat-transaksi-batalkan', [TransaksiController::class, 'batalkanTransaksi']);
     Route::post('/riwayat-transaksi-diterima', [TransaksiController::class, 'terimaTransaksi']);
+    Route::post('/rekening-user', [TransaksiController::class, 'tampilkanRiwayatTransaksi']);
     Route::get('/invoice/{transaksi:id}', [CetakInvoiceController::class, 'generateInvoice'])->name('generate.pdf');
     Route::get('/layanan-pengguna', [LayananPenggunaController::class, 'layananPengguna']);
     Route::post('/layanan-pengguna', [LayananPenggunaController::class, 'store']);

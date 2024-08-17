@@ -8,8 +8,9 @@ use App\Models\Keranjang;
 use App\Models\Transaksi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Pembeli\TransaksiController;
 
 class HomeController extends Controller
@@ -47,6 +48,12 @@ class HomeController extends Controller
                 'brand' => request('brand')
             ];
     $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->orderByDesc('terjual')->paginate(20);
+    $nullDataUser = User::where('id', Auth::id())->where(function($query) {
+                         $query->where('name', '')
+                               ->orWhere('no_hp', '')
+                               ->orWhere('alamat', '');
+                            //    ->orWhere('rekening', '');
+                     })->exists();
 
     return [
         'cameraQuality' => $cameraQualityProduk,
@@ -57,7 +64,8 @@ class HomeController extends Controller
         'search' => $search,
         'diskons' => $diskons,
         'keranjangInfo' => $keranjangInfo,
-        'TransaksiInfo' => $jumlahTransaksi
+        'TransaksiInfo' => $jumlahTransaksi,
+        'nullDataUser' => $nullDataUser
     ];
     }
     public function welcome(){
@@ -93,6 +101,7 @@ class HomeController extends Controller
             'diskons' => $data['diskons'],
             'keranjangInfo' => $data['keranjangInfo'],
             'TransaksiInfo' => $data['TransaksiInfo'],
+            'nullDataUser' => $data['nullDataUser'],
         ]);
     }
 }

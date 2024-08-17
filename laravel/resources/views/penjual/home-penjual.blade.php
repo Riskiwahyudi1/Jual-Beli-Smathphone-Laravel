@@ -2,80 +2,80 @@
 @section('container-penjual')
 <div class="pt-20 ps-40 ">
     <p class="ms-6 text-2xl font-bold text-black">Dashboard</p>
-    <div class="grid grid-cols-4 gap-6 mt-6 mx-12">
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-2">
-                <i class="fa-solid fa-boxes-stacked fa-3x text-gray-500"></i>
-                <div>
-                    <p class="text-xl font-bold">Total Produk</p>
-                    <p class="text-3xl ms-6 font-bold">{{ $totalProduk }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-2">
-                <i class="fas fa-shopping-bag fa-3x text-blue2"></i>
-                <div>
-                    <p class="text-xl font-bold">Total Transaksi</p>
-                    <p class="text-3xl ms-6 font-bold">{{ $totalTransaksi }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-2">
-                <i class="fas fa-money-check-dollar fa-3x text-green-600"></i>
-                <div>
-                    <p class="text-xl font-bold">Omset</p>
-                    <p class="text-md ms-6 font-extrabold">Rp.{{ number_format($jumlahPendapatan, 0, ',', '.') }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-1">
-                <i class="fas fa-regular fa-clock fa-3x text-yellow-400"></i>
-                <div>
-                    <p class="text-xl font-bold">Menunggu</p>
-                    <p class="text-3xl ms-6 font-bold">{{ $menungguPembayaran }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-1">
-                <i class="fas fa-regular fa-box-open fa-3x text-purple-600"></i>
-                <div>
-                    <p class="text-xl font-bold ms-4">Dikemas</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $dikemas }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-1">
-                <i class="fa-solid fa-truck-fast fa-3x text-blue-500"></i>
-                <div>
-                    <p class="text-xl font-bold ms-4">Dikirim</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $dikirim }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-1">
-                <i class="fa-solid fa-circle-check text-green-600 fa-3x"></i>
-                <div>
-                    <p class="text-xl font-bold ms-4">Selesai</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $selesai }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="px-8 py-8 bg-white-300 rounded-3xl flex justify-center items-center border-4 border-gray-400">
-            <div class="flex justify-center items-center gap-1">
-                <i class="fas fa-ban fa-3x text-red-600"></i>
-                <div>
-                    <p class="text-xl font-bold ms-4">Dibatalkan</p>
-                    <p class="text-3xl ms-5 font-bold">{{ $dibatalkan }}</p>
-                </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 mx-4 sm:mx-6 lg:mx-12">
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fa-solid fa-boxes-stacked fa-3x text-gray-500"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Total Produk</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $totalProduk }}</p>
             </div>
         </div>
     </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fas fa-shopping-bag fa-3x text-blue-500"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Total Transaksi</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $totalTransaksi }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fas fa-money-check-dollar fa-3x text-green-600"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Omset</p>
+                <p class="text-md sm:text-2xl ms-4 font-extrabold">Rp.{{ number_format($jumlahPendapatan, 0, ',', '.') }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fas fa-clock fa-3x text-yellow-400"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Menunggu</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $menungguPembayaran }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fas fa-box-open fa-3x text-purple-600"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Dikemas</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $dikemas }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fa-solid fa-truck-fast fa-3x text-blue-500"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Dikirim</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $dikirim }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fa-solid fa-circle-check fa-3x text-green-600"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Selesai</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $selesai }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-4 py-6 bg-white rounded-3xl flex justify-center items-center border-4 border-gray-400">
+        <div class="flex justify-center items-center gap-2">
+            <i class="fas fa-ban fa-3x text-red-600"></i>
+            <div>
+                <p class="text-lg sm:text-xl font-bold">Dibatalkan</p>
+                <p class="text-2xl sm:text-3xl ms-4 font-bold">{{ $dibatalkan }}</p>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <div class="pt-10 ps-40 mb-16">

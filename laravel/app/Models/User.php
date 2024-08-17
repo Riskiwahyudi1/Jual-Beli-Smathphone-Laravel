@@ -35,6 +35,9 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
     protected $attributes = [
         'name' => '',
+        'no_hp' => '',
+        'rekening' => '',
+        'alamat' => ''
        
     ];
 

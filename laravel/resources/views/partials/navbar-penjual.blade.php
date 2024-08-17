@@ -2,8 +2,7 @@
     <div class="flex justify-star mx-5">
         <img src="{{ asset('images/imgRiski/Terafon.png') }}" class="h-7 rounded-full " alt="Flowbite Logo" />
     </div>
-    <a href="#" class="flex justify-center mx-5">
-        
+    <a href="/user-profil" class="flex justify-center mx-5">
         <p class="text-black font-semibold ms-1 mt-2"><i class="fa-solid fa-shop mr-2"></i>{{ auth()->user()->username }}</p>                    
     </a>
 </nav>

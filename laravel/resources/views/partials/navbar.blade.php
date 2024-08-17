@@ -41,10 +41,12 @@
                 @endif
             </div>
             <div class="relative inline-flex items-center ms-12 mr-1 text-sm font-medium text-center text-white bg-blue1 rounded-lg hover:bg-blue1 focus:ring-4 focus:outline-none ">
-
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>  
+                </svg> 
+                @if($nullDataUser)
+                <div class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 border-2 border-red rounded-2xl -top-2 -end-2 dark:border-gray-900">!</div> 
+                @endif
             </div>
             <div class="mr-6">
                 <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white font-medium rounded-lg text-sm ms-1 text-center inline-flex items-center" type="button">{{ auth()->user()->username }}</button>
@@ -52,12 +54,15 @@
                     <div id="dropdownHover" class="z-30 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                             <li>
-                                <a href="/user-profil" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white">Pengaturan akun</a>
+                                <a href="/user-profil" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"><i class="fa-solid fa-gear mr-2"></i>Pengaturan akun</a>
+                            </li>
+                            <li>
+                                <a href="/change-password" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white"><i class="fa-solid fa-key mr-2"></i>Ganti Kata Sandi</a>
                             </li>
                             <form action="/logout" method="post">
                             <li>
                                 @csrf
-                                <button type="submit" class="text-left px-4 w-full py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                                <button type="submit" class="text-left px-4 w-full py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
                             </li>
                         </form>
                         </ul>

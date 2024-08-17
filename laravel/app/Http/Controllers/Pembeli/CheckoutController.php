@@ -9,6 +9,7 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Services\RajaOngkirService;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -27,13 +28,16 @@ public function getProduk(Request $request)
     $jumlah = $request->input('jumlah', []);
     $action = $request->input('action');
 
+    $auth = Auth::id();
+    $User = User::find($auth);
+    $detailAlamat = json_decode($User->alamat, true);
+
     $rajaOngkirService = new RajaOngkirService(); 
     
     $provinceId = $request->input('provinsi'); 
     $provinces = $rajaOngkirService->getProvinces();
     $kotaKota = $rajaOngkirService->getKota();
 
-        // dd($kotaKota);
 
     $action = 'checkout';
     if ($action == 'checkout') {
@@ -44,7 +48,8 @@ public function getProduk(Request $request)
         }
         $jumlahProduk = [];
         foreach ($productIds as $productId) {
-            // Cari indeks dari productId dalam array productIds
+
+            // mencari indeks dari productId dalam array productIds
             $index = array_search($productId, $request->input('check-produk'));
             if ($index !== false && isset($jumlah[$index])) {
                 $jumlahProduk[$productId] = $jumlah[$index];
@@ -53,6 +58,7 @@ public function getProduk(Request $request)
             }
         }
     }
+    
 
     return view('pembeli.checkout', [
         'products' => $products,
@@ -60,12 +66,14 @@ public function getProduk(Request $request)
         'jumlah' => $jumlahProduk,
         'provinces' => $provinces, 
         'kotaKota' => $kotaKota, 
-        'title' => 'Checkout'
+        'title' => 'Checkout',
+        "dataUser" => $User,
+        'detailAlamat' => $detailAlamat
     ]);
 }
 
     public function konfirmasiCheckout(Request $request){
-        // Ambil data dari request alamat pembeli
+        // mengambil data dari request alamat pembeli
         $namaDepan = $request->input('nama-depan');
         $alamat = $request->input('alamat');
         $kota = $request->input('kota');
@@ -82,7 +90,7 @@ public function getProduk(Request $request)
             'no_hp' => $noHp,
         ];
     
-        // Ambil data dari request produk
+        // Mengambil data dari request produk
         $produkIds = $request->input('produk');
         $jumlahProduks = $request->input('checkout-jumlah-produk');
         $penjual = $request->input('penjual');

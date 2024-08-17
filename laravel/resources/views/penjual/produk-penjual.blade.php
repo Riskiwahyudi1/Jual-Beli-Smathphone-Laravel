@@ -1,12 +1,20 @@
 @if(session()->has('success'))
 <div class="flex justify-center ">
     <div class=" absolute z-30 w-1/4  flex items mt-2 p-3 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-        </svg>
         <span class="sr-only">Info</span>
         <div>
             <span class="font-medium">{{ session('success') }}
+            </div>
+        </div>
+    </div>
+</div>
+@elseif($rekening == NULL)
+<div class="flex justify-center ">
+    <div class="absolute z-30 w-auto  flex items mt-2 p-3 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400" role="alert">
+        
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">Mohon tambahkan no rekening transaksi anda sebelum menjual produk!!
             </div>
         </div>
     </div>
@@ -20,7 +28,11 @@
 
 <form action="{{ route('produk-penjual.search') }}" method="GET">
     <div class="flex justify-star my-7 gap-56">
-        <a href="/tambah-produk-penjual"  class="text-white bg-blue2 ms-10 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa-solid text-white mr-2 fa-circle-plus"></i>Tambah Produk</a>
+        @if ($rekening == NULL)
+        <a href="#" id="btn-rekening-alert" class="text-white bg-blue2 ms-10 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa-solid text-white mr-2 fa-circle-plus"></i>Jual Produk</a>
+        @else
+        <a href="/tambah-produk-penjual"  class="text-white bg-blue2 ms-10 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><i class="fa-solid text-white mr-2 fa-circle-plus"></i>Jual Produk</a>
+        @endif
         <div class="relative w-1/3 ms-10"> 
             <input type="text" name="search"
                 class="w-full border h-10 shadow p-4 rounded-xl dark:text-gray-600 dark:border-gray-400 dark:bg-gray-200"

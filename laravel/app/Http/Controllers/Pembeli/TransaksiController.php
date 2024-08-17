@@ -6,8 +6,9 @@ use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -66,11 +67,22 @@ class TransaksiController extends Controller
             ];
         }
     
-        public function tampilkanRiwayatTransaksi()
+        public function tampilkanRiwayatTransaksi(Request $request)
         {
             $data = $this->riwayatTransaksi();
+
+            $userId = $request->input('user_id');
+
+            // $auth = Auth::user();
+            // $authId = $auth->id;
+            // $User = User::find($authId);
+            // $rekening = json_decode($User->rekening, true); 
+            // foreach ($rekening as $key => $rek) {
+            // }
     
             return view('pembeli.riwayat-transaksi', [
+                // dd($userId),
+                // dd($request->all()),
                 'title' => 'Riwayat Transaksi',
                 'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
                 'transaksis' => $data['produkTransaksi'],

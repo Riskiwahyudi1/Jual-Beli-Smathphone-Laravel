@@ -24,7 +24,7 @@
             </div>
         @endif
         @yield('container')
-        @if (!in_array($title, ['Login User', 'Register Pembeli', 'Riwayat Transaksi', 'Login Admin', 'Profil User']))
+        @if (!in_array($title, ['Login User', 'Register Pembeli', 'Riwayat Transaksi', 'Login Admin', 'Profil User', 'Change Password']))
             @include('partials.footer')
             <a href="/layanan-pengguna"><i class="fas fa-headset right-2 bottom-2 text-blue2 font-bold text-3xl fixed"></i></a>
         @endif
