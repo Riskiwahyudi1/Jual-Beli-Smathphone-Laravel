@@ -1,8 +1,8 @@
 @if(session()->has('success'))
 <div class="flex justify-center ">
     <div class=" absolute z-30 w-1/4  flex items mt-2 p-3 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <i class="fa-solid mr-3 mt-1 fa-circle-exclamation"></i>
-        {{-- <span class="sr-only">Info</span> --}}
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
+        <span class="sr-only">Info</span>
         <div>
             <span class="font-medium">{{ session('success') }}
             </div>

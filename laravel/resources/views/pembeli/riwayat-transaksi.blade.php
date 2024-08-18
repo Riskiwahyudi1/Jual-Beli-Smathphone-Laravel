@@ -2,9 +2,7 @@
 <div class="flex justify-center">
 
     <div class="absolute z-20 flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-        </svg>
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
         <span class="sr-only">Info</span>
         <div>
             <span class="font-medium">{{ session('berhasil') }}
@@ -14,9 +12,7 @@
 @elseif(session()->has('pembatalan-sukses'))
 <div class="flex justify-center">
     <div class=" absolute z-20 w-1/4 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-        </svg>
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
         <span class="sr-only">Info</span>
         <div>
             <span class="font-medium">{{ session('pembatalan-sukses') }}
@@ -27,9 +23,7 @@
 @elseif(session()->has('produk-diterima-sukses'))
 <div class="flex justify-center ">
     <div class=" absolute w-1/4 z-20 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-        </svg>
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
         <span class="sr-only">Info</span>
         <div>
             <span class="font-medium">{{ session('produk-diterima-sukses') }}
@@ -40,9 +34,7 @@
 @elseif(session()->has('bukti-pembayaran-success'))
 <div class="flex justify-center ">
     <div class=" absolute w-1/4 z-20 mt-2 flex items p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-        </svg>
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
         <span class="sr-only">Info</span>
         <div>
             <span class="font-medium">{{ session('bukti-pembayaran-success') }}

@@ -83,6 +83,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('password.update');
 });
 
+// reset password dengan email
+Route::middleware(['guest'])->group(function () {
+    Route::get('lupa-password', [PasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('forgot-password', [PasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('reset-password/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
+});
+
 // Route Pembeli
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [HomeController::class, 'welcome'])->name('landingPage');

@@ -4,6 +4,11 @@
     // 3.Halaman checkout pembeli
     // 4.halaman riwayat transaksi
 
+// auto refresh
+
+    if (performance.navigation.type === 2) {
+        window.location.reload();
+    }
 
 //1. detail barang 
 if (document.title === 'TeraPhone | Detail Produk'){
