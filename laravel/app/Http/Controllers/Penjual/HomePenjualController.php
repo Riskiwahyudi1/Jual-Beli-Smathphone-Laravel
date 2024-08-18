@@ -7,11 +7,20 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Pembeli\HomeController;
 
 class HomePenjualController extends Controller
 {
+    protected $cekDataUser;
+    public function __construct(HomeController $dataUser)
+    {
+        $this->cekDataUser = $dataUser;
+    }
+
     public function homePenjual(){
         
+    $data = $this->cekDataUser->dataProduk();
+
     $userId = Auth::id();
     $user = Auth::user();
     $produk = Produk::where('user_id', $userId)->get();
@@ -27,6 +36,9 @@ class HomePenjualController extends Controller
     $jumlahTransaksiSelesai = 0;
     $jumlahTransaksiDibatalkan = 0;
 
+    if (isset($data['nullDataUser'])) {
+        $nullDataUser = $data['nullDataUser'];
+    }
     
     foreach ($pembeliList as $pembeli) {
         $transaksiList = Transaksi::
@@ -83,6 +95,7 @@ class HomePenjualController extends Controller
             'selesai' => $jumlahTransaksiSelesai,
             'dibatalkan' => $jumlahTransaksiDibatalkan,
             'transaksis' => $produkTransaksi,
+            'nullDataUser' => $nullDataUser,
 
         ]);
         

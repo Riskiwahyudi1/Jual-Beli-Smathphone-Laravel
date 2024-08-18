@@ -48,12 +48,27 @@ class HomeController extends Controller
                 'brand' => request('brand')
             ];
     $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->orderByDesc('terjual')->paginate(20);
-    $nullDataUser = User::where('id', Auth::id())->where(function($query) {
-                         $query->where('name', '')
-                               ->orWhere('no_hp', '')
-                               ->orWhere('alamat', '');
-                            //    ->orWhere('rekening', '');
-                     })->exists();
+    
+    $userRole = Auth::user()->role;
+    if ($userRole === 'seller') {
+        $nullDataUser = User::where('id', Auth::id())
+            ->where(function($query) {
+                $query->where('name', '')
+                    ->orWhere('no_hp', '')
+                    ->orWhere('alamat', '')
+                    ->orWhere(function($subQuery) {
+                        $subQuery->where('rekening', '')
+                            ->orWhere('rekening', '[]');
+                    });
+            })->exists();
+    } else {
+        $nullDataUser = User::where('id', Auth::id())
+            ->where(function($query) {
+                $query->where('name', '')
+                    ->orWhere('no_hp', '')
+                    ->orWhere('alamat', '');
+            })->exists();
+    }
 
     return [
         'cameraQuality' => $cameraQualityProduk,

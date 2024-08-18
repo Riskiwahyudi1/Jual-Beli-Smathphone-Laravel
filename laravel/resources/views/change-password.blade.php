@@ -1,18 +1,38 @@
 @extends('layouts.main')
 @section('container')
+@if(session()->has('message'))
+<div class="flex justify-center ">
+    <div class=" absolute z-30 w-1/4  flex items mt-2 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">{{ session('message') }}
+            </div>
+        </div>
+    </div>
+</div>
+@elseif(session()->has('Current_And_New_Password_Same'))
+<div class="flex justify-center ">
+    <div class=" absolute z-30 w-1/4  flex items mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <i class="fa-solid fa-circle-info mr-2 mt-1"></i>
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">{{ session('Current_And_New_Password_Same') }}
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+@if (auth()->user()->role == 'buyer')
+    <a href="/home" class="font-semibold pt-8 ms-6 mx-2"><i class="fa-solid fa-backward mr-2 text-blue2"></i>Kembali</a>
+@else
+    <a href="/home-penjual" class="font-semibold pt-8 ms-6 mx-2"><i class="fa-solid fa-backward mr-2 text-blue2"></i>Kembali</a> 
+@endif
 <div class="min-h-screen pb-32 bg-gray-100 flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        @if(session('message'))
-            <script>
-                window.onload = function() {
-                    alert("{{ session('message') }}");
-                }
-            </script>
-        @endif
-
         <h2 class="text-2xl font-semibold text-gray-700 text-center mb-6">Ubah Kata Sandi</h2>
 
-        <form action="{{ route('password.update') }}" method="POST" class="space-y-6">
+        <form action="{{ route('passwordChange.update') }}" method="POST" class="space-y-6">
             @csrf
 
             <div class="flex flex-col">

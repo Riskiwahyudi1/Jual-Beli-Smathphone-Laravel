@@ -18,7 +18,7 @@
 <body class="bg-gray-200">
         @if ($title === 'Kategori' || $title === "Home" || $title === "Brand")
             @include('partials.navbar')
-        @elseif (!in_array($title, ['Login User', 'Register Pembeli', 'Login Admin', 'View Penjual', 'Lupa Password', 'Reset Password']))
+        @elseif (!in_array($title, ['Login User', 'Register Pembeli', 'Login Admin', 'View Penjual', 'Lupa Password', 'Reset Password', 'Profil User', 'Change Password']))
             <div class="flex justify-star mt-1 mb-6">
                 <a href="/home" class="font-semibold mt-4 ms-6 mx-2 z-20">Home <small><i class="fas fa-play text-gray-500"></i></small> <span class="text-blue2 mt-4">{{ $title }}</span></a>
             </div>

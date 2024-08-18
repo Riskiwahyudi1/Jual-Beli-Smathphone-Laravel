@@ -80,7 +80,7 @@ Route::post('/email/verification-notification', [RegisterPembeliController::clas
 // password change
 Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
-    Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('password.update');
+    Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('passwordChange.update');
 });
 
 // reset password dengan email

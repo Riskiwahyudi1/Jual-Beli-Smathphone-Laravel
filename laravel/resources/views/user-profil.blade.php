@@ -56,7 +56,12 @@
 @endif
 @extends('layouts.main')
 @section('container')
-    <div class="container px-8 my-8 p-4 bg-gray-200 rounded shadow">
+@if (auth()->user()->role == 'buyer')
+    <a href="/home" class="font-semibold  ms-6 mx-2"><i class="fa-solid fa-backward mr-2 text-blue2"></i>Dashboard</a>
+    @else
+    <a href="/home-penjual" class="font-semibold  ms-6 mx-2"><i class="fa-solid fa-backward mr-2 text-blue2"></i>Dashboard</a>
+@endif
+    <div class="container px-8 p-4 bg-gray-200 rounded shadow">
         <div class="flex items-center">
             <div class="w-32 h-32 mr-4">
                 <img class="w-full h-full rounded-full object-cover" src="https://via.placeholder.com/150" alt="User Profile Picture">
@@ -145,59 +150,60 @@
                                 <span class="sr-only">Close modal</span>
                             </button>
                         </div>
-                        <!-- Modal body -->
+                       <!-- Modal body -->
                         <form class="p-4 md:p-5" action="/edit-rekening" method="POST">
-                        @csrf
+                            @csrf
                             <div class="grid gap-4 mb-4 grid-cols-2">
-                            <div class="col-span-2 sm:col-span-1">
-                                <label for="bank" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank</label>
-                                <select name="edit_nama_bank" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option value="{{ $rek['nama_bank'] }}"  selected>{{ $rek['nama_bank'] }}</option>
-                                    <option value="BCA">Bank Central Asia (BCA)</option>
-                                    <option value="Mandiri">Bank Mandiri</option>
-                                    <option value="BRI">Bank Rakyat Indonesia (BRI)</option>
-                                    <option value="BNI">Bank Negara Indonesia (BNI)</option>
-                                    <option value="BTN">Bank Tabungan Negara (BTN)</option>
-                                    <option value="Danamon">Bank Danamon</option>
-                                    <option value="CIMB">CIMB Niaga</option>
-                                    <option value="Permata">Bank Permata</option>
-                                    <option value="BTPN">Bank BTPN</option>
-                                    <option value="OCBC">OCBC NISP</option>
-                                    <option value="Panin">Bank Panin</option>
-                                    <option value="Maybank">Maybank</option>
-                                    <option value="Mega">Bank Mega</option>
-                                    <option value="Bukopin">Bank Bukopin</option>
-                                    <option value="Citibank">Citibank</option>
-                                    <option value="Commonwealth">Bank Commonwealth</option>
-                                    <option value="HSBC">HSBC</option>
-                                    <option value="Sinarmas">Bank Sinarmas</option>
-                                    <option value="UOB">Bank UOB</option>
-                                    <option value="Woori">Bank Woori Saudara</option>
-                                    <option value="MNC">Bank MNC</option>
-                                    <option value="Shinhan">Bank Shinhan Indonesia</option>
-                                    <option value="ICBC">Bank ICBC Indonesia</option>
-                                </select>
-                            </div>
-                            <div class="col-span-2">
-                                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Pemilik Rekening</label>
-                                <input type="text" name="edit_nama_pemilik" value="{{ $rek['nama_pemilik'] }}"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Pemilik Rekening" >
-                                <input type="hidden" name="index" value="{{ $index }}"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Pemilik Rekening" >
-                            </div>
-                            @error('nama_pemilik')
-                            <p id="filled_error_help" class=" text-xs text-red-600 dark:text-red-400 text-red"><span class="font-medium">{{ $message }}</p>
-                            @enderror
-                            <div class="col-span-2">
-                                <label for="No Hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Rekening</label>
-                                <input type="number" name="edit_no_rekening" value="{{ $rek['no_rekening'] }}"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="No Rekening" >
-                            </div>
-                            @error('no_rekening')
-                            <p id="filled_error_help" class=" text-xs text-red-600 dark:text-red-400 text-red"><span class="font-medium">{{ $message }}</p>
-                            @enderror
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="bank" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bank</label>
+                                    <select name="edit_nama_bank" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
+                                        <option value="" disabled selected>Pilih Bank</option>
+                                        <option value="BCA">Bank Central Asia (BCA)</option>
+                                        <option value="Mandiri">Bank Mandiri</option>
+                                        <option value="BRI">Bank Rakyat Indonesia (BRI)</option>
+                                        <option value="BNI">Bank Negara Indonesia (BNI)</option>
+                                        <option value="BTN">Bank Tabungan Negara (BTN)</option>
+                                        <option value="Danamon">Bank Danamon</option>
+                                        <option value="CIMB">CIMB Niaga</option>
+                                        <option value="Permata">Bank Permata</option>
+                                        <option value="BTPN">Bank BTPN</option>
+                                        <option value="OCBC">OCBC NISP</option>
+                                        <option value="Panin">Bank Panin</option>
+                                        <option value="Maybank">Maybank</option>
+                                        <option value="Mega">Bank Mega</option>
+                                        <option value="Bukopin">Bank Bukopin</option>
+                                        <option value="Citibank">Citibank</option>
+                                        <option value="Commonwealth">Bank Commonwealth</option>
+                                        <option value="HSBC">HSBC</option>
+                                        <option value="Sinarmas">Bank Sinarmas</option>
+                                        <option value="UOB">Bank UOB</option>
+                                        <option value="Woori">Bank Woori Saudara</option>
+                                        <option value="MNC">Bank MNC</option>
+                                        <option value="Shinhan">Bank Shinhan Indonesia</option>
+                                        <option value="ICBC">Bank ICBC Indonesia</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Pemilik Rekening</label>
+                                    <input type="text" name="edit_nama_pemilik" value="{{ $rek['nama_pemilik'] }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Pemilik Rekening" required>
+                                    <input type="hidden" name="index" value="{{ $index }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                </div>
+                                @error('edit_nama_pemilik')
+                                <p id="filled_error_help" class="text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{ $message }}</p>
+                                @enderror
+                                <div class="col-span-2">
+                                    <label for="No Hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Rekening</label>
+                                    <input type="number" name="edit_no_rekening" value="{{ $rek['no_rekening'] }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="No Rekening" required>
+                                </div>
+                                @error('edit_no_rekening')
+                                <p id="filled_error_help" class="text-xs text-red-600 dark:text-red-400"><span class="font-medium">{{ $message }}</p>
+                                @enderror
                             </div>
                             <button type="submit" id="simpan-data" class="text-white inline-flex items-center bg-blue2 hover:bg-blue1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                 Simpan
                             </button>
                         </form>
+
                     </div>
                 </div>
             </div> 

@@ -29,14 +29,14 @@ class PasswordController extends Controller
         if (!Hash::check($request->current_password, Auth::user()->password)) {
             return back()->withErrors(['current_password' => 'Password saat ini salah!']);
         }
-
+        if (Hash::check($request->new_password, Auth::user()->password)) {
+            return back()->with(['Current_And_New_Password_Same' => 'Harap masukan password yang berbeda dengan saat ini!']);
+        }
         Auth::user()->update([
             'password' => Hash::make($request->new_password),
         ]);
-        $role = Auth::user()->role;
-        $message = 'Password berhasil diubah!';
-        
-        return back()->with('message', $message)->with('role', $role);
+
+        return back()->with('message', 'Password berhasil diubah!');
     }
 
     
