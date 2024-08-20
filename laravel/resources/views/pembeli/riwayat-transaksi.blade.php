@@ -310,10 +310,15 @@
                                 <p class="text-red-600 font-semibold py-2 mx-5"> Lakukan pembayaran ke rekening berikut, pastikan nama penerima sesuai!!</p>
                                 <select name="rekening" id="rekening" class="w-full mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                                     <option value="" disabled selected>--Pilih Rekening Penjual--</option>
-                                    <option value="BCA - 1234567890">BCA - 1234567890 - Riski Wahyudi</option>
-                                    <option value="Mandiri - 0987654321">Mandiri - 0987654321 - Riski Wahyudi</option>
-                                    <option value="BNI - 1122334455">BNI - 1122334455 - Riski Wahyudi</option>
-                                    
+                                    @if (isset($penjualRekening[$transaksi->penjual]))
+                                        @foreach ($penjualRekening[$transaksi->penjual] as $rekening)
+                                            @if (isset($rekening['nama_bank'], $rekening['nama_pemilik'], $rekening['no_rekening']))
+                                            <option value="{{ $rekening['no_rekening'] }}">
+                                                {{ 'Nama Bank : ' . $rekening['nama_bank'] . ' - ' . 'Nama Pemilik : ' . $rekening['nama_pemilik'] . ' - ' . 'No Rekening :' .  $rekening['no_rekening'] }}
+                                            </option>
+                                            @endif
+                                        @endforeach
+                                     @endif
                                 </select>
                                 <form action="riwayat-transaksi" method="post" enctype="multipart/form-data">
                                     @csrf

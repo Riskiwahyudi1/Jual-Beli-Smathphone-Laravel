@@ -49,25 +49,32 @@ class HomeController extends Controller
             ];
     $search = Produk::populerFilter($filters)->where('status', 'Terverifikasi')->orderByDesc('terjual')->paginate(20);
     
-    $userRole = Auth::user()->role;
-    if ($userRole === 'seller') {
-        $nullDataUser = User::where('id', Auth::id())
-            ->where(function($query) {
-                $query->where('name', '')
-                    ->orWhere('no_hp', '')
-                    ->orWhere('alamat', '')
-                    ->orWhere(function($subQuery) {
-                        $subQuery->where('rekening', '')
-                            ->orWhere('rekening', '[]');
-                    });
-            })->exists();
+    $user = Auth::user();
+
+    if ($user) {
+        $userRole = $user->role;
+
+        if ($userRole === 'seller') {
+            $nullDataUser = User::where('id', $user->id)
+                ->where(function($query) {
+                    $query->where('name', '')
+                        ->orWhere('no_hp', '')
+                        ->orWhere('alamat', '')
+                        ->orWhere(function($subQuery) {
+                            $subQuery->where('rekening', '')
+                                ->orWhere('rekening', '[]');
+                        });
+                })->exists();
+        } else {
+            $nullDataUser = User::where('id', $user->id)
+                ->where(function($query) {
+                    $query->where('name', '')
+                        ->orWhere('no_hp', '')
+                        ->orWhere('alamat', '');
+                })->exists();
+        }
     } else {
-        $nullDataUser = User::where('id', Auth::id())
-            ->where(function($query) {
-                $query->where('name', '')
-                    ->orWhere('no_hp', '')
-                    ->orWhere('alamat', '');
-            })->exists();
+        $nullDataUser = false;
     }
 
     return [

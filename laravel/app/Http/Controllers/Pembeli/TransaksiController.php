@@ -67,26 +67,29 @@ class TransaksiController extends Controller
             ];
         }
     
-        public function tampilkanRiwayatTransaksi(Request $request)
+        public function tampilkanRiwayatTransaksi()
         {
             $data = $this->riwayatTransaksi();
 
-            $userId = $request->input('user_id');
+                $transaksiData = Transaksi::select('transaksis.*', 'users.rekening as rekening_penjual', 'users.username')
+                ->join('users', 'transaksis.penjual', '=', 'users.username')
+                ->where('transaksis.user_id', Auth::id())
+                ->get();
 
-            // $auth = Auth::user();
-            // $authId = $auth->id;
-            // $User = User::find($authId);
-            // $rekening = json_decode($User->rekening, true); 
-            // foreach ($rekening as $key => $rek) {
-            // }
-    
+                $penjualRekening = $transaksiData->groupBy('username')->map(function ($items) {
+                    return $items->map(function ($item) {
+                        return json_decode($item->rekening_penjual, true);
+                    })->flatten(1);
+                });
+
             return view('pembeli.riwayat-transaksi', [
-                // dd($userId),
-                // dd($request->all()),
+                
                 'title' => 'Riwayat Transaksi',
                 'status' => ['menunggu-pembayaran', 'dikemas', 'dikirim', 'selesai', 'dibatalkan'],
                 'transaksis' => $data['produkTransaksi'],
                 'statusCounts' => $data['statusCounts'],
+                'transaksiData' => $transaksiData,
+                'penjualRekening' => $penjualRekening
             ]);
         }
     

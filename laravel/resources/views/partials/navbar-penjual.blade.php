@@ -55,10 +55,4 @@
     <a href="/layanan-pengguna-penjual">
         <button class="w-32 py-2 text-left ps-4 {{ $active === "layanan-pengguna-penjual" ? '  bg-blue2 text-black': 'text-white' }} mt-2 rounded-md font-semibold"><i class="fas fa-circle-question mr-2"></i>Bantuan</button>
     </a>
-    <form action="/logout" method="post">
-        
-    @csrf
-    <button type="submit" class=" absolute bottom-12 w-32 py-2 text-left ps-4 text-white mt-2 rounded-md font-bold"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
-            
-    </form>
 </nav>
